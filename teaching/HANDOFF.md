@@ -18,3 +18,4 @@
 | 08 | 2026-10-24 | 約 6 分鐘（19:18–19:24） | Gazebo server 模式、關 RViz，改用 action send_goal 驗證（SUCCEEDED）；自行 export GZ_SIM_RESOURCE_PATH；未設初始位姿（靠 static map→odom）；nav2_client 只跑 40 秒；nav2_bt_client 需 Groot2 只建置 |
 | 09 | 2026-10-24 | 約 23 分鐘（19:25–19:48） | 只做 mock 版、不開 RViz（demo_headless）；URDF 寫死 GazeboSimSystem 讓 mock 失敗，加 xacro 參數關掉；initial_positions 全 0 超出 joint4 限制改 ready 姿態；use_sim_time 改 False；Gazebo 版未跑 |
 | 10 | 2026-10-24 | 約 7 分鐘（19:48–19:55） | 無 webcam／RealSense：cam2image burger 假相機＋自寫合成點雲；不開 rqt/RViz 改用 topic hz；書上 pcl_processing 無分割，於驗證節點補 RANSAC；透視轉換原碼未實作 |
+| 11 | 2026-10-24 | 約 12 分鐘（19:56–20:08） | 無 PX4 SITL：px4_msgs release/1.15＋px4_ctrl 只建置；無飛控時節點卡在等 vehicle_command 服務；自寫 fake_fcu.py 冒充飛控驗證 offboard 流程；SITL 安裝只寫步驟 |
