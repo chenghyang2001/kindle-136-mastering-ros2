@@ -33,3 +33,4 @@
 | --- | --- | --- |
 | 01 | 約 2 分鐘（07:23–07:25） | 沿用 hp2 三個腳本未改；套件數 482（hp2 479）；listener 14 則、domain 36／37 為 16／0，與 hp2 相同；node list --no-daemon 這次沒列出節點（探索時間短） |
 | 02 | 約 3 分鐘（07:27–07:30） | 沿用 hp2 四個腳本，加 cyclonedds；建置 Python 3.28 s／C++ 11.0 s（hp2 2.35／9.84 s，機器差異）；colcon list、pkg executables、tick 輸出與 hp2 相同；ws_src 只差 maintainer 名稱（peter） |
+| 03 | 約 5 分鐘（07:31–07:36） | 沿用 hp2 step0–6＋cleanup 未改；建置 42.9 s（hp2 54.1 s）；topic／param（只生效一拍）／service／action 結果與 hp2 相同；ros2 action list 一樣卡到 timeout |
