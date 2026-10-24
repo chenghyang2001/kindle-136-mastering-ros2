@@ -35,3 +35,4 @@
 | 02 | 約 3 分鐘（07:27–07:30） | 沿用 hp2 四個腳本，加 cyclonedds；建置 Python 3.28 s／C++ 11.0 s（hp2 2.35／9.84 s，機器差異）；colcon list、pkg executables、tick 輸出與 hp2 相同；ws_src 只差 maintainer 名稱（peter） |
 | 03 | 約 5 分鐘（07:31–07:36） | 沿用 hp2 step0–6＋cleanup 未改；建置 42.9 s（hp2 54.1 s）；topic／param（只生效一拍）／service／action 結果與 hp2 相同；ros2 action list 一樣卡到 timeout |
 | 04 | 約 5 分鐘（07:37–07:42） | 關鍵數字與 hp2 完全相同（check_urdf、link 樹、tf2_echo 值）；這台缺 pdftoppm，腳本加自動裝 poppler-utils；step3_tf.sh 收尾 kill 已結束行程被 set -e 判失敗，改為忽略（hp2 log 停在同處，可能也是 exit 1） |
+| 05 | 約 5 分鐘（07:43–07:48） | 沿用 hp2 六個腳本未改；diffbot 10 秒前進 5.04 m（hp2 4.92 m）、/odom 24.5 Hz（hp2 26.2 Hz）；rrbot 4 條橋接、手臂軌跡 SUCCEEDED 與 hp2 相同；建置 10.4 s（hp2 約 5 s） |
