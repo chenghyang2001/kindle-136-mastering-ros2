@@ -1,0 +1,9 @@
+# 本演練改：原本全 0（joint4=0 超出關節限制），改成和 Gazebo 版 2DofPosition 相同的 ready 姿態
+initial_positions:
+  joint1: 0.0
+  joint2: -0.78
+  joint3: 0.0
+  joint4: -2.35
+  joint5: 0.0
+  joint6: 1.57
+  joint7: 0.78

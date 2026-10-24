@@ -18,7 +18,7 @@
 ### RViz display plugin（circle_display_plugin）
 
 ```
-[rviz_common] circle_display_plugin 已註冊，prefix=/home/user/k136_ws/ch16/install/circle_display_plugin
+[rviz_common] circle_display_plugin 已註冊，prefix=~/k136_ws/ch16/install/circle_display_plugin
 <class type="rviz_circle_plugin::CircleDisplay" base_class_type="rviz_common::Display">
 T rviz_circle_plugin::CircleDisplay::processMessage(std::shared_ptr<circle_msgs::msg::Circle_ ...>)
 ```
@@ -26,7 +26,7 @@ T rviz_circle_plugin::CircleDisplay::processMessage(std::shared_ptr<circle_msgs:
 ### rqt panel plugin（cmd_vel）
 
 ```
-[rqt_gui] cmd_vel 已註冊，prefix=/home/user/k136_ws/ch16/install/cmd_vel
+[rqt_gui] cmd_vel 已註冊，prefix=~/k136_ws/ch16/install/cmd_vel
 <class name="cmd_vel/CmdVel" type="cmd_vel::CmdVel" base_class_type="rqt_gui_cpp::Plugin">
 T cmd_vel::CmdVel::initPlugin(qt_gui_cpp::PluginContext&)
 ```

@@ -13,4 +13,9 @@
 | `teaching/drill.json` | 章節 → 練習資料夾 |
 | `teaching/DRILL-PROMPT.md` | 教練開場提示詞 |
 | `teaching/HANDOFF.md` | 快速模式進度表（每章結果與和書上的差異） |
-| `practice/chNN/` | 各章練習資料夾留存（腳本、NOTES.md、logs） |
+| `practice/chNN/` | 各章練習資料夾留存（腳本、NOTES.md、logs、ws_src 套件副本） |
+
+## 換一台電腦重跑
+
+看 [NEW-PC-DRILL.md](NEW-PC-DRILL.md)：程式碼位置（官方範例已 fork 到 [chenghyang2001/Mastering-ROS-2-for-Robotics-Programming](https://github.com/chenghyang2001/Mastering-ROS-2-for-Robotics-Programming)）、新電腦需求、WSL＋ROS 2 安裝、給 Claude Code CLI 的快速演練提示詞。
+各章改過的 ROS 套件副本在 `practice/chNN/ws_src/`。
