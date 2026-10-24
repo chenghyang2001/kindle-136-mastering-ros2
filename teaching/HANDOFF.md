@@ -14,3 +14,4 @@
 | 04 | 2026-10-24 | 約 4 分鐘（18:38–18:42） | 不開 RViz／joint_state_publisher_gui，改用 tf2_echo 與 topic echo /robot_description 驗證；graphviz PDF 轉 PNG |
 | 05 | 2026-10-24 | 約 10 分鐘（18:42–18:52） | Gazebo 改 server 模式、關 RViz／rqt；補 /odom 橋接；多複製 ch04 rrbot_description；load_controller 經 daemon 卡住改用 spawner；以 topic pub 取代 rqt_robot_steering |
 | 06 | 2026-10-24 | 約 12 分鐘（18:53–19:05） | Gazebo server 模式；spawner＋service call 取代 ros2 control CLI；書上 set_value 傳 float 在 Jazzy 執行期被拒，改 double；需手動發 /sine_param；未橋接 /clock 改用 wall time 計算 |
+| 07 | 2026-10-24 | 約 12 分鐘（19:05–19:17） | ros2 action list 無 --no-daemon 改看 log；ros2 run 子行程殘留污染比較，改直接執行二進位檔重做；額外改 number_checker 為 Sequence、bt_action 加 Fallback 比較 |
