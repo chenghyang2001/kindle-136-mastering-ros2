@@ -10,3 +10,4 @@
 | --- | --- | --- | --- |
 | 01 | 2026-10-24 | 約 10 分鐘（18:06–18:16） | ros2 daemon 在 WSL 卡死，查詢改加 --no-daemon；區網有別台機器用 domain 36，加 ROS_AUTOMATIC_DISCOVERY_RANGE=LOCALHOST；Python listener 啟動慢，等待時間拉長 |
 | 02 | 2026-10-24 | 約 4 分鐘（18:18–18:22） | 沒有 Docker，Dockerfile 只讀不建；本機是 ros2-apt-source＋desktop（書上腳本讓你選 desktop-full／ros-base）；查詢加 --no-daemon |
+| 03 | 2026-10-24 | 約 15 分鐘（18:22–18:37） | Fast DDS 在 WSL 跨行程探索極慢，改 rmw_cyclonedds_cpp＋lo 開 multicast；書上程式 timer 每次重設參數，param set 只生效一拍 |
