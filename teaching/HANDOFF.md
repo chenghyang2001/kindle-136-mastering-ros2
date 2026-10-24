@@ -22,3 +22,4 @@
 | 12 | 2026-10-24 | 約 9 分鐘（20:08–20:17） | 無樹莓派／LiDAR，micro-ROS 略過；不開 RViz 改 view_frames 產 TF 樹；自寫假 /scan 餵 rf2o，移動量接近真值但 x 方向相反（試 3 次未解，記在 NOTES） |
 | 13 | 2026-10-24 | 約 6 分鐘（20:18–20:25） | 書本 HandlesOverflowAngles 期望值與函式範圍 [-π,π) 不一致，工作區副本改 -M_PI；CI yml 只寫不 push；發現 colcon test 失敗仍回 0，需靠 colcon test-result |
 | 14 | 2026-10-24 | 約 28 分鐘（20:26–20:54，pip 網路不穩） | 不用 OpenAI 金鑰：先寫不依賴 langchain 的最小假 agent 當備案，再用書上 agent＋langchain 0.3 假 LLM 對照，兩版 turtlesim 都有移動；turtlesim 用 offscreen；openai.env 只放範本 |
+| 15 | 2026-10-25 | 實際約 10 分鐘（20:55 開始，筆電睡眠到 04:49，04:52 完成） | 無 NVIDIA GPU：Isaac Lab＋PPO 改 gymnasium CartPole 表格式 Q-learning（末 100 回合平均 466 步）；docker 腳本只讀不執行；第一次 pip 裝出壞的 gymnasium，重裝後正常 |
