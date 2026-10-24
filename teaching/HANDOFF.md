@@ -24,3 +24,11 @@
 | 14 | 2026-10-24 | 約 28 分鐘（20:26–20:54，pip 網路不穩） | 不用 OpenAI 金鑰：先寫不依賴 langchain 的最小假 agent 當備案，再用書上 agent＋langchain 0.3 假 LLM 對照，兩版 turtlesim 都有移動；turtlesim 用 offscreen；openai.env 只放範本 |
 | 15 | 2026-10-25 | 實際約 10 分鐘（20:55 開始，筆電睡眠到 04:49，04:52 完成） | 無 NVIDIA GPU：Isaac Lab＋PPO 改 gymnasium CartPole 表格式 Q-learning（末 100 回合平均 466 步）；docker 腳本只讀不執行；第一次 pip 裝出壞的 gymnasium，重裝後正常 |
 | 16 | 2026-10-25 | 約 5 分鐘（04:53–04:58） | 不開 RViz／rqt：用 pluginlib 清單、plugin XML 與 .so 符號確認外掛已註冊；Gazebo server 模式驗證外掛限速 0.5→0.2 並轉發 cmd_vel，模型移動約 1.1 m；書上 cmd_vel 是 rqt 面板外掛 |
+
+## 第二台電腦結果（hp1，2026-10-25）
+
+在 hp1 重跑，直接重用 hp2 的 practice/chNN 腳本與 ws_src；這台的腳本、NOTES、log 留在本機 k136-chNN-practice。
+
+| 章 | 耗時 | 與 hp2 結果的差異 |
+| --- | --- | --- |
+| 01 | 約 2 分鐘（07:23–07:25） | 沿用 hp2 三個腳本未改；套件數 482（hp2 479）；listener 14 則、domain 36／37 為 16／0，與 hp2 相同；node list --no-daemon 這次沒列出節點（探索時間短） |
