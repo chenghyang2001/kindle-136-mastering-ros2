@@ -8,3 +8,4 @@
 
 | 章 | 完成日 | 實際耗時 | 和書上做法的差異 |
 | --- | --- | --- | --- |
+| 01 | 2026-10-24 | 約 10 分鐘（18:06–18:16） | ros2 daemon 在 WSL 卡死，查詢改加 --no-daemon；區網有別台機器用 domain 36，加 ROS_AUTOMATIC_DISCOVERY_RANGE=LOCALHOST；Python listener 啟動慢，等待時間拉長 |
