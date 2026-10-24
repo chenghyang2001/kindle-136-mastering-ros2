@@ -23,3 +23,4 @@
 | 13 | 2026-10-24 | 約 6 分鐘（20:18–20:25） | 書本 HandlesOverflowAngles 期望值與函式範圍 [-π,π) 不一致，工作區副本改 -M_PI；CI yml 只寫不 push；發現 colcon test 失敗仍回 0，需靠 colcon test-result |
 | 14 | 2026-10-24 | 約 28 分鐘（20:26–20:54，pip 網路不穩） | 不用 OpenAI 金鑰：先寫不依賴 langchain 的最小假 agent 當備案，再用書上 agent＋langchain 0.3 假 LLM 對照，兩版 turtlesim 都有移動；turtlesim 用 offscreen；openai.env 只放範本 |
 | 15 | 2026-10-25 | 實際約 10 分鐘（20:55 開始，筆電睡眠到 04:49，04:52 完成） | 無 NVIDIA GPU：Isaac Lab＋PPO 改 gymnasium CartPole 表格式 Q-learning（末 100 回合平均 466 步）；docker 腳本只讀不執行；第一次 pip 裝出壞的 gymnasium，重裝後正常 |
+| 16 | 2026-10-25 | 約 5 分鐘（04:53–04:58） | 不開 RViz／rqt：用 pluginlib 清單、plugin XML 與 .so 符號確認外掛已註冊；Gazebo server 模式驗證外掛限速 0.5→0.2 並轉發 cmd_vel，模型移動約 1.1 m；書上 cmd_vel 是 rqt 面板外掛 |
