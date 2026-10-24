@@ -1,0 +1,124 @@
+{
+  "book": "K136",
+  "repo": "kindle-136-mastering-ros2",
+  "title": "Mastering ROS 2 for Robotics Programming（第四版）",
+  "prompt_source": "teaching/LESSON-PLAN.md",
+  "chapters": [
+    {
+      "id": "01",
+      "folder": "k136-ch01-practice",
+      "mode": "normal",
+      "minutes": 8,
+      "parallel_with": []
+    },
+    {
+      "id": "02",
+      "folder": "k136-ch02-practice",
+      "mode": "normal",
+      "minutes": 10,
+      "parallel_with": []
+    },
+    {
+      "id": "03",
+      "folder": "k136-ch03-practice",
+      "mode": "normal",
+      "minutes": 12,
+      "parallel_with": []
+    },
+    {
+      "id": "04",
+      "folder": "k136-ch04-practice",
+      "mode": "normal",
+      "minutes": 12,
+      "parallel_with": []
+    },
+    {
+      "id": "05",
+      "folder": "k136-ch05-practice",
+      "mode": "normal",
+      "minutes": 20,
+      "parallel_with": []
+    },
+    {
+      "id": "06",
+      "folder": "k136-ch06-practice",
+      "mode": "normal",
+      "minutes": 15,
+      "parallel_with": []
+    },
+    {
+      "id": "07",
+      "folder": "k136-ch07-practice",
+      "mode": "normal",
+      "minutes": 12,
+      "parallel_with": []
+    },
+    {
+      "id": "08",
+      "folder": "k136-ch08-practice",
+      "mode": "normal",
+      "minutes": 25,
+      "parallel_with": []
+    },
+    {
+      "id": "09",
+      "folder": "k136-ch09-practice",
+      "mode": "normal",
+      "minutes": 25,
+      "parallel_with": []
+    },
+    {
+      "id": "10",
+      "folder": "k136-ch10-practice",
+      "mode": "normal",
+      "minutes": 15,
+      "parallel_with": []
+    },
+    {
+      "id": "11",
+      "folder": "k136-ch11-practice",
+      "mode": "normal",
+      "minutes": 15,
+      "parallel_with": [],
+      "note": "需要硬體（PX4／樹莓派＋LiDAR／NVIDIA GPU），本機改做模擬或只建置"
+    },
+    {
+      "id": "12",
+      "folder": "k136-ch12-practice",
+      "mode": "normal",
+      "minutes": 15,
+      "parallel_with": [],
+      "note": "需要硬體（PX4／樹莓派＋LiDAR／NVIDIA GPU），本機改做模擬或只建置"
+    },
+    {
+      "id": "13",
+      "folder": "k136-ch13-practice",
+      "mode": "normal",
+      "minutes": 10,
+      "parallel_with": []
+    },
+    {
+      "id": "14",
+      "folder": "k136-ch14-practice",
+      "mode": "normal",
+      "minutes": 15,
+      "parallel_with": [],
+      "note": "不可用 OpenAI 金鑰，改假 LLM"
+    },
+    {
+      "id": "15",
+      "folder": "k136-ch15-practice",
+      "mode": "normal",
+      "minutes": 12,
+      "parallel_with": [],
+      "note": "需要硬體（PX4／樹莓派＋LiDAR／NVIDIA GPU），本機改做模擬或只建置"
+    },
+    {
+      "id": "16",
+      "folder": "k136-ch16-practice",
+      "mode": "normal",
+      "minutes": 15,
+      "parallel_with": []
+    }
+  ]
+}
