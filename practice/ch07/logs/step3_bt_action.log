@@ -1,0 +1,104 @@
+使用樹檔：/home/user/k136_ws/ch07/install/bt_action_server/share/bt_action_server/trees/bt_action.xml
+  <BehaviorTree ID="bt_action">
+    <Sequence>
+      <WaitForServer server_name="reach_location"/>
+      <CallAction server_name="reach_location"
+                  x="10"
+                  y="4"
+                  timeout="15"/>
+    </Sequence>
+  </BehaviorTree>
+################ A. 沒有 action server 時跑 bt_action 6 秒
+[Node WaitForServer]: Failure
+[Node WaitForServer]: Failure
+[Node WaitForServer]: Failure
+[Node WaitForServer]: Failure
+[Node WaitForServer]: Failure
+[INFO] [1792840154.186517169] [rclcpp]: signal_handler(SIGINT/SIGTERM)
+################ B. 先啟動 reach_location_server，再跑 bt_action 60 秒
+usage: ros2 [-h] [--use-python-default-buffering]
+            Call `ros2 <command> -h` for more detailed usage. ...
+ros2: error: unrecognized arguments: --no-daemon
+--- 行為樹端輸出（去除重複 Waiting 行）
+[INFO] [launch]: All log files can be found below /home/user/.ros/log/2026-10-24-19-09-18-851281-DESKTOP-6LST1BR-463
+[INFO] [launch]: Default logging verbosity is set to INFO
+[INFO] [bt_action-1]: process started with pid [466]
+[bt_action-1] [WARN] [1792840159.431764249] [rcl.logging_rosout]: Publisher already registered for node name: 'bt_action'. If this is due to multiple nodes with the same name then all logs for the logger named 'bt_action' will go out over the existing publisher. As soon as any node with that name is destructed it will unregister the publisher, preventing any further logs for that name from being published on the rosout topic.
+[bt_action-1] [Node WaitForServer]: Success
+[bt_action-1] [Node CallAction]: Success
+[bt_action-1] [Node WaitForServer]: Success
+[bt_action-1] [Node CallAction]: Success
+[bt_action-1] [Node WaitForServer]: Success
+[bt_action-1] [Node CallAction]: Success
+[bt_action-1] [Node WaitForServer]: Success
+[bt_action-1] [Node CallAction]: Success
+[bt_action-1] [Node WaitForServer]: Success
+[bt_action-1] [Node CallAction]: Success
+--- Waiting 行數: 104
+--- action server 端輸出
+[INFO] [1792840154.385056046] [reach_location_action_server]: Action server started.
+[INFO] [1792840160.432230424] [reach_location_action_server]: Received goal request for location (10.000000, 4.000000) with timeout 15.000000
+[INFO] [1792840160.433097436] [reach_location_action_server]: Executing goal...
+[INFO] [1792840160.433526418] [reach_location_action_server]: Current position: (1.735765, 1.735765)
+[INFO] [1792840161.433715826] [reach_location_action_server]: Current position: (1.971784, 1.971784)
+[INFO] [1792840162.434289474] [reach_location_action_server]: Current position: (2.520181, 2.520181)
+[INFO] [1792840163.433975975] [reach_location_action_server]: Current position: (3.648113, 3.648113)
+[INFO] [1792840164.433880120] [reach_location_action_server]: Current position: (4.989372, 4.989372)
+[INFO] [1792840165.434326762] [reach_location_action_server]: Current position: (6.717862, 6.717862)
+[INFO] [1792840166.433867965] [reach_location_action_server]: Current position: (8.566216, 8.566216)
+[INFO] [1792840167.433701094] [reach_location_action_server]: Current position: (9.187614, 9.187614)
+[INFO] [1792840168.434080927] [reach_location_action_server]: Current position: (11.125010, 11.125010)
+[INFO] [1792840168.434651797] [reach_location_action_server]: Goal succeeded
+[INFO] [1792840171.432437672] [reach_location_action_server]: Received goal request for location (10.000000, 4.000000) with timeout 15.000000
+[INFO] [1792840171.433075397] [reach_location_action_server]: Executing goal...
+[INFO] [1792840171.433198281] [reach_location_action_server]: Current position: (0.847714, 0.847714)
+[INFO] [1792840172.434816303] [reach_location_action_server]: Current position: (2.326920, 2.326920)
+[INFO] [1792840173.433761045] [reach_location_action_server]: Current position: (4.283521, 4.283521)
+[INFO] [1792840174.434098065] [reach_location_action_server]: Current position: (5.662145, 5.662145)
+[INFO] [1792840175.433515825] [reach_location_action_server]: Current position: (6.032266, 6.032266)
+[INFO] [1792840176.433531857] [reach_location_action_server]: Current position: (7.368212, 7.368212)
+[INFO] [1792840177.433527454] [reach_location_action_server]: Current position: (8.472397, 8.472397)
+[INFO] [1792840178.433554571] [reach_location_action_server]: Current position: (9.926050, 9.926050)
+[INFO] [1792840179.649628540] [reach_location_action_server]: Current position: (11.074472, 11.074472)
+[INFO] [1792840179.649817711] [reach_location_action_server]: Goal succeeded
+[INFO] [1792840182.381367413] [reach_location_action_server]: Received goal request for location (10.000000, 4.000000) with timeout 15.000000
+[INFO] [1792840182.382057776] [reach_location_action_server]: Executing goal...
+[INFO] [1792840182.382320983] [reach_location_action_server]: Current position: (1.012362, 1.012362)
+[INFO] [1792840183.382389996] [reach_location_action_server]: Current position: (1.297200, 1.297200)
+[INFO] [1792840184.382551513] [reach_location_action_server]: Current position: (1.565745, 1.565745)
+[INFO] [1792840185.382407599] [reach_location_action_server]: Current position: (2.445332, 2.445332)
+[INFO] [1792840186.382642102] [reach_location_action_server]: Current position: (2.764152, 2.764152)
+[INFO] [1792840187.382709706] [reach_location_action_server]: Current position: (4.492442, 4.492442)
+[INFO] [1792840188.382833660] [reach_location_action_server]: Current position: (4.746412, 4.746412)
+[INFO] [1792840189.382736356] [reach_location_action_server]: Current position: (5.615580, 5.615580)
+[INFO] [1792840190.382538839] [reach_location_action_server]: Current position: (6.579218, 6.579218)
+[INFO] [1792840191.382375454] [reach_location_action_server]: Current position: (7.610432, 7.610432)
+[INFO] [1792840192.382780454] [reach_location_action_server]: Current position: (8.652815, 8.652815)
+[INFO] [1792840193.382447949] [reach_location_action_server]: Current position: (9.427381, 9.427381)
+[INFO] [1792840194.382721104] [reach_location_action_server]: Current position: (11.151914, 11.151914)
+[INFO] [1792840194.383007203] [reach_location_action_server]: Goal succeeded
+[INFO] [1792840197.381038766] [reach_location_action_server]: Received goal request for location (10.000000, 4.000000) with timeout 15.000000
+[INFO] [1792840197.381388578] [reach_location_action_server]: Executing goal...
+[INFO] [1792840197.381641637] [reach_location_action_server]: Current position: (1.596974, 1.596974)
+[INFO] [1792840198.381839848] [reach_location_action_server]: Current position: (3.179320, 3.179320)
+[INFO] [1792840199.381786146] [reach_location_action_server]: Current position: (5.160582, 5.160582)
+[INFO] [1792840200.381741085] [reach_location_action_server]: Current position: (6.154443, 6.154443)
+[INFO] [1792840201.381814454] [reach_location_action_server]: Current position: (6.581867, 6.581867)
+[INFO] [1792840202.381821768] [reach_location_action_server]: Current position: (7.133284, 7.133284)
+[INFO] [1792840203.381740980] [reach_location_action_server]: Current position: (8.255494, 8.255494)
+[INFO] [1792840204.381766198] [reach_location_action_server]: Current position: (9.330439, 9.330439)
+[INFO] [1792840205.382025106] [reach_location_action_server]: Current position: (10.414362, 10.414362)
+[INFO] [1792840205.382223732] [reach_location_action_server]: Goal succeeded
+[INFO] [1792840208.381572740] [reach_location_action_server]: Received goal request for location (10.000000, 4.000000) with timeout 15.000000
+[INFO] [1792840208.382242316] [reach_location_action_server]: Executing goal...
+[INFO] [1792840208.382519733] [reach_location_action_server]: Current position: (1.974044, 1.974044)
+[INFO] [1792840209.382912821] [reach_location_action_server]: Current position: (2.479422, 2.479422)
+[INFO] [1792840210.382919492] [reach_location_action_server]: Current position: (2.713499, 2.713499)
+[INFO] [1792840211.382605677] [reach_location_action_server]: Current position: (2.925276, 2.925276)
+[INFO] [1792840212.524295713] [reach_location_action_server]: Current position: (3.413660, 3.413660)
+--- 統計
+server Goal succeeded: 5
+server Goal failed:    0
+BT CallAction Success: 5
+BT CallAction Failure: 0
+BT WaitForServer Failure: 0

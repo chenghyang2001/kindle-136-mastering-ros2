@@ -1,0 +1,22 @@
+[INFO] [launch]: All log files can be found below /home/user/.ros/log/2026-10-24-19-42-04-414925-DESKTOP-6LST1BR-924
+[INFO] [launch]: Default logging verbosity is set to INFO
+[INFO] [planning_with_obstacles-1]: process started with pid [927]
+[planning_with_obstacles-1] [INFO] [1792842124.701910184] [moveit_719898926.moveit.ros.rdf_loader]: Loaded robot model in 0.00344568 seconds
+[planning_with_obstacles-1] [INFO] [1792842124.702006238] [moveit_719898926.moveit.core.robot_model]: Loading robot model 'panda'...
+[planning_with_obstacles-1] [INFO] [1792842124.713498721] [moveit_719898926.moveit.kinematics.kdl_kinematics_plugin]: Joint weights for group 'arm': 1 1 1 1 1 1 1
+[planning_with_obstacles-1] [INFO] [1792842124.731246121] [moveit_719898926.moveit.ros.move_group_interface]: Ready to take commands for planning group arm.
+[planning_with_obstacles-1] [INFO] [1792842127.940102596] [moveit_719898926.moveit.ros.move_group_interface]: MoveGroup action client/server ready
+[planning_with_obstacles-1] [INFO] [1792842127.940785754] [moveit_719898926.moveit.ros.move_group_interface]: Planning request accepted
+[planning_with_obstacles-1] [INFO] [1792842132.963790138] [moveit_719898926.moveit.ros.move_group_interface]: Planning request aborted
+[planning_with_obstacles-1] [ERROR] [1792842132.964865283] [moveit_719898926.moveit.ros.move_group_interface]: MoveGroupInterface::plan() failed or timeout reached
+[planning_with_obstacles-1] [INFO] [1792842132.965763473] [moveit_719898926.moveit.ros.move_group_interface]: Plan and Execute request accepted
+[planning_with_obstacles-1] [INFO] [1792842138.005446028] [moveit_719898926.moveit.ros.move_group_interface]: Plan and Execute request aborted
+[planning_with_obstacles-1] [ERROR] [1792842138.005637449] [moveit_719898926.moveit.ros.move_group_interface]: MoveGroupInterface::move() failed or timeout reached
+[WARNING] [launch]: user interrupted with ctrl-c (SIGINT)
+[WARNING] [launch]: user interrupted with ctrl-c (SIGINT) again, ignoring...
+[INFO] [planning_with_obstacles-1]: sending signal 'SIGINT' to process[planning_with_obstacles-1]
+[planning_with_obstacles-1] [INFO] [1792842214.158439453] [rclcpp]: signal_handler(SIGINT/SIGTERM)
+[planning_with_obstacles-1] [INFO] [1792842214.163812911] [rclcpp]: signal_handler(SIGINT/SIGTERM)
+[planning_with_obstacles-1] Warning: class_loader.ClassLoader: SEVERE WARNING!!! Attempting to unload library while objects created by this loader exist in the heap! You should delete your objects before attempting to unload the library or destroying the ClassLoader. The library will NOT be unloaded.
+[planning_with_obstacles-1]          at line 127 in ./src/class_loader.cpp
+[INFO] [planning_with_obstacles-1]: process has finished cleanly [pid 927]

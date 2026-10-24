@@ -1,0 +1,40 @@
+launch PID=544，等 Gazebo 與 spawner 30 秒
+=== list_controllers（切換前）===
+name='joint_state_broadcaster', state='active', type='joint_state_broadcaster/JointStateBroadcaster'
+name='sine_controller', state='inactive', type='sine_controller/SineController'
+name='velocity_control', state='inactive', type='forward_command_controller/ForwardCommandController'
+name='position_control', state='active', type='forward_command_controller/ForwardCommandController'
+=== list_hardware_interfaces ===
+name='base_joint/position', data_type='double', is_available=True, is_claimed=True
+name='base_joint/velocity', data_type='double', is_available=True, is_claimed=False
+name='link1_link2/position', data_type='double', is_available=True, is_claimed=True
+name='link1_link2/velocity', data_type='double', is_available=True, is_claimed=False
+name='base_joint/effort', data_type='double', is_available=True, is_claimed=False
+name='base_joint/position', data_type='double', is_available=True, is_claimed=False
+name='base_joint/velocity', data_type='double', is_available=True, is_claimed=False
+name='link1_link2/effort', data_type='double', is_available=True, is_claimed=False
+name='link1_link2/position', data_type='double', is_available=True, is_claimed=False
+name='link1_link2/velocity', data_type='double', is_available=True, is_claimed=False
+=== switch：停 position_control、啟動 sine_controller ===
+controller_manager_msgs.srv.SwitchController_Response(ok=True, message='Successfully switched controllers!')
+
+=== list_controllers（切換後）===
+name='joint_state_broadcaster', state='active', type='joint_state_broadcaster/JointStateBroadcaster'
+name='sine_controller', state='active', type='sine_controller/SineController'
+name='velocity_control', state='inactive', type='forward_command_controller/ForwardCommandController'
+name='position_control', state='inactive', type='forward_command_controller/ForwardCommandController'
+=== 發布 /sine_param：base_joint 振幅 0.5rad 頻率 0.5Hz、link1_link2 振幅 0.2m 頻率 0.5Hz ===
+=== 錄 /joint_states 8 秒 ===
+收到 801 筆，時間跨度 8.00 秒（wall time），存到 /mnt/c/Users/<user>/workspace/k136-ch06-practice/logs/joint_states.csv
+base_joint: min=0.8208 max=1.7792 峰對峰=0.9583 半振幅=0.4792
+link1_link2: min=0.3000 max=0.3000 峰對峰=0.0000 半振幅=0.0000
+=== launch log 中 sine_controller 相關訊息 ===
+[gazebo-7] [INFO] [1792839636.577294757] [controller_manager]: Loading controller : 'sine_controller' of type 'sine_controller/SineController'
+[gazebo-7] [INFO] [1792839636.577355338] [controller_manager]: Loading controller 'sine_controller'
+[gazebo-7] [INFO] [1792839636.580715308] [controller_manager]: Controller 'sine_controller' node arguments: --ros-args --params-file /home/user/k136_ws/ch06/install/two_joints_robot/share/two_joints_robot/config/controller.yaml -p use_sim_time:=true --param use_sim_time:=true 
+[ros2-4] [INFO] [1792839636.597602881] [spawner_sine_controller]: Loaded sine_controller
+[gazebo-7] [INFO] [1792839636.598494246] [controller_manager]: Configuring controller: 'sine_controller'
+[gazebo-7] [INFO] [1792839636.600862040] [sine_controller]: Configuration successful
+[gazebo-7] [INFO] [1792839662.283097224] [controller_manager]: Activating controllers: [ sine_controller ]
+[gazebo-7] [INFO] [1792839662.289905865] [sine_controller]: Activation successful
+[gazebo-7] [INFO] [1792839662.289985125] [sine_controller]: [k136] init0=1.300000 init1=0.000000 n0=2 n1=2

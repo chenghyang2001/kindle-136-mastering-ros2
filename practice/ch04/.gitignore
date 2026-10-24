@@ -1,0 +1,4 @@
+*.stackdump
+core
+*.core
+*.dmp

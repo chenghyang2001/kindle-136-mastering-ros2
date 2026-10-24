@@ -1,0 +1,41 @@
+################ A. sequence_tree.launch.py（跑 5 秒）
+[INFO] [launch]: All log files can be found below /home/user/.ros/log/2026-10-24-19-08-28-502204-DESKTOP-6LST1BR-447
+[INFO] [launch]: Default logging verbosity is set to INFO
+[INFO] [sequence_tree-1]: process started with pid [451]
+[sequence_tree-1] Hello from Node1
+[sequence_tree-1] Hello from Node2
+[sequence_tree-1] Hello from Node1
+[sequence_tree-1] Hello from Node2
+[sequence_tree-1] Hello from Node1
+################ B. number_checker.launch.py（跑 15 秒）＋ 抓主題
+--- topic list（--no-daemon）
+/generated_number
+/parameter_events
+/rosout
+--- topic echo /generated_number（取 5 筆）
+data: 12
+---
+--- number_checker 節點輸出（前 40 行）
+[INFO] [launch]: All log files can be found below /home/user/.ros/log/2026-10-24-19-08-33-190213-DESKTOP-6LST1BR-466
+[INFO] [launch]: Default logging verbosity is set to INFO
+[INFO] [number_checker-1]: process started with pid [471]
+[number_checker-1] [INFO] [1792840113.786174575] [rclcpp]: QUI!.
+[number_checker-1] Generated number: 68 - Threshold: 30 - Failure! 
+[number_checker-1] Generated number: 74 - Threshold: 50 - Failure! 
+[number_checker-1] Generated number: 39 - Threshold: 80 - Success! 
+[number_checker-1] Generated number: 26 - Threshold: 30 - Success! 
+[number_checker-1] Generated number: 7 - Threshold: 30 - Success! 
+[number_checker-1] Generated number: 21 - Threshold: 30 - Success! 
+[number_checker-1] Generated number: 98 - Threshold: 30 - Failure! 
+[number_checker-1] Generated number: 12 - Threshold: 50 - Success! 
+[number_checker-1] Generated number: 39 - Threshold: 30 - Failure! 
+[number_checker-1] Generated number: 53 - Threshold: 50 - Failure! 
+[number_checker-1] Generated number: 80 - Threshold: 80 - Failure! 
+[number_checker-1] Generated number: 80 - Threshold: 30 - Failure! 
+[number_checker-1] Generated number: 90 - Threshold: 50 - Failure! 
+[number_checker-1] Generated number: 96 - Threshold: 80 - Failure! 
+[number_checker-1] Generated number: 17 - Threshold: 30 - Success! 
+[number_checker-1] Generated number: 9 - Threshold: 30 - Success! 
+--- 統計
+Success 次數: 7
+Failure 次數: 9

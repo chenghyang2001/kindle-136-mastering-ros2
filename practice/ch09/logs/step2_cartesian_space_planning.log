@@ -1,0 +1,32 @@
+[INFO] [launch]: All log files can be found below /home/user/.ros/log/2026-10-24-19-41-01-899540-DESKTOP-6LST1BR-882
+[INFO] [launch]: Default logging verbosity is set to INFO
+[INFO] [cartesian_space_planning-1]: process started with pid [885]
+[cartesian_space_planning-1] [INFO] [1792842062.200963506] [moveit_2648357944.moveit.ros.rdf_loader]: Loaded robot model in 0.00349863 seconds
+[cartesian_space_planning-1] [INFO] [1792842062.201070957] [moveit_2648357944.moveit.core.robot_model]: Loading robot model 'panda'...
+[cartesian_space_planning-1] [INFO] [1792842062.209865729] [moveit_2648357944.moveit.kinematics.kdl_kinematics_plugin]: Joint weights for group 'arm': 1 1 1 1 1 1 1
+[cartesian_space_planning-1] [INFO] [1792842062.226557230] [moveit_2648357944.moveit.ros.move_group_interface]: Ready to take commands for planning group arm.
+[cartesian_space_planning-1] [INFO] [1792842062.226752020] [cartesian_planning]: Could not transform link7 to world: The tf tree is invalid because it contains a loop.
+[cartesian_space_planning-1] Frame world exists with parent link0.
+[cartesian_space_planning-1] Frame link0 exists with parent world.
+[cartesian_space_planning-1] Frame camera_color_frame exists with parent camera_link.
+[cartesian_space_planning-1] Frame camera_link exists with parent camera_bottom_screw_frame.
+[cartesian_space_planning-1] Frame camera_color_optical_frame exists with parent camera_color_frame.
+[cartesian_space_planning-1] Frame camera_depth_frame exists with parent camera_link.
+[cartesian_space_planning-1] Frame camera_depth_optical_frame exists with parent camera_depth_frame.
+[cartesian_space_planning-1] Frame camera_infra1_frame exists with parent camera_link.
+[cartesian_space_planning-1] Frame camera_infra1_optical_frame exists with parent camera_infra1_frame.
+[cartesian_space_planning-1] Frame camera_infra2_frame exists with parent camera_link.
+[cartesian_space_planning-1] Frame camera_infra2_optical_frame exists with parent camera_infra2_frame.
+[cartesian_space_planning-1] Frame camera_bottom_screw_frame exists with parent link0.
+[cartesian_space_planning-1] Frame hand_tcp exists with parent hand.
+[cartesian_space_planning-1] Frame hand exists with parent link8.
+[cartesian_space_planning-1] Frame link8 exists with parent link7.
+[cartesian_space_planning-1] 
+[cartesian_space_planning-1]  Try again
+[cartesian_space_planning-1] [INFO] [1792842063.251953473] [moveit_2648357944.moveit.ros.move_group_interface]: Execute request accepted
+[cartesian_space_planning-1] [INFO] [1792842074.537784116] [moveit_2648357944.moveit.ros.move_group_interface]: Execute request success!
+[WARNING] [launch]: user interrupted with ctrl-c (SIGINT)
+[INFO] [cartesian_space_planning-1]: sending signal 'SIGINT' to process[cartesian_space_planning-1]
+[cartesian_space_planning-1] [INFO] [1792842122.529008231] [rclcpp]: signal_handler(SIGINT/SIGTERM)
+[cartesian_space_planning-1] terminate called without an active exception
+[ERROR] [cartesian_space_planning-1]: process has died [pid 885, exit code -6, cmd '/home/user/k136_ws/ch09/install/panda_moveit_control/lib/panda_moveit_control/cartesian_space_planning --ros-args --params-file /tmp/launch_params_po9fbfjr --params-file /tmp/launch_params_thpdkf6y --params-file /tmp/launch_params_v6_akiti --params-file /tmp/launch_params_ixrxrb4w'].

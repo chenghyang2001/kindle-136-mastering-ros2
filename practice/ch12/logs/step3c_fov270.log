@@ -1,0 +1,79 @@
+=== node list ===
+/fake_scan
+/rf2o_laser_odometry
+/rf2o_laser_odometry
+/robot_state_publisher
+/transform_listener_impl_60a62335c690
+WARNING: Be aware that there are nodes in the graph that share an exact name, which can have unintended side effects.
+=== /scan 頻率 ===
+average rate: 10.002
+	min: 0.099s max: 0.101s std dev: 0.00064s window: 12
+average rate: 10.002
+	min: 0.099s max: 0.101s std dev: 0.00053s window: 23
+=== 連續記錄 /odom 的 x（約 45 秒）===
+=== /odom 最後一則 ===
+header:
+  stamp:
+    sec: 1792844136
+    nanosec: 952080321
+  frame_id: odom
+child_frame_id: base_footprint
+pose:
+  pose:
+    position:
+      x: -2.1403645232904096
+      y: -0.15536291109659375
+      z: 0.0
+    orientation:
+      x: 0.0
+      y: 0.0
+      z: 0.054640969818113366
+      w: 0.9985060662897026
+  covariance:
+  - 0.0
+  - 0.0
+  - 0.0
+  - 0.0
+  - 0.0
+  - 0.0
+  - 0.0
+  - 0.0
+  - 0.0
+  - 0.0
+  - 0.0
+  - 0.0
+=== /odom 頻率 ===
+average rate: 9.965
+	min: 0.063s max: 0.138s std dev: 0.03382s window: 12
+average rate: 9.974
+	min: 0.063s max: 0.138s std dev: 0.03410s window: 22
+=== tf2_echo odom -> base_footprint ===
+[INFO] [1792844143.681057899] [tf2_echo]: Waiting for transform odom ->  base_footprint: Invalid frame ID "odom" passed to canTransform argument target_frame - frame does not exist
+At time 1792844144.551922882
+- Translation: [-2.138, -0.154, 0.000]
+- Rotation: in Quaternion (xyzw) [0.000, 0.000, 0.054, 0.999]
+- Rotation: in RPY (radian) [0.000, -0.000, 0.109]
+- Rotation: in RPY (degree) [0.000, -0.000, 6.229]
+- Matrix:
+  0.994 -0.108  0.000 -2.138
+=== /odom x 取樣（每 30 筆一筆）===
+-0.6602834039600189
+-0.8203245861880504
+-0.9800479921960237
+-1.2051684611602214
+-1.3660658017569922
+-1.526609342737868
+-1.6892106176657162
+-1.8550748469385951
+-2.0204668394497243
+-2.1386488770201733
+-2.139217800526272
+-2.1389753753462597
+-2.1394269750866677
+-2.1383047765317658
+-2.139772932442095
+=== 真值（fake_scan 最後幾行）===
+[INFO] [1792844144.655679675] [fake_scan]: truth t= 73.0s dx=2.000 m
+[INFO] [1792844145.656062436] [fake_scan]: truth t= 74.0s dx=2.000 m
+[INFO] [1792844146.654457453] [fake_scan]: truth t= 75.0s dx=2.000 m
+STEP3_DONE

@@ -1,0 +1,27 @@
+Sat Oct 24 06:23:33 PM CST 2026
+Starting >>> master_ros2_interface
+Finished <<< master_ros2_interface [16.6s]
+Starting >>> master_ros2_pkg
+--- stderr: master_ros2_pkg
+/home/user/k136_ws/ch03/src/master_ros2_pkg/src/action_server.cpp: In member function ‘rclcpp_action::GoalResponse ActionServer::handle_goal(const rclcpp_action::GoalUUID&, std::shared_ptr<const master_ros2_interface::action::MyCustomAction_Goal_<std::allocator<void> > >)’:
+/home/user/k136_ws/ch03/src/master_ros2_pkg/src/action_server.cpp:26:36: warning: unused parameter ‘uuid’ [-Wunused-parameter]
+   26 |     const rclcpp_action::GoalUUID &uuid,
+      |     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~
+/home/user/k136_ws/ch03/src/master_ros2_pkg/src/action_server.cpp: In member function ‘rclcpp_action::CancelResponse ActionServer::handle_cancel(std::shared_ptr<rclcpp_action::ServerGoalHandle<master_ros2_interface::action::MyCustomAction> >)’:
+/home/user/k136_ws/ch03/src/master_ros2_pkg/src/action_server.cpp:32:81: warning: unused parameter ‘goal_handle’ [-Wunused-parameter]
+   32 |   rclcpp_action::CancelResponse handle_cancel(const std::shared_ptr<GoalHandle> goal_handle) {
+      |                                               ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~
+---
+[Processing: master_ros2_pkg]
+Finished <<< master_ros2_pkg [37.3s]
+
+Summary: 2 packages finished [54.1s]
+  1 package had stderr output: master_ros2_pkg
+Sat Oct 24 06:24:28 PM CST 2026
+action_client
+action_server
+publisher_node
+publisher_node_params
+simple_client
+simple_server
+subscriber_node

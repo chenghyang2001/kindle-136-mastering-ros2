@@ -1,0 +1,18 @@
+=== 節點清單 ===
+/fake_cloud_publisher
+/pointcloud_processor
+=== topic hz /filtered_pointcloud ===
+average rate: 2.184
+	min: 0.341s max: 0.503s std dev: 0.06731s window: 4
+average rate: 2.106
+	min: 0.341s max: 0.514s std dev: 0.06012s window: 6
+=== cloud_checker（點數＋RANSAC 平面分割）===
+[1] 原始點數=42401 濾波+降採樣後=4897 平面 inlier=4813 雜點(outlier)=84 平面=a=0.009 b=-0.002 c=-1.000 d=0.600
+    範圍 x[-0.50,0.50] y[-0.50,0.50] z[0.10,0.99]
+[2] 原始點數=42401 濾波+降採樣後=4897 平面 inlier=4813 雜點(outlier)=84 平面=a=0.009 b=-0.002 c=-1.000 d=0.600
+    範圍 x[-0.50,0.50] y[-0.50,0.50] z[0.10,0.99]
+[3] 原始點數=42401 濾波+降採樣後=4897 平面 inlier=4813 雜點(outlier)=84 平面=a=0.009 b=-0.002 c=-1.000 d=0.600
+    範圍 x[-0.50,0.50] y[-0.50,0.50] z[0.10,0.99]
+=== fake_cloud_publisher log ===
+[INFO] [1792842793.632746282] [fake_cloud_publisher]: 合成點雲 42401 點，發布到 /camera/camera/depth/color/points（2 Hz）
+step3 完成

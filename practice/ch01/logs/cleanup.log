@@ -1,0 +1,4 @@
+沒有殘留的 ROS／Gazebo 行程
+daemon stop 逾時（daemon 本來就沒在跑）
+=== 清理後檢查 ===
+乾淨：無殘留

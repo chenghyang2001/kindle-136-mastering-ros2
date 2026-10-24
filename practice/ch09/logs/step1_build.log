@@ -1,0 +1,63 @@
+/home/user/k136_ws/ch09/src/panda_moveit_control/launch/cartesian_space_planning.launch.py:8:    launch_ros.actions.SetParameter(name='use_sim_time', value=True)
+/home/user/k136_ws/ch09/src/panda_moveit_control/launch/cartesian_space_planning.launch.py:14:            {"use_sim_time": False},  # 本演練改：mock 硬體無 /clock
+/home/user/k136_ws/ch09/src/panda_moveit_control/launch/joint_space_planning.launch.py:8:    launch_ros.actions.SetParameter(name='use_sim_time', value=True)
+/home/user/k136_ws/ch09/src/panda_moveit_control/launch/joint_space_planning.launch.py:14:            {"use_sim_time": False},  # 本演練改：mock 硬體無 /clock
+/home/user/k136_ws/ch09/src/panda_moveit_control/launch/planning_with_obstacles.launch.py:8:    launch_ros.actions.SetParameter(name='use_sim_time', value=True)
+/home/user/k136_ws/ch09/src/panda_moveit_control/launch/planning_with_obstacles.launch.py:14:            {"use_sim_time": False},  # 本演練改：mock 硬體無 /clock
+/home/user/k136_ws/ch09/src/panda_description/urdf/panda_arm.xacro:433:   <xacro:if value="$(arg gz_control)">
+/home/user/k136_ws/ch09/src/panda_description/urdf/panda.urdf.xacro:38:  <xacro:arg name="gz_control" default="true"/>
+/home/user/k136_ws/ch09/src/panda_moveit_config/config/panda.urdf.xacro:5:    <xacro:arg name="gz_control" default="false" />
+Starting >>> panda_description
+Starting >>> panda_moveit_control
+Finished <<< panda_description [0.50s]
+Starting >>> panda_moveit_config
+Finished <<< panda_moveit_config [0.50s]
+--- stderr: panda_moveit_control
+In file included from /home/user/k136_ws/ch09/src/panda_moveit_control/src/joint_space_planning.cpp:1:
+/opt/ros/jazzy/include/moveit_ros_planning_interface/moveit/move_group_interface/move_group_interface.h:51:77: note: ‘#pragma message: .h header is obsolete. Please use the .hpp header instead.’
+   51 | #pragma message(".h header is obsolete. Please use the .hpp header instead.")
+      |                                                                             ^
+In file included from /home/user/k136_ws/ch09/src/panda_moveit_control/src/cartesian_space_planning.cpp:1:
+/opt/ros/jazzy/include/moveit_ros_planning_interface/moveit/move_group_interface/move_group_interface.h:51:77: note: ‘#pragma message: .h header is obsolete. Please use the .hpp header instead.’
+   51 | #pragma message(".h header is obsolete. Please use the .hpp header instead.")
+      |                                                                             ^
+In file included from /home/user/k136_ws/ch09/src/panda_moveit_control/src/planning_with_obstacles.cpp:1:
+/opt/ros/jazzy/include/moveit_ros_planning_interface/moveit/move_group_interface/move_group_interface.h:51:77: note: ‘#pragma message: .h header is obsolete. Please use the .hpp header instead.’
+   51 | #pragma message(".h header is obsolete. Please use the .hpp header instead.")
+      |                                                                             ^
+In file included from /home/user/k136_ws/ch09/src/panda_moveit_control/src/cartesian_space_planning.cpp:2:
+/opt/ros/jazzy/include/moveit_ros_planning_interface/moveit/planning_scene_interface/planning_scene_interface.h:50:77: note: ‘#pragma message: .h header is obsolete. Please use the .hpp header instead.’
+   50 | #pragma message(".h header is obsolete. Please use the .hpp header instead.")
+      |                                                                             ^
+/home/user/k136_ws/ch09/src/panda_moveit_control/src/cartesian_space_planning.cpp: In member function ‘void CartesianPlanning::plan()’:
+/home/user/k136_ws/ch09/src/panda_moveit_control/src/cartesian_space_planning.cpp:63:54: warning: ‘double moveit::planning_interface::MoveGroupInterface::computeCartesianPath(const std::vector<geometry_msgs::msg::Pose_<std::allocator<void> > >&, double, double, moveit_msgs::msg::RobotTrajectory&, bool, moveit_msgs::msg::MoveItErrorCodes*)’ is deprecated: Drop jump_threshold [-Wdeprecated-declarations]
+   63 |     double fraction = move_group.computeCartesianPath(waypoints, step, jump_th, traj);
+      |                       ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+In file included from /opt/ros/jazzy/include/moveit_ros_planning_interface/moveit/move_group_interface/move_group_interface.h:52:
+/opt/ros/jazzy/include/moveit_ros_planning_interface/moveit/move_group_interface/move_group_interface.hpp:765:3: note: declared here
+  765 |   computeCartesianPath(const std::vector<geometry_msgs::msg::Pose>& waypoints, double eef_step,
+      |   ^~~~~~~~~~~~~~~~~~~~
+In file included from /home/user/k136_ws/ch09/src/panda_moveit_control/src/planning_with_obstacles.cpp:2:
+/opt/ros/jazzy/include/moveit_ros_planning_interface/moveit/planning_scene_interface/planning_scene_interface.h:50:77: note: ‘#pragma message: .h header is obsolete. Please use the .hpp header instead.’
+   50 | #pragma message(".h header is obsolete. Please use the .hpp header instead.")
+      |                                                                             ^
+/home/user/k136_ws/ch09/src/panda_moveit_control/src/planning_with_obstacles.cpp: In member function ‘void PlanningWithObstacles::plan()’:
+/home/user/k136_ws/ch09/src/panda_moveit_control/src/planning_with_obstacles.cpp:77:10: warning: unused variable ‘success’ [-Wunused-variable]
+   77 |     bool success = (_move_group->plan(my_plan) == moveit::core::MoveItErrorCode::SUCCESS);
+      |          ^~~~~~~
+---
+Finished <<< panda_moveit_control [16.3s]
+
+Summary: 3 packages finished [16.5s]
+  1 package had stderr output: panda_moveit_control
+=== 建置結果 ===
+cartesian_space_planning
+joint_space_planning
+planning_with_obstacles
+=== xacro 展開測試（moveit_config 版 URDF，含 mock ros2_control）===
+24
+625:    <plugin filename="gz_ros2_control-system" name="gz_ros2_control::GazeboSimROS2ControlPlugin">
+632:      <plugin>mock_components/GenericSystem</plugin>
+=== xacro 展開測試（panda_description 原版 URDF，Gazebo 用）===
+504:      <plugin>gz_ros2_control/GazeboSimSystem</plugin>
+BUILD_DONE

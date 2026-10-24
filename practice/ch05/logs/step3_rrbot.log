@@ -1,0 +1,108 @@
+=== ros_gz_bridge 建立的橋接（launch log）===
+[parameter_bridge-3] [INFO] [1792838935.983684024] [ros_gz_bridge]: Creating GZ->ROS Bridge: [/clock (gz.msgs.Clock) -> /clock (rosgraph_msgs/msg/Clock)] (Lazy 0)
+[parameter_bridge-3] [INFO] [1792838935.986767609] [ros_gz_bridge]: Creating GZ->ROS Bridge: [/scan (gz.msgs.LaserScan) -> /diff_drive/scan (sensor_msgs/msg/LaserScan)] (Lazy 0)
+[parameter_bridge-3] [INFO] [1792838935.989264191] [ros_gz_bridge]: Creating GZ->ROS Bridge: [camera/camera_info (gz.msgs.CameraInfo) -> camera/depth/camera_info (sensor_msgs/msg/CameraInfo)] (Lazy 0)
+[parameter_bridge-3] [INFO] [1792838935.990193217] [ros_gz_bridge]: Creating GZ->ROS Bridge: [camera/points (gz.msgs.PointCloudPacked) -> camera/depth/color/points (sensor_msgs/msg/PointCloud2)] (Lazy 0)
+=== gz topic -l ===
+/camera/camera_info
+/camera/depth_image
+/camera/image
+/camera/points
+/clock
+/gazebo/resource_paths
+/scan
+/scan/points
+/sensors/marker
+/stats
+/world/empty_world/clock
+/world/empty_world/dynamic_pose/info
+/world/empty_world/pose/info
+/world/empty_world/scene/deletion
+/world/empty_world/scene/info
+/world/empty_world/state
+/world/empty_world/stats
+/world/empty_world/light_config
+/world/empty_world/material_color
+=== ros2 topic list -t ===
+/arm_controller/controller_state [control_msgs/msg/JointTrajectoryControllerState]
+/arm_controller/joint_trajectory [trajectory_msgs/msg/JointTrajectory]
+/arm_controller/speed_scaling_input [control_msgs/msg/SpeedScalingFactor]
+/arm_controller/transition_event [lifecycle_msgs/msg/TransitionEvent]
+/camera/color/image_raw [sensor_msgs/msg/Image]
+/camera/depth/camera_info [sensor_msgs/msg/CameraInfo]
+/camera/depth/color/points [sensor_msgs/msg/PointCloud2]
+/camera/depth/image_rect_raw [sensor_msgs/msg/Image]
+/camera/depth_image/compressed [sensor_msgs/msg/CompressedImage]
+/camera/depth_image/compressedDepth [sensor_msgs/msg/CompressedImage]
+/camera/depth_image/theora [theora_image_transport/msg/Packet]
+/camera/depth_image/zstd [sensor_msgs/msg/CompressedImage]
+/camera/image/compressed [sensor_msgs/msg/CompressedImage]
+/camera/image/compressedDepth [sensor_msgs/msg/CompressedImage]
+/camera/image/theora [theora_image_transport/msg/Packet]
+/camera/image/zstd [sensor_msgs/msg/CompressedImage]
+/clock [rosgraph_msgs/msg/Clock]
+/controller_manager/activity [controller_manager_msgs/msg/ControllerManagerActivity]
+/controller_manager/introspection_data/full [pal_statistics_msgs/msg/Statistics]
+/controller_manager/introspection_data/names [pal_statistics_msgs/msg/StatisticsNames]
+/controller_manager/introspection_data/values [pal_statistics_msgs/msg/StatisticsValues]
+/controller_manager/statistics/full [pal_statistics_msgs/msg/Statistics]
+/controller_manager/statistics/names [pal_statistics_msgs/msg/StatisticsNames]
+/controller_manager/statistics/values [pal_statistics_msgs/msg/StatisticsValues]
+/diagnostics [diagnostic_msgs/msg/DiagnosticArray]
+/diff_drive/scan [sensor_msgs/msg/LaserScan]
+/dynamic_joint_states [control_msgs/msg/DynamicJointState]
+/joint_state_broadcaster/transition_event [lifecycle_msgs/msg/TransitionEvent]
+/joint_states [sensor_msgs/msg/JointState]
+/parameter_events [rcl_interfaces/msg/ParameterEvent]
+/robot_description [std_msgs/msg/String]
+/rosout [rcl_interfaces/msg/Log]
+/tf [tf2_msgs/msg/TFMessage]
+/tf_static [tf2_msgs/msg/TFMessage]
+=== parameter_bridge 節點的 topic ===
+/ros_gz_bridge
+  Subscribers:
+    /parameter_events: rcl_interfaces/msg/ParameterEvent
+  Publishers:
+    /camera/depth/camera_info: sensor_msgs/msg/CameraInfo
+    /camera/depth/color/points: sensor_msgs/msg/PointCloud2
+    /clock: rosgraph_msgs/msg/Clock
+    /diff_drive/scan: sensor_msgs/msg/LaserScan
+    /parameter_events: rcl_interfaces/msg/ParameterEvent
+    /rosout: rcl_interfaces/msg/Log
+  Service Servers:
+    /ros_gz_bridge/describe_parameters: rcl_interfaces/srv/DescribeParameters
+    /ros_gz_bridge/get_parameter_types: rcl_interfaces/srv/GetParameterTypes
+    /ros_gz_bridge/get_parameters: rcl_interfaces/srv/GetParameters
+    /ros_gz_bridge/get_type_description: type_description_interfaces/srv/GetTypeDescription
+    /ros_gz_bridge/list_parameters: rcl_interfaces/srv/ListParameters
+    /ros_gz_bridge/set_parameters: rcl_interfaces/srv/SetParameters
+    /ros_gz_bridge/set_parameters_atomically: rcl_interfaces/srv/SetParametersAtomically
+  Service Clients:
+
+  Action Servers:
+
+  Action Clients:
+
+=== /clock 一筆 ===
+clock:
+  sec: 13
+  nanosec: 544000000
+---
+=== controllers ===
+[ros2-6] [INFO] [1792838937.567270166] [spawner_joint_state_broadcaster]: Loaded joint_state_broadcaster
+[ros2-6] [INFO] [1792838940.132686557] [spawner_joint_state_broadcaster]: Configured and activated joint_state_broadcaster
+[ros2-7] [INFO] [1792838941.305148092] [spawner_arm_controller]: Loaded arm_controller
+[ros2-7] [INFO] [1792838941.339955038] [spawner_arm_controller]: Configured and activated arm_controller
+usage: ros2 [-h] [--use-python-default-buffering]
+            Call `ros2 <command> -h` for more detailed usage. ...
+ros2: error: unrecognized arguments: --no-daemon
+=== 送一個 arm_controller 軌跡（joint1=0.5, joint2=-0.5）===
+
+Result:
+    error_code: 0
+error_string: Goal successfully reached!
+
+Goal finished with status: SUCCEEDED
+=== /joint_states 一筆 ===
+array('d', [0.5000000000009533, -0.49999999999996086])
+---

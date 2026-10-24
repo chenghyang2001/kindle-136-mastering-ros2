@@ -1,0 +1,31 @@
+streamlit
+openai
+langchain-openai
+jpl-rosa
+transforms3d
+=== openai.env（只顯示欄位名稱）===
+# OpenAI Configuration
+OPENAI_API_KEY=<遮蔽>
+OPENAI_API_VERSION=<遮蔽>
+OPENAI_API_TYPE=<遮蔽>
+=== start_turtlesim_agent.py ===
+from launch import LaunchDescription
+from launch_ros.actions import Node
+
+def generate_launch_description():
+    return LaunchDescription([
+        Node(
+            package='turtlesim',
+            executable='turtlesim_node',
+            name='turtlesim',
+            output='screen',
+            emulate_tty=True,
+        ),
+        Node(
+            package='ros2_basic_agent',
+            executable='ros2_ai_agent_turtlesim',
+            name='ros2_ai_agent_turtlesim',
+            output='screen',
+            emulate_tty=True,
+        )
+    ])

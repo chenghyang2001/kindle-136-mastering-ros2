@@ -1,0 +1,5 @@
+[INFO] [launch]: All log files can be found below /home/user/.ros/log/2026-10-24-20-11-56-159082-DESKTOP-6LST1BR-593
+[INFO] [launch]: Default logging verbosity is set to INFO
+[INFO] [robot_state_publisher-1]: process started with pid [600]
+[robot_state_publisher-1] [WARN] [1792843916.284803303] [kdl_parser]: The root link base_footprint has an inertia specified in the URDF, but KDL does not support a root link with an inertia.  As a workaround, you can add an extra dummy link to your URDF.
+[robot_state_publisher-1] [INFO] [1792843916.284907043] [robot_state_publisher]: Robot initialized

@@ -1,0 +1,87 @@
+panda_description
+panda_moveit_config
+panda_moveit_control
+=== 檔案樹 ===
+/home/user/ros2_books/Mastering-ROS-2-for-Robotics-Programming/Chapter09/panda_description/CMakeLists.txt
+/home/user/ros2_books/Mastering-ROS-2-for-Robotics-Programming/Chapter09/panda_description/config/ros2_controllers.yaml
+/home/user/ros2_books/Mastering-ROS-2-for-Robotics-Programming/Chapter09/panda_description/launch/panda_gazebo.launch.py
+/home/user/ros2_books/Mastering-ROS-2-for-Robotics-Programming/Chapter09/panda_description/launch/panda_gazebo_with_obstacles.launch.py
+/home/user/ros2_books/Mastering-ROS-2-for-Robotics-Programming/Chapter09/panda_description/launch/view.launch.py
+/home/user/ros2_books/Mastering-ROS-2-for-Robotics-Programming/Chapter09/panda_description/package.xml
+/home/user/ros2_books/Mastering-ROS-2-for-Robotics-Programming/Chapter09/panda_description/urdf/panda_arm.xacro
+/home/user/ros2_books/Mastering-ROS-2-for-Robotics-Programming/Chapter09/panda_description/urdf/panda_gripper.xacro
+/home/user/ros2_books/Mastering-ROS-2-for-Robotics-Programming/Chapter09/panda_description/urdf/panda_inertial.xacro
+/home/user/ros2_books/Mastering-ROS-2-for-Robotics-Programming/Chapter09/panda_description/urdf/panda.urdf.xacro
+/home/user/ros2_books/Mastering-ROS-2-for-Robotics-Programming/Chapter09/panda_description/urdf/panda_utils.xacro
+/home/user/ros2_books/Mastering-ROS-2-for-Robotics-Programming/Chapter09/panda_description/world/planning_world.sdf
+/home/user/ros2_books/Mastering-ROS-2-for-Robotics-Programming/Chapter09/panda_moveit_config/CMakeLists.txt
+/home/user/ros2_books/Mastering-ROS-2-for-Robotics-Programming/Chapter09/panda_moveit_config/config/initial_positions.yaml
+/home/user/ros2_books/Mastering-ROS-2-for-Robotics-Programming/Chapter09/panda_moveit_config/config/joint_limits.yaml
+/home/user/ros2_books/Mastering-ROS-2-for-Robotics-Programming/Chapter09/panda_moveit_config/config/kinematics.yaml
+/home/user/ros2_books/Mastering-ROS-2-for-Robotics-Programming/Chapter09/panda_moveit_config/config/moveit_controllers.yaml
+/home/user/ros2_books/Mastering-ROS-2-for-Robotics-Programming/Chapter09/panda_moveit_config/config/moveit.rviz
+/home/user/ros2_books/Mastering-ROS-2-for-Robotics-Programming/Chapter09/panda_moveit_config/config/panda.ros2_control.xacro
+/home/user/ros2_books/Mastering-ROS-2-for-Robotics-Programming/Chapter09/panda_moveit_config/config/panda.srdf
+/home/user/ros2_books/Mastering-ROS-2-for-Robotics-Programming/Chapter09/panda_moveit_config/config/panda.urdf.xacro
+/home/user/ros2_books/Mastering-ROS-2-for-Robotics-Programming/Chapter09/panda_moveit_config/config/pilz_cartesian_limits.yaml
+/home/user/ros2_books/Mastering-ROS-2-for-Robotics-Programming/Chapter09/panda_moveit_config/config/ros2_controllers.yaml
+/home/user/ros2_books/Mastering-ROS-2-for-Robotics-Programming/Chapter09/panda_moveit_config/config/sensors_3d.yaml
+/home/user/ros2_books/Mastering-ROS-2-for-Robotics-Programming/Chapter09/panda_moveit_config/launch/demo.launch.py
+/home/user/ros2_books/Mastering-ROS-2-for-Robotics-Programming/Chapter09/panda_moveit_config/launch/move_group.launch.py
+/home/user/ros2_books/Mastering-ROS-2-for-Robotics-Programming/Chapter09/panda_moveit_config/launch/moveit_rviz.launch.py
+/home/user/ros2_books/Mastering-ROS-2-for-Robotics-Programming/Chapter09/panda_moveit_config/launch/rsp.launch.py
+/home/user/ros2_books/Mastering-ROS-2-for-Robotics-Programming/Chapter09/panda_moveit_config/launch/setup_assistant.launch.py
+/home/user/ros2_books/Mastering-ROS-2-for-Robotics-Programming/Chapter09/panda_moveit_config/launch/spawn_controllers.launch.py
+/home/user/ros2_books/Mastering-ROS-2-for-Robotics-Programming/Chapter09/panda_moveit_config/launch/static_virtual_joint_tfs.launch.py
+/home/user/ros2_books/Mastering-ROS-2-for-Robotics-Programming/Chapter09/panda_moveit_config/launch/warehouse_db.launch.py
+/home/user/ros2_books/Mastering-ROS-2-for-Robotics-Programming/Chapter09/panda_moveit_config/package.xml
+/home/user/ros2_books/Mastering-ROS-2-for-Robotics-Programming/Chapter09/panda_moveit_config/.setup_assistant
+/home/user/ros2_books/Mastering-ROS-2-for-Robotics-Programming/Chapter09/panda_moveit_control/CMakeLists.txt
+/home/user/ros2_books/Mastering-ROS-2-for-Robotics-Programming/Chapter09/panda_moveit_control/launch/cartesian_space_planning.launch.py
+/home/user/ros2_books/Mastering-ROS-2-for-Robotics-Programming/Chapter09/panda_moveit_control/launch/joint_space_planning.launch.py
+/home/user/ros2_books/Mastering-ROS-2-for-Robotics-Programming/Chapter09/panda_moveit_control/launch/planning_with_obstacles.launch.py
+/home/user/ros2_books/Mastering-ROS-2-for-Robotics-Programming/Chapter09/panda_moveit_control/package.xml
+/home/user/ros2_books/Mastering-ROS-2-for-Robotics-Programming/Chapter09/panda_moveit_control/src/cartesian_space_planning.cpp
+/home/user/ros2_books/Mastering-ROS-2-for-Robotics-Programming/Chapter09/panda_moveit_control/src/create_scene_objects.cpp
+/home/user/ros2_books/Mastering-ROS-2-for-Robotics-Programming/Chapter09/panda_moveit_control/src/joint_space_planning.cpp
+/home/user/ros2_books/Mastering-ROS-2-for-Robotics-Programming/Chapter09/panda_moveit_control/src/planning_with_obstacles.cpp
+=== MoveIt 套件 ===
+ros-jazzy-gz-ros2-control 1.2.20-1noble.20261006.040504
+ros-jazzy-moveit 2.12.4-1noble.20260921.025955
+ros-jazzy-moveit-common 2.12.4-1noble.20260225.235600
+ros-jazzy-moveit-configs-utils 2.12.4-1noble.20260920.234447
+ros-jazzy-moveit-core 2.12.4-1noble.20260915.180823
+ros-jazzy-moveit-kinematics 2.12.4-1noble.20260915.201542
+ros-jazzy-moveit-msgs 2.6.0-1noble.20260911.142759
+ros-jazzy-moveit-planners 2.12.4-1noble.20260915.204614
+ros-jazzy-moveit-planners-chomp 2.12.4-1noble.20260915.194935
+ros-jazzy-moveit-planners-ompl 2.12.4-1noble.20260915.201618
+ros-jazzy-moveit-planners-stomp 2.12.4-1noble.20260915.195800
+ros-jazzy-moveit-plugins 2.12.4-1noble.20260915.200657
+ros-jazzy-moveit-py 2.12.4-1noble.20260915.204252
+ros-jazzy-moveit-ros 2.12.4-1noble.20260921.025304
+ros-jazzy-moveit-ros-benchmarks 2.12.4-1noble.20260921.021734
+ros-jazzy-moveit-ros-move-group 2.12.4-1noble.20260915.202214
+ros-jazzy-moveit-ros-occupancy-map-monitor 2.12.4-1noble.20260915.184526
+ros-jazzy-moveit-ros-planning 2.12.4-1noble.20260915.195310
+ros-jazzy-moveit-ros-planning-interface 2.12.4-1noble.20260915.203504
+ros-jazzy-moveit-ros-robot-interaction 2.12.4-1noble.20260915.201612
+ros-jazzy-moveit-ros-visualization 2.12.4-1noble.20260915.204804
+ros-jazzy-moveit-ros-warehouse 2.12.4-1noble.20260915.201628
+ros-jazzy-moveit-setup-app-plugins 2.12.4-1noble.20260921.021733
+ros-jazzy-moveit-setup-assistant 2.12.4-1noble.20260921.023050
+ros-jazzy-moveit-setup-controllers 2.12.4-1noble.20260915.212035
+ros-jazzy-moveit-setup-core-plugins 2.12.4-1noble.20260915.211923
+ros-jazzy-moveit-setup-framework 2.12.4-1noble.20260915.210926
+ros-jazzy-moveit-setup-srdf-plugins 2.12.4-1noble.20260915.212046
+ros-jazzy-moveit-simple-controller-manager 2.12.4-1noble.20260915.194321
+ros-jazzy-ros-gz 1.0.24-1noble.20261006.041805
+ros-jazzy-ros-gz-bridge 1.0.24-1noble.20260920.234644
+ros-jazzy-ros-gz-image 1.0.24-1noble.20260921.023911
+ros-jazzy-ros-gz-interfaces 1.0.24-1noble.20260911.110630
+ros-jazzy-ros-gz-sim 1.0.24-1noble.20261006.035056
+ros-jazzy-ros-gz-sim-demos 1.0.24-1noble.20261006.040806
+ros-jazzy-ros2-control 4.48.1-1noble.20261006.040510
+ros-jazzy-ros2-control-cmake 0.4.0-1noble.20260429.101922
+ros-jazzy-ros2-control-test-assets 4.48.1-1noble.20260911.040534
+ros-jazzy-ros2-controllers 4.42.1-1noble.20260924.191822

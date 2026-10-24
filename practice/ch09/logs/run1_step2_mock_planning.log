@@ -1,0 +1,107 @@
+demo PGID=463
+168:[move_group-3] [92mYou can start planning now![0m
+demo log 中 rviz 字樣行數：0
+=== ros2_control 硬體載入紀錄 ===
+[ros2_control_node-4] [INFO] [1792841787.538582807] [controller_manager]: Loading hardware 'FakeSystem' 
+[ros2_control_node-4] [INFO] [1792841787.540579642] [controller_manager]: Loaded hardware 'FakeSystem' from plugin 'mock_components/GenericSystem'
+[ros2_control_node-4] [INFO] [1792841787.540705880] [controller_manager]: Initialize hardware 'FakeSystem' 
+[ros2_control_node-4] [INFO] [1792841787.545157690] [controller_manager]: Successful initialization of hardware 'FakeSystem'
+[ros2_control_node-4] [INFO] [1792841787.545492833] [resource_manager]: 'configure' hardware 'FakeSystem' 
+[ros2_control_node-4] [INFO] [1792841787.545508773] [resource_manager]: Successful 'configure' of hardware 'FakeSystem'
+[ros2_control_node-4] [INFO] [1792841787.545515440] [resource_manager]: 'activate' hardware 'FakeSystem' 
+[ros2_control_node-4] [INFO] [1792841787.545524301] [resource_manager]: Successful 'activate' of hardware 'FakeSystem'
+[ros2_control_node-4] [INFO] [1792841787.545667596] [controller_manager]: Resource Manager has been successfully initialized. Starting Controller Manager services...
+[move_group-3] [INFO] [1792841787.572266622] [move_group.moveit.moveit.ros.rdf_loader]: Loaded robot model in 0.00313509 seconds
+[move_group-3] [ERROR] [1792841787.620225307] [move_group.moveit.moveit.ros.occupancy_map_monitor]: Exception while loading octomap updater 'occupancy_map_monitor/PointCloudOctomapUpdater': According to the loaded plugin descriptions the class occupancy_map_monitor/PointCloudOctomapUpdater with base class type occupancy_map_monitor::OccupancyMapUpdater does not exist. Declared types are 
+[move_group-3] [ERROR] [1792841787.620284164] [move_group.moveit.moveit.ros.occupancy_map_monitor]: Exception while loading octomap updater 'occupancy_map_monitor/DepthImageOctomapUpdater': According to the loaded plugin descriptions the class occupancy_map_monitor/DepthImageOctomapUpdater with base class type occupancy_map_monitor::OccupancyMapUpdater does not exist. Declared types are 
+[move_group-3] [INFO] [1792841787.646933697] [move_group.moveit.moveit.ros.planning_pipeline]: Successfully loaded planner 'Pilz Industrial Motion Planner'
+[move_group-3] [INFO] [1792841787.649844969] [move_group]: Loaded adapter 'default_planning_request_adapters/ResolveConstraintFrames'
+[move_group-3] [INFO] [1792841787.650238994] [move_group]: Loaded adapter 'default_planning_request_adapters/ValidateWorkspaceBounds'
+[move_group-3] [INFO] [1792841787.650286493] [move_group]: Loaded adapter 'default_planning_request_adapters/CheckStartStateBounds'
+[move_group-3] [INFO] [1792841787.650314079] [move_group]: Loaded adapter 'default_planning_request_adapters/CheckStartStateCollision'
+[move_group-3] [INFO] [1792841787.660574171] [move_group]: Loaded adapter 'default_planning_response_adapters/ValidateSolution'
+[move_group-3] [INFO] [1792841787.661546685] [move_group]: Loaded adapter 'default_planning_response_adapters/DisplayMotionPath'
+[move_group-3] [INFO] [1792841787.672896699] [move_group.moveit.moveit.ros.planning_pipeline]: Successfully loaded planner 'STOMP'
+=== 控制器清單 ===
+name='arm_controller'
+state='active'
+name='joint_state_broadcaster'
+state='active'
+=== /joint_states（初始）===
+array('d', [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0])
+---
+=================== joint_space_planning（timeout 90s）===================
+joint_space_planning 結束碼=0（124=被 timeout 收掉）牆鐘耗時=4.1 秒
+[INFO] [joint_space_planning-1]: process started with pid [623]
+[joint_space_planning-1] [INFO] [1792841797.500778858] [moveit_717677954.moveit.ros.rdf_loader]: Loaded robot model in 0.00366863 seconds
+[joint_space_planning-1] [INFO] [1792841797.500927341] [moveit_717677954.moveit.core.robot_model]: Loading robot model 'panda'...
+[joint_space_planning-1] [INFO] [1792841797.513259114] [moveit_717677954.moveit.kinematics.kdl_kinematics_plugin]: Joint weights for group 'arm': 1 1 1 1 1 1 1
+[joint_space_planning-1] [INFO] [1792841797.533548028] [moveit_717677954.moveit.ros.move_group_interface]: Ready to take commands for planning group arm.
+[joint_space_planning-1] [INFO] [1792841797.533733317] [moveit_717677954.moveit.ros.move_group_interface]: MoveGroup action client/server ready
+[joint_space_planning-1] [INFO] [1792841797.534643636] [moveit_717677954.moveit.ros.move_group_interface]: Planning request accepted
+[joint_space_planning-1] [INFO] [1792841797.545558733] [moveit_717677954.moveit.ros.move_group_interface]: Planning request aborted
+[joint_space_planning-1] [ERROR] [1792841797.546076531] [moveit_717677954.moveit.ros.move_group_interface]: MoveGroupInterface::plan() failed or timeout reached
+[joint_space_planning-1] [INFO] [1792841800.546500021] [moveit_717677954.moveit.ros.move_group_interface]: MoveGroup action client/server ready
+[joint_space_planning-1] [INFO] [1792841800.547260098] [moveit_717677954.moveit.ros.move_group_interface]: Planning request accepted
+[joint_space_planning-1] [INFO] [1792841800.555521926] [moveit_717677954.moveit.ros.move_group_interface]: Planning request aborted
+[joint_space_planning-1] [ERROR] [1792841800.555735730] [moveit_717677954.moveit.ros.move_group_interface]: MoveGroupInterface::plan() failed or timeout reached
+[INFO] [joint_space_planning-1]: process has finished cleanly [pid 623]
+--- /joint_states（joint_space_planning 之後）---
+array('d', [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0])
+---
+=================== cartesian_space_planning（timeout 60s）===================
+cartesian_space_planning 結束碼=124（124=被 timeout 收掉）牆鐘耗時=62.0 秒
+[INFO] [cartesian_space_planning-1]: process started with pid [665]
+[cartesian_space_planning-1] [INFO] [1792841802.833704852] [moveit_2495940057.moveit.ros.rdf_loader]: Loaded robot model in 0.00343743 seconds
+[cartesian_space_planning-1] [INFO] [1792841802.833796295] [moveit_2495940057.moveit.core.robot_model]: Loading robot model 'panda'...
+[cartesian_space_planning-1] [INFO] [1792841802.842229949] [moveit_2495940057.moveit.kinematics.kdl_kinematics_plugin]: Joint weights for group 'arm': 1 1 1 1 1 1 1
+[cartesian_space_planning-1] [INFO] [1792841802.856850249] [moveit_2495940057.moveit.ros.move_group_interface]: Ready to take commands for planning group arm.
+[cartesian_space_planning-1] [ERROR] [1792841802.864084091] [moveit_executor]: Trajectory calculation failed
+[INFO] [cartesian_space_planning-1]: sending signal 'SIGINT' to process[cartesian_space_planning-1]
+[cartesian_space_planning-1] [INFO] [1792841863.977846520] [rclcpp]: signal_handler(SIGINT/SIGTERM)
+[cartesian_space_planning-1] terminate called without an active exception
+[ERROR] [cartesian_space_planning-1]: process has died [pid 665, exit code -6, cmd '/home/user/k136_ws/ch09/install/panda_moveit_control/lib/panda_moveit_control/cartesian_space_planning --ros-args --params-file /tmp/launch_params_mgh3r7p9 --params-file /tmp/launch_params_icf49jd3 --params-file /tmp/launch_params_soxuc_o8 --params-file /tmp/launch_params_uj7w7w81'].
+--- /joint_states（cartesian_space_planning 之後）---
+array('d', [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0])
+---
+=================== planning_with_obstacles（timeout 90s）===================
+planning_with_obstacles 結束碼=124（124=被 timeout 收掉）牆鐘耗時=91.7 秒
+[INFO] [planning_with_obstacles-1]: process started with pid [709]
+[planning_with_obstacles-1] [INFO] [1792841866.012260402] [moveit_2395163274.moveit.ros.rdf_loader]: Loaded robot model in 0.00640846 seconds
+[planning_with_obstacles-1] [INFO] [1792841866.012357885] [moveit_2395163274.moveit.core.robot_model]: Loading robot model 'panda'...
+[planning_with_obstacles-1] [INFO] [1792841866.019981654] [moveit_2395163274.moveit.kinematics.kdl_kinematics_plugin]: Joint weights for group 'arm': 1 1 1 1 1 1 1
+[planning_with_obstacles-1] [INFO] [1792841866.032613662] [moveit_2395163274.moveit.ros.move_group_interface]: Ready to take commands for planning group arm.
+[planning_with_obstacles-1] [INFO] [1792841869.239440445] [moveit_2395163274.moveit.ros.move_group_interface]: MoveGroup action client/server ready
+[planning_with_obstacles-1] [INFO] [1792841869.240160388] [moveit_2395163274.moveit.ros.move_group_interface]: Planning request accepted
+[planning_with_obstacles-1] [INFO] [1792841869.243928726] [moveit_2395163274.moveit.ros.move_group_interface]: Planning request aborted
+[planning_with_obstacles-1] [ERROR] [1792841869.244253276] [moveit_2395163274.moveit.ros.move_group_interface]: MoveGroupInterface::plan() failed or timeout reached
+[planning_with_obstacles-1] [INFO] [1792841869.253508425] [moveit_2395163274.moveit.ros.move_group_interface]: Plan and Execute request accepted
+[planning_with_obstacles-1] [INFO] [1792841869.264694438] [moveit_2395163274.moveit.ros.move_group_interface]: Plan and Execute request aborted
+[planning_with_obstacles-1] [ERROR] [1792841869.265093906] [moveit_2395163274.moveit.ros.move_group_interface]: MoveGroupInterface::move() failed or timeout reached
+[INFO] [planning_with_obstacles-1]: sending signal 'SIGINT' to process[planning_with_obstacles-1]
+[planning_with_obstacles-1] [INFO] [1792841957.053998642] [rclcpp]: signal_handler(SIGINT/SIGTERM)
+[planning_with_obstacles-1] [INFO] [1792841957.058925946] [rclcpp]: signal_handler(SIGINT/SIGTERM)
+[planning_with_obstacles-1] Warning: class_loader.ClassLoader: SEVERE WARNING!!! Attempting to unload library while objects created by this loader exist in the heap! You should delete your objects before attempting to unload the library or destroying the ClassLoader. The library will NOT be unloaded.
+[planning_with_obstacles-1]          at line 127 in ./src/class_loader.cpp
+[INFO] [planning_with_obstacles-1]: process has finished cleanly [pid 709]
+--- /joint_states（planning_with_obstacles 之後）---
+array('d', [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0])
+---
+=================== move_group 端規劃紀錄 ===================
+[move_group-3] [INFO] [1792841797.544795129] [move_group.moveit.moveit.ros.move_group.move_action]: Planning request received for MoveGroup action. Forwarding to planning pipeline.
+[move_group-3] [ERROR] [1792841797.545165011] [move_group]: PlanningRequestAdapter 'CheckStartStateBounds' failed, because 'Start state out of bounds.'. Aborting planning pipeline.
+[move_group-3] [ERROR] [1792841797.545175903] [move_group.moveit.moveit.ros.move_group.move_action]: Generating a plan with planning pipeline failed.
+[move_group-3] [INFO] [1792841797.545209869] [move_group.moveit.moveit.ros.move_group.move_action]: FAILURE
+[move_group-3] [INFO] [1792841800.554717198] [move_group.moveit.moveit.ros.move_group.move_action]: Planning request received for MoveGroup action. Forwarding to planning pipeline.
+[move_group-3] [ERROR] [1792841800.555140824] [move_group]: PlanningRequestAdapter 'CheckStartStateBounds' failed, because 'Start state out of bounds.'. Aborting planning pipeline.
+[move_group-3] [ERROR] [1792841800.555170289] [move_group.moveit.moveit.ros.move_group.move_action]: Generating a plan with planning pipeline failed.
+[move_group-3] [INFO] [1792841800.555196000] [move_group.moveit.moveit.ros.move_group.move_action]: FAILURE
+[move_group-3] [INFO] [1792841802.863740820] [move_group.moveit.moveit.ros.move_group.cartesian_path_service_capability]: Computed Cartesian path with 2 points (followed 25.000000% of requested trajectory)
+[move_group-3] [INFO] [1792841869.243382198] [move_group.moveit.moveit.ros.move_group.move_action]: Planning request received for MoveGroup action. Forwarding to planning pipeline.
+[move_group-3] [ERROR] [1792841869.243667791] [move_group]: PlanningRequestAdapter 'CheckStartStateBounds' failed, because 'Start state out of bounds.'. Aborting planning pipeline.
+[move_group-3] [ERROR] [1792841869.243694827] [move_group.moveit.moveit.ros.move_group.move_action]: Generating a plan with planning pipeline failed.
+[move_group-3] [INFO] [1792841869.243714170] [move_group.moveit.moveit.ros.move_group.move_action]: FAILURE
+[move_group-3] [INFO] [1792841869.263719423] [move_group.moveit.moveit.ros.move_group.move_action]: Combined planning and execution request received for MoveGroup action. Forwarding to planning and execution pipeline.
+[move_group-3] [INFO] [1792841869.264018770] [move_group.moveit.moveit.ros.plan_execution]: Planning attempt 1 of at most 1
+[move_group-3] [ERROR] [1792841869.264353523] [move_group]: PlanningRequestAdapter 'CheckStartStateBounds' failed, because 'Start state out of bounds.'. Aborting planning pipeline.
+STEP2_DONE

@@ -1,0 +1,13 @@
+[INFO] [launch]: All log files can be found below /home/user/.ros/log/2026-10-24-19-36-42-520596-DESKTOP-6LST1BR-662
+[INFO] [launch]: Default logging verbosity is set to INFO
+[INFO] [cartesian_space_planning-1]: process started with pid [665]
+[cartesian_space_planning-1] [INFO] [1792841802.833704852] [moveit_2495940057.moveit.ros.rdf_loader]: Loaded robot model in 0.00343743 seconds
+[cartesian_space_planning-1] [INFO] [1792841802.833796295] [moveit_2495940057.moveit.core.robot_model]: Loading robot model 'panda'...
+[cartesian_space_planning-1] [INFO] [1792841802.842229949] [moveit_2495940057.moveit.kinematics.kdl_kinematics_plugin]: Joint weights for group 'arm': 1 1 1 1 1 1 1
+[cartesian_space_planning-1] [INFO] [1792841802.856850249] [moveit_2495940057.moveit.ros.move_group_interface]: Ready to take commands for planning group arm.
+[cartesian_space_planning-1] [ERROR] [1792841802.864084091] [moveit_executor]: Trajectory calculation failed
+[WARNING] [launch]: user interrupted with ctrl-c (SIGINT)
+[INFO] [cartesian_space_planning-1]: sending signal 'SIGINT' to process[cartesian_space_planning-1]
+[cartesian_space_planning-1] [INFO] [1792841863.977846520] [rclcpp]: signal_handler(SIGINT/SIGTERM)
+[cartesian_space_planning-1] terminate called without an active exception
+[ERROR] [cartesian_space_planning-1]: process has died [pid 665, exit code -6, cmd '/home/user/k136_ws/ch09/install/panda_moveit_control/lib/panda_moveit_control/cartesian_space_planning --ros-args --params-file /tmp/launch_params_mgh3r7p9 --params-file /tmp/launch_params_icf49jd3 --params-file /tmp/launch_params_soxuc_o8 --params-file /tmp/launch_params_uj7w7w81'].

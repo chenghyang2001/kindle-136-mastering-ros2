@@ -1,0 +1,845 @@
+=================== rosbot_description/config/ros_gz_bridge_gazebo.yaml
+- ros_topic_name: "/clock"
+  gz_topic_name: "/clock"
+  ros_type_name: "rosgraph_msgs/msg/Clock"
+  gz_type_name: "gz.msgs.Clock"
+  direction: GZ_TO_ROS
+
+- topic_name: "odom"
+  ros_type_name: "nav_msgs/msg/Odometry"
+  gz_type_name: "gz.msgs.Odometry"
+  direction: GZ_TO_ROS
+
+- ros_topic_name: "/scan"
+  gz_topic_name: "/scan"
+  ros_type_name: "sensor_msgs/msg/LaserScan"
+  gz_type_name: "gz.msgs.LaserScan"
+  direction: GZ_TO_ROS 
+  
+- ros_topic_name: "/tf"
+  gz_topic_name: "/tf"
+  ros_type_name: "tf2_msgs/msg/TFMessage"
+  gz_type_name: "gz.msgs.Pose_V"
+  direction: GZ_TO_ROS   
+
+- ros_topic_name: "/joint_states"
+  gz_topic_name: "/joint_states"
+  ros_type_name: "sensor_msgs/msg/JointState"
+  gz_type_name: "gz.msgs.Model"
+  direction: GZ_TO_ROS   
+
+- ros_topic_name: "/cmd_vel"
+  gz_topic_name: "/cmd_vel"
+  ros_type_name: "geometry_msgs/msg/TwistStamped"
+  gz_type_name: "gz.msgs.Twist"
+  direction: ROS_TO_GZ   
+
+=================== rosbot_description/urdf/rosbot.gazebo
+<?xml version="1.0" ?>
+<robot name="rosbot" xmlns:xacro="http://www.ros.org/wiki/xacro" >
+
+<xacro:property name="body_color" value="Gazebo/Silver" />
+
+<gazebo reference="base_link">
+  <material>${body_color}</material>
+  <mu1>0.2</mu1>
+  <mu2>0.2</mu2>
+  <self_collide>true</self_collide>
+  <gravity>true</gravity>
+</gazebo>
+
+<gazebo reference="right_wheel_1">
+  <material>${body_color}</material>
+  <mu1>0.2</mu1>
+  <mu2>0.2</mu2>
+  <self_collide>true</self_collide>
+</gazebo>
+
+<gazebo reference="left_wheel_1">
+  <material>${body_color}</material>
+  <mu1>0.2</mu1>
+  <mu2>0.2</mu2>
+  <self_collide>true</self_collide>
+</gazebo>
+
+<gazebo reference="lidar_1">
+  <material>${body_color}</material>
+  <mu1>0.2</mu1>
+  <mu2>0.2</mu2>
+  <self_collide>true</self_collide>
+</gazebo>
+
+
+  <gazebo>  
+
+        <plugin filename="gz-sim-sensors-system" name="gz::sim::systems::Sensors">
+            <render_engine>ogre2</render_engine>
+        </plugin>
+
+
+        <plugin filename="gz-sim-joint-state-publisher-system" name="gz::sim::systems::JointStatePublisher">
+        <topic>/joint_states</topic>      
+        </plugin>
+
+
+      <plugin
+        filename="gz-sim-diff-drive-system"
+        name="gz::sim::systems::DiffDrive">
+        <left_joint>left_wheel_joint</left_joint>
+        <right_joint>right_wheel_joint</right_joint>
+        <wheel_separation>0.2</wheel_separation>
+        <wheel_radius>0.05</wheel_radius>
+        <odom_publish_frequency>30</odom_publish_frequency>
+        <topic>/cmd_vel</topic>  
+        <tf_topic>/tf</tf_topic>        
+        <frame_id>odom</frame_id>     
+        <odom_topic>odom</odom_topic>             
+        <child_frame_id>base_footprint</child_frame_id>            
+
+</plugin>
+</gazebo>
+
+
+<gazebo reference="lidar_1">
+        <sensor name='gpu_lidar' type='gpu_lidar'>
+          <pose>0 0 0 0 0 0</pose>
+          <topic>scan</topic>
+          <gz_frame_id>lidar_1</gz_frame_id>          
+          <update_rate>10</update_rate>
+          <lidar>
+            <scan>
+              <horizontal>
+                <samples>640</samples>
+                <resolution>1</resolution>
+                <min_angle>0</min_angle>
+                <max_angle>6.280000</max_angle>
+              </horizontal>
+              <vertical>
+                <samples>1</samples>
+                <resolution>1</resolution>
+                <min_angle>0.0</min_angle>
+                <max_angle>0.0</max_angle>
+              </vertical>
+            </scan>
+            <range>
+              <min>0.08</min>
+              <max>10.0</max>
+              <resolution>0.01</resolution>
+            </range>
+          </lidar>
+          <visualize>true</visualize>
+        </sensor>
+ </gazebo>
+
+
+</robot>
+
+=================== rosbot_description/urdf/rosbot.ros2control
+<?xml version="1.0" ?>
+<robot name="rosbot" xmlns:xacro="http://www.ros.org/wiki/xacro" >
+
+</robot>
+
+=================== rosbot_nav2_bringup/maps/hospital.yaml
+image: hospital.pgm
+mode: trinary
+resolution: 0.05
+origin: [-1.79, -8.72, 0]
+negate: 0
+occupied_thresh: 0.65
+free_thresh: 0.25
+=================== nav2_client/include/nav2_client/navigation_client.hpp
+#ifndef NAVIGATION_CLIENT_HPP_
+#define NAVIGATION_CLIENT_HPP_
+
+#include <rclcpp/rclcpp.hpp>
+#include <rclcpp_action/rclcpp_action.hpp>
+#include <nav2_msgs/action/navigate_to_pose.hpp>
+#include <geometry_msgs/msg/pose_stamped.hpp>
+#include <map>
+#include <string>
+
+struct Location {
+    double x;
+    double y;
+    double z;
+};
+
+class NavigationClient : public rclcpp::Node {
+public:
+    NavigationClient();
+    bool navigate2Pose(double x, double y, double z, double orientation_w = 1.0);
+    bool deliverMedicine(int order_number);
+
+private:
+    using NavigateToPose = nav2_msgs::action::NavigateToPose;
+    using GoalHandleNavigateToPose = rclcpp_action::ClientGoalHandle<NavigateToPose>;
+    
+    rclcpp_action::Client<NavigateToPose>::SharedPtr action_client_;
+    std::map<std::string, Location> locations_;
+    
+    bool goal_accepted_;
+    bool navigation_complete_;
+    bool navigation_successful_;
+    std::shared_ptr<GoalHandleNavigateToPose> current_goal_handle_;
+
+    void goalResponseCallback(std::shared_ptr<GoalHandleNavigateToPose> goal_handle);
+    void feedbackCallback(GoalHandleNavigateToPose::SharedPtr goal_handle,
+                         const std::shared_ptr<const NavigateToPose::Feedback> feedback);
+    void resultCallback(const GoalHandleNavigateToPose::WrappedResult & result);
+};
+
+#endif
+
+=================== nav2_client/src/main.cpp
+#include "nav2_client/navigation_client.hpp"
+#include <iostream>
+
+int main(int argc, char** argv)
+{
+    rclcpp::init(argc, argv);
+    auto navigator = std::make_shared<NavigationClient>();
+    
+    while (rclcpp::ok()) {
+        std::string input;
+        std::cout << "Enter order number (1 for Room1, 2 for Room2, q to quit): ";
+        std::getline(std::cin, input);
+        
+        if (input == "q" || input == "Q") {
+            break;
+        }
+        
+        if (input != "1" && input != "2") {
+            std::cout << "Invalid order number. Please enter 1 or 2." << std::endl;
+            continue;
+        }
+        
+        try {
+            navigator->deliverMedicine(std::stoi(input));
+            rclcpp::spin_some(navigator);
+        } catch (const std::exception& e) {
+            RCLCPP_ERROR(navigator->get_logger(), "Error during navigation: %s", e.what());
+        }
+    }
+    
+    rclcpp::shutdown();
+    return 0;
+}
+=================== nav2_client/src/navigation_client.cpp
+#include "nav2_client/navigation_client.hpp"
+#include <chrono>
+#include <thread>
+
+NavigationClient::NavigationClient() : Node("navigation_client"),
+    goal_accepted_(false),
+    navigation_complete_(false),
+    navigation_successful_(false)
+{
+    action_client_ = rclcpp_action::create_client<NavigateToPose>(
+        this, "navigate_to_pose");
+        
+    locations_["initial_pose"] = {-0.04, -0.06, 0.0};
+    locations_["medical_shop"] = {26.36, -6.18, 0.0};
+    locations_["room1"] = {10.97, 4.0, 0.0};
+    locations_["room2"] = {15.92, -4.0, 0.0};
+    
+    RCLCPP_INFO(get_logger(), "Navigation client initialized");
+}
+
+bool NavigationClient::navigate2Pose(double x, double y, double z, double orientation_w)
+{
+    navigation_complete_ = false;
+    navigation_successful_ = false;
+    goal_accepted_ = false;
+
+    while (!action_client_->wait_for_action_server(std::chrono::seconds(1))) {
+        RCLCPP_INFO(get_logger(), "Waiting for action server...");
+    }
+
+    auto goal_msg = NavigateToPose::Goal();
+    goal_msg.pose.header.frame_id = "map";
+    goal_msg.pose.header.stamp = this->now();
+    
+    goal_msg.pose.pose.position.x = x;
+    goal_msg.pose.pose.position.y = y;
+    goal_msg.pose.pose.position.z = z;
+    
+    goal_msg.pose.pose.orientation.w = orientation_w;
+    goal_msg.pose.pose.orientation.x = 0.0;
+    goal_msg.pose.pose.orientation.y = 0.0;
+    goal_msg.pose.pose.orientation.z = 0.0;
+
+    RCLCPP_INFO(get_logger(), "Navigating to position: x=%.2f, y=%.2f, z=%.2f", x, y, z);
+    
+    auto send_goal_options = rclcpp_action::Client<NavigateToPose>::SendGoalOptions();
+    send_goal_options.goal_response_callback =
+        std::bind(&NavigationClient::goalResponseCallback, this, std::placeholders::_1);
+    send_goal_options.feedback_callback =
+        std::bind(&NavigationClient::feedbackCallback, this, std::placeholders::_1, std::placeholders::_2);
+    send_goal_options.result_callback =
+        std::bind(&NavigationClient::resultCallback, this, std::placeholders::_1);
+
+    auto goal_future = action_client_->async_send_goal(goal_msg, send_goal_options);
+    
+    if (rclcpp::spin_until_future_complete(shared_from_this(), goal_future) != 
+        rclcpp::FutureReturnCode::SUCCESS)
+    {
+        RCLCPP_ERROR(get_logger(), "Failed to send goal");
+        return false;
+    }
+
+    // Wait for goal to complete
+    while (!navigation_complete_ && rclcpp::ok()) {
+        rclcpp::spin_some(shared_from_this());
+        std::this_thread::sleep_for(std::chrono::milliseconds(100));
+    }
+
+    if (!navigation_successful_) {
+        RCLCPP_ERROR(get_logger(), "Navigation failed");
+        return false;
+    }
+
+    // Add delay between consecutive goals
+    std::this_thread::sleep_for(std::chrono::seconds(2));
+    
+    return true;
+}
+
+bool NavigationClient::deliverMedicine(int order_number)
+{
+    // Navigate to medical shop
+    RCLCPP_INFO(get_logger(), "Moving to medical shop to collect medicine...");
+    auto shop = locations_["medical_shop"];
+    if (!navigate2Pose(shop.x, shop.y, shop.z)) {
+        RCLCPP_ERROR(get_logger(), "Failed to reach medical shop");
+        return false;
+    }
+    
+    RCLCPP_INFO(get_logger(), "Collecting medicine...");
+    std::this_thread::sleep_for(std::chrono::seconds(15));
+    
+    // Navigate to room
+    std::string room = (order_number == 1) ? "room1" : "room2";
+    RCLCPP_INFO(get_logger(), "Delivering medicine to %s...", room.c_str());
+    auto room_loc = locations_[room];
+    if (!navigate2Pose(room_loc.x, room_loc.y, room_loc.z)) {
+        RCLCPP_ERROR(get_logger(), "Failed to reach room");
+        return false;
+    }
+    
+    RCLCPP_INFO(get_logger(), "Delivering medicine...");
+    std::this_thread::sleep_for(std::chrono::seconds(10));
+    
+    // Return to initial position
+    RCLCPP_INFO(get_logger(), "Returning to initial position...");
+    auto initial = locations_["initial_pose"];
+    if (!navigate2Pose(initial.x, initial.y, initial.z)) {
+        RCLCPP_ERROR(get_logger(), "Failed to return to initial position");
+        return false;
+    }
+    
+    RCLCPP_INFO(get_logger(), "Delivery completed!");
+    return true;
+}
+
+void NavigationClient::goalResponseCallback(
+    std::shared_ptr<GoalHandleNavigateToPose> goal_handle)
+{
+    if (!goal_handle) {
+        goal_accepted_ = false;
+        RCLCPP_ERROR(get_logger(), "Goal was rejected by server");
+    } else {
+        goal_accepted_ = true;
+        RCLCPP_INFO(get_logger(), "Goal accepted by server");
+    }
+}
+
+void NavigationClient::feedbackCallback(
+    GoalHandleNavigateToPose::SharedPtr goal_handle,
+    const std::shared_ptr<const NavigateToPose::Feedback> feedback)
+{
+    (void)goal_handle;  // Unused
+    double distance_remaining = feedback->distance_remaining;
+    RCLCPP_INFO(get_logger(), "Distance remaining: %.2f", distance_remaining);
+}
+
+void NavigationClient::resultCallback(
+    const GoalHandleNavigateToPose::WrappedResult & result)
+{
+    navigation_complete_ = true;
+    switch (result.code) {
+        case rclcpp_action::ResultCode::SUCCEEDED:
+            navigation_successful_ = true;
+            RCLCPP_INFO(get_logger(), "Navigation successful");
+            break;
+        case rclcpp_action::ResultCode::ABORTED:
+            navigation_successful_ = false;
+            RCLCPP_ERROR(get_logger(), "Navigation aborted");
+            break;
+        case rclcpp_action::ResultCode::CANCELED:
+            navigation_successful_ = false;
+            RCLCPP_ERROR(get_logger(), "Navigation canceled");
+            break;
+        default:
+            navigation_successful_ = false;
+            RCLCPP_ERROR(get_logger(), "Unknown result code");
+            break;
+    }
+}
+
+=================== nav2_bt_client/config/map_locations.yaml
+# Defines object locations as [x, y, theta]
+initial_pose: [-0.04, -0.06, 0.0]
+medical_shop: [26.36, -6.18, 0.0]
+room1: [10.97, 4.0, 0.0]
+room2: [15.92, -4.0, 0.0]
+
+=================== rosbot_nav2_bringup/params/nav2_params.yaml
+amcl:
+  ros__parameters:
+    alpha1: 0.2
+    alpha2: 0.2
+    alpha3: 0.2
+    alpha4: 0.2
+    alpha5: 0.2
+    base_frame_id: "base_footprint"
+    beam_skip_distance: 0.5
+    beam_skip_error_threshold: 0.9
+    beam_skip_threshold: 0.3
+    do_beamskip: false
+    global_frame_id: "map"
+    lambda_short: 0.1
+    laser_likelihood_max_dist: 2.0
+    laser_max_range: 100.0
+    laser_min_range: -1.0
+    laser_model_type: "likelihood_field"
+    max_beams: 60
+    max_particles: 2000
+    min_particles: 500
+    odom_frame_id: "odom"
+    pf_err: 0.05
+    pf_z: 0.99
+    recovery_alpha_fast: 0.0
+    recovery_alpha_slow: 0.0
+    resample_interval: 1
+    robot_model_type: "nav2_amcl::DifferentialMotionModel"
+    save_pose_rate: 0.5
+    sigma_hit: 0.2
+    tf_broadcast: true
+    transform_tolerance: 1.0
+    update_min_a: 0.2
+    update_min_d: 0.25
+    z_hit: 0.5
+    z_max: 0.05
+    z_rand: 0.5
+    z_short: 0.05
+    scan_topic: scan
+bt_navigator:
+  ros__parameters:
+    global_frame: map
+    robot_base_frame: base_link
+    transform_tolerance: 0.5
+    filter_duration: 0.3
+    default_nav_to_pose_bt_xml: "$(find-pkg-share nav2_bt_navigator)/behavior_trees/navigate_to_pose_w_replanning_and_recovery.xml" # behavior trees location.
+    default_nav_through_poses_bt_xml: "$(find-pkg-share nav2_bt_navigator)/behavior_trees/navigate_to_pose_w_replanning_and_recovery.xml"
+    always_reload_bt_xml: false
+    goal_blackboard_id: goal
+    goals_blackboard_id: goals
+    path_blackboard_id: path
+    navigators: ['navigate_to_pose', 'navigate_through_poses']
+    navigate_to_pose:
+      plugin: "nav2_bt_navigator::NavigateToPoseNavigator"
+    navigate_through_poses:
+      plugin: "nav2_bt_navigator::NavigateThroughPosesNavigator"
+    error_code_name_prefixes:
+      - assisted_teleop
+      - backup
+      - compute_path
+      - dock_robot
+      - drive_on_heading
+      - follow_path
+      - nav_thru_poses
+      - nav_to_pose
+      - spin
+      - route
+      - undock_robot
+      - wait
+
+docking_server:
+  ros__parameters:
+    dock_plugins: ['nova_carter_dock']
+    nova_carter_dock:
+      plugin: 'opennav_docking::SimpleChargingDock'
+    docks: ['home_dock','flex_dock1', 'flex_dock2']
+    home_dock:
+      type: 'nova_carter_dock'
+      frame: map
+      pose: [0.0, 0.0, 0.0]
+    flex_dock1:
+      type: 'nova_carter_dock'
+      frame: map
+      pose: [10.0, 10.0, 0.0]
+    flex_dock2:
+      type: 'nova_carter_dock'
+      frame: map
+      pose: [30.0, 30.0, 0.0]
+    enable_stamped_cmd_vel: true
+
+controller_server:
+  ros__parameters:
+    controller_frequency: 10.0
+    min_x_velocity_threshold: 0.001
+    min_y_velocity_threshold: 0.001
+    min_theta_velocity_threshold: 0.001
+    failure_tolerance: 0.3
+    progress_checker_plugins: ["progress_checker"]
+    goal_checker_plugins: ["goal_checker"]
+    controller_plugins: ["FollowPath"]
+    progress_checker:
+      plugin: "nav2_controller::SimpleProgressChecker"
+      required_movement_radius: 0.1
+      movement_time_allowance: 10.0
+    goal_checker:
+      stateful: true
+      plugin: "nav2_controller::SimpleGoalChecker"
+      xy_goal_tolerance: 0.25
+      yaw_goal_tolerance: 0.25
+    FollowPath:
+      plugin: "dwb_core::DWBLocalPlanner"
+      debug_trajectory_details: true
+      min_vel_x: 0.0
+      min_vel_y: 0.0
+      max_vel_x: 0.3
+      max_vel_y: 0.0
+      max_vel_theta: 1.0
+      min_speed_xy: 0.0
+      max_speed_xy: 0.3
+      min_speed_theta: 0.0
+      # Add high threshold velocity for turtlebot 3 issue.
+      # https://github.com/ROBOTIS-GIT/turtlebot3_simulations/issues/75
+      acc_lim_x: 3.0
+      acc_lim_y: 0.0
+      acc_lim_theta: 3.2
+      decel_lim_x: -2.5
+      decel_lim_y: 0.0
+      decel_lim_theta: -3.2
+      vx_samples: 20
+      vy_samples: 0
+      vtheta_samples: 40
+      sim_time: 1.5
+      linear_granularity: 0.05
+      angular_granularity: 0.025
+      transform_tolerance: 0.2
+      xy_goal_tolerance: 0.05
+      trans_stopped_velocity: 0.25
+      short_circuit_trajectory_evaluation: true
+      stateful: true
+      critics: ["RotateToGoal", "Oscillation", "BaseObstacle", "GoalAlign", "PathAlign", "PathDist", "GoalDist"]
+      BaseObstacle.scale: 0.02
+      PathAlign.scale: 32.0
+      PathAlign.forward_point_distance: 0.1
+      GoalAlign.scale: 24.0
+      GoalAlign.forward_point_distance: 0.1
+      PathDist.scale: 32.0
+      GoalDist.scale: 24.0
+      RotateToGoal.scale: 32.0
+      RotateToGoal.slowing_factor: 5.0
+      RotateToGoal.lookahead_time: -1.0
+    enable_stamped_cmd_vel: true
+
+local_costmap:
+  local_costmap:
+    ros__parameters:
+      update_frequency: 5.0
+      publish_frequency: 2.0
+      global_frame: odom
+      robot_base_frame: base_link
+      rolling_window: true
+      width: 3
+      height: 3
+      resolution: 0.05
+      robot_radius: 0.15
+      plugins: ["obstacle_layer", "voxel_layer", "inflation_layer"]
+      inflation_layer:
+        plugin: "nav2_costmap_2d::InflationLayer"
+        inflation_radius: 0.5
+        cost_scaling_factor: 5.0
+      obstacle_layer:
+        plugin: "nav2_costmap_2d::ObstacleLayer"
+        enabled: true
+        observation_sources: scan
+        scan:
+          topic: /scan
+          max_obstacle_height: 2.0
+          clearing: true
+          marking: true
+          data_type: "LaserScan"
+      voxel_layer:
+        plugin: "nav2_costmap_2d::VoxelLayer"
+        enabled: true
+        publish_voxel_map: true
+        origin_z: 0.0
+        z_resolution: 0.05
+        z_voxels: 16
+        max_obstacle_height: 2.0
+        mark_threshold: 0
+        observation_sources: scan
+        scan:
+          topic: /scan
+          max_obstacle_height: 2.0
+          clearing: true
+          marking: true
+          data_type: "LaserScan"
+          raytrace_max_range: 3.0
+          raytrace_min_range: 0.0
+          obstacle_max_range: 2.5
+          obstacle_min_range: 0.0
+      static_layer:
+        map_subscribe_transient_local: true
+      always_send_full_costmap: true
+
+global_costmap:
+  global_costmap:
+    ros__parameters:
+      update_frequency: 1.0
+      publish_frequency: 1.0
+      global_frame: map
+      robot_base_frame: base_link
+      transform_tolerance: 0.5
+      robot_radius: 0.15
+      resolution: 0.05
+      track_unknown_space: true
+      plugins: ["static_layer", "obstacle_layer", "voxel_layer", "inflation_layer"]
+      obstacle_layer:
+        plugin: "nav2_costmap_2d::ObstacleLayer"
+        enabled: true
+        observation_sources: scan
+        scan:
+          topic: /scan
+          max_obstacle_height: 2.0
+          clearing: true
+          marking: true
+          data_type: "LaserScan"
+          raytrace_max_range: 3.0
+          raytrace_min_range: 0.0
+          obstacle_max_range: 2.5
+          obstacle_min_range: 0.0
+      voxel_layer:
+        plugin: "nav2_costmap_2d::VoxelLayer"
+        enabled: true
+        publish_voxel_map: true
+        origin_z: 0.0
+        z_resolution: 0.05
+        z_voxels: 16
+        max_obstacle_height: 2.0
+        mark_threshold: 0
+        observation_sources: scan
+        scan:
+          topic: /scan
+          max_obstacle_height: 2.0
+          clearing: true
+          marking: true
+          data_type: "LaserScan"
+          raytrace_max_range: 3.0
+          raytrace_min_range: 0.0
+          obstacle_max_range: 2.5
+          obstacle_min_range: 0.0
+      static_layer:
+        plugin: "nav2_costmap_2d::StaticLayer"
+        map_subscribe_transient_local: true
+        transform_tolerance: 0.1
+      inflation_layer:
+        plugin: "nav2_costmap_2d::InflationLayer"
+        inflation_radius: 0.5
+        cost_scaling_factor: 5.0
+      always_send_full_costmap: true
+
+map_server:
+  ros__parameters:
+    yaml_filename: "map.yaml"
+
+map_saver:
+  ros__parameters:
+    save_map_timeout: 5.0
+    free_thresh_default: 0.25
+    occupied_thresh_default: 0.65
+    map_subscribe_transient_local: true
+
+planner_server:
+  ros__parameters:
+    expected_planner_frequency: 10.0
+    planner_plugins: ["GridBased"]
+    GridBased:
+      plugin: "nav2_navfn_planner::NavfnPlanner"
+      tolerance: 0.5
+      use_astar: false
+      allow_unknown: true
+
+behavior_server:
+  ros__parameters:
+    local_costmap_topic: local_costmap/costmap_raw
+    local_footprint_topic: local_costmap/published_footprint
+    global_costmap_topic: global_costmap/costmap_raw
+    global_footprint_topic: global_costmap/published_footprint
+    cycle_frequency: 10.0
+    behavior_plugins: ["spin", "backup", "drive_on_heading", "wait", "assisted_teleop"]
+    spin:
+      plugin: "nav2_behaviors::Spin" # In Iron and older versions, "/" was used instead of "::"
+    backup:
+      plugin: "nav2_behaviors::BackUp" # In Iron and older versions, "/" was used instead of "::"
+    drive_on_heading:
+      plugin: "nav2_behaviors::DriveOnHeading" # In Iron and older versions, "/" was used instead of "::"
+    wait:
+      plugin: "nav2_behaviors::Wait" # In Iron and older versions, "/" was used instead of "::"
+    assisted_teleop:
+      plugin: "nav2_behaviors::AssistedTeleop" # In Iron and older versions, "/" was used instead of "::"
+    local_frame: odom
+    global_frame: map
+    robot_base_frame: base_link
+    transform_timeout: 0.1
+    simulate_ahead_time: 2.0
+    max_rotational_vel: 1.0
+    min_rotational_vel: 0.4
+    rotational_acc_lim: 3.2
+    enable_stamped_cmd_vel: true
+
+waypoint_follower:
+  ros__parameters:
+    loop_rate: 20
+    stop_on_failure: false
+    waypoint_task_executor_plugin: "wait_at_waypoint"
+    wait_at_waypoint:
+      plugin: "nav2_waypoint_follower::WaitAtWaypoint"
+      enabled: true
+      waypoint_pause_duration: 200
+
+collision_monitor:
+  ros__parameters:
+    base_frame_id: "base_footprint"
+    odom_frame_id: "odom"
+    cmd_vel_in_topic: "cmd_vel_smoothed"
+    cmd_vel_out_topic: "cmd_vel"
+    state_topic: "collision_monitor_state"
+    transform_tolerance: 0.5
+    source_timeout: 5.0
+    base_shift_correction: true
+    stop_pub_timeout: 2.0
+    enable_stamped_cmd_vel: true
+    use_realtime_priority: false
+    polygons: ["PolygonStop", "PolygonSlow", "FootprintApproach"]
+    PolygonStop:
+      type: "circle"
+      radius: 0.2
+      action_type: "stop"
+      min_points: 4
+      visualize: true
+      polygon_pub_topic: "polygon_stop"
+      enabled: true
+    PolygonSlow:
+      type: "polygon"
+      points: "[[0.1, 0.1], [0.1, -0.1], [-0.1, -0.1], [-0.1, 0.1]]"
+      action_type: "slowdown"
+      min_points: 4
+      slowdown_ratio: 0.3
+      visualize: true
+      polygon_pub_topic: "polygon_slowdown"
+      enabled: true
+    PolygonLimit:
+      type: "polygon"
+      points: "[[0.1, 0.1], [0.1, -0.1], [-0.1, -0.1], [-0.1, 0.1]]"
+      action_type: "limit"
+      min_points: 4
+      linear_limit: 0.4
+      angular_limit: 0.5
+      visualize: true
+      polygon_pub_topic: "polygon_limit"
+      enabled: true
+    FootprintApproach:
+      type: "polygon"
+      action_type: "approach"
+      footprint_topic: "/local_costmap/published_footprint"
+      time_before_collision: 2.0
+      simulation_time_step: 0.02
+      min_points: 6
+      visualize: False
+      enabled: true
+    VelocityPolygonStop:
+      type: "velocity_polygon"
+      action_type: "stop"
+      min_points: 6
+      visualize: true
+      enabled: False
+      polygon_pub_topic: "velocity_polygon_stop"
+      velocity_polygons: ["rotation", "translation_forward", "translation_backward", "stopped"]
+      holonomic: false
+      rotation:
+        points: "[[0.3, 0.3], [0.3, -0.3], [-0.3, -0.3], [-0.3, 0.3]]"
+        linear_min: 0.0
+        linear_max: 0.05
+        theta_min: -1.0
+        theta_max: 1.0
+      translation_forward:
+        points: "[[0.35, 0.3], [0.35, -0.3], [-0.2, -0.3], [-0.2, 0.3]]"
+        linear_min: 0.0
+        linear_max: 1.0
+        theta_min: -1.0
+        theta_max: 1.0
+      translation_backward:
+        points: "[[0.2, 0.3], [0.2, -0.3], [-0.35, -0.3], [-0.35, 0.3]]"
+        linear_min: -1.0
+        linear_max: 0.0
+        theta_min: -1.0
+        theta_max: 1.0
+      stopped:
+        points: "[[0.25, 0.25], [0.25, -0.25], [-0.25, -0.25], [-0.25, 0.25]]"
+        linear_min: -1.0
+        linear_max: 1.0
+        theta_min: -1.0
+        theta_max: 1.0
+    observation_sources: ["scan"]
+    scan:
+      source_timeout: 0.2
+      type: "scan"
+      topic: "/scan"
+      enabled: true
+
+velocity_smoother:
+  ros__parameters:
+    smoothing_frequency: 20.0
+    scale_velocities: false
+    feedback: "OPEN_LOOP"
+    max_velocity: [0.5, 0.0, 2.5]
+    min_velocity: [-0.5, 0.0, -2.5]
+    deadband_velocity: [0.0, 0.0, 0.0]
+    velocity_timeout: 1.0
+    max_accel: [2.5, 0.0, 3.2]
+    max_decel: [-2.5, 0.0, -3.2]
+    odom_topic: "odom"
+    odom_duration: 0.1
+    use_realtime_priority: false
+    enable_stamped_cmd_vel: true
+
+3:  <world name="hospital_world">
+6:    <model name='ground_plane'>
+42:  <model name='hospital'>
+62:            <uri>file://media/materials/scripts/gazebo.material</uri>
+91:            <uri>file://media/materials/scripts/gazebo.material</uri>
+120:            <uri>file://media/materials/scripts/gazebo.material</uri>
+149:            <uri>file://media/materials/scripts/gazebo.material</uri>
+178:            <uri>file://media/materials/scripts/gazebo.material</uri>
+207:            <uri>file://media/materials/scripts/gazebo.material</uri>
+236:            <uri>file://media/materials/scripts/gazebo.material</uri>
+265:            <uri>file://media/materials/scripts/gazebo.material</uri>
+294:            <uri>file://media/materials/scripts/gazebo.material</uri>
+323:            <uri>file://media/materials/scripts/gazebo.material</uri>
+352:            <uri>file://media/materials/scripts/gazebo.material</uri>
+381:            <uri>file://media/materials/scripts/gazebo.material</uri>
+410:            <uri>file://media/materials/scripts/gazebo.material</uri>
+439:            <uri>file://media/materials/scripts/gazebo.material</uri>
+468:            <uri>file://media/materials/scripts/gazebo.material</uri>
+497:            <uri>file://media/materials/scripts/gazebo.material</uri>
+526:            <uri>file://media/materials/scripts/gazebo.material</uri>
+555:            <uri>file://media/materials/scripts/gazebo.material</uri>
+584:            <uri>file://media/materials/scripts/gazebo.material</uri>
+597:  </world>
+ros-jazzy-behaviortree-cpp

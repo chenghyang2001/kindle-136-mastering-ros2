@@ -1,0 +1,77 @@
+MODE=langchain
+=== node list ===
+/ros2_ai_agent
+/turtlesim
+=== pose（指令前）===
+x: 5.544444561004639
+y: 5.544444561004639
+theta: 0.0
+linear_velocity: 0.0
+angular_velocity: 0.0
+---
+=== 送出指令 1：Move the turtle forward 2 units ===
+publisher: beginning loop
+publishing #1: std_msgs.msg.String(data='Move the turtle forward 2 units')
+
+x: 5.746044635772705
+y: 5.544444561004639
+theta: 0.0
+linear_velocity: 0.0
+angular_velocity: 0.0
+---
+=== 送出指令 2：往前走 5 單位 ===
+publisher: beginning loop
+publishing #1: std_msgs.msg.String(data='往前走 5 單位')
+
+x: 6.250044345855713
+y: 5.544444561004639
+theta: 0.0
+linear_velocity: 0.0
+angular_velocity: 0.0
+---
+=== 送出指令 3：where is the turtle?（get_pose 工具）===
+publisher: beginning loop
+publishing #1: std_msgs.msg.String(data='where is the turtle?')
+
+x: 5.5444 -> 5.7460 -> 6.2500  (dx1=+0.2016, dx2=+0.5040)
+MOVED_OK
+=== cmd_vel 收到的訊息（linear.x）===
+  x: 0.2
+  x: 0.5
+=== agent log ===
+[INFO] [1792846299.199682810] [ros2_ai_agent]: ROS2 AI Agent has been started
+[INFO] [1792846299.230661963] [ros2_ai_agent]: LLM backend: RuleBasedFakeToolLLM
+
+
+[1m> Entering new AgentExecutor chain...[0m
+[32;1m[1;3m
+Invoking: `move_forward` with `{'distance': 2.0}`
+
+
+[0m[36;1m[1;3mMoved forward 2.0 units[0m[32;1m[1;3mDone. Tool result: Moved forward 2.0 units[0m
+
+[1m> Finished chain.[0m
+[INFO] [1792846313.884383760] [ros2_ai_agent]: Result: Done. Tool result: Moved forward 2.0 units
+
+
+[1m> Entering new AgentExecutor chain...[0m
+[32;1m[1;3m
+Invoking: `move_forward` with `{'distance': 5.0}`
+
+
+[0m[36;1m[1;3mMoved forward 5.0 units[0m[32;1m[1;3mDone. Tool result: Moved forward 5.0 units[0m
+
+[1m> Finished chain.[0m
+[INFO] [1792846320.352514404] [ros2_ai_agent]: Result: Done. Tool result: Moved forward 5.0 units
+
+
+[1m> Entering new AgentExecutor chain...[0m
+[32;1m[1;3m
+Invoking: `get_pose` with `{}`
+
+
+[0m[38;5;200m[1;3mx: 6.25, y: 5.54, theta: 0.00 degrees[0m[32;1m[1;3mDone. Tool result: x: 6.25, y: 5.54, theta: 0.00 degrees[0m
+
+[1m> Finished chain.[0m
+[INFO] [1792846327.785555295] [ros2_ai_agent]: Result: Done. Tool result: x: 6.25, y: 5.54, theta: 0.00 degrees
+STEP3_DONE

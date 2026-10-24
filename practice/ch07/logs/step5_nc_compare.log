@@ -1,0 +1,36 @@
+開始前 number_checker 行程數：0
+--- [orig] 殺掉後是否還有 number_checker：0 個
+=== [orig] number_checker.xml：節點輸出前 12 行
+[INFO] [1792840488.192746957] [rclcpp]: QUI!.
+Generated number: 18 - Threshold: 30 - Success! 
+Generated number: 54 - Threshold: 30 - Failure! 
+Generated number: 62 - Threshold: 50 - Failure! 
+Generated number: 1 - Threshold: 80 - Success! 
+Generated number: 80 - Threshold: 30 - Failure! 
+Generated number: 77 - Threshold: 50 - Failure! 
+Generated number: 84 - Threshold: 80 - Failure! 
+Generated number: 61 - Threshold: 30 - Failure! 
+Generated number: 44 - Threshold: 50 - Success! 
+Generated number: 10 - Threshold: 30 - Success! 
+Generated number: 38 - Threshold: 30 - Failure! 
+=== [orig] 統計：Success=14 Failure=20
+=== [orig] 30 秒內 /generated_number 收到筆數：13；其中 -1：2
+=== [orig] 收到的值：-1 44 10 33 22 49 -1 36 71 74 26 11 10 
+--- [seq] 殺掉後是否還有 number_checker：0 個
+=== [seq] number_checker_seq.xml：節點輸出前 12 行
+[INFO] [1792840523.046790373] [rclcpp]: QUI!.
+Generated number: 91 - Threshold: 30 - Failure! 
+Generated number: 77 - Threshold: 30 - Failure! 
+Generated number: 29 - Threshold: 30 - Success! 
+Generated number: 14 - Threshold: 50 - Success! 
+Generated number: 94 - Threshold: 80 - Failure! 
+Generated number: 42 - Threshold: 30 - Failure! 
+Generated number: 12 - Threshold: 30 - Success! 
+Generated number: 39 - Threshold: 50 - Success! 
+Generated number: 11 - Threshold: 80 - Success! 
+Generated number: 100 - Threshold: 30 - Failure! 
+Generated number: 13 - Threshold: 30 - Success! 
+=== [seq] 統計：Success=15 Failure=24
+=== [seq] 30 秒內 /generated_number 收到筆數：1；其中 -1：0
+=== [seq] 收到的值：11 
+--- Sequence 版中『三關全過』的次數（CheckNumber3 門檻 80 的 Success）：1

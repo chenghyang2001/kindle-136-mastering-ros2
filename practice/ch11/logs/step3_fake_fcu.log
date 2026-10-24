@@ -1,0 +1,42 @@
+[INFO] [1792843519.289943521] [fake_fcu]: 假飛控已啟動：等待 px4_ctrl
+[INFO] [1792843527.892413280] [fake_fcu]: OffboardControlMode #1 position=True
+[INFO] [1792843528.895850684] [fake_fcu]: OffboardControlMode #2 position=True
+[INFO] [1792843529.894533549] [fake_fcu]: OffboardControlMode #3 position=True
+[INFO] [1792843531.893040668] [fake_fcu]: OffboardControlMode #5 position=True
+[INFO] [1792843536.894829224] [fake_fcu]: OffboardControlMode #10 position=True
+[INFO] [1792843541.156863098] [fake_fcu]: 收到 VehicleCommand：ARM
+[INFO] [1792843541.894146519] [fake_fcu]: OffboardControlMode #15 position=True
+[INFO] [1792843543.160965999] [fake_fcu]: 收到 VehicleCommand：DO_SET_MODE(param1=1, param2=6 → 6=OFFBOARD)
+[INFO] [1792843544.164297768] [fake_fcu]: TrajectorySetpoint #1 position=[0.0, 0.0, -5.0]
+[INFO] [1792843546.895094498] [fake_fcu]: OffboardControlMode #20 position=True
+[INFO] [1792843550.466218781] [fake_fcu]: TrajectorySetpoint #2 position=[0.0, 0.0, -5.0]
+[INFO] [1792843551.267228342] [fake_fcu]: TrajectorySetpoint #10 position=[0.4000000059604645, 0.0, -5.0]
+[INFO] [1792843551.894169676] [fake_fcu]: OffboardControlMode #25 position=True
+[INFO] [1792843552.266466535] [fake_fcu]: TrajectorySetpoint #20 position=[0.8999999761581421, 0.0, -5.0]
+[INFO] [1792843553.270623124] [fake_fcu]: TrajectorySetpoint #30 position=[1.399999976158142, 0.0, -5.0]
+[INFO] [1792843555.626340847] [fake_fcu]: TrajectorySetpoint #40 position=[1.899999976158142, 0.0, -5.0]
+[INFO] [1792843556.631516555] [fake_fcu]: TrajectorySetpoint #50 position=[2.4000000953674316, 0.0, -5.0]
+[INFO] [1792843556.894210220] [fake_fcu]: OffboardControlMode #30 position=True
+[INFO] [1792843557.639018209] [fake_fcu]: TrajectorySetpoint #60 position=[2.9000000953674316, 0.0, -5.0]
+[INFO] [1792843561.234363732] [fake_fcu]: 收到 VehicleCommand：DISARM
+[INFO] [1792843561.895427897] [fake_fcu]: OffboardControlMode #35 position=True
+[INFO] [1792843564.239722363] [fake_fcu]: 結束：OffboardControlMode 36 筆、TrajectorySetpoint 62 筆
+Failed to publish log message to rosout: publisher's context is invalid, at ./src/rcl/publisher.c:423
+Traceback (most recent call last):
+  File "/mnt/c/Users/<user>/workspace/k136-ch11-practice/./fake_fcu.py", line 87, in <module>
+    main()
+  File "/mnt/c/Users/<user>/workspace/k136-ch11-practice/./fake_fcu.py", line 77, in main
+    rclpy.spin(node)
+  File "/opt/ros/jazzy/lib/python3.12/site-packages/rclpy/__init__.py", line 247, in spin
+    executor.spin_once()
+  File "/opt/ros/jazzy/lib/python3.12/site-packages/rclpy/executors.py", line 926, in spin_once
+    self._spin_once_impl(timeout_sec)
+  File "/opt/ros/jazzy/lib/python3.12/site-packages/rclpy/executors.py", line 907, in _spin_once_impl
+    handler, entity, node = self.wait_for_ready_callbacks(
+                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/ros/jazzy/lib/python3.12/site-packages/rclpy/executors.py", line 877, in wait_for_ready_callbacks
+    return next(self._cb_iter)
+           ^^^^^^^^^^^^^^^^^^^
+  File "/opt/ros/jazzy/lib/python3.12/site-packages/rclpy/executors.py", line 785, in _wait_for_ready_callbacks
+    raise ExternalShutdownException()
+rclpy.executors.ExternalShutdownException

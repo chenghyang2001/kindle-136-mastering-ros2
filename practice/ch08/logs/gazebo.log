@@ -1,0 +1,24 @@
+[INFO] [launch]: All log files can be found below /home/user/.ros/log/2026-10-24-19-20-54-642476-DESKTOP-6LST1BR-851
+[INFO] [launch]: Default logging verbosity is set to INFO
+[INFO] [gazebo-1]: process started with pid [857]
+[INFO] [create-2]: process started with pid [858]
+[INFO] [parameter_bridge-3]: process started with pid [859]
+[INFO] [robot_state_publisher-4]: process started with pid [861]
+[robot_state_publisher-4] [INFO] [1792840855.362179403] [robot_state_publisher]: Robot initialized
+[create-2] [INFO] [1792840855.428159150] [ros_gz_sim]: Requesting list of world names.
+[create-2] [INFO] [1792840856.300388650] [ros_gz_sim]: Waiting messages on topic [/robot_description].
+[create-2] [INFO] [1792840856.303413287] [ros_gz_sim]: Entity creation successful.
+[parameter_bridge-3] [INFO] [1792840856.491198920] [ros_gz_bridge]: Creating GZ->ROS Bridge: [/clock (gz.msgs.Clock) -> /clock (rosgraph_msgs/msg/Clock)] (Lazy 0)
+[parameter_bridge-3] [INFO] [1792840856.494060175] [ros_gz_bridge]: Creating GZ->ROS Bridge: [odom (gz.msgs.Odometry) -> odom (nav_msgs/msg/Odometry)] (Lazy 0)
+[parameter_bridge-3] [INFO] [1792840856.496039590] [ros_gz_bridge]: Creating GZ->ROS Bridge: [/scan (gz.msgs.LaserScan) -> /scan (sensor_msgs/msg/LaserScan)] (Lazy 0)
+[parameter_bridge-3] [INFO] [1792840856.497694644] [ros_gz_bridge]: Creating GZ->ROS Bridge: [/tf (gz.msgs.Pose_V) -> /tf (tf2_msgs/msg/TFMessage)] (Lazy 0)
+[parameter_bridge-3] [INFO] [1792840856.499182437] [ros_gz_bridge]: Creating GZ->ROS Bridge: [/joint_states (gz.msgs.Model) -> /joint_states (sensor_msgs/msg/JointState)] (Lazy 0)
+[parameter_bridge-3] [INFO] [1792840856.500277179] [ros_gz_bridge]: Creating ROS->GZ Bridge: [/cmd_vel (geometry_msgs/msg/TwistStamped) -> /cmd_vel (gz.msgs.Twist)] (Lazy 0)
+[INFO] [create-2]: process has finished cleanly [pid 858]
+[gazebo-1] [1;33mWarning [Utils.cc:132][0m [/sdf/model[@name="rosbot"]/link[@name="base_footprint"]/sensor[@name="gpu_lidar"]/gz_frame_id:<urdf-string>:L0]: XML Element[gz_frame_id], child of element[sensor], not defined in SDF. Copying[gz_frame_id] as children of [sensor].
+[parameter_bridge-3] [INFO] [1792840901.587327575] [ros_gz_bridge]: Passing message from ROS geometry_msgs/msg/TwistStamped to Gazebo gz.msgs.Twist (showing msg only once per type)
+[robot_state_publisher-4] [INFO] [1792840949.154132613] [rclcpp]: signal_handler(SIGINT/SIGTERM)
+[parameter_bridge-3] [INFO] [1792840949.156052397] [rclcpp]: signal_handler(SIGINT/SIGTERM)
+[INFO] [parameter_bridge-3]: process has finished cleanly [pid 859]
+[INFO] [gazebo-1]: process has finished cleanly [pid 857]
+[INFO] [robot_state_publisher-4]: process has finished cleanly [pid 861]

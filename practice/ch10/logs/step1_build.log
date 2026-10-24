@@ -1,0 +1,271 @@
+已複製 my_opencv_package
+已複製 pcl_processing
+已複製 usb_cam_launcher
+Starting >>> my_opencv_package
+Starting >>> pcl_processing
+Starting >>> usb_cam_launcher
+-- The C compiler identification is GNU 13.3.0
+-- The C compiler identification is GNU 13.3.0
+-- The C compiler identification is GNU 13.3.0
+-- The CXX compiler identification is GNU 13.3.0
+-- The CXX compiler identification is GNU 13.3.0
+-- The CXX compiler identification is GNU 13.3.0
+-- Detecting C compiler ABI info
+-- Detecting C compiler ABI info
+-- Detecting C compiler ABI info
+-- Detecting C compiler ABI info - done
+-- Check for working C compiler: /usr/bin/cc - skipped
+-- Detecting C compile features
+-- Detecting C compile features - done
+-- Detecting C compiler ABI info - done
+-- Check for working C compiler: /usr/bin/cc - skipped
+-- Detecting C compile features
+-- Detecting C compile features - done
+-- Detecting C compiler ABI info - done
+-- Check for working C compiler: /usr/bin/cc - skipped
+-- Detecting C compile features
+-- Detecting C compile features - done
+-- Detecting CXX compiler ABI info
+-- Detecting CXX compiler ABI info
+-- Detecting CXX compiler ABI info
+-- Detecting CXX compiler ABI info - done
+-- Check for working CXX compiler: /usr/bin/c++ - skipped
+-- Detecting CXX compile features
+-- Detecting CXX compile features - done
+-- Found ament_cmake: 2.5.6 (/opt/ros/jazzy/share/ament_cmake/cmake)
+-- Detecting CXX compiler ABI info - done
+-- Check for working CXX compiler: /usr/bin/c++ - skipped
+-- Detecting CXX compile features
+-- Detecting CXX compile features - done
+-- Found ament_cmake: 2.5.6 (/opt/ros/jazzy/share/ament_cmake/cmake)
+-- Detecting CXX compiler ABI info - done
+-- Check for working CXX compiler: /usr/bin/c++ - skipped
+-- Detecting CXX compile features
+-- Detecting CXX compile features - done
+-- Found ament_cmake: 2.5.6 (/opt/ros/jazzy/share/ament_cmake/cmake)
+-- Found Python3: /usr/bin/python3 (found version "3.12.3") found components: Interpreter 
+-- Found Python3: /usr/bin/python3 (found version "3.12.3") found components: Interpreter 
+-- Override CMake install command with custom implementation using symlinks instead of copying resources
+-- Found Python3: /usr/bin/python3 (found version "3.12.3") found components: Interpreter 
+-- Override CMake install command with custom implementation using symlinks instead of copying resources
+-- Found rclcpp: 28.1.22 (/opt/ros/jazzy/share/rclcpp/cmake)
+-- Override CMake install command with custom implementation using symlinks instead of copying resources
+-- Found ament_lint_auto: 0.17.5 (/opt/ros/jazzy/share/ament_lint_auto/cmake)
+-- Found rclcpp: 28.1.22 (/opt/ros/jazzy/share/rclcpp/cmake)
+-- Added test 'flake8' to check Python code syntax and style conventions
+-- Configured 'flake8' exclude dirs and/or files: 
+-- Added test 'lint_cmake' to check CMake code style
+-- Added test 'pep257' to check Python code against some of the docstring style conventions in PEP 257
+-- Added test 'xmllint' to check XML markup files
+-- Configuring done (4.4s)
+-- Generating done (0.0s)
+-- Build files have been written to: /home/user/k136_ws/ch10/build/usb_cam_launcher
+-- Install configuration: ""
+-- Execute custom install script
+-- Symlinking: /home/user/k136_ws/ch10/install/usb_cam_launcher/share/usb_cam_launcher/launch/my_usb_cam.launch.py
+-- Symlinking: /home/user/k136_ws/ch10/install/usb_cam_launcher/share/ament_index/resource_index/package_run_dependencies/usb_cam_launcher
+-- Symlinking: /home/user/k136_ws/ch10/install/usb_cam_launcher/share/ament_index/resource_index/parent_prefix_path/usb_cam_launcher
+-- Symlinking: /home/user/k136_ws/ch10/install/usb_cam_launcher/share/usb_cam_launcher/environment/ament_prefix_path.sh
+-- Found rosidl_generator_c: 4.6.9 (/opt/ros/jazzy/share/rosidl_generator_c/cmake)
+-- Symlinking: /home/user/k136_ws/ch10/install/usb_cam_launcher/share/usb_cam_launcher/environment/ament_prefix_path.dsv
+-- Symlinking: /home/user/k136_ws/ch10/install/usb_cam_launcher/share/usb_cam_launcher/environment/path.sh
+-- Symlinking: /home/user/k136_ws/ch10/install/usb_cam_launcher/share/usb_cam_launcher/environment/path.dsv
+-- Found rosidl_generator_cpp: 4.6.9 (/opt/ros/jazzy/share/rosidl_generator_cpp/cmake)
+-- Symlinking: /home/user/k136_ws/ch10/install/usb_cam_launcher/share/usb_cam_launcher/local_setup.bash
+-- Found rosidl_generator_c: 4.6.9 (/opt/ros/jazzy/share/rosidl_generator_c/cmake)
+-- Symlinking: /home/user/k136_ws/ch10/install/usb_cam_launcher/share/usb_cam_launcher/local_setup.sh
+-- Symlinking: /home/user/k136_ws/ch10/install/usb_cam_launcher/share/usb_cam_launcher/local_setup.zsh
+-- Found rosidl_generator_cpp: 4.6.9 (/opt/ros/jazzy/share/rosidl_generator_cpp/cmake)
+-- Symlinking: /home/user/k136_ws/ch10/install/usb_cam_launcher/share/usb_cam_launcher/local_setup.dsv
+-- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c
+-- Symlinking: /home/user/k136_ws/ch10/install/usb_cam_launcher/share/usb_cam_launcher/package.dsv
+-- Symlinking: /home/user/k136_ws/ch10/install/usb_cam_launcher/share/ament_index/resource_index/packages/usb_cam_launcher
+-- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c
+-- Symlinking: /home/user/k136_ws/ch10/install/usb_cam_launcher/share/usb_cam_launcher/cmake/usb_cam_launcherConfig.cmake
+-- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp
+-- Symlinking: /home/user/k136_ws/ch10/install/usb_cam_launcher/share/usb_cam_launcher/cmake/usb_cam_launcherConfig-version.cmake
+-- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp
+-- Symlinking: /home/user/k136_ws/ch10/install/usb_cam_launcher/share/usb_cam_launcher/package.xml
+Finished <<< usb_cam_launcher [4.71s]
+-- Found rmw_implementation_cmake: 7.3.4 (/opt/ros/jazzy/share/rmw_implementation_cmake/cmake)
+-- Found rmw_implementation_cmake: 7.3.4 (/opt/ros/jazzy/share/rmw_implementation_cmake/cmake)
+-- Found rmw_cyclonedds_cpp: 2.2.4 (/opt/ros/jazzy/share/rmw_cyclonedds_cpp/cmake)
+-- Found rmw_cyclonedds_cpp: 2.2.4 (/opt/ros/jazzy/share/rmw_cyclonedds_cpp/cmake)
+-- Using RMW implementation 'rmw_cyclonedds_cpp' as default
+-- Using RMW implementation 'rmw_cyclonedds_cpp' as default
+-- Found sensor_msgs: 5.3.8 (/opt/ros/jazzy/share/sensor_msgs/cmake)
+-- Found sensor_msgs: 5.3.8 (/opt/ros/jazzy/share/sensor_msgs/cmake)
+-- Found cv_bridge: 4.1.0 (/opt/ros/jazzy/share/cv_bridge/cmake)
+-- Found pcl_ros: 2.6.5 (/opt/ros/jazzy/share/pcl_ros/cmake)
+-- Found image_transport: 5.1.8 (/opt/ros/jazzy/share/image_transport/cmake)
+-- Found TinyXML2 via Config file: /usr/lib/x86_64-linux-gnu/cmake/tinyxml2
+-- Found ament_lint_auto: 0.17.5 (/opt/ros/jazzy/share/ament_lint_auto/cmake)
+CMake Warning (dev) at /usr/lib/x86_64-linux-gnu/cmake/pcl/Modules/FindFLANN.cmake:45 (find_package):
+  Policy CMP0144 is not set: find_package uses upper-case <PACKAGENAME>_ROOT
+  variables.  Run "cmake --help-policy CMP0144" for policy details.  Use the
+  cmake_policy command to set the policy and suppress this warning.
+
+  CMake variable FLANN_ROOT is set to:
+
+    /usr
+
+  For compatibility, find_package is ignoring the variable, but code in a
+  .cmake module might still use it.
+Call Stack (most recent call first):
+  /usr/lib/x86_64-linux-gnu/cmake/pcl/PCLConfig.cmake:261 (find_package)
+  /usr/lib/x86_64-linux-gnu/cmake/pcl/PCLConfig.cmake:306 (find_flann)
+  /usr/lib/x86_64-linux-gnu/cmake/pcl/PCLConfig.cmake:570 (find_external_library)
+  /opt/ros/jazzy/share/pcl_conversions/cmake/ament_cmake_export_dependencies-extras.cmake:21 (find_package)
+  /opt/ros/jazzy/share/pcl_conversions/cmake/pcl_conversionsConfig.cmake:41 (include)
+  /opt/ros/jazzy/share/pcl_ros/cmake/ament_cmake_export_dependencies-extras.cmake:21 (find_package)
+  /opt/ros/jazzy/share/pcl_ros/cmake/pcl_rosConfig.cmake:41 (include)
+  CMakeLists.txt:12 (find_package)
+This warning is for project developers.  Use -Wno-dev to suppress it.
+
+-- Found flann version 1.9.2
+-- Added test 'cppcheck' to perform static code analysis on C / C++ code
+-- Configured cppcheck include dirs: 
+-- Configured cppcheck exclude dirs and/or files: 
+-- Added test 'lint_cmake' to check CMake code style
+-- Added test 'uncrustify' to check C / C++ code style
+-- Configured uncrustify additional arguments: 
+-- Added test 'xmllint' to check XML markup files
+-- Configuring done (5.3s)
+-- Generating done (0.0s)
+-- Build files have been written to: /home/user/k136_ws/ch10/build/my_opencv_package
+[ 50%] Building CXX object CMakeFiles/image_processing.dir/src/image_processing.cpp.o
+-- Found OpenMP_CXX: -fopenmp (found version "4.5") 
+-- Found OpenMP: TRUE (found version "4.5") found components: CXX 
+[100%] Linking CXX executable image_processing
+[100%] Built target image_processing
+-- Install configuration: ""
+-- Execute custom install script
+-- Symlinking: /home/user/k136_ws/ch10/install/my_opencv_package/lib/my_opencv_package/image_processing
+-- Symlinking: /home/user/k136_ws/ch10/install/my_opencv_package/share/ament_index/resource_index/package_run_dependencies/my_opencv_package
+-- Symlinking: /home/user/k136_ws/ch10/install/my_opencv_package/share/ament_index/resource_index/parent_prefix_path/my_opencv_package
+-- Symlinking: /home/user/k136_ws/ch10/install/my_opencv_package/share/my_opencv_package/environment/ament_prefix_path.sh
+-- Symlinking: /home/user/k136_ws/ch10/install/my_opencv_package/share/my_opencv_package/environment/ament_prefix_path.dsv
+-- Symlinking: /home/user/k136_ws/ch10/install/my_opencv_package/share/my_opencv_package/environment/path.sh
+-- Symlinking: /home/user/k136_ws/ch10/install/my_opencv_package/share/my_opencv_package/environment/path.dsv
+-- Symlinking: /home/user/k136_ws/ch10/install/my_opencv_package/share/my_opencv_package/local_setup.bash
+-- Symlinking: /home/user/k136_ws/ch10/install/my_opencv_package/share/my_opencv_package/local_setup.sh
+-- Symlinking: /home/user/k136_ws/ch10/install/my_opencv_package/share/my_opencv_package/local_setup.zsh
+-- Symlinking: /home/user/k136_ws/ch10/install/my_opencv_package/share/my_opencv_package/local_setup.dsv
+-- Symlinking: /home/user/k136_ws/ch10/install/my_opencv_package/share/my_opencv_package/package.dsv
+-- Symlinking: /home/user/k136_ws/ch10/install/my_opencv_package/share/ament_index/resource_index/packages/my_opencv_package
+-- Symlinking: /home/user/k136_ws/ch10/install/my_opencv_package/share/my_opencv_package/cmake/my_opencv_packageConfig.cmake
+-- Symlinking: /home/user/k136_ws/ch10/install/my_opencv_package/share/my_opencv_package/cmake/my_opencv_packageConfig-version.cmake
+-- Symlinking: /home/user/k136_ws/ch10/install/my_opencv_package/share/my_opencv_package/package.xml
+Finished <<< my_opencv_package [20.2s]
+-- Checking for module 'libusb-1.0'
+--   Found libusb-1.0, version 1.0.27
+-- Found libusb: /usr/lib/x86_64-linux-gnu/libusb-1.0.so  
+-- OpenNI found (version: 1.5.4.0, include: /usr/include/ni, lib: /usr/lib/libOpenNI.so;libusb::libusb)
+-- OpenNI2 found (version: 2.2.0.33, include: /usr/include/openni2, lib: /usr/lib/x86_64-linux-gnu/libOpenNI2.so;libusb::libusb)
+-- Could NOT find Pcap (missing: PCAP_LIBRARIES PCAP_INCLUDE_DIRS) 
+-- Found ZLIB: /usr/lib/x86_64-linux-gnu/libz.so (found version "1.3")  
+-- Found PNG: /usr/lib/x86_64-linux-gnu/libpng.so (found version "1.6.43") 
+-- OpenNI found (version: 1.5.4.0, include: /usr/include/ni, lib: /usr/lib/libOpenNI.so;libusb::libusb)
+-- OpenNI2 found (version: 2.2.0.33, include: /usr/include/openni2, lib: /usr/lib/x86_64-linux-gnu/libOpenNI2.so;libusb::libusb)
+-- Found Qhull version 8.0.2
+[Processing: pcl_processing]
+-- OpenNI found (version: 1.5.4.0, include: /usr/include/ni, lib: /usr/lib/libOpenNI.so;libusb::libusb)
+[Processing: pcl_processing]
+-- Found PCL_COMMON: /usr/lib/x86_64-linux-gnu/libpcl_common.so  
+-- Found PCL_KDTREE: /usr/lib/x86_64-linux-gnu/libpcl_kdtree.so  
+-- Found PCL_OCTREE: /usr/lib/x86_64-linux-gnu/libpcl_octree.so  
+-- Found PCL_SEARCH: /usr/lib/x86_64-linux-gnu/libpcl_search.so  
+-- Found PCL_SAMPLE_CONSENSUS: /usr/lib/x86_64-linux-gnu/libpcl_sample_consensus.so  
+-- Found PCL_FILTERS: /usr/lib/x86_64-linux-gnu/libpcl_filters.so  
+-- Found PCL_2D: /usr/include/pcl-1.14  
+-- Found PCL_GEOMETRY: /usr/include/pcl-1.14  
+-- Found PCL_IO: /usr/lib/x86_64-linux-gnu/libpcl_io.so  
+-- Found PCL_FEATURES: /usr/lib/x86_64-linux-gnu/libpcl_features.so  
+-- Found PCL_ML: /usr/lib/x86_64-linux-gnu/libpcl_ml.so  
+-- Found PCL_SEGMENTATION: /usr/lib/x86_64-linux-gnu/libpcl_segmentation.so  
+-- Found PCL_VISUALIZATION: /usr/lib/x86_64-linux-gnu/libpcl_visualization.so  
+-- Found PCL_SURFACE: /usr/lib/x86_64-linux-gnu/libpcl_surface.so  
+-- Found PCL_REGISTRATION: /usr/lib/x86_64-linux-gnu/libpcl_registration.so  
+-- Found PCL_KEYPOINTS: /usr/lib/x86_64-linux-gnu/libpcl_keypoints.so  
+-- Found PCL_TRACKING: /usr/lib/x86_64-linux-gnu/libpcl_tracking.so  
+-- Found PCL_RECOGNITION: /usr/lib/x86_64-linux-gnu/libpcl_recognition.so  
+-- Found PCL_STEREO: /usr/lib/x86_64-linux-gnu/libpcl_stereo.so  
+-- Found PCL_APPS: /usr/lib/x86_64-linux-gnu/libpcl_apps.so  
+-- Found PCL_IN_HAND_SCANNER: /usr/include/pcl-1.14  
+-- Found PCL_MODELER: /usr/include/pcl-1.14  
+-- Found PCL_POINT_CLOUD_EDITOR: /usr/include/pcl-1.14  
+-- Found PCL_OUTOFCORE: /usr/lib/x86_64-linux-gnu/libpcl_outofcore.so  
+-- Found PCL_PEOPLE: /usr/lib/x86_64-linux-gnu/libpcl_people.so  
+-- Found eigen3_cmake_module: 0.3.1 (/opt/ros/jazzy/share/eigen3_cmake_module/cmake)
+-- Found Eigen3: TRUE (found version "3.4.0") 
+-- Ensuring Eigen3 include directory is part of orocos-kdl CMake target
+-- Found ament_lint_auto: 0.17.5 (/opt/ros/jazzy/share/ament_lint_auto/cmake)
+-- Added test 'cppcheck' to perform static code analysis on C / C++ code
+-- Configured cppcheck include dirs: 
+-- Configured cppcheck exclude dirs and/or files: 
+-- Added test 'lint_cmake' to check CMake code style
+-- Added test 'uncrustify' to check C / C++ code style
+-- Configured uncrustify additional arguments: 
+-- Added test 'xmllint' to check XML markup files
+-- Configuring done (102.6s)
+-- Generating done (0.1s)
+-- Build files have been written to: /home/user/k136_ws/ch10/build/pcl_processing
+[ 50%] Building CXX object CMakeFiles/pcl_processing.dir/src/pcl_processing.cpp.o
+[100%] Linking CXX executable pcl_processing
+[Processing: pcl_processing]
+[100%] Built target pcl_processing
+-- Install configuration: ""
+-- Execute custom install script
+-- Symlinking: /home/user/k136_ws/ch10/install/pcl_processing/lib/pcl_processing/pcl_processing
+-- Symlinking: /home/user/k136_ws/ch10/install/pcl_processing/share/ament_index/resource_index/package_run_dependencies/pcl_processing
+-- Symlinking: /home/user/k136_ws/ch10/install/pcl_processing/share/ament_index/resource_index/parent_prefix_path/pcl_processing
+-- Symlinking: /home/user/k136_ws/ch10/install/pcl_processing/share/pcl_processing/environment/ament_prefix_path.sh
+-- Symlinking: /home/user/k136_ws/ch10/install/pcl_processing/share/pcl_processing/environment/ament_prefix_path.dsv
+-- Symlinking: /home/user/k136_ws/ch10/install/pcl_processing/share/pcl_processing/environment/path.sh
+-- Symlinking: /home/user/k136_ws/ch10/install/pcl_processing/share/pcl_processing/environment/path.dsv
+-- Symlinking: /home/user/k136_ws/ch10/install/pcl_processing/share/pcl_processing/local_setup.bash
+-- Symlinking: /home/user/k136_ws/ch10/install/pcl_processing/share/pcl_processing/local_setup.sh
+-- Symlinking: /home/user/k136_ws/ch10/install/pcl_processing/share/pcl_processing/local_setup.zsh
+-- Symlinking: /home/user/k136_ws/ch10/install/pcl_processing/share/pcl_processing/local_setup.dsv
+-- Symlinking: /home/user/k136_ws/ch10/install/pcl_processing/share/pcl_processing/package.dsv
+-- Symlinking: /home/user/k136_ws/ch10/install/pcl_processing/share/ament_index/resource_index/packages/pcl_processing
+-- Symlinking: /home/user/k136_ws/ch10/install/pcl_processing/share/pcl_processing/cmake/pcl_processingConfig.cmake
+-- Symlinking: /home/user/k136_ws/ch10/install/pcl_processing/share/pcl_processing/cmake/pcl_processingConfig-version.cmake
+-- Symlinking: /home/user/k136_ws/ch10/install/pcl_processing/share/pcl_processing/package.xml
+--- stderr: pcl_processing
+CMake Warning (dev) at /usr/lib/x86_64-linux-gnu/cmake/pcl/Modules/FindFLANN.cmake:45 (find_package):
+  Policy CMP0144 is not set: find_package uses upper-case <PACKAGENAME>_ROOT
+  variables.  Run "cmake --help-policy CMP0144" for policy details.  Use the
+  cmake_policy command to set the policy and suppress this warning.
+
+  CMake variable FLANN_ROOT is set to:
+
+    /usr
+
+  For compatibility, find_package is ignoring the variable, but code in a
+  .cmake module might still use it.
+Call Stack (most recent call first):
+  /usr/lib/x86_64-linux-gnu/cmake/pcl/PCLConfig.cmake:261 (find_package)
+  /usr/lib/x86_64-linux-gnu/cmake/pcl/PCLConfig.cmake:306 (find_flann)
+  /usr/lib/x86_64-linux-gnu/cmake/pcl/PCLConfig.cmake:570 (find_external_library)
+  /opt/ros/jazzy/share/pcl_conversions/cmake/ament_cmake_export_dependencies-extras.cmake:21 (find_package)
+  /opt/ros/jazzy/share/pcl_conversions/cmake/pcl_conversionsConfig.cmake:41 (include)
+  /opt/ros/jazzy/share/pcl_ros/cmake/ament_cmake_export_dependencies-extras.cmake:21 (find_package)
+  /opt/ros/jazzy/share/pcl_ros/cmake/pcl_rosConfig.cmake:41 (include)
+  CMakeLists.txt:12 (find_package)
+This warning is for project developers.  Use -Wno-dev to suppress it.
+
+---
+Finished <<< pcl_processing [1min 54s]
+
+Summary: 3 packages finished [1min 54s]
+  1 package had stderr output: pcl_processing
+=== 建置產物 ===
+install/my_opencv_package/lib/my_opencv_package/:
+image_processing
+
+install/pcl_processing/lib/pcl_processing/:
+pcl_processing
+
+install/usb_cam_launcher/share/usb_cam_launcher/launch/:
+my_usb_cam.launch.py

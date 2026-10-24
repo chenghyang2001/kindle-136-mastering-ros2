@@ -1,0 +1,105 @@
+===== node list
+/publisher_node
+/subscriber_node
+===== topic info -v /custom_topic
+Type: master_ros2_interface/msg/CustomMsg
+
+Publisher count: 1
+
+Node name: publisher_node
+Node namespace: /
+Topic type: master_ros2_interface/msg/CustomMsg
+Topic type hash: RIHS01_35f3e1a13941cc3df17c9f65e97e41ad89bb441fb44398eb473dd8f8992a9dc8
+Endpoint type: PUBLISHER
+GID: 01.10.71.f6.b4.88.45.45.a3.2b.11.66.00.00.18.03
+QoS profile:
+  Reliability: RELIABLE
+  History (Depth): KEEP_LAST (10)
+  Durability: TRANSIENT_LOCAL
+  Lifespan: Infinite
+  Deadline: Infinite
+  Liveliness: AUTOMATIC
+  Liveliness lease duration: Infinite
+
+Subscription count: 1
+
+Node name: subscriber_node
+Node namespace: /
+Topic type: master_ros2_interface/msg/CustomMsg
+Topic type hash: RIHS01_35f3e1a13941cc3df17c9f65e97e41ad89bb441fb44398eb473dd8f8992a9dc8
+Endpoint type: SUBSCRIPTION
+GID: 01.10.4a.30.94.68.2a.b7.24.b8.e2.35.00.00.18.04
+QoS profile:
+  Reliability: RELIABLE
+  History (Depth): KEEP_LAST (10)
+  Durability: TRANSIENT_LOCAL
+  Lifespan: Infinite
+  Deadline: Infinite
+  Liveliness: AUTOMATIC
+  Liveliness lease duration: Infinite
+
+===== topic echo --once /custom_topic（需同樣 transient_local QoS 才收得到舊訊息，這裡即時收）
+data: Custom Hello
+number: 42
+---
+===== launch 輸出（timeout 15 結束）
+[INFO] [launch]: All log files can be found below /home/user/.ros/log/2026-10-24-18-34-09-091785-DESKTOP-6LST1BR-914
+[INFO] [launch]: Default logging verbosity is set to INFO
+[INFO] [publisher_node-1]: process started with pid [917]
+[INFO] [subscriber_node-2]: process started with pid [918]
+[publisher_node-1] [INFO] [1792838050.192790170] [publisher_node]: Publishing: 'Hello, world!'
+[publisher_node-1] [INFO] [1792838050.193017398] [publisher_node]: Publishing custom message: data='Custom Hello', number=42
+[subscriber_node-2] [INFO] [1792838050.193422497] [subscriber_node]: Received custom message: data='Custom Hello', number=42
+[subscriber_node-2] [INFO] [1792838050.193706718] [subscriber_node]: Received: 'Hello, world!'
+[publisher_node-1] [INFO] [1792838051.192854024] [publisher_node]: Publishing: 'Hello, world!'
+[publisher_node-1] [INFO] [1792838051.193165617] [publisher_node]: Publishing custom message: data='Custom Hello', number=42
+[subscriber_node-2] [INFO] [1792838051.193606053] [subscriber_node]: Received: 'Hello, world!'
+[subscriber_node-2] [INFO] [1792838051.193704062] [subscriber_node]: Received custom message: data='Custom Hello', number=42
+[publisher_node-1] [INFO] [1792838052.192850399] [publisher_node]: Publishing: 'Hello, world!'
+[publisher_node-1] [INFO] [1792838052.193150195] [publisher_node]: Publishing custom message: data='Custom Hello', number=42
+[subscriber_node-2] [INFO] [1792838052.193660257] [subscriber_node]: Received custom message: data='Custom Hello', number=42
+[subscriber_node-2] [INFO] [1792838052.193733127] [subscriber_node]: Received: 'Hello, world!'
+[publisher_node-1] [INFO] [1792838053.192936409] [publisher_node]: Publishing: 'Hello, world!'
+[publisher_node-1] [INFO] [1792838053.193326767] [publisher_node]: Publishing custom message: data='Custom Hello', number=42
+[subscriber_node-2] [INFO] [1792838053.193756330] [subscriber_node]: Received: 'Hello, world!'
+[subscriber_node-2] [INFO] [1792838053.193894242] [subscriber_node]: Received custom message: data='Custom Hello', number=42
+[publisher_node-1] [INFO] [1792838054.192771750] [publisher_node]: Publishing: 'Hello, world!'
+[publisher_node-1] [INFO] [1792838054.192984905] [publisher_node]: Publishing custom message: data='Custom Hello', number=42
+[subscriber_node-2] [INFO] [1792838054.193300826] [subscriber_node]: Received custom message: data='Custom Hello', number=42
+[subscriber_node-2] [INFO] [1792838054.193355100] [subscriber_node]: Received: 'Hello, world!'
+[publisher_node-1] [INFO] [1792838055.192627705] [publisher_node]: Publishing: 'Hello, world!'
+[publisher_node-1] [INFO] [1792838055.192962892] [publisher_node]: Publishing custom message: data='Custom Hello', number=42
+[subscriber_node-2] [INFO] [1792838055.193204069] [subscriber_node]: Received: 'Hello, world!'
+[subscriber_node-2] [INFO] [1792838055.193286428] [subscriber_node]: Received custom message: data='Custom Hello', number=42
+[publisher_node-1] [INFO] [1792838056.192748636] [publisher_node]: Publishing: 'Hello, world!'
+[publisher_node-1] [INFO] [1792838056.193163266] [publisher_node]: Publishing custom message: data='Custom Hello', number=42
+[subscriber_node-2] [INFO] [1792838056.193784750] [subscriber_node]: Received custom message: data='Custom Hello', number=42
+[subscriber_node-2] [INFO] [1792838056.193880421] [subscriber_node]: Received: 'Hello, world!'
+[publisher_node-1] [INFO] [1792838057.192920898] [publisher_node]: Publishing: 'Hello, world!'
+[publisher_node-1] [INFO] [1792838057.193057979] [publisher_node]: Publishing custom message: data='Custom Hello', number=42
+[subscriber_node-2] [INFO] [1792838057.193279813] [subscriber_node]: Received custom message: data='Custom Hello', number=42
+[subscriber_node-2] [INFO] [1792838057.193318895] [subscriber_node]: Received: 'Hello, world!'
+[publisher_node-1] [INFO] [1792838058.192606780] [publisher_node]: Publishing: 'Hello, world!'
+[publisher_node-1] [INFO] [1792838058.192823727] [publisher_node]: Publishing custom message: data='Custom Hello', number=42
+[subscriber_node-2] [INFO] [1792838058.193008062] [subscriber_node]: Received: 'Hello, world!'
+[subscriber_node-2] [INFO] [1792838058.193087605] [subscriber_node]: Received custom message: data='Custom Hello', number=42
+[publisher_node-1] [INFO] [1792838059.192847180] [publisher_node]: Publishing: 'Hello, world!'
+[publisher_node-1] [INFO] [1792838059.193109581] [publisher_node]: Publishing custom message: data='Custom Hello', number=42
+[subscriber_node-2] [INFO] [1792838059.193277670] [subscriber_node]: Received: 'Hello, world!'
+[subscriber_node-2] [INFO] [1792838059.193358127] [subscriber_node]: Received custom message: data='Custom Hello', number=42
+[publisher_node-1] [INFO] [1792838060.192723469] [publisher_node]: Publishing: 'Hello, world!'
+[publisher_node-1] [INFO] [1792838060.192946811] [publisher_node]: Publishing custom message: data='Custom Hello', number=42
+[subscriber_node-2] [INFO] [1792838060.193265370] [subscriber_node]: Received: 'Hello, world!'
+[subscriber_node-2] [INFO] [1792838060.193368981] [subscriber_node]: Received custom message: data='Custom Hello', number=42
+[publisher_node-1] [INFO] [1792838061.192642032] [publisher_node]: Publishing: 'Hello, world!'
+[publisher_node-1] [INFO] [1792838061.192881296] [publisher_node]: Publishing custom message: data='Custom Hello', number=42
+[subscriber_node-2] [INFO] [1792838061.193100845] [subscriber_node]: Received: 'Hello, world!'
+[subscriber_node-2] [INFO] [1792838061.193242122] [subscriber_node]: Received custom message: data='Custom Hello', number=42
+[publisher_node-1] [INFO] [1792838062.192674469] [publisher_node]: Publishing: 'Hello, world!'
+[publisher_node-1] [INFO] [1792838062.192859270] [publisher_node]: Publishing custom message: data='Custom Hello', number=42
+[subscriber_node-2] [INFO] [1792838062.193120891] [subscriber_node]: Received custom message: data='Custom Hello', number=42
+[subscriber_node-2] [INFO] [1792838062.193162931] [subscriber_node]: Received: 'Hello, world!'
+[publisher_node-1] [INFO] [1792838063.194479700] [publisher_node]: Publishing: 'Hello, world!'
+[publisher_node-1] [INFO] [1792838063.194841172] [publisher_node]: Publishing custom message: data='Custom Hello', number=42
+[subscriber_node-2] [INFO] [1792838063.195124207] [subscriber_node]: Received custom message: data='Custom Hello', number=42
+[subscriber_node-2] [INFO] [1792838063.195198345] [subscriber_node]: Received: 'Hello, world!'

@@ -1,0 +1,31 @@
+=== node list ===
+/robot_state_publisher
+=== /tf_static 一則 ===
+=== tf2_echo base_footprint -> base_laser ===
+[INFO] [1792843895.603661567] [tf2_echo]: Waiting for transform base_footprint ->  base_laser: Invalid frame ID "base_footprint" passed to canTransform argument target_frame - frame does not exist
+At time 0.0
+- Translation: [0.070, 0.004, 0.013]
+- Rotation: in Quaternion (xyzw) [0.000, 0.000, 0.000, 1.000]
+- Rotation: in RPY (radian) [0.000, -0.000, 0.000]
+- Rotation: in RPY (degree) [0.000, -0.000, 0.000]
+- Matrix:
+  1.000  0.000  0.000  0.070
+  0.000  1.000  0.000  0.004
+  0.000  0.000  1.000  0.013
+  0.000  0.000  0.000  1.000
+At time 0.0
+=== view_frames ===
+[INFO] [1792843901.772505497] [view_frames]: Listening to tf data for 5.0 seconds...
+[INFO] [1792843906.801085095] [view_frames]: Generating graph...
+[INFO] [1792843906.802360200] [view_frames]: Result:tf2_msgs.srv.FrameGraph_Response(frame_yaml="Raspberry: \n  parent: 'base_footprint'\n  broadcaster: 'default_authority'\n  rate: 10000.000\n  most_recent_transform: 0.000000\n  oldest_transform: 0.000000\n  buffer_length: 0.000\nbase_laser: \n  parent: 'base_footprint'\n  broadcaster: 'default_authority'\n  rate: 10000.000\n  most_recent_transform: 0.000000\n  oldest_transform: 0.000000\n  buffer_length: 0.000\nomniwheel: \n  parent: 'base_footprint'\n  broadcaster: 'default_authority'\n  rate: 10000.000\n  most_recent_transform: 0.000000\n  oldest_transform: 0.000000\n  buffer_length: 0.000\nwheel_left: \n  parent: 'base_footprint'\n  broadcaster: 'default_authority'\n  rate: 10000.000\n  most_recent_transform: 0.000000\n  oldest_transform: 0.000000\n  buffer_length: 0.000\nwheel_right: \n  parent: 'base_footprint'\n  broadcaster: 'default_authority'\n  rate: 10000.000\n  most_recent_transform: 0.000000\n  oldest_transform: 0.000000\n  buffer_length: 0.000\n")
+[INFO] [1792843906.804406514] [view_frames]: Exporting graph in frames_2026-10-24_20.11.46.pdf file...
+-rwxrwxrwx 1 user user  15134 Oct 24 20:11 frames.pdf
+-rwxrwxrwx 1 user user 102161 Oct 24 20:11 frames.png
+--- TF 邊（from gv）---
+"base_footprint" -> "Raspberry"[label=" Broadcaster: default_authority\nAverage rate: 10000.0\nBuffer length: 0.0\nMost recent transform: 0.0\nOldest transform: 0.0\n"];
+"base_footprint" -> "base_laser"[label=" Broadcaster: default_authority\nAverage rate: 10000.0\nBuffer length: 0.0\nMost recent transform: 0.0\nOldest transform: 0.0\n"];
+"base_footprint" -> "omniwheel"[label=" Broadcaster: default_authority\nAverage rate: 10000.0\nBuffer length: 0.0\nMost recent transform: 0.0\nOldest transform: 0.0\n"];
+"base_footprint" -> "wheel_left"[label=" Broadcaster: default_authority\nAverage rate: 10000.0\nBuffer length: 0.0\nMost recent transform: 0.0\nOldest transform: 0.0\n"];
+"base_footprint" -> "wheel_right"[label=" Broadcaster: default_authority\nAverage rate: 10000.0\nBuffer length: 0.0\nMost recent transform: 0.0\nOldest transform: 0.0\n"];
+}->"base_footprint";
+STEP2_DONE

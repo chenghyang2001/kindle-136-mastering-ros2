@@ -1,0 +1,17 @@
+[INFO] [launch]: All log files can be found below /home/user/.ros/log/2026-10-24-19-45-06-345342-DESKTOP-6LST1BR-596
+[INFO] [launch]: Default logging verbosity is set to INFO
+[INFO] [planning_with_obstacles-1]: process started with pid [601]
+[planning_with_obstacles-1] [INFO] [1792842306.660027594] [moveit_4152471803.moveit.ros.rdf_loader]: Loaded robot model in 0.00329581 seconds
+[planning_with_obstacles-1] [INFO] [1792842306.660137519] [moveit_4152471803.moveit.core.robot_model]: Loading robot model 'panda'...
+[planning_with_obstacles-1] [INFO] [1792842306.668583743] [moveit_4152471803.moveit.kinematics.kdl_kinematics_plugin]: Joint weights for group 'arm': 1 1 1 1 1 1 1
+[planning_with_obstacles-1] [INFO] [1792842306.684148370] [moveit_4152471803.moveit.ros.move_group_interface]: Ready to take commands for planning group arm.
+[planning_with_obstacles-1] [INFO] [1792842309.890840019] [moveit_4152471803.moveit.ros.move_group_interface]: MoveGroup action client/server ready
+[planning_with_obstacles-1] [INFO] [1792842309.891608598] [moveit_4152471803.moveit.ros.move_group_interface]: Planning request accepted
+[planning_with_obstacles-1] [INFO] [1792842309.926285435] [moveit_4152471803.moveit.ros.move_group_interface]: Planning request complete!
+[planning_with_obstacles-1] [INFO] [1792842309.926835005] [moveit_4152471803.moveit.ros.move_group_interface]: time taken to generate plan: 0.0247489 seconds
+[planning_with_obstacles-1] [INFO] [1792842309.927423549] [moveit_4152471803.moveit.ros.move_group_interface]: Plan and Execute request accepted
+[planning_with_obstacles-1] [INFO] [1792842320.117006987] [moveit_4152471803.moveit.ros.move_group_interface]: Plan and Execute request complete!
+[planning_with_obstacles-1] [INFO] [1792842322.570266806] [rclcpp]: signal_handler(SIGINT/SIGTERM)
+[planning_with_obstacles-1] Warning: class_loader.ClassLoader: SEVERE WARNING!!! Attempting to unload library while objects created by this loader exist in the heap! You should delete your objects before attempting to unload the library or destroying the ClassLoader. The library will NOT be unloaded.
+[planning_with_obstacles-1]          at line 127 in ./src/class_loader.cpp
+[INFO] [planning_with_obstacles-1]: process has finished cleanly [pid 601]

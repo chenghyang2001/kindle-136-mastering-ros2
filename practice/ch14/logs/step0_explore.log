@@ -1,0 +1,306 @@
+/home/user/ros2_books/Mastering-ROS-2-for-Robotics-Programming/Chapter14:
+docker_compose_llm
+docker_llm
+ros2_basic_agent
+
+/home/user/ros2_books/Mastering-ROS-2-for-Robotics-Programming/Chapter14/docker_compose_llm:
+docker-compose-gui.yml
+docker-compose-nvidia.yml
+Dockerfile.master_ros2
+requirements.txt
+ros_ws_entrypoint.sh
+start_container.sh
+
+/home/user/ros2_books/Mastering-ROS-2-for-Robotics-Programming/Chapter14/docker_llm:
+build_image.sh
+create_container.sh
+delete_all_img.bash
+Dockerfile.master_ros2
+remove_container.sh
+requirements.txt
+ros_entrypoint.sh
+ros_ws_entrypoint.sh
+start_container.sh
+stop_container.sh
+
+/home/user/ros2_books/Mastering-ROS-2-for-Robotics-Programming/Chapter14/ros2_basic_agent:
+config
+launch
+package.xml
+resource
+ros2_basic_agent
+setup.cfg
+setup.py
+test
+
+/home/user/ros2_books/Mastering-ROS-2-for-Robotics-Programming/Chapter14/ros2_basic_agent/config:
+openai.env
+
+/home/user/ros2_books/Mastering-ROS-2-for-Robotics-Programming/Chapter14/ros2_basic_agent/launch:
+start_ros2_basic_agent.py
+start_ros2_tools_agent.py
+start_turtlebot3_nav2_agent.py
+start_turtlesim_agent.py
+start_ur_moveit2_agent.py
+
+/home/user/ros2_books/Mastering-ROS-2-for-Robotics-Programming/Chapter14/ros2_basic_agent/resource:
+ros2_basic_agent
+
+/home/user/ros2_books/Mastering-ROS-2-for-Robotics-Programming/Chapter14/ros2_basic_agent/ros2_basic_agent:
+__init__.py
+ros2_ai_agent_basic.py
+ros2_ai_agent_basic_tools.py
+ros2_ai_agent_turtlebo3_nav2.py
+ros2_ai_agent_turtlesim.py
+ros2_ai_agent_ur_moveit2.py
+
+/home/user/ros2_books/Mastering-ROS-2-for-Robotics-Programming/Chapter14/ros2_basic_agent/test:
+__init__.py
+test_ros2_ai_agent.py
+=== package files ===
+from setuptools import setup, find_packages
+import os
+from glob import glob
+
+package_name = 'ros2_basic_agent'
+
+setup(
+    name=package_name,
+    version='0.0.1',
+    packages=[package_name],
+    data_files=[
+        ('share/ament_index/resource_index/packages',
+            ['resource/' + package_name]),
+        ('share/' + package_name, ['package.xml']),
+        (os.path.join('share', package_name, 'launch'), glob('launch/*.py')),
+        (os.path.join('share', package_name, 'config'), glob('config/*'))  # Add this line
+
+    ],
+    install_requires=['setuptools','langchain','langchain-openai','python-dotenv'],
+    zip_safe=True,
+    maintainer='Lentin Joseph',
+    maintainer_email='runtimerobotics@gmail.com',
+    description='Basic ROS 2 AI agent package',
+    license='Apache License 2.0',
+    tests_require=['pytest'],
+    entry_points={
+        'console_scripts': [
+            'ros2_ai_agent_basic = ros2_basic_agent.ros2_ai_agent_basic:main',            
+            'ros2_ai_agent_basic_tools = ros2_basic_agent.ros2_ai_agent_basic_tools:main',            
+            'ros2_ai_agent_turtlesim = ros2_basic_agent.ros2_ai_agent_turtlesim:main',
+            'ros2_ai_agent_nav2 = ros2_basic_agent.ros2_ai_agent_turtlebo3_nav2:main',
+            'ros2_ai_agent_moveit2 = ros2_basic_agent.ros2_ai_agent_ur_moveit2:main',            
+        ],
+    },
+)
+<?xml version="1.0"?>
+<?xml-model href="http://download.ros.org/schema/package_format3.xsd" schematypens="http://www.w3.org/2001/XMLSchema"?>
+<package format="3">
+  <name>ros2_basic_agent</name>
+  <version>0.0.1</version>
+  <description>Basic ROS 2 AI agent package</description>
+  <maintainer email="runtimerobotics@gmail.com">Lentin Joseph</maintainer>
+  <license>Apache License 2.0</license>
+
+  <test_depend>ament_copyright</test_depend>
+  <test_depend>ament_flake8</test_depend>
+  <test_depend>ament_pep257</test_depend>
+  <test_depend>python3-pytest</test_depend>
+
+  <exec_depend>rclpy</exec_depend>
+  <exec_depend>std_msgs</exec_depend>
+  <exec_depend>geometry_msgs</exec_depend>
+
+  <depend>python3-pip</depend>
+  <depend>moveit-py</depend>
+
+  <depend>nav2_msgs</depend>
+  <depend>nav_msgs</depend>
+
+  <export>
+    <build_type>ament_python</build_type>
+  </export>
+</package>
+/home/user/ros2_books/Mastering-ROS-2-for-Robotics-Programming/Chapter14/ros2_basic_agent/ros2_basic_agent/ros2_ai_agent_basic.py
+/home/user/ros2_books/Mastering-ROS-2-for-Robotics-Programming/Chapter14/ros2_basic_agent/ros2_basic_agent/__init__.py
+/home/user/ros2_books/Mastering-ROS-2-for-Robotics-Programming/Chapter14/ros2_basic_agent/ros2_basic_agent/ros2_ai_agent_basic_tools.py
+/home/user/ros2_books/Mastering-ROS-2-for-Robotics-Programming/Chapter14/ros2_basic_agent/ros2_basic_agent/ros2_ai_agent_ur_moveit2.py
+/home/user/ros2_books/Mastering-ROS-2-for-Robotics-Programming/Chapter14/ros2_basic_agent/ros2_basic_agent/ros2_ai_agent_turtlebo3_nav2.py
+/home/user/ros2_books/Mastering-ROS-2-for-Robotics-Programming/Chapter14/ros2_basic_agent/ros2_basic_agent/ros2_ai_agent_turtlesim.py
+/home/user/ros2_books/Mastering-ROS-2-for-Robotics-Programming/Chapter14/ros2_basic_agent/launch/start_turtlebot3_nav2_agent.py
+/home/user/ros2_books/Mastering-ROS-2-for-Robotics-Programming/Chapter14/ros2_basic_agent/launch/start_ros2_tools_agent.py
+/home/user/ros2_books/Mastering-ROS-2-for-Robotics-Programming/Chapter14/ros2_basic_agent/launch/start_ur_moveit2_agent.py
+/home/user/ros2_books/Mastering-ROS-2-for-Robotics-Programming/Chapter14/ros2_basic_agent/launch/start_turtlesim_agent.py
+/home/user/ros2_books/Mastering-ROS-2-for-Robotics-Programming/Chapter14/ros2_basic_agent/launch/start_ros2_basic_agent.py
+/home/user/ros2_books/Mastering-ROS-2-for-Robotics-Programming/Chapter14/ros2_basic_agent/test/test_ros2_ai_agent.py
+/home/user/ros2_books/Mastering-ROS-2-for-Robotics-Programming/Chapter14/ros2_basic_agent/test/__init__.py
+/home/user/ros2_books/Mastering-ROS-2-for-Robotics-Programming/Chapter14/ros2_basic_agent/setup.py
+/home/user/ros2_books/Mastering-ROS-2-for-Robotics-Programming/Chapter14/ros2_basic_agent/config/openai.env
+=== turtlesim agent ===
+FILE=/home/user/ros2_books/Mastering-ROS-2-for-Robotics-Programming/Chapter14/ros2_basic_agent/ros2_basic_agent/ros2_ai_agent_turtlesim.py
+#!/usr/bin/env python3
+
+"""
+This script defines a ROS2 node that integrates with OpenAI's language model to control a turtle in the turtlesim simulation.
+The node subscribes to a topic and processes incoming messages using an AI agent with predefined tools.
+
+Classes:
+    ROS2AIAgent(Node): A ROS2 node that subscribes to a topic and uses an AI agent to control the turtle.
+
+Functions:
+    move_forward(distance: float) -> str: Moves the turtle forward by the specified distance.
+    rotate(angle: float) -> str: Rotates the turtle by the specified angle in degrees.
+    get_pose() -> str: Gets the current position and orientation of the turtle.
+    pose_callback(msg: Pose): Callback function to update the turtle's pose.
+    prompt_callback(msg: String): Callback function to process incoming messages.
+    main(args=None): Initializes and spins the ROS2 node.
+
+Dependencies:
+    - os
+    - math
+    - geometry_msgs.msg (Twist)
+    - turtlesim.msg (Pose)
+    - langchain.agents (AgentExecutor, create_openai_tools_agent)
+    - langchain_openai (ChatOpenAI)
+    - langchain.tools (BaseTool, StructuredTool, tool)
+    - langchain_core.prompts (ChatPromptTemplate, MessagesPlaceholder)
+    - dotenv (load_dotenv)
+    - std_msgs.msg (String)
+    - rclpy (rclpy, Node)
+"""
+
+import os
+import math
+from geometry_msgs.msg import Twist
+from turtlesim.msg import Pose
+from std_msgs.msg import String
+import rclpy
+from rclpy.node import Node
+
+from ament_index_python.packages import get_package_share_directory, get_package_prefix
+from pathlib import Path
+
+from langchain.agents import AgentExecutor, create_openai_tools_agent
+from langchain_openai import ChatOpenAI
+from langchain.tools import BaseTool, StructuredTool, tool
+from langchain_core.prompts import ChatPromptTemplate, MessagesPlaceholder
+from dotenv import load_dotenv
+
+
+class ROS2AIAgent(Node):
+    def __init__(self):
+        super().__init__('ros2_ai_agent')
+        self.get_logger().info('ROS2 AI Agent has been started')
+        
+        # Initialize turtle pose
+        self.turtle_pose = Pose()
+        
+        # Create publisher for turtle commands
+        self.cmd_vel_pub = self.create_publisher(Twist, '/turtle1/cmd_vel', 10)
+        
+        # Create subscriber for turtle pose
+        self.pose_sub = self.create_subscription(
+            Pose,
+            '/turtle1/pose',
+            self.pose_callback,
+            10
+        )
+
+        # setup the tools as class methods
+        @tool
+        def move_forward(distance: float) -> str:
+            """Move turtle forward by specified distance."""
+            msg = Twist()
+            duration = float(distance)
+
+            msg.linear.x = duration * 0.1
+            
+            # Publish for the calculated duration
+            self.cmd_vel_pub.publish(msg)
+            #self.create_timer(duration, lambda: self.cmd_vel_pub.publish(Twist()))
+            #self.create_timer(duration, lambda: self.cmd_vel_pub.publish(msg))
+            return f"Moved forward {distance} units"
+
+        @tool
+        def rotate(angle: float) -> str:
+            """Rotate turtle by specified angle in degrees (positive for counterclockwise)."""
+            msg = Twist()
+            msg.angular.z = math.radians(float(angle))
+            duration = 1.0  # Time to complete rotation
+            
+            self.cmd_vel_pub.publish(msg)
+            self.create_timer(duration, lambda: self.cmd_vel_pub.publish(Twist()))
+            return f"Rotated {angle} degrees"
+
+        @tool
+        def get_pose() -> str:
+            """Get current pose of the turtle."""
+            return f"x: {self.turtle_pose.x:.2f}, y: {self.turtle_pose.y:.2f}, theta: {math.degrees(self.turtle_pose.theta):.2f} degrees"
+
+        self.prompt = ChatPromptTemplate.from_messages([
+            ("system", """You are a turtle control assistant for ROS 2 turtlesim.
+            You can control the turtle using these commands:
+            - move_forward(distance): Move turtle forward by specified distance
+            - rotate(angle): Rotate turtle by specified angle in degrees
+            - get_pose(): Get current position and orientation of turtle
+            
+            Return only the necessary actions and their results. e.g
+            Human: Move the turtle forward 2 units
+            AI: Moving forward 2 units
+            """),
+            MessagesPlaceholder("chat_history", optional=True),
+            ("human", "{input}"),
+            MessagesPlaceholder("agent_scratchpad"),
+        ])
+
+        share_dir = get_package_share_directory('ros2_basic_agent')
+        config_dir = share_dir + '/config' + '/openai.env'
+        load_dotenv(Path(config_dir))
+
+        # setup the toolkit with the class methods
+        self.toolkit = [move_forward, rotate, get_pose]
+
+        # Choose the LLM that will drive the agent
+        self.llm = ChatOpenAI(model="gpt-4o-mini", temperature=0)
+
+        # Construct the OpenAI Tools agent
+        self.agent = create_openai_tools_agent(self.llm, self.toolkit, self.prompt)
+
+        # Create an agent executor by passing in the agent and tools
+        self.agent_executor = AgentExecutor(agent=self.agent, tools=self.toolkit, verbose=True)
+
+        # Create the subscriber for prompts
+        self.subscription = self.create_subscription(
+            String,
+            'prompt',
+            self.prompt_callback,
+            10
+        )
+
+    def pose_callback(self, msg):
+        """Callback to update turtle's pose"""
+        self.turtle_pose = msg
+
+    def prompt_callback(self, msg):
+        try:
+            result = self.agent_executor.invoke({"input": msg.data})
+            self.get_logger().info(f"Result: {result['output']}")
+        except Exception as e:
+            self.get_logger().error(f'Error processing prompt: {str(e)}')
+
+def main(args=None):
+    rclpy.init(args=args)
+    node = ROS2AIAgent()
+    try:
+        rclpy.spin(node)
+    except KeyboardInterrupt:
+        pass
+    finally:
+        node.destroy_node()
+
+
+if __name__ == '__main__':
+    main()
+=== venv ===
+no venv / no langchain
+Python 3.12.3

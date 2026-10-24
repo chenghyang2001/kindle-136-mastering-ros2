@@ -1,0 +1,24 @@
+master_ros2_interface/action/MyCustomAction
+master_ros2_interface/srv/ConcatStrings
+master_ros2_interface/msg/CustomMsg
+===== ros2 interface show master_ros2_interface/msg/CustomMsg
+string data
+int32 number
+===== ros2 interface show master_ros2_interface/srv/ConcatStrings
+# ConcatStrings.srv
+
+string str1
+string str2
+---
+string concatenated_str
+
+===== ros2 interface show master_ros2_interface/action/MyCustomAction
+# Goal
+int32 goal_value
+---
+# Result
+int32 result_value
+---
+# Feedback
+float32 progress
+

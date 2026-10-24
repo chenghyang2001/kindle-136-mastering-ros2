@@ -1,0 +1,32 @@
+--- /home/user/k136_ws/ch05/src/diffbot_gazebo/launch/diffbot_gz.launch.py 修改後 ---
+44:            "gz_args" : PythonExpression(["'", world_file, " -s -r'"])
+112:            # rviz,  # 本演練改：不開 RViz
+113:            # rqt_robot_steering,  # 本演練改：不開 rqt
+--- /home/user/k136_ws/ch05/src/rrbot_gazebo/launch/rrbot_gazebo.launch.py 修改後 ---
+44:            "gz_args" : PythonExpression(["'", world_file, " -s -r'"])
+139:            # rviz,  # 本演練改：不開 RViz
+140:            # delayed_rqt_traj_controller,  # 本演練改：不開 rqt
+91:        cmd=['ros2', 'run', 'controller_manager', 'spawner',
+97:        cmd=['ros2', 'run', 'controller_manager', 'spawner',
+
+# 本演練改：補橋接 gz DiffDrive plugin 發布的 odom
+- ros_topic_name: "/odom"
+  gz_topic_name: "/odom"
+  ros_type_name: "nav_msgs/msg/Odometry"
+  gz_type_name: "gz.msgs.Odometry"
+  direction: GZ_TO_ROS
+Sat Oct 24 06:48:46 PM CST 2026
+Starting >>> diffbot_gazebo
+Starting >>> rosbot_description
+Starting >>> rrbot_description
+Starting >>> rrbot_gazebo
+Finished <<< rrbot_description [0.95s]
+Finished <<< rosbot_description [2.83s]
+Finished <<< rrbot_gazebo [4.66s]
+Finished <<< diffbot_gazebo [4.70s]
+
+Summary: 4 packages finished [4.94s]
+Sat Oct 24 06:48:51 PM CST 2026
+diffbot_gazebo
+rosbot_description
+rrbot_gazebo

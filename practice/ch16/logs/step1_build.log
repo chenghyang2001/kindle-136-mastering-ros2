@@ -1,0 +1,50 @@
+circle_display_plugin
+circle_msgs
+cmd_vel
+cmd_vel_plugin
+=== 補裝相依（缺才裝）===
+相依都已安裝
+=== colcon build ===
+Starting >>> circle_msgs
+Starting >>> cmd_vel
+Starting >>> cmd_vel_plugin
+Finished <<< circle_msgs [15.3s]
+Starting >>> circle_display_plugin
+--- stderr: cmd_vel
+/home/user/k136_ws/ch16/src/cmd_vel/src/cmd_vel_ui.ui: Warning: The name 'layoutWidget' (QWidget) is already in use, defaulting to 'layoutWidget1'.
+---
+Finished <<< cmd_vel [18.5s]
+--- stderr: cmd_vel_plugin
+/home/user/k136_ws/ch16/src/cmd_vel_plugin/src/pub_cmd_vel.cpp: In member function ‘virtual void cmd_vel_plugin::PubCmdVel::Configure(const gz::sim::v8::Entity&, const std::shared_ptr<const sdf::v14::Element>&, gz::sim::v8::EntityComponentManager&, gz::sim::v8::EventManager&)’:
+/home/user/k136_ws/ch16/src/cmd_vel_plugin/src/pub_cmd_vel.cpp:64:50: warning: unused parameter ‘_entity’ [-Wunused-parameter]
+   64 | void PubCmdVel::Configure(const gz::sim::Entity &_entity,
+      |                           ~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~
+/home/user/k136_ws/ch16/src/cmd_vel_plugin/src/pub_cmd_vel.cpp:65:48: warning: unused parameter ‘_sdf’ [-Wunused-parameter]
+   65 |     const std::shared_ptr<const sdf::Element> &_sdf, gz::sim::EntityComponentManager &/*_ecm*/,
+      |     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~
+/home/user/k136_ws/ch16/src/cmd_vel_plugin/src/pub_cmd_vel.cpp: In member function ‘virtual void cmd_vel_plugin::PubCmdVel::PostUpdate(const gz::sim::v8::UpdateInfo&, const gz::sim::v8::EntityComponentManager&)’:
+/home/user/k136_ws/ch16/src/cmd_vel_plugin/src/pub_cmd_vel.cpp:73:55: warning: unused parameter ‘_info’ [-Wunused-parameter]
+   73 | void PubCmdVel::PostUpdate(const gz::sim::UpdateInfo &_info, const gz::sim::EntityComponentManager &/*_ecm*/) {
+      |                            ~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~
+---
+Finished <<< cmd_vel_plugin [45.4s]
+--- stderr: circle_display_plugin
+In file included from /home/user/k136_ws/ch16/src/circle_display_plugin/include/circle_display_plugin/circle_display.hpp:4,
+                 from /home/user/k136_ws/ch16/src/circle_display_plugin/src/circle_display.cpp:1:
+/opt/ros/jazzy/opt/rviz_ogre_vendor/include/OGRE/OgreVector3.h:2:62: note: ‘#pragma message: /opt/ros/jazzy/opt/rviz_ogre_vendor/include/OGRE/OgreVector3.h is deprecated, migrate to Ogre.h’
+    2 | #pragma message( __FILE__ " is deprecated, migrate to Ogre.h")
+      |                                                              ^
+In file included from /home/user/k136_ws/ch16/build/circle_display_plugin/include/circle_display_plugin/../../../../src/circle_display_plugin/include/circle_display_plugin/circle_display.hpp:4,
+                 from /home/user/k136_ws/ch16/build/circle_display_plugin/include/circle_display_plugin/moc_circle_display.cpp:10:
+/opt/ros/jazzy/opt/rviz_ogre_vendor/include/OGRE/OgreVector3.h:2:62: note: ‘#pragma message: /opt/ros/jazzy/opt/rviz_ogre_vendor/include/OGRE/OgreVector3.h is deprecated, migrate to Ogre.h’
+    2 | #pragma message( __FILE__ " is deprecated, migrate to Ogre.h")
+      |                                                              ^
+---
+Finished <<< circle_display_plugin [44.6s]
+
+Summary: 4 packages finished [1min 0s]
+  3 packages had stderr output: circle_display_plugin cmd_vel cmd_vel_plugin
+BUILD_EXIT=0
+build/cmd_vel_plugin/libCmdVelPlugin.so
+install/circle_display_plugin/lib/libcircle_display.so
+install/cmd_vel/lib/cmd_vel/libcmd_vel.so

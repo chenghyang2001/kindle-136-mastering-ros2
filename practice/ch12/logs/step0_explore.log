@@ -1,0 +1,226 @@
+/home/user/ros2_books/Mastering-ROS-2-for-Robotics-Programming/Chapter12
+/home/user/ros2_books/Mastering-ROS-2-for-Robotics-Programming/Chapter12/mobile_robot_model
+/home/user/ros2_books/Mastering-ROS-2-for-Robotics-Programming/Chapter12/mobile_robot_model/package.xml
+/home/user/ros2_books/Mastering-ROS-2-for-Robotics-Programming/Chapter12/mobile_robot_model/launch
+/home/user/ros2_books/Mastering-ROS-2-for-Robotics-Programming/Chapter12/mobile_robot_model/launch/display.launch.py
+/home/user/ros2_books/Mastering-ROS-2-for-Robotics-Programming/Chapter12/mobile_robot_model/launch/load_model.launch.py
+/home/user/ros2_books/Mastering-ROS-2-for-Robotics-Programming/Chapter12/mobile_robot_model/urdf
+/home/user/ros2_books/Mastering-ROS-2-for-Robotics-Programming/Chapter12/mobile_robot_model/urdf/mobile_robot.urdf
+/home/user/ros2_books/Mastering-ROS-2-for-Robotics-Programming/Chapter12/mobile_robot_model/CMakeLists.txt
+/home/user/ros2_books/Mastering-ROS-2-for-Robotics-Programming/Chapter12/ldlidar_sl_ros2
+/home/user/ros2_books/Mastering-ROS-2-for-Robotics-Programming/Chapter12/ldlidar_sl_ros2/LICENSE
+/home/user/ros2_books/Mastering-ROS-2-for-Robotics-Programming/Chapter12/ldlidar_sl_ros2/ldlidar_driver
+/home/user/ros2_books/Mastering-ROS-2-for-Robotics-Programming/Chapter12/ldlidar_sl_ros2/ldlidar_driver/src
+/home/user/ros2_books/Mastering-ROS-2-for-Robotics-Programming/Chapter12/ldlidar_sl_ros2/ldlidar_driver/include
+/home/user/ros2_books/Mastering-ROS-2-for-Robotics-Programming/Chapter12/ldlidar_sl_ros2/src
+/home/user/ros2_books/Mastering-ROS-2-for-Robotics-Programming/Chapter12/ldlidar_sl_ros2/src/demo.cpp
+/home/user/ros2_books/Mastering-ROS-2-for-Robotics-Programming/Chapter12/ldlidar_sl_ros2/README_CN.md
+/home/user/ros2_books/Mastering-ROS-2-for-Robotics-Programming/Chapter12/ldlidar_sl_ros2/package.xml
+/home/user/ros2_books/Mastering-ROS-2-for-Robotics-Programming/Chapter12/ldlidar_sl_ros2/scripts
+/home/user/ros2_books/Mastering-ROS-2-for-Robotics-Programming/Chapter12/ldlidar_sl_ros2/scripts/create_udev_rules.sh
+/home/user/ros2_books/Mastering-ROS-2-for-Robotics-Programming/Chapter12/ldlidar_sl_ros2/scripts/delete_udev_rules.sh
+/home/user/ros2_books/Mastering-ROS-2-for-Robotics-Programming/Chapter12/ldlidar_sl_ros2/scripts/ldlidar.rules
+/home/user/ros2_books/Mastering-ROS-2-for-Robotics-Programming/Chapter12/ldlidar_sl_ros2/launch
+/home/user/ros2_books/Mastering-ROS-2-for-Robotics-Programming/Chapter12/ldlidar_sl_ros2/launch/ld20.launch.py
+/home/user/ros2_books/Mastering-ROS-2-for-Robotics-Programming/Chapter12/ldlidar_sl_ros2/rviz2
+/home/user/ros2_books/Mastering-ROS-2-for-Robotics-Programming/Chapter12/ldlidar_sl_ros2/rviz2/ldlidar.rviz
+/home/user/ros2_books/Mastering-ROS-2-for-Robotics-Programming/Chapter12/ldlidar_sl_ros2/include
+/home/user/ros2_books/Mastering-ROS-2-for-Robotics-Programming/Chapter12/ldlidar_sl_ros2/include/ros2_api.h
+/home/user/ros2_books/Mastering-ROS-2-for-Robotics-Programming/Chapter12/ldlidar_sl_ros2/README.md
+/home/user/ros2_books/Mastering-ROS-2-for-Robotics-Programming/Chapter12/ldlidar_sl_ros2/CMakeLists.txt
+/home/user/ros2_books/Mastering-ROS-2-for-Robotics-Programming/Chapter12/rf2o_laser_odometry
+/home/user/ros2_books/Mastering-ROS-2-for-Robotics-Programming/Chapter12/rf2o_laser_odometry/LICENSE
+/home/user/ros2_books/Mastering-ROS-2-for-Robotics-Programming/Chapter12/rf2o_laser_odometry/src
+/home/user/ros2_books/Mastering-ROS-2-for-Robotics-Programming/Chapter12/rf2o_laser_odometry/src/CLaserOdometry2D.cpp
+/home/user/ros2_books/Mastering-ROS-2-for-Robotics-Programming/Chapter12/rf2o_laser_odometry/src/CLaserOdometry2DNode.cpp
+/home/user/ros2_books/Mastering-ROS-2-for-Robotics-Programming/Chapter12/rf2o_laser_odometry/package.xml
+/home/user/ros2_books/Mastering-ROS-2-for-Robotics-Programming/Chapter12/rf2o_laser_odometry/launch
+/home/user/ros2_books/Mastering-ROS-2-for-Robotics-Programming/Chapter12/rf2o_laser_odometry/launch/rf2o_laser_odometry.launch.py
+/home/user/ros2_books/Mastering-ROS-2-for-Robotics-Programming/Chapter12/rf2o_laser_odometry/include
+/home/user/ros2_books/Mastering-ROS-2-for-Robotics-Programming/Chapter12/rf2o_laser_odometry/include/rf2o_laser_odometry
+/home/user/ros2_books/Mastering-ROS-2-for-Robotics-Programming/Chapter12/rf2o_laser_odometry/README.md
+/home/user/ros2_books/Mastering-ROS-2-for-Robotics-Programming/Chapter12/rf2o_laser_odometry/CMakeLists.txt
+===== mobile_robot_model =====
+<?xml version="1.0"?>
+<?xml-model href="http://download.ros.org/schema/package_format3.xsd" schematypens="http://www.w3.org/2001/XMLSchema"?>
+<package format="3">
+  <name>mobile_robot_model</name>
+  <version>0.0.0</version>
+  <description>TODO: Package description</description>
+  <maintainer email="jonathan.cacace@gmail.com">jcacace</maintainer>
+  <license>TODO: License declaration</license>
+
+  <buildtool_depend>ament_cmake</buildtool_depend>
+
+  <depend>xacro</depend>
+
+  <test_depend>ament_lint_auto</test_depend>
+  <test_depend>ament_lint_common</test_depend>
+
+  <export>
+    <build_type>ament_cmake</build_type>
+  </export>
+</package>
+/home/user/ros2_books/Mastering-ROS-2-for-Robotics-Programming/Chapter12/mobile_robot_model/launch/display.launch.py
+/home/user/ros2_books/Mastering-ROS-2-for-Robotics-Programming/Chapter12/mobile_robot_model/launch/load_model.launch.py
+/home/user/ros2_books/Mastering-ROS-2-for-Robotics-Programming/Chapter12/mobile_robot_model/urdf/mobile_robot.urdf
+===== ldlidar_sl_ros2 =====
+<?xml version="1.0"?>
+<?xml-model href="http://download.ros.org/schema/package_format3.xsd" schematypens="http://www.w3.org/2001/XMLSchema"?>
+<package format="3">
+  <name>ldlidar_sl_ros2</name>
+  <version>1.0.0</version>
+  <description>This is LDLiDAR ROS2 Package</description>
+  <maintainer email="contact@ldrobot.com">linux</maintainer>
+  <license>MIT</license>
+
+  <buildtool_depend>ament_cmake</buildtool_depend>
+
+  <depend>rclcpp</depend>
+  <depend>sensor_msgs</depend>
+  <depend>geometry_msgs</depend>
+
+  <exec_depend>ros2launch</exec_depend>
+
+  <test_depend>ament_lint_auto</test_depend>
+  <test_depend>ament_lint_common</test_depend>
+
+  <export>
+    <build_type>ament_cmake</build_type>
+  </export>
+</package>
+/home/user/ros2_books/Mastering-ROS-2-for-Robotics-Programming/Chapter12/ldlidar_sl_ros2/launch/ld20.launch.py
+===== rf2o_laser_odometry =====
+<?xml version="1.0"?>
+<package>
+  <name>rf2o_laser_odometry</name>
+  <version>0.1.0</version>
+  <description>
+    Estimation of 2D odometry based on planar laser scans. Useful for mobile robots with innacurate base odometry.
+    For full description of the algorithm, please refer to:
+    Planar Odometry from a Radial Laser Scanner. A Range Flow-based Approach. ICRA 2016
+    Available at: http://mapir.isa.uma.es/mapirwebsite/index.php/mapir-downloads/papers/217
+  </description>
+
+  <maintainer email="jgmonroy@uma.es">Javier G. Monroy</maintainer>
+  <author email="marianojt@uma.es"> Mariano Jaimez</author>
+  <author email="jgmonroy@uma.es"> Javier G. Monroy</author>
+  <license>GPL v3</license> 
+
+  <buildtool_depend>ament_cmake</buildtool_depend>
+  <build_depend>geometry_msgs</build_depend>
+  <build_depend>rclcpp</build_depend>
+  <build_depend>std_msgs</build_depend>
+  <build_depend>tf2</build_depend>
+  <build_depend>tf2_ros</build_depend>  
+  <build_depend>eigen</build_depend>
+  <build_depend>cmake_modules</build_depend>
+  <build_depend>sensor_msgs</build_depend>
+  <build_depend>tf2_geometry_msgs</build_depend>
+  <run_depend>geometry_msgs</run_depend>
+  <run_depend>rclcpp</run_depend>
+  <run_depend>std_msgs</run_depend>
+  <run_depend>tf2</run_depend>
+  <run_depend>tf2_ros</run_depend>  
+  <run_depend>eigen</run_depend>
+  <run_depend>cmake_modules</run_depend>
+  <run_depend>sensor_msgs</run_depend>
+  <run_depend>tf2_geometry_msgs</run_depend>
+  <export>
+    <build_type>ament_cmake</build_type>
+  </export>
+</package>
+/home/user/ros2_books/Mastering-ROS-2-for-Robotics-Programming/Chapter12/rf2o_laser_odometry/launch/rf2o_laser_odometry.launch.py
+===== launch 檔內容 =====
+----- /home/user/ros2_books/Mastering-ROS-2-for-Robotics-Programming/Chapter12/mobile_robot_model/launch/display.launch.py
+from launch import LaunchDescription
+from launch_ros.actions import Node
+import os
+from ament_index_python.packages import get_package_share_directory
+
+def generate_launch_description():
+
+    ld = LaunchDescription()
+    
+    robot_model_dir = get_package_share_directory('mobile_robot_model')
+    urdf_path = os.path.join(robot_model_dir, 'urdf', 'mobile_robot.urdf')
+    urdf = open(urdf_path).read()
+
+    robot_state_publisher_node = Node(
+        package='robot_state_publisher',
+        executable='robot_state_publisher',
+        name='robot_state_publisher',
+        output='screen',
+        parameters=[{'robot_description': urdf}],
+    )
+
+    ld.add_action(robot_state_publisher_node)
+
+    return ld
+
+----- /home/user/ros2_books/Mastering-ROS-2-for-Robotics-Programming/Chapter12/mobile_robot_model/launch/load_model.launch.py
+from launch import LaunchDescription
+from launch_ros.actions import Node
+import launch_ros.descriptions
+from launch.substitutions import Command
+from launch.substitutions import PathJoinSubstitution
+from ament_index_python.packages import get_package_share_directory
+from launch.actions import DeclareLaunchArgument
+from launch.substitutions import LaunchConfiguration
+from launch.actions import OpaqueFunction
+import os
+
+def generate_launch_description():
+
+    
+    ld = LaunchDescription()
+    
+    robot_model_dir = get_package_share_directory('mobile_robot_model')
+    urdf_path = os.path.join(robot_model_dir, 'urdf', 'mobile_robot.urdf')
+    urdf = open(urdf_path).read()           
+
+
+    robot_state_publisher_node = Node(
+        package='robot_state_publisher',
+        executable='robot_state_publisher',
+        name='robot_state_publisher',
+        output='screen',
+        parameters=[{'robot_description': urdf}],
+    )
+
+    ld.add_action( robot_state_publisher_node )
+
+    return ld----- /home/user/ros2_books/Mastering-ROS-2-for-Robotics-Programming/Chapter12/rf2o_laser_odometry/launch/rf2o_laser_odometry.launch.py
+import os
+from pathlib import Path
+from ament_index_python.packages import get_package_share_directory
+from launch import LaunchDescription
+from launch.conditions import IfCondition
+from launch.conditions import UnlessCondition
+from launch.actions import DeclareLaunchArgument
+from launch.actions import IncludeLaunchDescription
+from launch.launch_description_sources import PythonLaunchDescriptionSource
+from launch.substitutions import ThisLaunchFileDir
+from launch.actions import ExecuteProcess
+from launch.substitutions import LaunchConfiguration, PythonExpression
+from launch_ros.actions import Node
+
+def generate_launch_description():
+
+    return LaunchDescription([
+
+            Node(
+                package='rf2o_laser_odometry',
+                executable='rf2o_laser_odometry_node',
+                name='rf2o_laser_odometry',
+                output='screen',
+                parameters=[{
+                    'laser_scan_topic' : '/scan',
+                    'odom_topic' : '/odom',
+                    'publish_tf' : True,
+                    'base_frame_id' : 'base_footprint',
+                    'odom_frame_id' : 'odom',
+                    'init_pose_from_topic' : '',
+                    'freq' : 15.0}],
+            ),
+    ])

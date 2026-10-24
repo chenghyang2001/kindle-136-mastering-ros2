@@ -1,0 +1,71 @@
+===== A. 故意改壞：期望值 "tolower" 改成 "ToLower" =====
+36:  ASSERT_EQ(value, "ToLower");  // 本演練改：故意改壞
+46:  ASSERT_EQ(value, "to-lower-2");
+Finished <<< to_lowercase [7.79s]
+
+Summary: 1 package finished [7.97s]
+Summary: 1 package finished [1.96s]
+  1 package had stderr output: to_lowercase
+  1 package had test failures: to_lowercase
+build/to_lowercase/Testing/20261024-1222/Test.xml: 1 test, 0 errors, 1 failure, 0 skipped
+- to_lowercase_test
+  <<< failure message
+    -- run_test.py: invoking following command in '/home/user/k136_ws/ch13/build/to_lowercase':
+     - /home/user/k136_ws/ch13/build/to_lowercase/to_lowercase_test --gtest_output=xml:/home/user/k136_ws/ch13/build/to_lowercase/test_results/to_lowercase/to_lowercase_test.gtest.xml
+    [==========] Running 1 test from 1 test suite.
+    [----------] Global test environment set-up.
+    [----------] 1 test from package_name
+    [ RUN      ] package_name.UpperToLower
+    /home/user/k136_ws/ch13/src/to_lowercase/test/to_lowercase_test.cpp:36: Failure
+    Expected equality of these values:
+      value
+        Which is: "tolower"
+      "ToLower"
+    
+    [  FAILED  ] package_name.UpperToLower (1418 ms)
+    [----------] 1 test from package_name (1418 ms total)
+    
+    [----------] Global test environment tear-down
+    [==========] 1 test from 1 test suite ran. (1418 ms total)
+    [  PASSED  ] 0 tests.
+    [  FAILED  ] 1 test, listed below:
+    [  FAILED  ] package_name.UpperToLower
+    
+     1 FAILED TEST
+    -- run_test.py: return code 1
+    -- run_test.py: inject classname prefix into gtest result file '/home/user/k136_ws/ch13/build/to_lowercase/test_results/to_lowercase/to_lowercase_test.gtest.xml'
+    -- run_test.py: verify result file '/home/user/k136_ws/ch13/build/to_lowercase/test_results/to_lowercase/to_lowercase_test.gtest.xml'
+  >>>
+build/to_lowercase/test_results/to_lowercase/to_lowercase_test.gtest.xml: 1 test, 0 errors, 1 failure, 0 skipped
+- to_lowercase.package_name UpperToLower (/home/user/k136_ws/ch13/src/to_lowercase/test/to_lowercase_test.cpp:7)
+  <<< failure message
+    /home/user/k136_ws/ch13/src/to_lowercase/test/to_lowercase_test.cpp:36
+    Expected equality of these values:
+      value
+        Which is: "tolower"
+      "ToLower"
+  >>>
+
+Summary: 2 tests, 0 errors, 2 failures, 0 skipped
+>>> test-result 回報有失敗（rc 非 0）
+===== B. 改回原狀 =====
+36:  ASSERT_EQ(value, "tolower");
+46:  ASSERT_EQ(value, "to-lower-2");
+Finished <<< to_lowercase [7.35s]
+
+Summary: 1 package finished [7.49s]
+Finished <<< to_lowercase [2.02s]
+
+Summary: 1 package finished [2.15s]
+Summary: 2 tests, 0 errors, 0 failures, 0 skipped
+===== C. 修正書本 first_test：540° 正規化到 [-π, π) 應為 -π =====
+37:    EXPECT_NEAR(degreesToRadians(540), -M_PI, 1e-9);  // 本演練改：區間為 [-π, π)
+38:    EXPECT_NEAR(degreesToRadians(-540), -M_PI, 1e-9);
+===== D. 全部重跑 =====
+
+Summary: 2 packages finished [1.27s]
+Finished <<< to_lowercase [1.97s]
+
+Summary: 2 packages finished [2.09s]
+Summary: 7 tests, 0 errors, 0 failures, 0 skipped
+ALL_GREEN

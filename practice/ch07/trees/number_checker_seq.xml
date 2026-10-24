@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 本演練改：Subtree 的兩層 Fallback 改成一層 Sequence，並拿掉 ForceSuccess。
+     原版：任一個 CheckNumber 成功就成功（OR），最後一個被 ForceSuccess 包住 → 子樹永遠 SUCCESS，每輪都會發布。
+     修改版：三個都要成功才成功（AND），門檻 30/50/80 → 理論機率約 0.29*0.49*0.79 ≈ 11%，
+     子樹失敗時根 Sequence 中止，PublishResult 不會執行（不發布）。 -->
+<root BTCPP_format="4"
+      main_tree_to_execute="RosIntegration">
+  <BehaviorTree ID="RosIntegration">
+    <Sequence>
+      <SubTree ID="Subtree" _autoremap="true"/>
+      <PublishResult topic_name="generated_number" generated_number="{generated_number}"/>
+    </Sequence>
+  </BehaviorTree>
+
+  <BehaviorTree ID="Subtree">
+    <Sequence>
+      <CheckNumber1 check_value="30" generated_number="{generated_number}"/>
+      <CheckNumber2 check_value="50" generated_number="{generated_number}"/>
+      <CheckNumber3 check_value="80" generated_number="{generated_number}"/>
+    </Sequence>
+  </BehaviorTree>
+</root>

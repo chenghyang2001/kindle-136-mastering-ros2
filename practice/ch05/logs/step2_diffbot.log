@@ -1,0 +1,48 @@
+[create-2] [INFO] [1792838663.673732275] [ros_gz_sim]: Entity creation successful.
+=== gz topic -l（odom 相關）===
+/cmd_vel
+/joint_states
+/odom
+/tf
+=== ros2 topic list ===
+/camera/color/image_raw
+/camera/depth/camera_info
+/camera/depth/color/points
+/camera/depth/image_rect_raw
+/camera/depth_image/compressed
+/camera/depth_image/compressedDepth
+/camera/depth_image/theora
+/camera/depth_image/zstd
+/camera/image/compressed
+/camera/image/compressedDepth
+/camera/image/theora
+/camera/image/zstd
+/clock
+/cmd_vel
+/diff_drive/scan
+/imu
+/joint_states
+/odom
+/parameter_events
+/robot_description
+/rosout
+/tf
+/tf_static
+=== 前進前 odom ===
+x: -1.57847394244811e-11
+y: -2.295525709010475e-26
+z: 0.0
+---
+=== 發 cmd_vel linear.x=0.5，10 Hz，10 秒 ===
+publishing #87: geometry_msgs.msg.Twist(linear=geometry_msgs.msg.Vector3(x=0.5, y=0.0, z=0.0), angular=geometry_msgs.msg.Vector3(x=0.0, y=0.0, z=0.0))
+
+=== 前進後 odom ===
+x: 4.919939355697818
+y: -2.52049084512348e-07
+z: 0.0
+---
+=== /odom 頻率 ===
+average rate: 25.794
+	min: 0.020s max: 0.067s std dev: 0.01184s window: 27
+average rate: 26.245
+	min: 0.020s max: 0.067s std dev: 0.01021s window: 54

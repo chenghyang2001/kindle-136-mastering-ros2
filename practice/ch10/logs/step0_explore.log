@@ -1,0 +1,415 @@
+=================== ./my_opencv_package/CMakeLists.txt
+cmake_minimum_required(VERSION 3.8)
+project(my_opencv_package)
+
+if(CMAKE_COMPILER_IS_GNUCXX OR CMAKE_CXX_COMPILER_ID MATCHES "Clang")
+  add_compile_options(-Wall -Wextra -Wpedantic)
+endif()
+
+# find dependencies
+find_package(ament_cmake REQUIRED)
+find_package(rclcpp REQUIRED)
+find_package(sensor_msgs REQUIRED)
+find_package(cv_bridge REQUIRED)
+find_package(image_transport REQUIRED)
+
+add_executable(image_processing src/image_processing.cpp)
+
+ament_target_dependencies(image_processing 
+  rclcpp 
+  sensor_msgs 
+  cv_bridge
+  image_transport
+)
+
+target_link_libraries(image_processing 
+  ${OpenCV_LIBRARIES}
+)
+
+install(TARGETS
+  image_processing
+  DESTINATION lib/${PROJECT_NAME}
+)
+
+
+if(BUILD_TESTING)
+  find_package(ament_lint_auto REQUIRED)
+  # the following line skips the linter which checks for copyrights
+  # comment the line when a copyright and license is added to all source files
+  set(ament_cmake_copyright_FOUND TRUE)
+  # the following line skips cpplint (only works in a git repo)
+  # comment the line when this package is in a git repo and when
+  # a copyright and license is added to all source files
+  set(ament_cmake_cpplint_FOUND TRUE)
+  ament_lint_auto_find_test_dependencies()
+endif()
+
+ament_package()
+=================== ./my_opencv_package/package.xml
+<?xml version="1.0"?>
+<?xml-model href="http://download.ros.org/schema/package_format3.xsd" schematypens="http://www.w3.org/2001/XMLSchema"?>
+<package format="3">
+  <name>my_opencv_package</name>
+  <version>0.0.0</version>
+  <description>TODO: Package description</description>
+  <maintainer email="jonathan.cacace@gmail.com">jcacace</maintainer>
+  <license>TODO: License declaration</license>
+
+  <buildtool_depend>ament_cmake</buildtool_depend>
+
+  <depend>rclcpp</depend>
+  <depend>sensor_msgs</depend>
+  <depend>cv_bridge</depend>
+  <depend>image_transport</depend>
+  <test_depend>ament_lint_auto</test_depend>
+  <test_depend>ament_lint_common</test_depend>
+
+  <export>
+    <build_type>ament_cmake</build_type>
+  </export>
+</package>
+=================== ./my_opencv_package/src/image_processing.cpp
+#include <cv_bridge/cv_bridge.hpp>
+#include <opencv2/opencv.hpp>
+#include "rclcpp/rclcpp.hpp"
+#include "sensor_msgs/msg/image.hpp"
+#include <opencv2/opencv.hpp> // We include everything about OpenCV as we don't care much about compilation time at the moment.
+#include <chrono>
+ 
+class ImageProcessor : public rclcpp::Node
+{
+public:
+    ImageProcessor() : Node("image_processor")
+    {
+        // Subscribe to the input image topic
+        image_subscription_ = this->create_subscription<sensor_msgs::msg::Image>(
+            "/image_raw", 10, std::bind(&ImageProcessor::image_callback, this, std::placeholders::_1));
+
+        // Publisher for processed image
+        contours_imag_pub_      = this->create_publisher<sensor_msgs::msg::Image>( "contours/image_raw", 1);
+        gray_img_pub_           = this->create_publisher<sensor_msgs::msg::Image>( "gray/image_raw", 1);
+        blur_img_pub_           = this->create_publisher<sensor_msgs::msg::Image>( "blur/image_raw", 1);
+        thresholded_img_pub_    = this->create_publisher<sensor_msgs::msg::Image>( "thresholded/image_raw", 1);
+        prespective_img_pub_    = this->create_publisher<sensor_msgs::msg::Image>( "prespective/image_raw", 1);
+        corner_img_pub_         = this->create_publisher<sensor_msgs::msg::Image>( "corner/image_raw", 1);
+        keypoints_img_pub_      = this->create_publisher<sensor_msgs::msg::Image>( "keypoints/image_raw", 1);
+    
+    }
+
+private:
+    void image_callback(const sensor_msgs::msg::Image::SharedPtr msg)
+    {
+        cv_bridge::CvImagePtr cv_ptr;
+        try {
+            cv_ptr = cv_bridge::toCvCopy(msg, sensor_msgs::image_encodings::BGR8);
+        }
+        catch (cv_bridge::Exception& e)  {
+            RCLCPP_ERROR(this->get_logger(), "cv_bridge exception: %s", e.what());
+            return;
+        }
+
+        cv::Mat processed_image = cv_ptr->image.clone();
+        cv::Mat contours_image = cv_ptr->image.clone();  
+        cv::Mat gray_image;
+        cv::Mat blur_image;
+        cv::Mat thresholded_image;
+        cv::Mat prespective_img;
+        cv::Mat corner_image;
+        cv::Mat keypoints_img;
+
+        // 0. Convert to grayscale if needed
+        cv::cvtColor(processed_image, gray_image, cv::COLOR_BGR2GRAY);
+
+        // 1. Blurring        
+        cv::blur(processed_image, blur_image, cv::Size(15, 15));
+            
+        // 2. Thresholding        
+        cv::threshold(gray_image, thresholded_image, 128, 255, cv::THRESH_BINARY);
+
+        // 3. Contour Detection
+        std::vector<std::vector<cv::Point>> contours;
+        cv::findContours(thresholded_image, contours, cv::RETR_EXTERNAL, cv::CHAIN_APPROX_SIMPLE);
+        cv::drawContours(contours_image, contours, -1, cv::Scalar(0, 255, 0), 2);
+        
+        // 4. Feature Detection and Description
+        cv::Ptr<cv::ORB> orb = cv::ORB::create();
+        std::vector<cv::KeyPoint> keypoints;
+        cv::Mat descriptors;
+        orb->detectAndCompute(gray_image, cv::noArray(), keypoints, descriptors);
+        cv::drawKeypoints(processed_image, keypoints, keypoints_img, cv::Scalar(0, 0, 255), cv::DrawMatchesFlags::DRAW_RICH_KEYPOINTS);
+
+        // corners
+        cv::Mat dst, dst_norm, dst_norm_scaled;
+        dst = cv::Mat::zeros(gray_image.size(), CV_32FC1);
+        // Parameters for Harris corner detection
+        const int blockSize = 2;      // Neighborhood size
+        const int apertureSize = 3;    // Aperture parameter for the Sobel operator
+        double k = 0.04;         // Harris detector free parameter
+        // Detecting corners
+        cv::cornerHarris(gray_image, dst, blockSize, apertureSize, k);
+        // Normalize the result
+        cv::normalize(dst, dst_norm, 0, 255, cv::NORM_MINMAX, CV_32FC1, cv::Mat());
+        // Convert to an 8-bit image to draw on it
+        cv::convertScaleAbs(dst_norm, dst_norm_scaled);
+        corner_image = processed_image.clone();
+        for (int i = 0; i < dst_norm.rows; i++) {
+            for (int j = 0; j < dst_norm.cols; j++) {
+                if ((int)dst_norm.at<float>(i, j) > 200) {
+                    cv::circle(corner_image, cv::Point(j, i), 5, cv::Scalar(0, 0, 255), 2, 8, 0);
+                }
+            }
+        }
+    
+        msg_ = cv_bridge::CvImage(std_msgs::msg::Header(), "bgr8", contours_image).toImageMsg();
+        contours_imag_pub_->publish(*msg_.get());
+        msg_ = cv_bridge::CvImage(std_msgs::msg::Header(), "mono8", gray_image).toImageMsg();
+        gray_img_pub_->publish(*msg_.get());
+        msg_ = cv_bridge::CvImage(std_msgs::msg::Header(), "bgr8", blur_image).toImageMsg();
+        blur_img_pub_->publish(*msg_.get());
+        msg_ = cv_bridge::CvImage(std_msgs::msg::Header(), "mono8", thresholded_image).toImageMsg();
+        thresholded_img_pub_->publish(*msg_.get());
+        msg_ = cv_bridge::CvImage(std_msgs::msg::Header(), "rgb8", corner_image).toImageMsg();
+        corner_img_pub_->publish(*msg_.get());
+        msg_ = cv_bridge::CvImage(std_msgs::msg::Header(), "bgr8", prespective_img).toImageMsg();
+        prespective_img_pub_->publish(*msg_.get());
+        msg_ = cv_bridge::CvImage(std_msgs::msg::Header(), "bgr8", keypoints_img).toImageMsg();
+        keypoints_img_pub_->publish(*msg_.get());
+    }
+
+   
+    rclcpp::Subscription<sensor_msgs::msg::Image>::SharedPtr image_subscription_;
+    rclcpp::Publisher<sensor_msgs::msg::Image>::SharedPtr contours_imag_pub_;
+    rclcpp::Publisher<sensor_msgs::msg::Image>::SharedPtr gray_img_pub_;
+    rclcpp::Publisher<sensor_msgs::msg::Image>::SharedPtr blur_img_pub_;
+    rclcpp::Publisher<sensor_msgs::msg::Image>::SharedPtr thresholded_img_pub_;
+    rclcpp::Publisher<sensor_msgs::msg::Image>::SharedPtr prespective_img_pub_;
+    rclcpp::Publisher<sensor_msgs::msg::Image>::SharedPtr corner_img_pub_;
+    rclcpp::Publisher<sensor_msgs::msg::Image>::SharedPtr keypoints_img_pub_;
+    sensor_msgs::msg::Image::SharedPtr msg_;
+
+};
+
+int main(int argc, char** argv)
+{
+    rclcpp::init(argc, argv);
+    rclcpp::spin(std::make_shared<ImageProcessor>());
+    rclcpp::shutdown();
+    return 0;
+}
+
+=================== ./pcl_processing/CMakeLists.txt
+cmake_minimum_required(VERSION 3.8)
+project(pcl_processing)
+
+if(CMAKE_COMPILER_IS_GNUCXX OR CMAKE_CXX_COMPILER_ID MATCHES "Clang")
+  add_compile_options(-Wall -Wextra -Wpedantic)
+endif()
+
+# find dependencies
+find_package(ament_cmake REQUIRED)
+find_package(rclcpp REQUIRED)
+find_package(sensor_msgs REQUIRED)
+find_package(pcl_ros REQUIRED)
+
+add_executable(pcl_processing src/pcl_processing.cpp)
+ament_target_dependencies(pcl_processing rclcpp sensor_msgs pcl_ros)
+target_link_libraries(pcl_processing ${PCL_LIBRARIES})
+install(TARGETS
+  pcl_processing
+  DESTINATION lib/${PROJECT_NAME})
+
+
+if(BUILD_TESTING)
+  find_package(ament_lint_auto REQUIRED)
+  # the following line skips the linter which checks for copyrights
+  # comment the line when a copyright and license is added to all source files
+  set(ament_cmake_copyright_FOUND TRUE)
+  # the following line skips cpplint (only works in a git repo)
+  # comment the line when this package is in a git repo and when
+  # a copyright and license is added to all source files
+  set(ament_cmake_cpplint_FOUND TRUE)
+  ament_lint_auto_find_test_dependencies()
+endif()
+
+ament_package()
+=================== ./pcl_processing/package.xml
+<?xml version="1.0"?>
+<?xml-model href="http://download.ros.org/schema/package_format3.xsd" schematypens="http://www.w3.org/2001/XMLSchema"?>
+<package format="3">
+  <name>pcl_processing</name>
+  <version>0.0.0</version>
+  <description>TODO: Package description</description>
+  <maintainer email="jonathan.cacace@gmail.com">jcacace</maintainer>
+  <license>TODO: License declaration</license>
+
+  <buildtool_depend>ament_cmake</buildtool_depend>
+
+  <depend>rclcpp</depend>
+  <depend>sensor_msgs</depend>
+  <depend>pcl_ros</depend>
+
+  <test_depend>ament_lint_auto</test_depend>
+  <test_depend>ament_lint_common</test_depend>
+
+  <export>
+    <build_type>ament_cmake</build_type>
+  </export>
+</package>
+=================== ./pcl_processing/src/pcl_processing.cpp
+#include <pcl/filters/passthrough.h>
+#include <pcl/filters/voxel_grid.h>
+#include <pcl/point_cloud.h>
+#include <pcl/point_types.h>
+#include <pcl_conversions/pcl_conversions.h>
+#include <sensor_msgs/msg/point_cloud2.hpp>
+
+class PointCloudProcessor : public rclcpp::Node
+{
+public:
+    PointCloudProcessor() : Node("pointcloud_processor")
+    {
+        // Subscribe to the point cloud data from RealSense
+        subscription_ = this->create_subscription<sensor_msgs::msg::PointCloud2>(
+            "/camera/camera/depth/color/points", 10,
+            std::bind(&PointCloudProcessor::processPointCloud, this, std::placeholders::_1));
+
+        // Publisher for the filtered and downsampled point cloud
+        publisher_ = this->create_publisher<sensor_msgs::msg::PointCloud2>("filtered_pointcloud", 10);
+    }
+
+private:
+    void processPointCloud(const sensor_msgs::msg::PointCloud2::SharedPtr msg)
+    {
+        // Convert ROS PointCloud2 message to PCL PointCloud
+        pcl::PointCloud<pcl::PointXYZ>::Ptr cloud(new pcl::PointCloud<pcl::PointXYZ>());
+        pcl::fromROSMsg(*msg, *cloud);
+
+        pcl::PassThrough<pcl::PointXYZ> pass_x;
+        pass_x.setInputCloud(cloud);
+        pass_x.setFilterFieldName("x");
+        pass_x.setFilterLimits(-0.5, 0.5); // Adjust limits to focus on the center along the x-axis
+        pcl::PointCloud<pcl::PointXYZ>::Ptr cloud_filtered_x(new pcl::PointCloud<pcl::PointXYZ>());
+        pass_x.filter(*cloud_filtered_x);
+
+        pcl::PassThrough<pcl::PointXYZ> pass_y;
+        pass_y.setInputCloud(cloud_filtered_x); // Apply the next filter on the result of the previous one
+        pass_y.setFilterFieldName("y");
+        pass_y.setFilterLimits(-0.5, 0.5); // Adjust limits for the center along the y-axis
+        pcl::PointCloud<pcl::PointXYZ>::Ptr cloud_filtered_y(new pcl::PointCloud<pcl::PointXYZ>());
+        pass_y.filter(*cloud_filtered_y);
+
+        pcl::PassThrough<pcl::PointXYZ> pass_z;
+        pass_z.setInputCloud(cloud_filtered_y);
+        pass_z.setFilterFieldName("z");
+        pass_z.setFilterLimits(0.1, 1.0); // Focus on the depth (z-axis) from 0.5m to 2.0m
+        pcl::PointCloud<pcl::PointXYZ>::Ptr cloud_filtered(new pcl::PointCloud<pcl::PointXYZ>());
+        pass_z.filter(*cloud_filtered);
+
+        // Apply VoxelGrid filter for subsampling
+        pcl::VoxelGrid<pcl::PointXYZ> voxel_grid;
+        voxel_grid.setInputCloud(cloud_filtered);
+        voxel_grid.setLeafSize(0.02f, 0.02f, 0.02f); // 2cm voxel size
+        pcl::PointCloud<pcl::PointXYZ>::Ptr cloud_downsampled(new pcl::PointCloud<pcl::PointXYZ>());
+        voxel_grid.filter(*cloud_downsampled);
+
+        // Convert back to ROS PointCloud2 message
+        sensor_msgs::msg::PointCloud2 output_msg;
+        pcl::toROSMsg(*cloud_downsampled, output_msg);
+        output_msg.header = msg->header;
+        // Publish the filtered point cloud
+        publisher_->publish(output_msg);
+    }
+
+    rclcpp::Subscription<sensor_msgs::msg::PointCloud2>::SharedPtr subscription_;
+    rclcpp::Publisher<sensor_msgs::msg::PointCloud2>::SharedPtr publisher_;
+};
+
+int main(int argc, char **argv)
+{
+    rclcpp::init(argc, argv);
+    rclcpp::spin(std::make_shared<PointCloudProcessor>());
+    rclcpp::shutdown();
+    return 0;
+}
+=================== ./usb_cam_launcher/CMakeLists.txt
+cmake_minimum_required(VERSION 3.8)
+project(usb_cam_launcher)
+
+if(CMAKE_COMPILER_IS_GNUCXX OR CMAKE_CXX_COMPILER_ID MATCHES "Clang")
+  add_compile_options(-Wall -Wextra -Wpedantic)
+endif()
+
+# find dependencies
+find_package(ament_cmake REQUIRED)
+# uncomment the following section in order to fill in
+# further dependencies manually.
+# find_package(<dependency> REQUIRED)
+
+install(DIRECTORY launch DESTINATION share/${PROJECT_NAME})
+
+if(BUILD_TESTING)
+  find_package(ament_lint_auto REQUIRED)
+  # the following line skips the linter which checks for copyrights
+  # comment the line when a copyright and license is added to all source files
+  set(ament_cmake_copyright_FOUND TRUE)
+  # the following line skips cpplint (only works in a git repo)
+  # comment the line when this package is in a git repo and when
+  # a copyright and license is added to all source files
+  set(ament_cmake_cpplint_FOUND TRUE)
+  ament_lint_auto_find_test_dependencies()
+endif()
+
+ament_package()
+=================== ./usb_cam_launcher/launch/my_usb_cam.launch.py
+from launch import LaunchDescription
+from launch_ros.actions import Node
+
+def generate_launch_description():
+    return LaunchDescription([
+        Node(
+            package='usb_cam',
+            executable='usb_cam_node_exe',
+            name='camera',
+            output='screen',
+            parameters=[
+                {'video_device': '/dev/video2'},
+                {'image_width': 1280},
+                {'image_height': 720},
+                {'pixel_format': 'yuyv'},   
+                {'camera_frame_id': 'usb_camera'}
+            ],
+            remappings=[
+                ('/image_raw', '/image_rect')
+            ]
+        )
+    ])
+=================== ./usb_cam_launcher/package.xml
+<?xml version="1.0"?>
+<?xml-model href="http://download.ros.org/schema/package_format3.xsd" schematypens="http://www.w3.org/2001/XMLSchema"?>
+<package format="3">
+  <name>usb_cam_launcher</name>
+  <version>0.0.0</version>
+  <description>TODO: Package description</description>
+  <maintainer email="jonathan.cacace@gmail.com">jcacace</maintainer>
+  <license>TODO: License declaration</license>
+
+  <buildtool_depend>ament_cmake</buildtool_depend>
+
+  <test_depend>ament_lint_auto</test_depend>
+  <test_depend>ament_lint_common</test_depend>
+
+  <export>
+    <build_type>ament_cmake</build_type>
+  </export>
+</package>
+=================== 已安裝套件檢查
+ros-jazzy-cv-bridge 4.1.0-1noble.20260911.143610
+ros-jazzy-image-tools 0.33.11-1noble.20260911.142625
+ros-jazzy-image-transport 5.1.8-1noble.20260912.165731
+ros-jazzy-image-transport-plugins 4.0.7-1noble.20260912.190655
+ros-jazzy-pcl-conversions 2.6.5-1noble.20260912.165932
+ros-jazzy-pcl-ros 2.6.5-1noble.20260916.065720
+ros-jazzy-rmw-cyclonedds-cpp 2.2.4-1noble.20260911.095700
+ros-jazzy-usb-cam 0.8.1-1noble.20260912.190806
+libopencv-dev 4.6.0+dfsg-13.1ubuntu1
+libpcl-dev 1.14.0+dfsg-1

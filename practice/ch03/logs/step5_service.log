@@ -1,0 +1,27 @@
+===== A. launch server_client（client 送一次就結束）
+[INFO] [launch]: All log files can be found below /home/user/.ros/log/2026-10-24-18-34-46-572870-DESKTOP-6LST1BR-1176
+[INFO] [launch]: Default logging verbosity is set to INFO
+[INFO] [simple_server-1]: process started with pid [1179]
+[INFO] [simple_client-2]: process started with pid [1180]
+[simple_client-2] [INFO] [1792838086.667419705] [simple_client]: Started ROS 2 Service Client
+[simple_server-1] [INFO] [1792838086.680644554] [simple_server]: Started ROS 2 Service Server
+[simple_server-1] [INFO] [1792838086.681584642] [simple_server]: Received: str1='Hello, ', str2='World!'; Responding with: 'Hello, World!'
+[simple_client-2] [INFO] [1792838086.681957294] [simple_client]: Result: concatenated_str='Hello, World!'
+[INFO] [simple_client-2]: process has finished cleanly [pid 1180]
+===== B. 單獨啟 server，手動 service call
+/concat_strings [master_ros2_interface/srv/ConcatStrings]
+/string_concat_service/describe_parameters [rcl_interfaces/srv/DescribeParameters]
+/string_concat_service/get_parameter_types [rcl_interfaces/srv/GetParameterTypes]
+/string_concat_service/get_parameters [rcl_interfaces/srv/GetParameters]
+/string_concat_service/get_type_description [type_description_interfaces/srv/GetTypeDescription]
+/string_concat_service/list_parameters [rcl_interfaces/srv/ListParameters]
+/string_concat_service/set_parameters [rcl_interfaces/srv/SetParameters]
+/string_concat_service/set_parameters_atomically [rcl_interfaces/srv/SetParametersAtomically]
+requester: making request: master_ros2_interface.srv.ConcatStrings_Request(str1='K136 ', str2='Chapter03')
+
+response:
+master_ros2_interface.srv.ConcatStrings_Response(concatenated_str='K136 Chapter03')
+
+===== server 端輸出
+[INFO] [1792838101.456091678] [string_concat_service]: Started ROS 2 Service Server
+[INFO] [1792838107.765642880] [string_concat_service]: Received: str1='K136 ', str2='Chapter03'; Responding with: 'K136 Chapter03'

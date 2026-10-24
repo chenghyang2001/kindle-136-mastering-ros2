@@ -1,0 +1,289 @@
+./docker_compose_dev/docker-compose-gui.yml
+./docker_compose_dev/docker-compose-nvidia.yml
+./docker_compose_dev/Dockerfile.master_ros2
+./docker_compose_dev/ros_ws_entrypoint.sh
+./docker_compose_dev/start_container.sh
+./docker_dev/build_image.sh
+./docker_dev/create_container.sh
+./docker_dev/delete_all_img.bash
+./docker_dev/Dockerfile.master_ros2
+./docker_dev/remove_container.sh
+./docker_dev/ros_entrypoint.sh
+./docker_dev/ros_ws_entrypoint.sh
+./docker_dev/start_container.sh
+./docker_dev/stop_container.sh
+./master_ros2_interface/action/MyCustomAction.action
+./master_ros2_interface/CMakeLists.txt
+./master_ros2_interface/msg/CustomMsg.msg
+./master_ros2_interface/package.xml
+./master_ros2_interface/srv/ConcatStrings.srv
+./master_ros2_pkg/CMakeLists.txt
+./master_ros2_pkg/launch/action_server_client.launch.py
+./master_ros2_pkg/launch/pub_params_sub.launch.py
+./master_ros2_pkg/launch/pub_sub.launch.py
+./master_ros2_pkg/launch/server_client.launch.py
+./master_ros2_pkg/package.xml
+./master_ros2_pkg/src/action_client.cpp
+./master_ros2_pkg/src/action_server.cpp
+./master_ros2_pkg/src/publisher_node.cpp
+./master_ros2_pkg/src/publisher_node_params.cpp
+./master_ros2_pkg/src/simple_client.cpp
+./master_ros2_pkg/src/simple_server.cpp
+./master_ros2_pkg/src/subscriber_node.cpp
+===== ./master_ros2_interface/action/MyCustomAction.action
+# Goal
+int32 goal_value
+---
+# Result
+int32 result_value
+---
+# Feedback
+float32 progress
+
+
+===== ./master_ros2_interface/CMakeLists.txt
+cmake_minimum_required(VERSION 3.8)
+project(master_ros2_interface)
+
+if(CMAKE_COMPILER_IS_GNUCXX OR CMAKE_CXX_COMPILER_ID MATCHES "Clang")
+  add_compile_options(-Wall -Wextra -Wpedantic)
+endif()
+
+# find dependencies
+find_package(ament_cmake REQUIRED)
+find_package(rosidl_default_generators REQUIRED)
+
+rosidl_generate_interfaces(${PROJECT_NAME}
+  "msg/CustomMsg.msg"
+  "srv/ConcatStrings.srv"
+  "action/MyCustomAction.action"
+
+)
+
+ament_export_dependencies(rosidl_default_runtime)
+
+ament_package()
+
+
+
+===== ./master_ros2_interface/msg/CustomMsg.msg
+string data
+int32 number
+
+===== ./master_ros2_interface/package.xml
+<?xml version="1.0"?>
+<?xml-model href="http://download.ros.org/schema/package_format3.xsd" schematypens="http://www.w3.org/2001/XMLSchema"?>
+<package format="3">
+  <name>master_ros2_interface</name>
+  <version>0.0.0</version>
+  <description>TODO: Package description</description>
+  <maintainer email="robot@todo.todo">robot</maintainer>
+  <license>TODO: License declaration</license>
+
+  <buildtool_depend>ament_cmake</buildtool_depend>
+
+  <build_depend>rosidl_default_generators</build_depend>
+  <depend>rclcpp</depend>
+  <depend>action_msgs</depend>
+  <exec_depend>rosidl_default_runtime</exec_depend>
+  <member_of_group>rosidl_interface_packages</member_of_group>
+
+
+  <test_depend>ament_lint_auto</test_depend>
+  <test_depend>ament_lint_common</test_depend>
+
+  <export>
+    <build_type>ament_cmake</build_type>
+  </export>
+</package>
+
+===== ./master_ros2_interface/srv/ConcatStrings.srv
+# ConcatStrings.srv
+
+string str1
+string str2
+---
+string concatenated_str
+
+
+===== ./master_ros2_pkg/CMakeLists.txt
+cmake_minimum_required(VERSION 3.8)
+project(master_ros2_pkg)
+
+if(CMAKE_COMPILER_IS_GNUCXX OR CMAKE_CXX_COMPILER_ID MATCHES "Clang")
+  add_compile_options(-Wall -Wextra -Wpedantic)
+endif()
+
+# find dependencies
+find_package(ament_cmake REQUIRED)
+find_package(rclcpp REQUIRED)
+find_package(std_msgs REQUIRED)
+find_package(rclcpp_action REQUIRED)
+find_package(master_ros2_interface REQUIRED)
+
+
+add_executable(publisher_node src/publisher_node.cpp)
+ament_target_dependencies(publisher_node rclcpp std_msgs master_ros2_interface)
+
+add_executable(subscriber_node src/subscriber_node.cpp)
+ament_target_dependencies(subscriber_node rclcpp std_msgs master_ros2_interface)
+
+add_executable(publisher_node_params src/publisher_node_params.cpp)
+ament_target_dependencies(publisher_node_params rclcpp std_msgs master_ros2_interface)
+
+add_executable(simple_server src/simple_server.cpp)
+ament_target_dependencies(simple_server rclcpp master_ros2_interface)
+
+add_executable(simple_client src/simple_client.cpp)
+ament_target_dependencies(simple_client rclcpp master_ros2_interface)
+
+add_executable(action_server src/action_server.cpp)
+ament_target_dependencies(action_server rclcpp rclcpp_action master_ros2_interface)
+
+add_executable(action_client src/action_client.cpp)
+ament_target_dependencies(action_client rclcpp rclcpp_action master_ros2_interface)
+
+
+install(TARGETS
+ publisher_node
+ subscriber_node 
+ publisher_node_params 
+ simple_server
+ simple_client
+ action_server
+ action_client
+ DESTINATION lib/${PROJECT_NAME}/
+)
+
+install(
+  DIRECTORY launch
+  DESTINATION share/${PROJECT_NAME}/
+)
+
+
+ament_package()
+
+===== ./master_ros2_pkg/launch/action_server_client.launch.py
+import launch
+from launch import LaunchDescription
+from launch_ros.actions import Node
+
+def generate_launch_description():
+    return LaunchDescription([
+        # First node
+        Node(
+            package='master_ros2_pkg',
+            executable='action_server',
+            name='action_server',
+            output='screen',
+        ),
+        # Second node
+        Node(
+            package='master_ros2_pkg',
+            executable='action_client',
+            name='action_client',
+            output='screen',
+        ),
+    ])
+
+
+
+===== ./master_ros2_pkg/launch/pub_params_sub.launch.py
+import launch
+from launch import LaunchDescription
+from launch_ros.actions import Node
+
+def generate_launch_description():
+    return LaunchDescription([
+        # First node
+        Node(
+            package='master_ros2_pkg',
+            executable='publisher_node_params',
+            name='publisher_node',
+            output='screen',
+        ),
+        # Second node
+        Node(
+            package='master_ros2_pkg',
+            executable='subscriber_node',
+            name='subscriber_node',
+            output='screen',
+        ),
+    ])
+
+
+
+===== ./master_ros2_pkg/launch/pub_sub.launch.py
+import launch
+from launch import LaunchDescription
+from launch_ros.actions import Node
+
+def generate_launch_description():
+    return LaunchDescription([
+        # First node
+        Node(
+            package='master_ros2_pkg',
+            executable='publisher_node',
+            name='publisher_node',
+            output='screen',
+        ),
+        # Second node
+        Node(
+            package='master_ros2_pkg',
+            executable='subscriber_node',
+            name='subscriber_node',
+            output='screen',
+        ),
+    ])
+
+
+
+===== ./master_ros2_pkg/launch/server_client.launch.py
+import launch
+from launch import LaunchDescription
+from launch_ros.actions import Node
+
+def generate_launch_description():
+    return LaunchDescription([
+        # First node
+        Node(
+            package='master_ros2_pkg',
+            executable='simple_server',
+            name='simple_server',
+            output='screen',
+        ),
+        # Second node
+        Node(
+            package='master_ros2_pkg',
+            executable='simple_client',
+            name='simple_client',
+            output='screen',
+        ),
+    ])
+
+
+
+===== ./master_ros2_pkg/package.xml
+<?xml version="1.0"?>
+<?xml-model href="http://download.ros.org/schema/package_format3.xsd" schematypens="http://www.w3.org/2001/XMLSchema"?>
+<package format="3">
+  <name>master_ros2_pkg</name>
+  <version>0.0.0</version>
+  <description>TODO: Package description</description>
+  <maintainer email="robot@todo.todo">robot</maintainer>
+  <license>TODO: License declaration</license>
+
+  <buildtool_depend>ament_cmake</buildtool_depend>
+
+  <depend>rclcpp</depend>
+  <depend>std_msgs</depend>
+  <depend>master_ros2_interface</depend>
+
+  <test_depend>ament_lint_auto</test_depend>
+  <test_depend>ament_lint_common</test_depend>
+
+  <export>
+    <build_type>ament_cmake</build_type>
+  </export>
+</package>
+

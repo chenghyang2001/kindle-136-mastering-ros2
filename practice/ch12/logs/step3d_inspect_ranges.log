@@ -1,0 +1,50 @@
+/home/user/k136_ws/ch12/src/rf2o_laser_odometry/src/CLaserOdometry2D.cpp:61:  width = scan.ranges.size();    // Num of samples (size) of the scan laser
+/home/user/k136_ws/ch12/src/rf2o_laser_odometry/src/CLaserOdometry2D.cpp:189:  range_wf = Eigen::Map<const Eigen::MatrixXf>(scan.ranges.data(), width, 1);
+/home/user/k136_ws/ch12/src/rf2o_laser_odometry/src/CLaserOdometry2D.cpp:290:        const float dcenter = range_wf(u);
+/home/user/k136_ws/ch12/src/rf2o_laser_odometry/src/CLaserOdometry2D.cpp:302:              const float abs_dif = std::abs(range_wf(u+l)-dcenter);
+/home/user/k136_ws/ch12/src/rf2o_laser_odometry/src/CLaserOdometry2D.cpp:307:                sum += aux_w*range_wf(u+l);
+/home/user/k136_ws/ch12/src/rf2o_laser_odometry/src/CLaserOdometry2D.cpp:329:                const float abs_dif = std::abs(range_wf(indu)-dcenter);
+/home/user/k136_ws/ch12/src/rf2o_laser_odometry/src/CLaserOdometry2D.cpp:334:                  sum += aux_w*range_wf(indu);
+/home/user/k136_ws/ch12/src/rf2o_laser_odometry/src/CLaserOdometry2DNode.cpp:100:        rf2o_ref.range_wf(i) = new_scan->ranges[i];
+using namespace rf2o;
+
+bool CLaserOdometry2DNode::setLaserPoseFromTf()
+{
+  bool retrieved = false;
+
+  // Set laser pose on the robot (through tF)
+  // This allow estimation of the odometry with respect to the robot base reference system.
+  geometry_msgs::msg::TransformStamped tf_laser;
+  try
+  {
+    tf_laser = buffer_->lookupTransform(base_frame_id, last_scan.header.frame_id, tf2::TimePointZero);
+    retrieved = true;
+  }
+  catch (tf2::TransformException &ex)
+  {
+    RCLCPP_ERROR(get_logger(), "%s",ex.what());
+    retrieved = false;
+  }
+
+  //TF:transform -> Eigen::Isometry3d
+  tf2::Transform transform;
+  tf2::convert(tf_laser.transform, transform);
+  const tf2::Matrix3x3 &basis = transform.getBasis();
+  Eigen::Matrix3d R;
+
+  for(int r = 0; r < 3; r++)
+    for(int c = 0; c < 3; c++)
+      R(r,c) = basis[r][c];
+
+  Pose3d laser_tf(R);
+
+  const tf2::Vector3 &t = transform.getOrigin();
+  laser_tf.translation()(0) = t[0];
+  laser_tf.translation()(1) = t[1];
+  laser_tf.translation()(2) = t[2];
+
+  rf2o_ref.setLaserPose(laser_tf);
+
+  return retrieved;
+}
+41ea613 chapter 12 code added

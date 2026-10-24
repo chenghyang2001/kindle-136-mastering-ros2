@@ -1,0 +1,20 @@
+[INFO] [launch]: All log files can be found below /home/user/.ros/log/2026-10-24-19-40-53-110280-DESKTOP-6LST1BR-832
+[INFO] [launch]: Default logging verbosity is set to INFO
+[INFO] [joint_space_planning-1]: process started with pid [835]
+[joint_space_planning-1] [INFO] [1792842053.370479905] [moveit_978072068.moveit.ros.rdf_loader]: Loaded robot model in 0.00303599 seconds
+[joint_space_planning-1] [INFO] [1792842053.370575842] [moveit_978072068.moveit.core.robot_model]: Loading robot model 'panda'...
+[joint_space_planning-1] [INFO] [1792842053.376934668] [moveit_978072068.moveit.kinematics.kdl_kinematics_plugin]: Joint weights for group 'arm': 1 1 1 1 1 1 1
+[joint_space_planning-1] [INFO] [1792842053.393495277] [moveit_978072068.moveit.ros.move_group_interface]: Ready to take commands for planning group arm.
+[joint_space_planning-1] [INFO] [1792842053.393674658] [moveit_978072068.moveit.ros.move_group_interface]: MoveGroup action client/server ready
+[joint_space_planning-1] [INFO] [1792842053.394266648] [moveit_978072068.moveit.ros.move_group_interface]: Planning request accepted
+[joint_space_planning-1] [INFO] [1792842053.408769247] [moveit_978072068.moveit.ros.move_group_interface]: Planning request complete!
+[joint_space_planning-1] [INFO] [1792842053.408877244] [moveit_978072068.moveit.ros.move_group_interface]: time taken to generate plan: 0.00239963 seconds
+[joint_space_planning-1] [INFO] [1792842053.409445454] [moveit_978072068.moveit.ros.move_group_interface]: Plan and Execute request accepted
+[joint_space_planning-1] [INFO] [1792842055.213093365] [moveit_978072068.moveit.ros.move_group_interface]: Plan and Execute request complete!
+[joint_space_planning-1] [INFO] [1792842058.213780570] [moveit_978072068.moveit.ros.move_group_interface]: MoveGroup action client/server ready
+[joint_space_planning-1] [INFO] [1792842058.214387003] [moveit_978072068.moveit.ros.move_group_interface]: Planning request accepted
+[joint_space_planning-1] [INFO] [1792842058.247903341] [moveit_978072068.moveit.ros.move_group_interface]: Planning request complete!
+[joint_space_planning-1] [INFO] [1792842058.248249037] [moveit_978072068.moveit.ros.move_group_interface]: time taken to generate plan: 0.022616 seconds
+[joint_space_planning-1] [INFO] [1792842058.250407681] [moveit_978072068.moveit.ros.move_group_interface]: Plan and Execute request accepted
+[joint_space_planning-1] [INFO] [1792842060.073308094] [moveit_978072068.moveit.ros.move_group_interface]: Plan and Execute request complete!
+[INFO] [joint_space_planning-1]: process has finished cleanly [pid 835]

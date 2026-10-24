@@ -1,0 +1,301 @@
+Starting >>> first_gtest
+Starting >>> to_lowercase
+-- The C compiler identification is GNU 13.3.0
+-- The C compiler identification is GNU 13.3.0
+-- The CXX compiler identification is GNU 13.3.0
+-- The CXX compiler identification is GNU 13.3.0
+-- Detecting C compiler ABI info
+-- Detecting C compiler ABI info
+-- Detecting C compiler ABI info - done
+-- Detecting C compiler ABI info - done
+-- Check for working C compiler: /usr/bin/cc - skipped
+-- Detecting C compile features
+-- Detecting C compile features - done
+-- Check for working C compiler: /usr/bin/cc - skipped
+-- Detecting C compile features
+-- Detecting C compile features - done
+-- Detecting CXX compiler ABI info
+-- Detecting CXX compiler ABI info
+-- Detecting CXX compiler ABI info - done
+-- Detecting CXX compiler ABI info - done
+-- Check for working CXX compiler: /usr/bin/c++ - skipped
+-- Detecting CXX compile features
+-- Detecting CXX compile features - done
+-- Check for working CXX compiler: /usr/bin/c++ - skipped
+-- Detecting CXX compile features
+-- Detecting CXX compile features - done
+-- Found ament_cmake: 2.5.6 (/opt/ros/jazzy/share/ament_cmake/cmake)
+-- Found ament_cmake: 2.5.6 (/opt/ros/jazzy/share/ament_cmake/cmake)
+-- Found Python3: /usr/bin/python3 (found version "3.12.3") found components: Interpreter 
+-- Found Python3: /usr/bin/python3 (found version "3.12.3") found components: Interpreter 
+-- Override CMake install command with custom implementation using symlinks instead of copying resources
+-- Override CMake install command with custom implementation using symlinks instead of copying resources
+-- Found rclcpp: 28.1.22 (/opt/ros/jazzy/share/rclcpp/cmake)
+-- Found rclcpp: 28.1.22 (/opt/ros/jazzy/share/rclcpp/cmake)
+-- Found rosidl_generator_c: 4.6.9 (/opt/ros/jazzy/share/rosidl_generator_c/cmake)
+-- Found rosidl_generator_c: 4.6.9 (/opt/ros/jazzy/share/rosidl_generator_c/cmake)
+-- Found rosidl_generator_cpp: 4.6.9 (/opt/ros/jazzy/share/rosidl_generator_cpp/cmake)
+-- Found rosidl_generator_cpp: 4.6.9 (/opt/ros/jazzy/share/rosidl_generator_cpp/cmake)
+-- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c
+-- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c
+-- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp
+-- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp
+-- Found rmw_implementation_cmake: 7.3.4 (/opt/ros/jazzy/share/rmw_implementation_cmake/cmake)
+-- Found rmw_cyclonedds_cpp: 2.2.4 (/opt/ros/jazzy/share/rmw_cyclonedds_cpp/cmake)
+-- Found rmw_implementation_cmake: 7.3.4 (/opt/ros/jazzy/share/rmw_implementation_cmake/cmake)
+-- Found rmw_cyclonedds_cpp: 2.2.4 (/opt/ros/jazzy/share/rmw_cyclonedds_cpp/cmake)
+-- Using RMW implementation 'rmw_cyclonedds_cpp' as default
+-- Using RMW implementation 'rmw_cyclonedds_cpp' as default
+-- Found std_msgs: 5.3.8 (/opt/ros/jazzy/share/std_msgs/cmake)
+-- Found std_msgs: 5.3.8 (/opt/ros/jazzy/share/std_msgs/cmake)
+-- Found ament_cmake_gtest: 2.5.6 (/opt/ros/jazzy/share/ament_cmake_gtest/cmake)
+-- Found ament_cmake_gtest: 2.5.6 (/opt/ros/jazzy/share/ament_cmake_gtest/cmake)
+-- Found gtest sources under '/opt/ros/jazzy/src/gtest_vendor': C++ tests using 'Google Test' will be built
+-- Found gtest sources under '/opt/ros/jazzy/src/gtest_vendor': C++ tests using 'Google Test' will be built
+-- Performing Test CMAKE_HAVE_LIBC_PTHREAD
+-- Performing Test CMAKE_HAVE_LIBC_PTHREAD
+-- Performing Test CMAKE_HAVE_LIBC_PTHREAD - Success
+-- Found Threads: TRUE  
+-- Performing Test CMAKE_HAVE_LIBC_PTHREAD - Success
+-- Found Threads: TRUE  
+-- Configuring done (5.3s)
+-- Configuring done (5.3s)
+-- Generating done (0.0s)
+-- Build files have been written to: /home/user/k136_ws/ch13/build/first_gtest
+-- Generating done (0.0s)
+-- Build files have been written to: /home/user/k136_ws/ch13/build/to_lowercase
+[ 16%] Building CXX object gtest/CMakeFiles/gtest.dir/src/gtest-all.cc.o
+[ 33%] Building CXX object gtest/CMakeFiles/gtest_main.dir/src/gtest_main.cc.o
+[ 30%] Building CXX object CMakeFiles/to_lowercase.dir/src/to_lowercase.cpp.o
+[ 30%] Building CXX object gtest/CMakeFiles/gtest_main.dir/src/gtest_main.cc.o
+[ 30%] Building CXX object CMakeFiles/to_lowercase.dir/src/main.cpp.o
+[ 40%] Building CXX object gtest/CMakeFiles/gtest.dir/src/gtest-all.cc.o
+[ 50%] Linking CXX static library libgtest_main.a
+[ 50%] Built target gtest_main
+[ 50%] Linking CXX static library libgtest_main.a
+[ 50%] Built target gtest_main
+[ 66%] Linking CXX static library libgtest.a
+[ 66%] Built target gtest
+[ 83%] Building CXX object CMakeFiles/first_test.dir/test/first_test.cpp.o
+[ 60%] Linking CXX static library libgtest.a
+[ 60%] Built target gtest
+[ 80%] Building CXX object CMakeFiles/to_lowercase_test.dir/test/to_lowercase_test.cpp.o
+[ 80%] Building CXX object CMakeFiles/to_lowercase_test.dir/src/to_lowercase.cpp.o
+[100%] Linking CXX executable first_test
+[100%] Built target first_test
+-- Install configuration: ""
+-- Execute custom install script
+-- Symlinking: /home/user/k136_ws/ch13/install/first_gtest/share/ament_index/resource_index/package_run_dependencies/first_gtest
+-- Symlinking: /home/user/k136_ws/ch13/install/first_gtest/share/ament_index/resource_index/parent_prefix_path/first_gtest
+-- Symlinking: /home/user/k136_ws/ch13/install/first_gtest/share/first_gtest/environment/ament_prefix_path.sh
+-- Symlinking: /home/user/k136_ws/ch13/install/first_gtest/share/first_gtest/environment/ament_prefix_path.dsv
+-- Symlinking: /home/user/k136_ws/ch13/install/first_gtest/share/first_gtest/environment/path.sh
+-- Symlinking: /home/user/k136_ws/ch13/install/first_gtest/share/first_gtest/environment/path.dsv
+-- Symlinking: /home/user/k136_ws/ch13/install/first_gtest/share/first_gtest/local_setup.bash
+-- Symlinking: /home/user/k136_ws/ch13/install/first_gtest/share/first_gtest/local_setup.sh
+-- Symlinking: /home/user/k136_ws/ch13/install/first_gtest/share/first_gtest/local_setup.zsh
+-- Symlinking: /home/user/k136_ws/ch13/install/first_gtest/share/first_gtest/local_setup.dsv
+-- Symlinking: /home/user/k136_ws/ch13/install/first_gtest/share/first_gtest/package.dsv
+-- Symlinking: /home/user/k136_ws/ch13/install/first_gtest/share/ament_index/resource_index/packages/first_gtest
+-- Symlinking: /home/user/k136_ws/ch13/install/first_gtest/share/first_gtest/cmake/first_gtestConfig.cmake
+-- Symlinking: /home/user/k136_ws/ch13/install/first_gtest/share/first_gtest/cmake/first_gtestConfig-version.cmake
+-- Symlinking: /home/user/k136_ws/ch13/install/first_gtest/share/first_gtest/package.xml
+Finished <<< first_gtest [15.5s]
+[ 90%] Linking CXX executable to_lowercase
+[ 90%] Built target to_lowercase
+[100%] Linking CXX executable to_lowercase_test
+[100%] Built target to_lowercase_test
+-- Install configuration: ""
+-- Execute custom install script
+-- Symlinking: /home/user/k136_ws/ch13/install/to_lowercase/lib/to_lowercase/to_lowercase
+-- Symlinking: /home/user/k136_ws/ch13/install/to_lowercase/share/ament_index/resource_index/package_run_dependencies/to_lowercase
+-- Symlinking: /home/user/k136_ws/ch13/install/to_lowercase/share/ament_index/resource_index/parent_prefix_path/to_lowercase
+-- Symlinking: /home/user/k136_ws/ch13/install/to_lowercase/share/to_lowercase/environment/ament_prefix_path.sh
+-- Symlinking: /home/user/k136_ws/ch13/install/to_lowercase/share/to_lowercase/environment/ament_prefix_path.dsv
+-- Symlinking: /home/user/k136_ws/ch13/install/to_lowercase/share/to_lowercase/environment/path.sh
+-- Symlinking: /home/user/k136_ws/ch13/install/to_lowercase/share/to_lowercase/environment/path.dsv
+-- Symlinking: /home/user/k136_ws/ch13/install/to_lowercase/share/to_lowercase/local_setup.bash
+-- Symlinking: /home/user/k136_ws/ch13/install/to_lowercase/share/to_lowercase/local_setup.sh
+-- Symlinking: /home/user/k136_ws/ch13/install/to_lowercase/share/to_lowercase/local_setup.zsh
+-- Symlinking: /home/user/k136_ws/ch13/install/to_lowercase/share/to_lowercase/local_setup.dsv
+-- Symlinking: /home/user/k136_ws/ch13/install/to_lowercase/share/to_lowercase/package.dsv
+-- Symlinking: /home/user/k136_ws/ch13/install/to_lowercase/share/ament_index/resource_index/packages/to_lowercase
+-- Symlinking: /home/user/k136_ws/ch13/install/to_lowercase/share/to_lowercase/cmake/to_lowercaseConfig.cmake
+-- Symlinking: /home/user/k136_ws/ch13/install/to_lowercase/share/to_lowercase/cmake/to_lowercaseConfig-version.cmake
+-- Symlinking: /home/user/k136_ws/ch13/install/to_lowercase/share/to_lowercase/package.xml
+Finished <<< to_lowercase [23.4s]
+
+Summary: 2 packages finished [23.6s]
+BUILD_DONE
+Starting >>> first_gtest
+Starting >>> to_lowercase
+UpdateCTestConfiguration  from :/home/user/k136_ws/ch13/build/to_lowercase/CTestConfiguration.ini
+Parse Config file:/home/user/k136_ws/ch13/build/to_lowercase/CTestConfiguration.ini
+   Site: DESKTOP-6LST1BR
+   Build name: (empty)
+ Add coverage exclude regular expressions.
+UpdateCTestConfiguration  from :/home/user/k136_ws/ch13/build/first_gtest/CTestConfiguration.ini
+Parse Config file:/home/user/k136_ws/ch13/build/first_gtest/CTestConfiguration.ini
+Create new tag: 20261024-1221 - Experimental
+UpdateCTestConfiguration  from :/home/user/k136_ws/ch13/build/to_lowercase/CTestConfiguration.ini
+Parse Config file:/home/user/k136_ws/ch13/build/to_lowercase/CTestConfiguration.ini
+Test project /home/user/k136_ws/ch13/build/to_lowercase
+Constructing a list of tests
+   Site: DESKTOP-6LST1BR
+   Build name: (empty)
+ Add coverage exclude regular expressions.
+Create new tag: 20261024-1221 - Experimental
+UpdateCTestConfiguration  from :/home/user/k136_ws/ch13/build/first_gtest/CTestConfiguration.ini
+Parse Config file:/home/user/k136_ws/ch13/build/first_gtest/CTestConfiguration.ini
+Test project /home/user/k136_ws/ch13/build/first_gtest
+Done constructing a list of tests
+Updating test list for fixtures
+Added 0 tests to meet fixture requirements
+Constructing a list of tests
+Checking test dependency graph...
+Checking test dependency graph end
+Done constructing a list of tests
+Updating test list for fixtures
+Added 0 tests to meet fixture requirements
+Checking test dependency graph...
+Checking test dependency graph end
+test 1
+    Start 1: to_lowercase_test
+
+1: Test command: /usr/bin/python3 "-u" "/opt/ros/jazzy/share/ament_cmake_test/cmake/run_test.py" "/home/user/k136_ws/ch13/build/to_lowercase/test_results/to_lowercase/to_lowercase_test.gtest.xml" "--package-name" "to_lowercase" "--output-file" "/home/user/k136_ws/ch13/build/to_lowercase/ament_cmake_gtest/to_lowercase_test.txt" "--command" "/home/user/k136_ws/ch13/build/to_lowercase/to_lowercase_test" "--gtest_output=xml:/home/user/k136_ws/ch13/build/to_lowercase/test_results/to_lowercase/to_lowercase_test.gtest.xml"
+1: Working Directory: /home/user/k136_ws/ch13/build/to_lowercase
+1: Test timeout computed to be: 60
+test 1
+    Start 1: first_test
+
+1: Test command: /usr/bin/python3 "-u" "/opt/ros/jazzy/share/ament_cmake_test/cmake/run_test.py" "/home/user/k136_ws/ch13/build/first_gtest/test_results/first_gtest/first_test.gtest.xml" "--package-name" "first_gtest" "--output-file" "/home/user/k136_ws/ch13/build/first_gtest/ament_cmake_gtest/first_test.txt" "--command" "/home/user/k136_ws/ch13/build/first_gtest/first_test" "--gtest_output=xml:/home/user/k136_ws/ch13/build/first_gtest/test_results/first_gtest/first_test.gtest.xml"
+1: Working Directory: /home/user/k136_ws/ch13/build/first_gtest
+1: Test timeout computed to be: 60
+1: -- run_test.py: invoking following command in '/home/user/k136_ws/ch13/build/to_lowercase':
+1:  - /home/user/k136_ws/ch13/build/to_lowercase/to_lowercase_test --gtest_output=xml:/home/user/k136_ws/ch13/build/to_lowercase/test_results/to_lowercase/to_lowercase_test.gtest.xml
+1: -- run_test.py: invoking following command in '/home/user/k136_ws/ch13/build/first_gtest':
+1:  - /home/user/k136_ws/ch13/build/first_gtest/first_test --gtest_output=xml:/home/user/k136_ws/ch13/build/first_gtest/test_results/first_gtest/first_test.gtest.xml
+1: [==========] Running 4 tests from 1 test suite.
+1: [----------] Global test environment set-up.
+1: [----------] 4 tests from AngleConversionTest
+1: [ RUN      ] AngleConversionTest.HandlesPositiveAngles
+1: [       OK ] AngleConversionTest.HandlesPositiveAngles (0 ms)
+1: [ RUN      ] AngleConversionTest.HandlesNegativeAngles
+1: [       OK ] AngleConversionTest.HandlesNegativeAngles (0 ms)
+1: [ RUN      ] AngleConversionTest.HandlesOverflowAngles
+1: /home/user/k136_ws/ch13/src/first_gtest/test/first_test.cpp:37: Failure
+1: The difference between degreesToRadians(540) and 3.14159265358979323846 is 6.2831853071795862, which exceeds 1e-9, where
+1: degreesToRadians(540) evaluates to -3.1415926535897931,
+1: 3.14159265358979323846 evaluates to 3.1415926535897931, and
+1: 1e-9 evaluates to 1.0000000000000001e-09.
+1: 
+1: [  FAILED  ] AngleConversionTest.HandlesOverflowAngles (0 ms)
+1: [ RUN      ] AngleConversionTest.HandlesSmallAngles
+1: [       OK ] AngleConversionTest.HandlesSmallAngles (0 ms)
+1: [----------] 4 tests from AngleConversionTest (0 ms total)
+1: 
+1: [----------] Global test environment tear-down
+1: [==========] 4 tests from 1 test suite ran. (0 ms total)
+1: [  PASSED  ] 3 tests.
+1: [  FAILED  ] 1 test, listed below:
+1: [  FAILED  ] AngleConversionTest.HandlesOverflowAngles
+1: 
+1:  1 FAILED TEST
+1: -- run_test.py: return code 1
+1: -- run_test.py: inject classname prefix into gtest result file '/home/user/k136_ws/ch13/build/first_gtest/test_results/first_gtest/first_test.gtest.xml'
+1: -- run_test.py: verify result file '/home/user/k136_ws/ch13/build/first_gtest/test_results/first_gtest/first_test.gtest.xml'
+1/1 Test #1: first_test .......................***Failed    0.09 sec
+
+0% tests passed, 1 tests failed out of 1
+
+Label Time Summary:
+gtest    =   0.09 sec*proc (1 test)
+
+Total Test time (real) =   0.09 sec
+
+The following tests FAILED:
+	  1 - first_test (Failed)
+Errors while running CTest
+Output from these tests are in: /home/user/k136_ws/ch13/build/first_gtest/Testing/Temporary/LastTest.log
+Use "--rerun-failed --output-on-failure" to re-run the failed cases verbosely.
+--- stderr: first_gtest
+Errors while running CTest
+Output from these tests are in: /home/user/k136_ws/ch13/build/first_gtest/Testing/Temporary/LastTest.log
+Use "--rerun-failed --output-on-failure" to re-run the failed cases verbosely.
+---
+Finished <<< first_gtest [0.21s]	[ with test failures ]
+1: [==========] Running 1 test from 1 test suite.
+1: [----------] Global test environment set-up.
+1: [----------] 1 test from package_name
+1: [ RUN      ] package_name.UpperToLower
+1: [       OK ] package_name.UpperToLower (1821 ms)
+1: [----------] 1 test from package_name (1822 ms total)
+1: 
+1: [----------] Global test environment tear-down
+1: [==========] 1 test from 1 test suite ran. (1822 ms total)
+1: [  PASSED  ] 1 test.
+1: -- run_test.py: return code 0
+1: -- run_test.py: inject classname prefix into gtest result file '/home/user/k136_ws/ch13/build/to_lowercase/test_results/to_lowercase/to_lowercase_test.gtest.xml'
+1: -- run_test.py: verify result file '/home/user/k136_ws/ch13/build/to_lowercase/test_results/to_lowercase/to_lowercase_test.gtest.xml'
+1/1 Test #1: to_lowercase_test ................   Passed    1.93 sec
+
+100% tests passed, 0 tests failed out of 1
+
+Label Time Summary:
+gtest    =   1.93 sec*proc (1 test)
+
+Total Test time (real) =   1.94 sec
+Finished <<< to_lowercase [2.05s]
+
+Summary: 2 packages finished [2.26s]
+  1 package had stderr output: first_gtest
+  1 package had test failures: first_gtest
+=== colcon test-result --verbose ===
+build/first_gtest/Testing/20261024-1221/Test.xml: 1 test, 0 errors, 1 failure, 0 skipped
+- first_test
+  <<< failure message
+    -- run_test.py: invoking following command in '/home/user/k136_ws/ch13/build/first_gtest':
+     - /home/user/k136_ws/ch13/build/first_gtest/first_test --gtest_output=xml:/home/user/k136_ws/ch13/build/first_gtest/test_results/first_gtest/first_test.gtest.xml
+    [==========] Running 4 tests from 1 test suite.
+    [----------] Global test environment set-up.
+    [----------] 4 tests from AngleConversionTest
+    [ RUN      ] AngleConversionTest.HandlesPositiveAngles
+    [       OK ] AngleConversionTest.HandlesPositiveAngles (0 ms)
+    [ RUN      ] AngleConversionTest.HandlesNegativeAngles
+    [       OK ] AngleConversionTest.HandlesNegativeAngles (0 ms)
+    [ RUN      ] AngleConversionTest.HandlesOverflowAngles
+    /home/user/k136_ws/ch13/src/first_gtest/test/first_test.cpp:37: Failure
+    The difference between degreesToRadians(540) and 3.14159265358979323846 is 6.2831853071795862, which exceeds 1e-9, where
+    degreesToRadians(540) evaluates to -3.1415926535897931,
+    3.14159265358979323846 evaluates to 3.1415926535897931, and
+    1e-9 evaluates to 1.0000000000000001e-09.
+    
+    [  FAILED  ] AngleConversionTest.HandlesOverflowAngles (0 ms)
+    [ RUN      ] AngleConversionTest.HandlesSmallAngles
+    [       OK ] AngleConversionTest.HandlesSmallAngles (0 ms)
+    [----------] 4 tests from AngleConversionTest (0 ms total)
+    
+    [----------] Global test environment tear-down
+    [==========] 4 tests from 1 test suite ran. (0 ms total)
+    [  PASSED  ] 3 tests.
+    [  FAILED  ] 1 test, listed below:
+    [  FAILED  ] AngleConversionTest.HandlesOverflowAngles
+    
+     1 FAILED TEST
+    -- run_test.py: return code 1
+    -- run_test.py: inject classname prefix into gtest result file '/home/user/k136_ws/ch13/build/first_gtest/test_results/first_gtest/first_test.gtest.xml'
+    -- run_test.py: verify result file '/home/user/k136_ws/ch13/build/first_gtest/test_results/first_gtest/first_test.gtest.xml'
+  >>>
+build/first_gtest/test_results/first_gtest/first_test.gtest.xml: 4 tests, 0 errors, 1 failure, 0 skipped
+- first_gtest.AngleConversionTest HandlesOverflowAngles (/home/user/k136_ws/ch13/src/first_gtest/test/first_test.cpp:35)
+  <<< failure message
+    /home/user/k136_ws/ch13/src/first_gtest/test/first_test.cpp:37
+    The difference between degreesToRadians(540) and 3.14159265358979323846 is 6.2831853071795862, which exceeds 1e-9, where
+    degreesToRadians(540) evaluates to -3.1415926535897931,
+    3.14159265358979323846 evaluates to 3.1415926535897931, and
+    1e-9 evaluates to 1.0000000000000001e-09.
+  >>>
+
+Summary: 7 tests, 0 errors, 2 failures, 0 skipped
+TEST_RESULT_HAS_FAILURES
+TEST_DONE

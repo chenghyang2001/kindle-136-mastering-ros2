@@ -1,0 +1,1003 @@
+=================== bt_action_server/action/ReachLocation.action
+# Goal
+float32 x
+float32 y
+float32 timeout
+
+---
+# Result
+bool success
+string message
+
+---
+# Feedback
+float32 current_x
+float32 current_y	
+=================== bt_action_server/CMakeLists.txt
+cmake_minimum_required(VERSION 3.8)
+project(bt_action_server)
+
+if(CMAKE_COMPILER_IS_GNUCXX OR CMAKE_CXX_COMPILER_ID MATCHES "Clang")
+  add_compile_options(-Wall -Wextra -Wpedantic)
+endif()
+
+# find dependencies
+find_package(ament_cmake REQUIRED)
+find_package(rclcpp REQUIRED)
+find_package(rclcpp_action REQUIRED)
+find_package(std_msgs REQUIRED)
+find_package(geometry_msgs REQUIRED)
+find_package(rosidl_default_generators REQUIRED)
+find_package(behaviortree_cpp REQUIRED)
+
+
+# Generate the action interfaces
+rosidl_generate_interfaces(${PROJECT_NAME}
+  "action/ReachLocation.action"
+  DEPENDENCIES std_msgs geometry_msgs
+)
+
+# Include directories
+include_directories(include)
+
+# Define the executable for the action server
+add_executable(reach_location_server src/reach_location_server.cpp)
+ament_target_dependencies(reach_location_server rclcpp rclcpp_action std_msgs geometry_msgs )
+rosidl_get_typesupport_target(cpp_typesupport_target "${PROJECT_NAME}" "rosidl_typesupport_cpp")
+target_link_libraries(reach_location_server "${cpp_typesupport_target}") 
+
+# Define the executable for the action client
+add_executable(reach_location_client src/reach_location_client.cpp)
+ament_target_dependencies(reach_location_client rclcpp rclcpp_action  std_msgs geometry_msgs )
+rosidl_get_typesupport_target(cpp_typesupport_target "${PROJECT_NAME}" "rosidl_typesupport_cpp")
+target_link_libraries(reach_location_client "${cpp_typesupport_target}") 
+
+
+# Install the executables
+install(TARGETS 
+  reach_location_server DESTINATION lib/${PROJECT_NAME})
+
+# Install the executables
+install(TARGETS 
+ reach_location_client DESTINATION lib/${PROJECT_NAME})
+
+
+add_executable( bt_action src/bt_action.cpp ) 
+ament_target_dependencies(bt_action rclcpp rclcpp_action std_msgs geometry_msgs behaviortree_cpp )
+rosidl_get_typesupport_target(cpp_typesupport_target "${PROJECT_NAME}" "rosidl_typesupport_cpp")
+target_link_libraries(bt_action "${cpp_typesupport_target}") 
+
+
+# Install the executables
+install(TARGETS 
+  bt_action DESTINATION lib/${PROJECT_NAME})
+
+
+install(DIRECTORY launch trees 
+  DESTINATION share/${PROJECT_NAME}
+)
+
+
+if(BUILD_TESTING)
+  find_package(ament_lint_auto REQUIRED)
+  # the following line skips the linter which checks for copyrights
+  # comment the line when a copyright and license is added to all source files
+  set(ament_cmake_copyright_FOUND TRUE)
+  # the following line skips cpplint (only works in a git repo)
+  # comment the line when this package is in a git repo and when
+  # a copyright and license is added to all source files
+  set(ament_cmake_cpplint_FOUND TRUE)
+  ament_lint_auto_find_test_dependencies()
+endif()
+
+ament_package()
+=================== bt_action_server/launch/bt_action.launch.py
+from launch import LaunchDescription
+from launch_ros.actions import Node
+from ament_index_python.packages import get_package_share_directory
+from launch.substitutions import PathJoinSubstitution
+
+def generate_launch_description():
+    tree_path = PathJoinSubstitution ( [get_package_share_directory('bt_action_server'), 'trees', 'bt_action.xml' ])
+
+    ld = LaunchDescription()
+    
+    bt_node = Node(
+            package='bt_action_server',
+            executable='bt_action',
+            name='bt_action',
+            output='screen',
+            parameters=[{'tree_xml_file': tree_path}],
+        )
+    
+    ld.add_action( bt_node )
+
+    return ld
+
+=================== bt_action_server/package.xml
+<?xml version="1.0"?>
+<?xml-model href="http://download.ros.org/schema/package_format3.xsd" schematypens="http://www.w3.org/2001/XMLSchema"?>
+<package format="3">
+  <name>bt_action_server</name>
+  <version>0.0.0</version>
+  <description>TODO: Package description</description>
+  <maintainer email="jonathan.cacace@gmail.com">jcacace</maintainer>
+  <license>TODO: License declaration</license>
+
+  <buildtool_depend>ament_cmake</buildtool_depend>
+
+  <depend>rclcpp</depend>
+  <depend>rclcpp_action</depend>
+  <depend>std_msgs</depend>
+  <depend>geometry_msgs</depend>
+  <depend>rosidl_default_generators</depend>
+
+  <test_depend>ament_lint_auto</test_depend>
+  <test_depend>ament_lint_common</test_depend>
+  
+  <member_of_group>rosidl_interface_packages</member_of_group>
+  
+  <export>
+    <build_type>ament_cmake</build_type>
+  </export>
+</package>
+=================== bt_action_server/src/bt_action.cpp
+#include "rclcpp/rclcpp.hpp"
+#include "behaviortree_cpp/behavior_tree.h"
+#include "behaviortree_cpp/blackboard.h"
+#include "behaviortree_cpp/bt_factory.h"
+#include <bt_action_server/action/reach_location.hpp>
+#include <rclcpp_action/rclcpp_action.hpp>
+
+
+using namespace std::chrono_literals;
+using Action = bt_action_server::action::ReachLocation;
+
+enum class ActionResult : uint8_t {  
+    ActionNotCompleted,
+    ActionFailed,
+    ActionCancelled,
+    ActionSucceded
+};
+
+class WaitForServer : public BT::StatefulActionNode {
+  public:
+    WaitForServer(const std::string & action_name, const BT::NodeConfig & conf) : 
+      BT::StatefulActionNode(action_name, conf) {    
+        _node = conf.blackboard->get<rclcpp::Node::SharedPtr>("node");
+    }
+ 
+    BT::NodeStatus onStart() {
+        std::string server_name;
+        getInput<std::string>("server_name", server_name );
+
+        client_ = rclcpp_action::create_client<Action>(_node, server_name);
+        return BT::NodeStatus::RUNNING;
+    }
+  
+    BT::NodeStatus onRunning() {   
+      
+        if (!client_->action_server_is_ready()) {
+            std::cout << "[Node WaitForServer]: Failure"<<std::endl;
+            return BT::NodeStatus::FAILURE;
+        }
+        else {
+            std::cout << "[Node WaitForServer]: Success"<<std::endl;
+            return BT::NodeStatus::SUCCESS;
+
+        }
+    }
+
+    void onHalted() { return; }
+
+    static BT::PortsList providedPorts() {
+      return {
+        BT::InputPort<std::string>("server_name")
+      };
+    }
+
+    private:
+      rclcpp::Node::SharedPtr _node;
+      rclcpp_action::Client<Action>::SharedPtr client_;
+};
+
+
+class CallAction : public BT::StatefulActionNode {
+  public:
+    CallAction(const std::string & action_name, const BT::NodeConfig & conf) : 
+      BT::StatefulActionNode(action_name, conf) {    
+        node2_ = rclcpp::Node::make_shared("action_client_node");
+    }
+ 
+    BT::NodeStatus onStart() {
+        std::string server_name;
+        getInput<std::string>("server_name", server_name );
+        getInput<float>("x", x_ );
+        getInput<float>("y", y_ );
+        getInput<float>("timeout", timeout_ );
+        action_result_ = ActionResult::ActionNotCompleted; 
+        server_called_ = false;
+
+        client_ = rclcpp_action::create_client<Action>(node2_, server_name);
+        return BT::NodeStatus::RUNNING;
+    }
+    void result_callback(const rclcpp_action::ClientGoalHandle<Action>::WrappedResult & result) {
+        
+        
+        switch (result.code) {
+            case rclcpp_action::ResultCode::SUCCEEDED:
+                action_result_ = ActionResult::ActionSucceded;
+                break;
+            case rclcpp_action::ResultCode::ABORTED:
+                action_result_ = ActionResult::ActionFailed;
+                break;
+            case rclcpp_action::ResultCode::CANCELED:
+                action_result_ = ActionResult::ActionCancelled;
+                break;
+            default:
+                break;
+        }
+    }
+    BT::NodeStatus onRunning() {   
+
+        if ( !server_called_ ) {
+            server_called_ = true;
+            auto goal = Action::Goal();
+            goal.x = x_;
+            goal.y = y_;
+            goal.timeout = timeout_;
+            auto send_goal_future = client_->async_send_goal(goal);
+            
+            if (rclcpp::spin_until_future_complete(node2_, send_goal_future) !=
+                rclcpp::FutureReturnCode::SUCCESS) {
+                    std::cout << "Failed to send goal" <<std::endl;
+                    return BT::NodeStatus::FAILURE;
+            }
+                    
+            auto goal_handle = send_goal_future.get();
+            if (!goal_handle) {
+                std::cout << "Goal was rejected by server" << std::endl;
+                return BT::NodeStatus::FAILURE;
+            }
+            client_->async_get_result(goal_handle, std::bind(&CallAction::result_callback, this, std::placeholders::_1));
+           
+
+        }
+
+        rclcpp::spin_some( node2_ );
+
+        if( action_result_ ==  ActionResult::ActionSucceded ) {
+            std::cout << "[Node CallAction]: Success" << std::endl;
+            return BT::NodeStatus::SUCCESS;
+        }
+        else if( action_result_ == ActionResult::ActionFailed ) {
+            std::cout << "[Node CallAction]: Failure" << std::endl;
+            return BT::NodeStatus::FAILURE;
+        }
+        else if( action_result_ == ActionResult::ActionCancelled) {
+            std::cout << "[Node CallAction]: Failure" << std::endl;
+            return BT::NodeStatus::FAILURE;
+        }
+        
+        std::cout << "[Node CallAction]: Waiting server execution" << std::endl;
+        return BT::NodeStatus::RUNNING;
+    }
+
+    void onHalted() { return; }
+
+    static BT::PortsList providedPorts() {
+      return {
+        BT::InputPort<std::string>("server_name"),
+        BT::InputPort<float>("x"),
+        BT::InputPort<float>("y"),
+        BT::InputPort<float>("timeout")
+      };
+    }
+
+    private:
+        rclcpp::Node::SharedPtr node2_;
+        rclcpp_action::Client<Action>::SharedPtr client_;
+        float x_, y_, timeout_;
+        bool server_called_;
+        ActionResult action_result_;
+};
+
+
+class BTExecutor : public rclcpp::Node {
+  public:
+    BTExecutor()
+    : Node("bt_executor") {
+      first_ = true;
+      timer_ = this->create_wall_timer( 0.5s, std::bind(&BTExecutor::tick_function, this));
+      blackboard_ = BT::Blackboard::create();
+
+    }
+
+  private:
+
+    void init_btree() {
+      
+        blackboard_->set<rclcpp::Node::SharedPtr>("node", this->shared_from_this());
+        factory_.registerNodeType<WaitForServer>("WaitForServer");
+        factory_.registerNodeType<CallAction>("CallAction");
+        this->declare_parameter<std::string>("tree_xml_file", "");
+        std::string tree_file;
+        this->get_parameter("tree_xml_file", tree_file);
+        tree_ = factory_.createTreeFromFile(tree_file, blackboard_);
+        
+    }
+
+    void tick_function() {
+      if( first_) {
+          init_btree();
+          first_ = false;
+      } 
+      tree_.tickOnce();
+    }
+    
+    BT::Tree tree_;
+    BT::Blackboard::Ptr blackboard_;
+    BT::BehaviorTreeFactory factory_;
+    rclcpp::TimerBase::SharedPtr timer_;
+    bool first_;
+};
+
+ 
+int main(int argc, char * argv[]) {
+    rclcpp::init(argc, argv);
+    auto node = std::make_shared<BTExecutor>();
+    rclcpp::spin( node );
+    rclcpp::shutdown();
+    return 0;
+}=================== bt_action_server/src/reach_location_client.cpp
+#include <rclcpp/rclcpp.hpp>
+#include <rclcpp_action/rclcpp_action.hpp>
+#include <bt_action_server/action/reach_location.hpp>
+
+using Action = bt_action_server::action::ReachLocation;
+
+bool done = false;
+
+void result_callback(const rclcpp_action::ClientGoalHandle<Action>::WrappedResult & result)
+{
+
+    switch (result.code) {
+        case rclcpp_action::ResultCode::SUCCEEDED:
+            RCLCPP_INFO(rclcpp::get_logger("rclcpp"), "Goal succeeded!");
+            break;
+        case rclcpp_action::ResultCode::ABORTED:
+            RCLCPP_ERROR(rclcpp::get_logger("rclcpp"), "Goal was aborted");
+            break;
+        case rclcpp_action::ResultCode::CANCELED:
+            RCLCPP_ERROR(rclcpp::get_logger("rclcpp"), "Goal was canceled");
+            break;
+        default:
+            RCLCPP_ERROR(rclcpp::get_logger("rclcpp"), "Unknown result code");
+            break;
+    }
+
+
+    done = true;
+}
+
+int main(int argc, char **argv)
+{
+    rclcpp::init(argc, argv);
+    auto node = rclcpp::Node::make_shared("action_client_node");
+
+    // Create a client for the Hello action
+    auto client = rclcpp_action::create_client<Action>(
+        node, "reach_location");
+
+    // Wait for the action server to become available
+    if (!client->wait_for_action_server(std::chrono::seconds(5))) {
+        RCLCPP_ERROR(node->get_logger(), "Action server not available after waiting");
+        return 1;
+    }
+
+    
+
+    // Create a goal message
+    auto goal = Action::Goal();
+    goal.x = 4;
+    goal.y = 4;
+    goal.timeout = 10;
+    std::cout << "Goal: " << goal.x << std::endl;
+    
+    // Send the goal and wait for the result
+    auto send_goal_future = client->async_send_goal(goal);
+    if (rclcpp::spin_until_future_complete(node, send_goal_future) !=
+        rclcpp::FutureReturnCode::SUCCESS)
+    {
+        RCLCPP_ERROR(node->get_logger(), "Failed to send goal");
+        return 1;
+    }
+
+    auto goal_handle = send_goal_future.get();
+    if (!goal_handle) {
+        RCLCPP_ERROR(node->get_logger(), "Goal was rejected by server");
+        return 1;
+    }
+
+    std::cout << "AQUI!" << std::endl;
+    client->async_get_result(goal_handle, result_callback);
+
+    /*
+    // Wait for the result
+    std::cout << "Pre get result" << std::endl;
+    auto result_future = client->async_get_result(goal_handle);
+    if (rclcpp::spin_until_future_complete(node, result_future) !=
+        rclcpp::FutureReturnCode::SUCCESS)
+    {
+        RCLCPP_ERROR(node->get_logger(), "Failed to get result");
+        return 1;
+    }
+    std::cout << "After get result" << std::endl;
+    auto result = result_future.get();
+    if (result.code == rclcpp_action::ResultCode::SUCCEEDED) {
+        RCLCPP_INFO(node->get_logger(), "Result: %d", result.result->success);
+    } else {
+        RCLCPP_ERROR(node->get_logger(), "Action did not succeed");
+    }
+    */
+
+    
+    rclcpp::spin(node);
+    rclcpp::shutdown();
+    return 0;
+}=================== bt_action_server/src/reach_location_server.cpp
+#include <rclcpp/rclcpp.hpp>
+#include <rclcpp_action/rclcpp_action.hpp>
+#include <geometry_msgs/msg/point.hpp>
+#include <random>
+#include "bt_action_server/action/reach_location.hpp"
+
+class ReachLocationActionServer : public rclcpp::Node {
+public:
+    using ReachLocation = bt_action_server::action::ReachLocation;
+    using GoalHandleReachLocation = rclcpp_action::ServerGoalHandle<ReachLocation>;
+
+    explicit ReachLocationActionServer()
+    : Node("reach_location_action_server") {
+        // Your initialization code
+        action_server_ = rclcpp_action::create_server<ReachLocation>(
+            this,
+            "reach_location",
+            std::bind(&ReachLocationActionServer::handle_goal, this, std::placeholders::_1, std::placeholders::_2),
+            std::bind(&ReachLocationActionServer::handle_cancel, this, std::placeholders::_1),
+            std::bind(&ReachLocationActionServer::handle_accepted, this, std::placeholders::_1)
+        );
+        RCLCPP_INFO(this->get_logger(), "Action server started.");
+    }
+private:
+    rclcpp_action::Server<ReachLocation>::SharedPtr action_server_;
+
+    rclcpp_action::GoalResponse handle_goal(
+        const rclcpp_action::GoalUUID & uuid,
+        std::shared_ptr<const ReachLocation::Goal> goal) {
+        RCLCPP_INFO(this->get_logger(), "Received goal request for location (%f, %f) with timeout %f",
+                    goal->x, goal->y, goal->timeout);
+        (void)uuid;
+        return rclcpp_action::GoalResponse::ACCEPT_AND_EXECUTE;
+    }
+
+    rclcpp_action::CancelResponse handle_cancel(const std::shared_ptr<GoalHandleReachLocation> goal_handle) {
+        RCLCPP_INFO(this->get_logger(), "Received request to cancel goal");
+        (void)goal_handle;
+        return rclcpp_action::CancelResponse::ACCEPT;
+    }
+
+    void handle_accepted(const std::shared_ptr<GoalHandleReachLocation> goal_handle) {
+        std::thread{std::bind(&ReachLocationActionServer::execute, this, std::placeholders::_1), goal_handle}.detach();
+    }
+
+    void execute(const std::shared_ptr<GoalHandleReachLocation> goal_handle) {
+        RCLCPP_INFO(this->get_logger(), "Executing goal...");
+        const auto goal = goal_handle->get_goal();
+        auto feedback = std::make_shared<ReachLocation::Feedback>();
+        auto result = std::make_shared<ReachLocation::Result>();
+
+        float current_x = 0.0;
+        float current_y = 0.0;
+        float target_x = goal->x;
+        float target_y = goal->y;
+        float timeout = goal->timeout;
+
+        std::random_device rd;
+        std::mt19937 gen(rd());
+        std::uniform_real_distribution<> velocity_dist(0.1, 2.0); // Velocity between 0.1 and 2.0
+
+        rclcpp::Rate rate(1.0); // 1 Hz loop rate
+        auto start_time = this->now();
+
+        while ((this->now() - start_time).seconds() < timeout) {
+            float velocity = velocity_dist(gen);
+
+            current_x += velocity;  // Simplified movement model, assumes movement in x direction only
+            current_y += velocity;  // Simplified movement model, assumes movement in y direction only
+
+            feedback->current_x = current_x;
+            feedback->current_y = current_y;
+            goal_handle->publish_feedback(feedback);
+
+            RCLCPP_INFO(this->get_logger(), "Current position: (%f, %f)", current_x, current_y);
+
+            if (current_x >= target_x && current_y >= target_y) {
+                result->success = true;
+                result->message = "Target reached successfully.";
+                goal_handle->succeed(result);
+                RCLCPP_INFO(this->get_logger(), "Goal succeeded");
+                return;
+            }
+
+            rate.sleep();
+        }
+
+        result->success = false;
+        result->message = "Failed to reach the target within the given timeout.";
+        goal_handle->abort(result);
+        RCLCPP_INFO(this->get_logger(), "Goal failed");
+    }
+};
+
+int main(int argc, char ** argv) {
+    rclcpp::init(argc, argv);
+    auto node = std::make_shared<ReachLocationActionServer>();
+    rclcpp::spin(node);
+    rclcpp::shutdown();
+    return 0;
+}
+=================== bt_action_server/trees/bt_action.xml
+<?xml version="1.0" encoding="UTF-8"?>
+<root BTCPP_format="4">
+  <BehaviorTree ID="bt_action">
+    <Sequence>
+      <WaitForServer server_name="reach_location"/>
+      <CallAction server_name="reach_location"
+                  x="10"
+                  y="4"
+                  timeout="15"/>
+    </Sequence>
+  </BehaviorTree>
+
+  <!-- Description of Node Models (used by Groot) -->
+  <TreeNodesModel>
+    <Action ID="CallAction"
+            editable="true">
+      <input_port name="server_name"/>
+      <input_port name="x"/>
+      <input_port name="y"/>
+      <input_port name="timeout"/>
+    </Action>
+    <Action ID="WaitForServer"
+            editable="true">
+      <input_port name="server_name"/>
+    </Action>
+  </TreeNodesModel>
+
+</root>
+=================== first_bts/CMakeLists.txt
+cmake_minimum_required(VERSION 3.8)
+project(first_bts)
+
+if(CMAKE_COMPILER_IS_GNUCXX OR CMAKE_CXX_COMPILER_ID MATCHES "Clang")
+  add_compile_options(-Wall -Wextra -Wpedantic)
+endif()
+
+# find dependencies
+find_package(ament_cmake REQUIRED)
+find_package(rclcpp REQUIRED)
+find_package(std_msgs REQUIRED)
+find_package(behaviortree_cpp REQUIRED)
+
+
+add_executable( sequence_tree src/sequence.cpp ) 
+ament_target_dependencies(sequence_tree rclcpp std_msgs behaviortree_cpp)
+
+add_executable( number_checker src/number_checker.cpp ) 
+ament_target_dependencies(number_checker rclcpp std_msgs behaviortree_cpp)
+
+install(TARGETS sequence_tree
+  RUNTIME DESTINATION lib/${PROJECT_NAME}
+)
+
+install(TARGETS number_checker
+  RUNTIME DESTINATION lib/${PROJECT_NAME}
+)
+
+install(DIRECTORY launch trees 
+  DESTINATION share/${PROJECT_NAME}
+)
+
+
+
+if(BUILD_TESTING)
+  find_package(ament_lint_auto REQUIRED)
+  # the following line skips the linter which checks for copyrights
+  # comment the line when a copyright and license is added to all source files
+  set(ament_cmake_copyright_FOUND TRUE)
+  # the following line skips cpplint (only works in a git repo)
+  # comment the line when this package is in a git repo and when
+  # a copyright and license is added to all source files
+  set(ament_cmake_cpplint_FOUND TRUE)
+  ament_lint_auto_find_test_dependencies()
+endif()
+
+ament_package()
+=================== first_bts/launch/number_checker.launch.py
+from launch import LaunchDescription
+from launch_ros.actions import Node
+from ament_index_python.packages import get_package_share_directory
+from launch.substitutions import PathJoinSubstitution
+
+def generate_launch_description():
+    tree_path = PathJoinSubstitution ( [get_package_share_directory('first_bts'), 'trees', 'number_checker.xml' ])
+
+    ld = LaunchDescription()
+    
+    bt_node = Node(
+            package='first_bts',
+            executable='number_checker',
+            name='number_checker',
+            output='screen',
+            parameters=[{'tree_xml_file': tree_path}],
+        )
+    
+    ld.add_action( bt_node )
+
+    return ld
+
+=================== first_bts/launch/sequence_tree.launch.py
+from launch import LaunchDescription
+from launch_ros.actions import Node
+from ament_index_python.packages import get_package_share_directory
+from launch.substitutions import PathJoinSubstitution
+
+def generate_launch_description():
+    tree_path = PathJoinSubstitution ( [get_package_share_directory('first_bts'), 'trees', 'sequence.xml' ])
+
+    ld = LaunchDescription()
+    
+    bt_node = Node(
+            package='first_bts',
+            executable='sequence_tree',
+            name='sequence_tree',
+            output='screen',
+            parameters=[{'tree_xml_file': tree_path}],
+        )
+    
+    ld.add_action( bt_node )
+
+    return ld
+
+=================== first_bts/package.xml
+<?xml version="1.0"?>
+<?xml-model href="http://download.ros.org/schema/package_format3.xsd" schematypens="http://www.w3.org/2001/XMLSchema"?>
+<package format="3">
+  <name>first_bts</name>
+  <version>0.0.0</version>
+  <description>TODO: Package description</description>
+  <maintainer email="jonathan.cacace@gmail.com">jcacace</maintainer>
+  <license>TODO: License declaration</license>
+
+  <buildtool_depend>ament_cmake</buildtool_depend>
+
+  <depend>rclcpp</depend>
+  <depend>std_msgs</depend>
+  <depend>behaviortree_cpp</depend>
+
+  <test_depend>ament_lint_auto</test_depend>
+  <test_depend>ament_lint_common</test_depend>
+
+  <export>
+    <build_type>ament_cmake</build_type>
+  </export>
+</package>
+=================== first_bts/src/number_checker.cpp
+#include "rclcpp/rclcpp.hpp"
+#include "std_msgs/msg/string.hpp"
+#include "behaviortree_cpp/behavior_tree.h"
+#include "behaviortree_cpp/blackboard.h"
+#include "behaviortree_cpp/bt_factory.h"
+#include "std_msgs/msg/int32.hpp"
+#include <random>
+
+using namespace std::chrono_literals;
+
+class PublishResult : public BT::StatefulActionNode {
+  public:
+    PublishResult(const std::string & action_name, const BT::NodeConfig & conf) : 
+      BT::StatefulActionNode(action_name, conf) {    
+                RCLCPP_INFO(rclcpp::get_logger("rclcpp"), "QUI!."); 
+
+        node_ = conf.blackboard->get<rclcpp::Node::SharedPtr>("node");
+    }
+ 
+    BT::NodeStatus onStart() {
+      std::string topic_name;
+      getInput<std::string>("topic_name", topic_name );
+      pub_ = node_->create_publisher<std_msgs::msg::Int32>(topic_name, 1);
+      return BT::NodeStatus::RUNNING;
+    }
+  
+    BT::NodeStatus onRunning() {   
+      int value;      
+      getInput<int>("generated_number", value );
+      std_msgs::msg::Int32 v;
+      v.data = value;
+      pub_->publish( v );
+      return BT::NodeStatus::SUCCESS;
+    }
+
+    void onHalted() { return; }
+
+    static BT::PortsList providedPorts() {
+      return {
+        BT::InputPort<std::string>("topic_name"),
+        BT::InputPort<int>("generated_number")
+      };
+    }
+
+    private:
+      rclcpp::Node::SharedPtr node_;
+      rclcpp::Publisher<std_msgs::msg::Int32>::SharedPtr pub_;
+
+};
+
+
+class NumberChecker : public BT::StatefulActionNode {
+  public:
+    NumberChecker(const std::string & action_name, const BT::NodeConfig & conf) : 
+      BT::StatefulActionNode(action_name, conf) {    
+
+    }
+ 
+    BT::NodeStatus onStart() {
+
+
+        if(!getInput<int>("check_value", num_threshold_)) {
+          throw BT::RuntimeError("missing required input [goal]");
+        }
+
+        return BT::NodeStatus::RUNNING;
+    }
+
+    BT::NodeStatus onRunning() {   
+        std::random_device rd;
+        std::mt19937 gen(rd());
+        std::uniform_int_distribution<> distrib(1, 100); // For an integer between 1 and 100
+        int random_number = distrib(gen);
+
+        std::cout << "Generated number: " << random_number << " - Threshold: " << num_threshold_ << " - ";
+        if( random_number < num_threshold_) {
+          setOutput("generated_number", random_number);
+          std::cout << "Success! " << std::endl;
+          return BT::NodeStatus::SUCCESS;
+        }
+        else {
+          std::cout << "Failure! " << std::endl;
+          setOutput("generated_number", -1);
+          return BT::NodeStatus::FAILURE;
+        }
+    }
+
+    void onHalted() { return; }
+
+    static BT::PortsList providedPorts() {
+      return {
+        BT::InputPort<int>("check_value"),
+        BT::OutputPort<int>("generated_number")
+      };
+    }
+
+    private:
+        int num_threshold_;
+};
+
+ 
+ 
+class BTExecutor : public rclcpp::Node {
+  public:
+    BTExecutor()
+    : Node("bt_executor") {
+      first_ = true;
+      timer_ = this->create_wall_timer( 0.5s, std::bind(&BTExecutor::tick_function, this));
+      blackboard_ = BT::Blackboard::create();
+
+    }
+
+  private:
+
+    void init_btree() {
+      
+        blackboard_->set<rclcpp::Node::SharedPtr>("node", this->shared_from_this());
+        
+        factory_.registerNodeType<NumberChecker>("CheckNumber1");
+        factory_.registerNodeType<NumberChecker>("CheckNumber2");
+        factory_.registerNodeType<NumberChecker>("CheckNumber3");
+        factory_.registerNodeType<PublishResult>("PublishResult");
+
+        this->declare_parameter<std::string>("tree_xml_file", "");
+        std::string tree_file;
+        this->get_parameter("tree_xml_file", tree_file);
+        tree_ = factory_.createTreeFromFile(tree_file, blackboard_);
+
+    }
+
+    void tick_function() {
+      if( first_ ) {
+          init_btree();
+          first_ = false;
+      } 
+
+      tree_.tickOnce();
+
+    }
+    
+    rclcpp::TimerBase::SharedPtr timer_;
+    BT::Blackboard::Ptr blackboard_;
+    BT::Tree tree_;
+    BT::BehaviorTreeFactory factory_;
+    bool first_;
+
+
+};
+
+
+
+ 
+int main(int argc, char * argv[]) {
+
+  rclcpp::init(argc, argv);
+
+  rclcpp::Node::SharedPtr BT_executor_node = std::make_shared<BTExecutor>();
+  rclcpp::spin( BT_executor_node );
+  rclcpp::shutdown();
+
+  return 0;
+
+}=================== first_bts/src/sequence.cpp
+
+#include "rclcpp/rclcpp.hpp"
+#include "std_msgs/msg/string.hpp"
+#include "behaviortree_cpp/bt_factory.h"
+#include "behaviortree_cpp/behavior_tree.h"
+
+using namespace std::chrono_literals;
+
+class HelloNode : public BT::StatefulActionNode {
+  public:
+    HelloNode(const std::string & action_name, const BT::NodeConfig & conf) : BT::StatefulActionNode(action_name, conf) {    
+    }
+ 
+    BT::NodeStatus onStart() {
+        getInput<std::string>("msg", hello_msg_ );
+        
+        return BT::NodeStatus::RUNNING;
+    }
+
+    BT::NodeStatus onRunning() {
+        std::cout << hello_msg_ << std::endl;
+        return BT::NodeStatus::SUCCESS;
+    }
+
+    void onHalted() { return; }
+
+    static BT::PortsList providedPorts() {
+      return {
+        BT::InputPort<std::string>("msg")
+      };
+    }
+
+    private:        
+        std::string hello_msg_;
+};
+
+ 
+ 
+class BTExecutor : public rclcpp::Node {
+  public:
+    BTExecutor()
+    : Node("bt_executor") {
+        init_btree();
+        timer_ = this->create_wall_timer( 0.5s, std::bind(&BTExecutor::tick_function, this));
+    }
+
+  private:
+
+    void init_btree() {      
+        factory_.registerNodeType<HelloNode>("HelloNode1");
+        factory_.registerNodeType<HelloNode>("HelloNode2");
+        this->declare_parameter<std::string>("tree_xml_file", "");
+        std::string tree_file;
+        this->get_parameter("tree_xml_file", tree_file);
+        tree_ = factory_.createTreeFromFile(tree_file);
+
+    }
+
+    void tick_function() {
+        tree_.tickOnce();
+    }
+    
+    rclcpp::TimerBase::SharedPtr timer_;
+    BT::Tree tree_;
+    BT::BehaviorTreeFactory factory_;
+};
+
+ 
+int main(int argc, char * argv[]) {
+  rclcpp::init(argc, argv);
+  auto node = std::make_shared<BTExecutor>();
+  rclcpp::spin(node);
+  rclcpp::shutdown();
+  return 0;
+}
+=================== first_bts/trees/number_checker.xml
+<?xml version="1.0" encoding="UTF-8"?>
+<root BTCPP_format="4"
+      main_tree_to_execute="RosIntegration">
+  <BehaviorTree ID="RosIntegration">
+    <Sequence>
+      <SubTree ID="Subtree"
+               _autoremap="true"/>
+      <PublishResult topic_name="generated_number"
+                     generated_number="{generated_number}"/>
+    </Sequence>
+  </BehaviorTree>
+
+  <BehaviorTree ID="Subtree">
+    <Fallback>
+      <CheckNumber1 check_value="30"
+                    generated_number="{generated_number}"/>
+      <Fallback>
+        <CheckNumber2 check_value="50"
+                      generated_number="{generated_number}"/>
+        <ForceSuccess>
+          <CheckNumber3 check_value="80"
+                        generated_number="{generated_number}"/>
+        </ForceSuccess>
+      </Fallback>
+    </Fallback>
+  </BehaviorTree>
+
+  <!-- Description of Node Models (used by Groot) -->
+  <TreeNodesModel>
+    <Action ID="CheckNumber1"
+            editable="true">
+      <input_port name="check_value"
+                  default="100"/>
+      <output_port name="generated_number"/>
+    </Action>
+    <Action ID="CheckNumber2"
+            editable="true">
+      <input_port name="check_value"
+                  default="100"/>
+      <output_port name="generated_number"/>
+    </Action>
+    <Action ID="CheckNumber3"
+            editable="true">
+      <input_port name="check_value"
+                  default="100"/>
+      <output_port name="generated_number"/>
+    </Action>
+    <Action ID="PublishResult"
+            editable="true">
+      <input_port name="topic_name"/>
+      <input_port name="generated_number"/>
+    </Action>
+  </TreeNodesModel>
+
+</root>
+=================== first_bts/trees/sequence.xml
+<?xml version="1.0" encoding="UTF-8"?>
+<root BTCPP_format="4">
+  <BehaviorTree ID="sequence">
+    <Sequence>
+      <HelloNode1 msg="Hello from Node1"/>
+      <HelloNode2 msg="Hello from Node2"/>
+    </Sequence>
+  </BehaviorTree>
+
+</root>
+=================== 套件檢查
+ii  ros-jazzy-behaviortree-cpp                       4.10.0-1noble.20260911.134208                    amd64        This package provides the Behavior Trees core library.

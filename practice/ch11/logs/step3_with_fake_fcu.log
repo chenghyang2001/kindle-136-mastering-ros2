@@ -1,0 +1,141 @@
+=== node list ===
+/fake_fcu
+/px4_ctrl
+=== echo --once /fmu/in/offboard_control_mode（心跳，arm 之前就在發）===
+timestamp: 1792843535888897
+position: true
+velocity: false
+acceleration: false
+attitude: false
+body_rate: false
+thrust_and_torque: false
+direct_actuator: false
+---
+=== 背景先掛好 echo --once /fmu/in/trajectory_setpoint，再送 arm / takeoff ===
+timestamp: 1792843544155740
+position:
+- 0.0
+- 0.0
+- -5.0
+velocity:
+- 0.0
+- 0.0
+- 0.0
+acceleration:
+- 0.0
+- 0.0
+- 0.0
+jerk:
+- 0.0
+- 0.0
+- 0.0
+yaw: 0.0
+yawspeed: 0.0
+---
+=== move 到 3 0 -5（v_max 0.5 m/s、10 Hz，約 60 筆）；同時量 hz ===
+timestamp: 1792843550461608
+position:
+- 0.0
+- 0.0
+- -5.0
+velocity:
+- 0.0
+- 0.0
+- 0.0
+acceleration:
+- 0.0
+- 0.0
+- 0.0
+jerk:
+- 0.0
+- 0.0
+- 0.0
+yaw: 0.0
+yawspeed: 0.0
+---
+--- hz ---
+average rate: 7.117
+	min: 0.099s max: 1.558s std dev: 0.23952s window: 36
+average rate: 7.751
+	min: 0.002s max: 1.558s std dev: 0.21110s window: 47
+average rate: 8.063
+	min: 0.002s max: 1.558s std dev: 0.19199s window: 57
+./step3_with_fake_fcu.sh: line 65: 21172 Aborted                 (core dumped) setsid "$EXE" < "$FIFO" > "$LOGDIR/step3_px4_ctrl.log" 2>&1
+=== px4_ctrl 輸出 ===
+[INFO] [1792843527.888717546] [px4_ctrl]: Insert the desired command
+[INFO] [1792843527.889520110] [px4_ctrl]: arm - to arm the drone
+[INFO] [1792843527.889980148] [px4_ctrl]: disarm - to disarm the drone
+[INFO] [1792843527.890465238] [px4_ctrl]: takeoff - to take the drone
+[INFO] [1792843527.890990556] [px4_ctrl]: move - specify a target point to reach
+[INFO] [1792843527.891400058] [px4_ctrl]: exit - to exit
+[INFO] [1792843541.152590029] [px4_ctrl]: Arming
+[INFO] [1792843541.253582227] [px4_ctrl]: Insert the desired command
+[INFO] [1792843541.254641729] [px4_ctrl]: arm - to arm the drone
+[INFO] [1792843541.255242484] [px4_ctrl]: disarm - to disarm the drone
+[INFO] [1792843541.255559970] [px4_ctrl]: takeoff - to take the drone
+[INFO] [1792843541.255903255] [px4_ctrl]: move - specify a target point to reach
+[INFO] [1792843541.256342274] [px4_ctrl]: exit - to exit
+[INFO] [1792843544.156015413] [px4_ctrl]: Insert the desired command
+[INFO] [1792843544.157479712] [px4_ctrl]: arm - to arm the drone
+[INFO] [1792843544.158742661] [px4_ctrl]: disarm - to disarm the drone
+[INFO] [1792843544.159693623] [px4_ctrl]: takeoff - to take the drone
+[INFO] [1792843544.160748134] [px4_ctrl]: move - specify a target point to reach
+[INFO] [1792843544.161438664] [px4_ctrl]: exit - to exit
+[INFO] [1792843549.459401070] [px4_ctrl]: Insert the destination point as x y z:
+[INFO] [1792843557.932556055] [px4_ctrl]: Insert the desired command
+[INFO] [1792843557.934066883] [px4_ctrl]: arm - to arm the drone
+[INFO] [1792843557.935211799] [px4_ctrl]: disarm - to disarm the drone
+[INFO] [1792843557.936196115] [px4_ctrl]: takeoff - to take the drone
+[INFO] [1792843557.937181910] [px4_ctrl]: move - specify a target point to reach
+[INFO] [1792843557.938021234] [px4_ctrl]: exit - to exit
+[INFO] [1792843561.227958747] [px4_ctrl]: Disarming
+[INFO] [1792843561.329741952] [px4_ctrl]: Insert the desired command
+[INFO] [1792843561.331561075] [px4_ctrl]: arm - to arm the drone
+[INFO] [1792843561.332888712] [px4_ctrl]: disarm - to disarm the drone
+[INFO] [1792843561.334020999] [px4_ctrl]: takeoff - to take the drone
+[INFO] [1792843561.334961934] [px4_ctrl]: move - specify a target point to reach
+[INFO] [1792843561.335815495] [px4_ctrl]: exit - to exit
+terminate called without an active exception
+=== fake_fcu 輸出 ===
+[INFO] [1792843519.289943521] [fake_fcu]: 假飛控已啟動：等待 px4_ctrl
+[INFO] [1792843527.892413280] [fake_fcu]: OffboardControlMode #1 position=True
+[INFO] [1792843528.895850684] [fake_fcu]: OffboardControlMode #2 position=True
+[INFO] [1792843529.894533549] [fake_fcu]: OffboardControlMode #3 position=True
+[INFO] [1792843531.893040668] [fake_fcu]: OffboardControlMode #5 position=True
+[INFO] [1792843536.894829224] [fake_fcu]: OffboardControlMode #10 position=True
+[INFO] [1792843541.156863098] [fake_fcu]: 收到 VehicleCommand：ARM
+[INFO] [1792843541.894146519] [fake_fcu]: OffboardControlMode #15 position=True
+[INFO] [1792843543.160965999] [fake_fcu]: 收到 VehicleCommand：DO_SET_MODE(param1=1, param2=6 → 6=OFFBOARD)
+[INFO] [1792843544.164297768] [fake_fcu]: TrajectorySetpoint #1 position=[0.0, 0.0, -5.0]
+[INFO] [1792843546.895094498] [fake_fcu]: OffboardControlMode #20 position=True
+[INFO] [1792843550.466218781] [fake_fcu]: TrajectorySetpoint #2 position=[0.0, 0.0, -5.0]
+[INFO] [1792843551.267228342] [fake_fcu]: TrajectorySetpoint #10 position=[0.4000000059604645, 0.0, -5.0]
+[INFO] [1792843551.894169676] [fake_fcu]: OffboardControlMode #25 position=True
+[INFO] [1792843552.266466535] [fake_fcu]: TrajectorySetpoint #20 position=[0.8999999761581421, 0.0, -5.0]
+[INFO] [1792843553.270623124] [fake_fcu]: TrajectorySetpoint #30 position=[1.399999976158142, 0.0, -5.0]
+[INFO] [1792843555.626340847] [fake_fcu]: TrajectorySetpoint #40 position=[1.899999976158142, 0.0, -5.0]
+[INFO] [1792843556.631516555] [fake_fcu]: TrajectorySetpoint #50 position=[2.4000000953674316, 0.0, -5.0]
+[INFO] [1792843556.894210220] [fake_fcu]: OffboardControlMode #30 position=True
+[INFO] [1792843557.639018209] [fake_fcu]: TrajectorySetpoint #60 position=[2.9000000953674316, 0.0, -5.0]
+[INFO] [1792843561.234363732] [fake_fcu]: 收到 VehicleCommand：DISARM
+[INFO] [1792843561.895427897] [fake_fcu]: OffboardControlMode #35 position=True
+[INFO] [1792843564.239722363] [fake_fcu]: 結束：OffboardControlMode 36 筆、TrajectorySetpoint 62 筆
+Failed to publish log message to rosout: publisher's context is invalid, at ./src/rcl/publisher.c:423
+Traceback (most recent call last):
+  File "/mnt/c/Users/<user>/workspace/k136-ch11-practice/./fake_fcu.py", line 87, in <module>
+    main()
+  File "/mnt/c/Users/<user>/workspace/k136-ch11-practice/./fake_fcu.py", line 77, in main
+    rclpy.spin(node)
+  File "/opt/ros/jazzy/lib/python3.12/site-packages/rclpy/__init__.py", line 247, in spin
+    executor.spin_once()
+  File "/opt/ros/jazzy/lib/python3.12/site-packages/rclpy/executors.py", line 926, in spin_once
+    self._spin_once_impl(timeout_sec)
+  File "/opt/ros/jazzy/lib/python3.12/site-packages/rclpy/executors.py", line 907, in _spin_once_impl
+    handler, entity, node = self.wait_for_ready_callbacks(
+                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/ros/jazzy/lib/python3.12/site-packages/rclpy/executors.py", line 877, in wait_for_ready_callbacks
+    return next(self._cb_iter)
+           ^^^^^^^^^^^^^^^^^^^
+  File "/opt/ros/jazzy/lib/python3.12/site-packages/rclpy/executors.py", line 785, in _wait_for_ready_callbacks
+    raise ExternalShutdownException()
+rclpy.executors.ExternalShutdownException

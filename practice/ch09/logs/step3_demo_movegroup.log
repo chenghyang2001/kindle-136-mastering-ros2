@@ -1,0 +1,286 @@
+[INFO] [launch]: All log files can be found below /home/user/.ros/log/2026-10-24-19-44-56-118918-DESKTOP-6LST1BR-470
+[INFO] [launch]: Default logging verbosity is set to INFO
+[INFO] [static_transform_publisher-1]: process started with pid [476]
+[INFO] [robot_state_publisher-2]: process started with pid [477]
+[INFO] [move_group-3]: process started with pid [478]
+[INFO] [ros2_control_node-4]: process started with pid [479]
+[INFO] [spawner-5]: process started with pid [480]
+[INFO] [spawner-6]: process started with pid [481]
+[static_transform_publisher-1] [INFO] [1792842297.574328441] [static_transform_publisher0]: Spinning until stopped - publishing transform
+[static_transform_publisher-1] translation: ('0.000000', '0.000000', '0.000000')
+[static_transform_publisher-1] rotation: ('0.000000', '0.000000', '0.000000', '1.000000')
+[static_transform_publisher-1] from 'link0' to 'world'
+[robot_state_publisher-2] [INFO] [1792842297.592383165] [robot_state_publisher]: Robot initialized
+[ros2_control_node-4] [INFO] [1792842297.625715489] [controller_manager]: Using Steady (Monotonic) clock for triggering controller manager cycles.
+[ros2_control_node-4] [INFO] [1792842297.634034601] [controller_manager]: Subscribing to '/robot_description' topic for robot description.
+[ros2_control_node-4] [INFO] [1792842297.634192508] [controller_manager]: update rate is 100 Hz
+[ros2_control_node-4] [INFO] [1792842297.634205239] [controller_manager]: Overruns handling is : enabled
+[ros2_control_node-4] [INFO] [1792842297.634211093] [controller_manager]: Spawning controller_manager RT thread with scheduler priority: 50
+[ros2_control_node-4] [WARN] [1792842297.635020245] [controller_manager]: Could not enable FIFO RT scheduling policy: with error number <1>(Operation not permitted). See [https://control.ros.org/master/doc/ros2_control/controller_manager/doc/userdoc.html] for details on how to enable realtime scheduling.
+[ros2_control_node-4] [INFO] [1792842297.636855170] [controller_manager]: Received robot description from topic.
+[ros2_control_node-4] [INFO] [1792842297.636937511] [controller_manager]: Enforcing command limits is disabled. Command limits from URDF will be ignored.
+[ros2_control_node-4] [INFO] [1792842297.641590789] [controller_manager]: Loading hardware 'FakeSystem' 
+[ros2_control_node-4] [INFO] [1792842297.645523401] [controller_manager]: Loaded hardware 'FakeSystem' from plugin 'mock_components/GenericSystem'
+[ros2_control_node-4] [INFO] [1792842297.645666509] [controller_manager]: Initialize hardware 'FakeSystem' 
+[ros2_control_node-4] [INFO] [1792842297.650926407] [controller_manager]: Successful initialization of hardware 'FakeSystem'
+[ros2_control_node-4] [INFO] [1792842297.651287820] [controller_manager]: Activating component 'FakeSystem'.
+[ros2_control_node-4] [INFO] [1792842297.651316736] [resource_manager]: 'configure' hardware 'FakeSystem' 
+[ros2_control_node-4] [INFO] [1792842297.651335121] [resource_manager]: Successful 'configure' of hardware 'FakeSystem'
+[ros2_control_node-4] [INFO] [1792842297.651342538] [resource_manager]: 'activate' hardware 'FakeSystem' 
+[ros2_control_node-4] [INFO] [1792842297.651351759] [resource_manager]: Successful 'activate' of hardware 'FakeSystem'
+[ros2_control_node-4] [INFO] [1792842297.651381771] [controller_manager]: Registering statistics for : FakeSystem
+[ros2_control_node-4] [INFO] [1792842297.651454417] [controller_manager]: Resource Manager has been successfully initialized. Starting Controller Manager services...
+[move_group-3] [INFO] [1792842297.667994314] [move_group.moveit.moveit.ros.rdf_loader]: Loaded robot model in 0.00361139 seconds
+[move_group-3] [INFO] [1792842297.668105878] [move_group.moveit.moveit.core.robot_model]: Loading robot model 'panda'...
+[move_group-3] [INFO] [1792842297.686569048] [move_group.moveit.moveit.kinematics.kdl_kinematics_plugin]: Joint weights for group 'arm': 1 1 1 1 1 1 1
+[move_group-3] [INFO] [1792842297.709677087] [move_group.moveit.moveit.ros.planning_scene_monitor]: Publishing maintained planning scene on 'monitored_planning_scene'
+[move_group-3] [INFO] [1792842297.709849363] [move_group.moveit.moveit.ros.moveit_cpp]: Listening to 'joint_states' for joint states
+[move_group-3] [INFO] [1792842297.710323055] [move_group.moveit.moveit.ros.current_state_monitor]: Listening to joint states on topic 'joint_states'
+[move_group-3] [INFO] [1792842297.710854794] [move_group.moveit.moveit.ros.planning_scene_monitor]: Listening to '/attached_collision_object' for attached collision objects
+[move_group-3] [INFO] [1792842297.710869419] [move_group.moveit.moveit.ros.planning_scene_monitor]: Stopping existing planning scene publisher.
+[move_group-3] [INFO] [1792842297.711001178] [move_group.moveit.moveit.ros.planning_scene_monitor]: Stopped publishing maintained planning scene.
+[move_group-3] [INFO] [1792842297.711657628] [move_group.moveit.moveit.ros.planning_scene_monitor]: Publishing maintained planning scene on 'monitored_planning_scene'
+[move_group-3] [INFO] [1792842297.711760393] [move_group.moveit.moveit.ros.planning_scene_monitor]: Starting planning scene monitor
+[move_group-3] [INFO] [1792842297.712406544] [move_group.moveit.moveit.ros.planning_scene_monitor]: Listening to '/planning_scene'
+[move_group-3] [INFO] [1792842297.712425096] [move_group.moveit.moveit.ros.planning_scene_monitor]: Starting world geometry update monitor for collision objects, attached objects, octomap updates.
+[move_group-3] [INFO] [1792842297.712740479] [move_group.moveit.moveit.ros.planning_scene_monitor]: Listening to 'collision_object'
+[move_group-3] [INFO] [1792842297.713115798] [move_group.moveit.moveit.ros.planning_scene_monitor]: Listening to 'planning_scene_world' for planning scene world geometry
+[move_group-3] [WARN] [1792842297.713279767] [move_group.moveit.moveit.ros.occupancy_map_monitor]: Resolution not specified for Octomap. Assuming resolution = 0.1 instead
+[move_group-3] [ERROR] [1792842297.713366790] [move_group.moveit.moveit.ros.occupancy_map_monitor]: Exception while loading octomap updater 'occupancy_map_monitor/PointCloudOctomapUpdater': According to the loaded plugin descriptions the class occupancy_map_monitor/PointCloudOctomapUpdater with base class type occupancy_map_monitor::OccupancyMapUpdater does not exist. Declared types are 
+[move_group-3] 
+[move_group-3] [ERROR] [1792842297.713406358] [move_group.moveit.moveit.ros.occupancy_map_monitor]: Failed to load sensor: `default_sensor` of type: `occupancy_map_monitor/PointCloudOctomapUpdater`
+[move_group-3] [ERROR] [1792842297.713416377] [move_group.moveit.moveit.ros.occupancy_map_monitor]: Exception while loading octomap updater 'occupancy_map_monitor/DepthImageOctomapUpdater': According to the loaded plugin descriptions the class occupancy_map_monitor/DepthImageOctomapUpdater with base class type occupancy_map_monitor::OccupancyMapUpdater does not exist. Declared types are 
+[move_group-3] 
+[move_group-3] [ERROR] [1792842297.713421261] [move_group.moveit.moveit.ros.occupancy_map_monitor]: Failed to load sensor: `kinect_depthimage` of type: `occupancy_map_monitor/DepthImageOctomapUpdater`
+[move_group-3] [INFO] [1792842297.721290709] [move_group.moveit.moveit.planners.pilz.joint_limits_aggregator]: Reading limits from namespace robot_description_planning
+[move_group-3] [INFO] [1792842297.734556445] [move_group.moveit.moveit.planners.pilz.command_planner]: Available plugins: pilz_industrial_motion_planner/PlanningContextLoaderCIRC pilz_industrial_motion_planner/PlanningContextLoaderLIN pilz_industrial_motion_planner/PlanningContextLoaderPTP 
+[move_group-3] [INFO] [1792842297.734630600] [move_group.moveit.moveit.planners.pilz.command_planner]: About to load: pilz_industrial_motion_planner/PlanningContextLoaderCIRC
+[move_group-3] [INFO] [1792842297.738895706] [move_group.moveit.moveit.planners.pilz.command_planner]: Registered Algorithm [CIRC]
+[move_group-3] [INFO] [1792842297.738978099] [move_group.moveit.moveit.planners.pilz.command_planner]: About to load: pilz_industrial_motion_planner/PlanningContextLoaderLIN
+[move_group-3] [INFO] [1792842297.740828710] [move_group.moveit.moveit.planners.pilz.command_planner]: Registered Algorithm [LIN]
+[move_group-3] [INFO] [1792842297.740891186] [move_group.moveit.moveit.planners.pilz.command_planner]: About to load: pilz_industrial_motion_planner/PlanningContextLoaderPTP
+[move_group-3] [INFO] [1792842297.742962929] [move_group.moveit.moveit.planners.pilz.command_planner]: Registered Algorithm [PTP]
+[move_group-3] [INFO] [1792842297.743026121] [move_group.moveit.moveit.ros.planning_pipeline]: Successfully loaded planner 'Pilz Industrial Motion Planner'
+[move_group-3] [INFO] [1792842297.743911865] [move_group]: Try loading adapter 'default_planning_request_adapters/ResolveConstraintFrames'
+[move_group-3] [INFO] [1792842297.748428835] [move_group]: Loaded adapter 'default_planning_request_adapters/ResolveConstraintFrames'
+[move_group-3] [INFO] [1792842297.748522885] [move_group]: Try loading adapter 'default_planning_request_adapters/ValidateWorkspaceBounds'
+[move_group-3] [INFO] [1792842297.749075613] [move_group]: Loaded adapter 'default_planning_request_adapters/ValidateWorkspaceBounds'
+[move_group-3] [INFO] [1792842297.749191771] [move_group]: Try loading adapter 'default_planning_request_adapters/CheckStartStateBounds'
+[move_group-3] [INFO] [1792842297.749266884] [move_group]: Loaded adapter 'default_planning_request_adapters/CheckStartStateBounds'
+[move_group-3] [INFO] [1792842297.749283797] [move_group]: Try loading adapter 'default_planning_request_adapters/CheckStartStateCollision'
+[move_group-3] [INFO] [1792842297.749302421] [move_group]: Loaded adapter 'default_planning_request_adapters/CheckStartStateCollision'
+[move_group-3] [INFO] [1792842297.750373908] [move_group]: Try loading adapter 'default_planning_response_adapters/ValidateSolution'
+[move_group-3] [INFO] [1792842297.758440362] [move_group]: Loaded adapter 'default_planning_response_adapters/ValidateSolution'
+[move_group-3] [INFO] [1792842297.758480762] [move_group]: Try loading adapter 'default_planning_response_adapters/DisplayMotionPath'
+[move_group-3] [INFO] [1792842297.759192696] [move_group]: Loaded adapter 'default_planning_response_adapters/DisplayMotionPath'
+[move_group-3] [INFO] [1792842297.766071102] [move_group.moveit.moveit.ros.planning_pipeline]: Successfully loaded planner 'STOMP'
+[move_group-3] [INFO] [1792842297.766879888] [move_group]: Try loading adapter 'default_planning_request_adapters/ResolveConstraintFrames'
+[move_group-3] [INFO] [1792842297.766976005] [move_group]: Loaded adapter 'default_planning_request_adapters/ResolveConstraintFrames'
+[move_group-3] [INFO] [1792842297.766983022] [move_group]: Try loading adapter 'default_planning_request_adapters/ValidateWorkspaceBounds'
+[move_group-3] [INFO] [1792842297.767332022] [move_group]: Loaded adapter 'default_planning_request_adapters/ValidateWorkspaceBounds'
+[move_group-3] [INFO] [1792842297.767351578] [move_group]: Try loading adapter 'default_planning_request_adapters/CheckStartStateBounds'
+[move_group-3] [INFO] [1792842297.767384213] [move_group]: Loaded adapter 'default_planning_request_adapters/CheckStartStateBounds'
+[move_group-3] [INFO] [1792842297.767390787] [move_group]: Try loading adapter 'default_planning_request_adapters/CheckStartStateCollision'
+[move_group-3] [INFO] [1792842297.767403419] [move_group]: Loaded adapter 'default_planning_request_adapters/CheckStartStateCollision'
+[move_group-3] [INFO] [1792842297.768231772] [move_group]: Try loading adapter 'default_planning_response_adapters/AddTimeOptimalParameterization'
+[move_group-3] [INFO] [1792842297.768806277] [move_group]: Loaded adapter 'default_planning_response_adapters/AddTimeOptimalParameterization'
+[move_group-3] [INFO] [1792842297.768850507] [move_group]: Try loading adapter 'default_planning_response_adapters/ValidateSolution'
+[move_group-3] [INFO] [1792842297.769174478] [move_group]: Loaded adapter 'default_planning_response_adapters/ValidateSolution'
+[move_group-3] [INFO] [1792842297.769187928] [move_group]: Try loading adapter 'default_planning_response_adapters/DisplayMotionPath'
+[move_group-3] [INFO] [1792842297.769628674] [move_group]: Loaded adapter 'default_planning_response_adapters/DisplayMotionPath'
+[move_group-3] [INFO] [1792842297.777077672] [move_group.moveit.moveit.ros.planning_pipeline]: Successfully loaded planner 'CHOMP'
+[move_group-3] [INFO] [1792842297.777806637] [move_group]: Try loading adapter 'default_planning_request_adapters/ResolveConstraintFrames'
+[move_group-3] [INFO] [1792842297.777893432] [move_group]: Loaded adapter 'default_planning_request_adapters/ResolveConstraintFrames'
+[move_group-3] [INFO] [1792842297.777900887] [move_group]: Try loading adapter 'default_planning_request_adapters/ValidateWorkspaceBounds'
+[move_group-3] [INFO] [1792842297.778300811] [move_group]: Loaded adapter 'default_planning_request_adapters/ValidateWorkspaceBounds'
+[move_group-3] [INFO] [1792842297.778324340] [move_group]: Try loading adapter 'default_planning_request_adapters/CheckStartStateBounds'
+[move_group-3] [INFO] [1792842297.778349990] [move_group]: Loaded adapter 'default_planning_request_adapters/CheckStartStateBounds'
+[move_group-3] [INFO] [1792842297.778353514] [move_group]: Try loading adapter 'default_planning_request_adapters/CheckStartStateCollision'
+[move_group-3] [INFO] [1792842297.778367397] [move_group]: Loaded adapter 'default_planning_request_adapters/CheckStartStateCollision'
+[move_group-3] [INFO] [1792842297.779081843] [move_group]: Try loading adapter 'default_planning_response_adapters/AddTimeOptimalParameterization'
+[move_group-3] [INFO] [1792842297.779715341] [move_group]: Loaded adapter 'default_planning_response_adapters/AddTimeOptimalParameterization'
+[move_group-3] [INFO] [1792842297.779733367] [move_group]: Try loading adapter 'default_planning_response_adapters/ValidateSolution'
+[move_group-3] [INFO] [1792842297.780127905] [move_group]: Loaded adapter 'default_planning_response_adapters/ValidateSolution'
+[move_group-3] [INFO] [1792842297.780142453] [move_group]: Try loading adapter 'default_planning_response_adapters/DisplayMotionPath'
+[move_group-3] [INFO] [1792842297.780687785] [move_group]: Loaded adapter 'default_planning_response_adapters/DisplayMotionPath'
+[move_group-3] [INFO] [1792842297.801620251] [move_group.moveit.moveit.ros.planning_pipeline]: Successfully loaded planner 'OMPL'
+[move_group-3] [INFO] [1792842297.802624264] [move_group]: Try loading adapter 'default_planning_request_adapters/ResolveConstraintFrames'
+[move_group-3] [INFO] [1792842297.802828116] [move_group]: Loaded adapter 'default_planning_request_adapters/ResolveConstraintFrames'
+[move_group-3] [INFO] [1792842297.802841570] [move_group]: Try loading adapter 'default_planning_request_adapters/ValidateWorkspaceBounds'
+[move_group-3] [INFO] [1792842297.803335832] [move_group]: Loaded adapter 'default_planning_request_adapters/ValidateWorkspaceBounds'
+[move_group-3] [INFO] [1792842297.803356584] [move_group]: Try loading adapter 'default_planning_request_adapters/CheckStartStateBounds'
+[move_group-3] [INFO] [1792842297.803391793] [move_group]: Loaded adapter 'default_planning_request_adapters/CheckStartStateBounds'
+[move_group-3] [INFO] [1792842297.803396641] [move_group]: Try loading adapter 'default_planning_request_adapters/CheckStartStateCollision'
+[move_group-3] [INFO] [1792842297.803409832] [move_group]: Loaded adapter 'default_planning_request_adapters/CheckStartStateCollision'
+[move_group-3] [INFO] [1792842297.804307118] [move_group]: Try loading adapter 'default_planning_response_adapters/AddTimeOptimalParameterization'
+[move_group-3] [INFO] [1792842297.805021435] [move_group]: Loaded adapter 'default_planning_response_adapters/AddTimeOptimalParameterization'
+[move_group-3] [INFO] [1792842297.805043358] [move_group]: Try loading adapter 'default_planning_response_adapters/ValidateSolution'
+[move_group-3] [INFO] [1792842297.805473926] [move_group]: Loaded adapter 'default_planning_response_adapters/ValidateSolution'
+[move_group-3] [INFO] [1792842297.805487903] [move_group]: Try loading adapter 'default_planning_response_adapters/DisplayMotionPath'
+[move_group-3] [INFO] [1792842297.806076402] [move_group]: Loaded adapter 'default_planning_response_adapters/DisplayMotionPath'
+[move_group-3] [INFO] [1792842297.858522292] [move_group.moveit.moveit.plugins.simple_controller_manager]: Added FollowJointTrajectory controller for arm_controller
+[move_group-3] [INFO] [1792842297.859006744] [move_group.moveit.moveit.plugins.simple_controller_manager]: Returned 1 controllers in list
+[move_group-3] [INFO] [1792842297.859070915] [move_group.moveit.moveit.plugins.simple_controller_manager]: Returned 1 controllers in list
+[move_group-3] [INFO] [1792842297.859410271] [move_group.moveit.moveit.ros.trajectory_execution_manager]: Trajectory execution is managing controllers
+[move_group-3] [INFO] [1792842297.859443491] [move_group]: MoveGroup debug mode is ON
+[move_group-3] [INFO] [1792842297.890743185] [move_group.moveit.moveit.planners.pilz.move_group_sequence_action]: initialize move group sequence action
+[move_group-3] [INFO] [1792842297.895529443] [move_group.moveit.moveit.planners.pilz.joint_limits_aggregator]: Reading limits from namespace robot_description_planning
+[move_group-3] [INFO] [1792842297.895889463] [move_group.moveit.moveit.planners.pilz.joint_limits_aggregator]: Reading limits from namespace robot_description_planning
+[move_group-3] [INFO] [1792842297.898241941] [move_group.moveit.moveit.ros.move_group.executable]: 
+[move_group-3] 
+[move_group-3] ********************************************************
+[move_group-3] * MoveGroup using: 
+[move_group-3] *     - apply_planning_scene_service
+[move_group-3] *     - clear_octomap_service
+[move_group-3] *     - get_group_urdf
+[move_group-3] *     - load_geometry_from_file
+[move_group-3] *     - CartesianPathService
+[move_group-3] *     - execute_trajectory_action
+[move_group-3] *     - get_planning_scene_service
+[move_group-3] *     - kinematics_service
+[move_group-3] *     - move_action
+[move_group-3] *     - motion_plan_service
+[move_group-3] *     - query_planners_service
+[move_group-3] *     - state_validation_service
+[move_group-3] *     - save_geometry_to_file
+[move_group-3] *     - SequenceAction
+[move_group-3] *     - SequenceService
+[move_group-3] ********************************************************
+[move_group-3] 
+[move_group-3] [INFO] [1792842297.898350404] [move_group.moveit.moveit.ros.move_group.context]: MoveGroup context using pipeline ompl
+[move_group-3] [INFO] [1792842297.898368067] [move_group.moveit.moveit.ros.move_group.context]: MoveGroup context initialization complete
+[move_group-3] [96mLoading 'move_group/ApplyPlanningSceneService'...[0m
+[move_group-3] [96mLoading 'move_group/ClearOctomapService'...[0m
+[move_group-3] [96mLoading 'move_group/GetUrdfService'...[0m
+[move_group-3] [96mLoading 'move_group/LoadGeometryFromFileService'...[0m
+[move_group-3] [96mLoading 'move_group/MoveGroupCartesianPathService'...[0m
+[move_group-3] [96mLoading 'move_group/MoveGroupExecuteTrajectoryAction'...[0m
+[move_group-3] [96mLoading 'move_group/MoveGroupGetPlanningSceneService'...[0m
+[move_group-3] [96mLoading 'move_group/MoveGroupKinematicsService'...[0m
+[move_group-3] [96mLoading 'move_group/MoveGroupMoveAction'...[0m
+[move_group-3] [96mLoading 'move_group/MoveGroupPlanService'...[0m
+[move_group-3] [96mLoading 'move_group/MoveGroupQueryPlannersService'...[0m
+[move_group-3] [96mLoading 'move_group/MoveGroupStateValidationService'...[0m
+[move_group-3] [96mLoading 'move_group/SaveGeometryToFileService'...[0m
+[move_group-3] [96mLoading 'pilz_industrial_motion_planner/MoveGroupSequenceAction'...[0m
+[move_group-3] [96mLoading 'pilz_industrial_motion_planner/MoveGroupSequenceService'...[0m
+[move_group-3] 
+[move_group-3] [92mYou can start planning now![0m
+[move_group-3] 
+[ros2_control_node-4] [INFO] [1792842298.062101504] [controller_manager]: Loading controller : 'arm_controller' of type 'joint_trajectory_controller/JointTrajectoryController'
+[ros2_control_node-4] [INFO] [1792842298.062159616] [controller_manager]: Loading controller 'arm_controller'
+[ros2_control_node-4] [INFO] [1792842298.068142270] [controller_manager]: Controller 'arm_controller' node arguments: --ros-args --params-file /home/user/k136_ws/ch09/install/panda_moveit_config/share/panda_moveit_config/config/ros2_controllers.yaml 
+[spawner-5] [INFO] [1792842298.097002737] [spawner_arm_controller]: Loaded arm_controller
+[ros2_control_node-4] [INFO] [1792842298.098059470] [controller_manager]: Configuring controller: 'arm_controller'
+[ros2_control_node-4] [INFO] [1792842298.098421224] [arm_controller]: No specific joint names are used for command interfaces. Using 'joints' parameter.
+[ros2_control_node-4] [INFO] [1792842298.098455005] [arm_controller]: Command interfaces are [position] and state interfaces are [position velocity].
+[ros2_control_node-4] [INFO] [1792842298.098479645] [arm_controller]: Using 'splines' interpolation method.
+[ros2_control_node-4] [INFO] [1792842298.102322917] [arm_controller]: Action status changes will be monitored at 20.00 Hz.
+[ros2_control_node-4] [INFO] [1792842298.105552823] [arm_controller]: Setting initial scaling factor to 1.000000
+[ros2_control_node-4] [INFO] [1792842298.105583824] [arm_controller]: No scaling interface set. This controller will not read speed scaling from the hardware.
+[ros2_control_node-4] [INFO] [1792842298.107366334] [controller_manager]: Activating controllers: [ arm_controller ]
+[ros2_control_node-4] [INFO] [1792842298.115950759] [controller_manager]: Successfully switched controllers!
+[spawner-5] [INFO] [1792842298.128095952] [spawner_arm_controller]: Configured and activated arm_controller
+[INFO] [spawner-5]: process has finished cleanly [pid 480]
+[ros2_control_node-4] [INFO] [1792842298.393121779] [controller_manager]: Loading controller : 'joint_state_broadcaster' of type 'joint_state_broadcaster/JointStateBroadcaster'
+[ros2_control_node-4] [INFO] [1792842298.393188862] [controller_manager]: Loading controller 'joint_state_broadcaster'
+[ros2_control_node-4] [INFO] [1792842298.403705046] [controller_manager]: Controller 'joint_state_broadcaster' node arguments: --ros-args --params-file /home/user/k136_ws/ch09/install/panda_moveit_config/share/panda_moveit_config/config/ros2_controllers.yaml 
+[spawner-6] [INFO] [1792842298.429821817] [spawner_joint_state_broadcaster]: Loaded joint_state_broadcaster
+[ros2_control_node-4] [INFO] [1792842298.431630241] [controller_manager]: Configuring controller: 'joint_state_broadcaster'
+[ros2_control_node-4] [INFO] [1792842298.432000376] [joint_state_broadcaster]: 'joints' or 'interfaces' parameter is empty. All available state interfaces will be published
+[ros2_control_node-4] [INFO] [1792842298.437820994] [controller_manager]: Activating controllers: [ joint_state_broadcaster ]
+[ros2_control_node-4] [INFO] [1792842298.446052035] [controller_manager]: Successfully switched controllers!
+[spawner-6] [INFO] [1792842298.457278883] [spawner_joint_state_broadcaster]: Configured and activated joint_state_broadcaster
+[INFO] [spawner-6]: process has finished cleanly [pid 481]
+[move_group-3] [INFO] [1792842306.696235328] [move_group.moveit.moveit.ros.planning_scene_monitor]: Published update attached
+[move_group-3] [INFO] [1792842309.891339492] [move_group.moveit.moveit.ros.move_group.move_action]: MoveGroupMoveAction: Received request
+[move_group-3] [INFO] [1792842309.891801538] [move_group.moveit.moveit.ros.move_group.move_action]: executing..
+[move_group-3] [INFO] [1792842309.896205264] [move_group.moveit.moveit.ros.move_group.move_action]: Planning request received for MoveGroup action. Forwarding to planning pipeline.
+[move_group-3] [INFO] [1792842309.896349490] [move_group]: Calling PlanningRequestAdapter 'ResolveConstraintFrames'
+[move_group-3] [INFO] [1792842309.896380718] [move_group]: Calling PlanningRequestAdapter 'ValidateWorkspaceBounds'
+[move_group-3] [WARN] [1792842309.896384738] [move_group.moveit.moveit.ros.validate_workspace_bounds]: It looks like the planning volume was not specified. Using default values.
+[move_group-3] [INFO] [1792842309.896395811] [move_group]: Calling PlanningRequestAdapter 'CheckStartStateBounds'
+[move_group-3] [INFO] [1792842309.896417684] [move_group]: Calling PlanningRequestAdapter 'CheckStartStateCollision'
+[move_group-3] [INFO] [1792842309.897211759] [move_group.moveit.moveit.planners.ompl.model_based_planning_context]: Planner configuration 'arm' will use planner 'geometric::RRTConnect'. Additional configuration parameters will be set when the planner is constructed.
+[move_group-3] [INFO] [1792842309.897347436] [move_group]: Calling Planner 'OMPL'
+[move_group-3] [INFO] [1792842309.922337914] [move_group]: Calling PlanningResponseAdapter 'AddTimeOptimalParameterization'
+[move_group-3] [INFO] [1792842309.924971299] [move_group]: Calling PlanningResponseAdapter 'ValidateSolution'
+[move_group-3] [INFO] [1792842309.925727431] [move_group]: Calling PlanningResponseAdapter 'DisplayMotionPath'
+[move_group-3] [WARN] [1792842309.925833415] [move_group.moveit.moveit.ros.planning_pipeline]: The planner plugin did not fill out the 'planner_id' field of the MotionPlanResponse. Setting it to the planner ID name of the MotionPlanRequest assuming that the planner plugin does warn you if it does not use the requested planner.
+[move_group-3] [INFO] [1792842309.925916620] [move_group.moveit.moveit.ros.move_group.move_action]: Motion plan was computed successfully.
+[move_group-3] [INFO] [1792842309.927263781] [move_group.moveit.moveit.ros.move_group.move_action]: MoveGroupMoveAction: Received request
+[move_group-3] [INFO] [1792842309.927466492] [move_group.moveit.moveit.ros.move_group.move_action]: executing..
+[move_group-3] [INFO] [1792842309.936190106] [move_group.moveit.moveit.ros.move_group.move_action]: Combined planning and execution request received for MoveGroup action. Forwarding to planning and execution pipeline.
+[move_group-3] [INFO] [1792842309.936309277] [move_group.moveit.moveit.ros.plan_execution]: Planning attempt 1 of at most 1
+[move_group-3] [INFO] [1792842309.936432590] [move_group]: Calling PlanningRequestAdapter 'ResolveConstraintFrames'
+[move_group-3] [INFO] [1792842309.936455099] [move_group]: Calling PlanningRequestAdapter 'ValidateWorkspaceBounds'
+[move_group-3] [WARN] [1792842309.936458749] [move_group.moveit.moveit.ros.validate_workspace_bounds]: It looks like the planning volume was not specified. Using default values.
+[move_group-3] [INFO] [1792842309.936470936] [move_group]: Calling PlanningRequestAdapter 'CheckStartStateBounds'
+[move_group-3] [INFO] [1792842309.936506145] [move_group]: Calling PlanningRequestAdapter 'CheckStartStateCollision'
+[move_group-3] [INFO] [1792842309.936798476] [move_group.moveit.moveit.planners.ompl.model_based_planning_context]: Planner configuration 'arm' will use planner 'geometric::RRTConnect'. Additional configuration parameters will be set when the planner is constructed.
+[move_group-3] [INFO] [1792842309.936861362] [move_group]: Calling Planner 'OMPL'
+[move_group-3] [INFO] [1792842309.964297964] [move_group]: Calling PlanningResponseAdapter 'AddTimeOptimalParameterization'
+[move_group-3] [INFO] [1792842309.972804066] [move_group]: Calling PlanningResponseAdapter 'ValidateSolution'
+[move_group-3] [INFO] [1792842309.974108765] [move_group]: Calling PlanningResponseAdapter 'DisplayMotionPath'
+[move_group-3] [WARN] [1792842309.974328514] [move_group.moveit.moveit.ros.planning_pipeline]: The planner plugin did not fill out the 'planner_id' field of the MotionPlanResponse. Setting it to the planner ID name of the MotionPlanRequest assuming that the planner plugin does warn you if it does not use the requested planner.
+[move_group-3] [INFO] [1792842309.974551910] [move_group.moveit.moveit.plugins.simple_controller_manager]: Returned 1 controllers in list
+[move_group-3] [INFO] [1792842309.974613004] [move_group.moveit.moveit.plugins.simple_controller_manager]: Returned 1 controllers in list
+[move_group-3] [INFO] [1792842309.974735893] [move_group.moveit.moveit.ros.trajectory_execution_manager]: Validating trajectory with allowed_start_tolerance 0.01
+[move_group-3] [INFO] [1792842309.976125111] [move_group.moveit.moveit.ros.trajectory_execution_manager]: Starting trajectory execution ...
+[move_group-3] [INFO] [1792842309.976206932] [move_group.moveit.moveit.plugins.simple_controller_manager]: Returned 1 controllers in list
+[move_group-3] [INFO] [1792842309.976225052] [move_group.moveit.moveit.plugins.simple_controller_manager]: Returned 1 controllers in list
+[move_group-3] [INFO] [1792842309.976438754] [moveit.simple_controller_manager.follow_joint_trajectory_controller_handle]: sending trajectory to arm_controller
+[ros2_control_node-4] [INFO] [1792842309.976947182] [arm_controller]: Received new action goal
+[ros2_control_node-4] [INFO] [1792842309.977012930] [arm_controller]: Accepted new action goal
+[move_group-3] [INFO] [1792842309.977221825] [moveit.simple_controller_manager.follow_joint_trajectory_controller_handle]: arm_controller started execution
+[move_group-3] [INFO] [1792842309.977241696] [moveit.simple_controller_manager.follow_joint_trajectory_controller_handle]: Goal request accepted!
+[move_group-3] [WARN] [1792842309.996026107] [move_group.moveit.moveit.ros.planning_scene_monitor]: The complete state of the robot is not yet known.  Missing finger_joint1, finger_joint2
+[move_group-3] [WARN] [1792842311.006341568] [move_group.moveit.moveit.ros.planning_scene_monitor]: The complete state of the robot is not yet known.  Missing finger_joint1, finger_joint2
+[move_group-3] [WARN] [1792842312.026050068] [move_group.moveit.moveit.ros.planning_scene_monitor]: The complete state of the robot is not yet known.  Missing finger_joint1, finger_joint2
+[move_group-3] [WARN] [1792842313.035920682] [move_group.moveit.moveit.ros.planning_scene_monitor]: The complete state of the robot is not yet known.  Missing finger_joint1, finger_joint2
+[move_group-3] [WARN] [1792842314.046013006] [move_group.moveit.moveit.ros.planning_scene_monitor]: The complete state of the robot is not yet known.  Missing finger_joint1, finger_joint2
+[move_group-3] [WARN] [1792842315.056114959] [move_group.moveit.moveit.ros.planning_scene_monitor]: The complete state of the robot is not yet known.  Missing finger_joint1, finger_joint2
+[move_group-3] [WARN] [1792842316.086134828] [move_group.moveit.moveit.ros.planning_scene_monitor]: The complete state of the robot is not yet known.  Missing finger_joint1, finger_joint2
+[move_group-3] [WARN] [1792842317.120424639] [move_group.moveit.moveit.ros.planning_scene_monitor]: The complete state of the robot is not yet known.  Missing finger_joint1, finger_joint2
+[move_group-3] [WARN] [1792842318.146031031] [move_group.moveit.moveit.ros.planning_scene_monitor]: The complete state of the robot is not yet known.  Missing finger_joint1, finger_joint2
+[move_group-3] [WARN] [1792842319.160527992] [move_group.moveit.moveit.ros.planning_scene_monitor]: The complete state of the robot is not yet known.  Missing finger_joint1, finger_joint2
+[ros2_control_node-4] [INFO] [1792842320.075866152] [arm_controller]: Goal reached, success!
+[move_group-3] [INFO] [1792842320.077767198] [moveit.simple_controller_manager.follow_joint_trajectory_controller_handle]: Controller 'arm_controller' successfully finished
+[move_group-3] [INFO] [1792842320.106107566] [move_group.moveit.moveit.ros.trajectory_execution_manager]: Completed trajectory execution with status SUCCEEDED ...
+[move_group-3] [INFO] [1792842320.116386072] [move_group.moveit.moveit.ros.move_group.move_action]: Solution was found and executed.
+[move_group-3] [INFO] [1792842322.570310300] [rclcpp]: signal_handler(SIGINT/SIGTERM)
+[robot_state_publisher-2] [INFO] [1792842322.570303900] [rclcpp]: signal_handler(SIGINT/SIGTERM)
+[static_transform_publisher-1] [INFO] [1792842322.570334264] [rclcpp]: signal_handler(SIGINT/SIGTERM)
+[ros2_control_node-4] [INFO] [1792842322.570334955] [rclcpp]: signal_handler(SIGINT/SIGTERM)
+[ros2_control_node-4] [INFO] [1792842322.570412721] [controller_manager]: Shutdown request received....
+[ros2_control_node-4] [INFO] [1792842322.570472799] [controller_manager]: Shutting down all controllers in the controller manager.
+[ros2_control_node-4] [INFO] [1792842322.570493668] [controller_manager]: Deactivating controller 'joint_state_broadcaster'
+[ros2_control_node-4] [INFO] [1792842322.570541499] [controller_manager]: Shutting down controller 'joint_state_broadcaster'
+[ros2_control_node-4] [INFO] [1792842322.570674402] [controller_manager]: Deactivating controller 'arm_controller'
+[ros2_control_node-4] [INFO] [1792842322.570711240] [controller_manager]: Shutting down controller 'arm_controller'
+[ros2_control_node-4] [INFO] [1792842322.570754150] [resource_manager]: 'deactivate' hardware 'FakeSystem' 
+[ros2_control_node-4] [INFO] [1792842322.570770991] [resource_manager]: Successful 'deactivate' of hardware 'FakeSystem'
+[ros2_control_node-4] [INFO] [1792842322.570773956] [resource_manager]: 'shutdown' hardware 'FakeSystem' 
+[ros2_control_node-4] [INFO] [1792842322.570776899] [resource_manager]: Successful 'shutdown' of hardware 'FakeSystem'
+[ros2_control_node-4] [INFO] [1792842322.570811036] [controller_manager]: Shutting down the controller manager.
+[ros2_control_node-4] [ERROR] [1792842322.570915922] [controller_manager.pal_statistics]: Exception in publisher thread: context cannot be slept with because it's invalid!. Aborting!
+[ros2_control_node-4] [ERROR] [1792842322.570916045] [controller_manager.pal_statistics]: Exception in publisher thread: context cannot be slept with because it's invalid!. Aborting!
+[ros2_control_node-4] [INFO] [1792842322.576428832] [controller_manager.pal_statistics]: Async messages lost 0
+[ros2_control_node-4] [INFO] [1792842322.576447847] [controller_manager.pal_statistics]: publish_async_failures_ 0
+[ros2_control_node-4] [INFO] [1792842322.580301444] [controller_manager.pal_statistics]: Async messages lost 0
+[ros2_control_node-4] [INFO] [1792842322.580311885] [controller_manager.pal_statistics]: publish_async_failures_ 0
+[move_group-3] Stack trace (most recent call last):
+[move_group-3] #6    Object "/usr/lib/x86_64-linux-gnu/ld-linux-x86-64.so.2", at 0xffffffffffffffff, in 
+[move_group-3] #5    Object "/opt/ros/jazzy/lib/moveit_ros_move_group/move_group", at 0x576693737a14, in _start
+[move_group-3] #4    Object "/usr/lib/x86_64-linux-gnu/libc.so.6", at 0x7a7d8962a28a, in __libc_start_main
+[move_group-3] #3    Object "/usr/lib/x86_64-linux-gnu/libc.so.6", at 0x7a7d8962a1c9, in 
+[move_group-3] #2    Object "/opt/ros/jazzy/lib/moveit_ros_move_group/move_group", at 0x5766937364e7, in main
+[move_group-3] #1    Object "/opt/ros/jazzy/lib/librclcpp.so", at 0x7a7d89f162f7, in rclcpp::Executor::~Executor()
+[move_group-3] #0    Object "/opt/ros/jazzy/lib/librclcpp.so", at 0x7a7d89f10dde, in 
+[move_group-3] Segmentation fault (Address not mapped to object [0x7a7d64455170])
+[ERROR] [move_group-3]: process has died [pid 478, exit code -11, cmd '/opt/ros/jazzy/lib/moveit_ros_move_group/move_group --ros-args --params-file /tmp/launch_params_t3s6awwc --params-file /tmp/launch_params_wgtfv75h'].
+[INFO] [static_transform_publisher-1]: process has finished cleanly [pid 476]
+[INFO] [robot_state_publisher-2]: process has finished cleanly [pid 477]
+[INFO] [robot_state_publisher-2]: process started with pid [682]
+[robot_state_publisher-2] [INFO] [1792842324.631406716] [robot_state_publisher]: Robot initialized
+[INFO] [ros2_control_node-4]: process has finished cleanly [pid 479]

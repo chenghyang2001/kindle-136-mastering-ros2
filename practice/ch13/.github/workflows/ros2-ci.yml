@@ -1,0 +1,68 @@
+# K136 第 13 章：ROS 2 Jazzy CI/CD 範本（本演練只寫檔，不 push、未實際在 GitHub 跑過）
+# CI：每次 push / PR 都在乾淨的 Ubuntu 24.04 上裝 ROS 2 Jazzy → rosdep → colcon build → colcon test
+# CD：只有打 v* tag 時才把 install/ 打包成 artifact（示範用，真正部署可換成 .deb 或 Docker 映像）
+name: ros2-ci
+
+on:
+  push:
+    branches: [main, master]
+    tags: ["v*"]
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-24.04
+    strategy:
+      fail-fast: false
+      matrix:
+        ros_distro: [jazzy]
+    steps:
+      - uses: actions/checkout@v4
+
+      # 安裝 ROS 2 本體、colcon、rosdep（不同發行版只要改 matrix）
+      - uses: ros-tooling/setup-ros@v0.7
+        with:
+          required-ros-distributions: ${{ matrix.ros_distro }}
+
+      # 自動建立工作區、rosdep install、colcon build + colcon test，測試失敗會讓 job 變紅
+      - uses: ros-tooling/action-ros-ci@v0.4
+        with:
+          package-name: first_gtest to_lowercase
+          target-ros2-distro: ${{ matrix.ros_distro }}
+          extra-cmake-args: -DCMAKE_BUILD_TYPE=Release
+        env:
+          # to_lowercase_test 會真的收發 topic：限定 localhost 探索，避免共用 runner 上互相干擾
+          ROS_AUTOMATIC_DISCOVERY_RANGE: LOCALHOST
+
+      # 不論成敗都把測試報告留下，方便在 Actions 頁面下載 gtest XML
+      - name: 上傳測試結果
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: colcon-test-results-${{ matrix.ros_distro }}
+          path: ros_ws/build/*/test_results/
+
+  package:
+    # CD 階段：CI 通過且是版本 tag 才執行
+    needs: build-and-test
+    if: startsWith(github.ref, 'refs/tags/v')
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: ros-tooling/setup-ros@v0.7
+        with:
+          required-ros-distributions: jazzy
+      - name: 建置 release 版 install/
+        shell: bash
+        run: |
+          source /opt/ros/jazzy/setup.bash
+          sudo rosdep init 2>/dev/null || true
+          rosdep update
+          rosdep install --from-paths src --ignore-src -y --rosdistro jazzy
+          colcon build --cmake-args -DCMAKE_BUILD_TYPE=Release -DBUILD_TESTING=OFF
+          tar czf ch13-install-${{ github.ref_name }}.tar.gz install
+      - uses: actions/upload-artifact@v4
+        with:
+          name: ch13-install-${{ github.ref_name }}
+          path: ch13-install-*.tar.gz

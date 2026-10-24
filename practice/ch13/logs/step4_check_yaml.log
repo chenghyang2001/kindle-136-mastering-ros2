@@ -1,0 +1,14 @@
+PyYAML 6.0.1
+name: ros2-ci
+triggers: ['push', 'pull_request', 'workflow_dispatch']
+job build-and-test: runs-on=ubuntu-24.04, needs=None
+   - actions/checkout@v4
+   - ros-tooling/setup-ros@v0.7
+   - ros-tooling/action-ros-ci@v0.4
+   - actions/upload-artifact@v4
+job package: runs-on=ubuntu-24.04, needs=build-and-test
+   - actions/checkout@v4
+   - ros-tooling/setup-ros@v0.7
+   - 建置 release 版 install/
+   - actions/upload-artifact@v4
+YAML_OK

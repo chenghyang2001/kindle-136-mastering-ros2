@@ -1,0 +1,100 @@
+[INFO] [launch]: All log files can be found below /home/user/.ros/log/2026-10-24-18-48-54-055576-DESKTOP-6LST1BR-695
+[INFO] [launch]: Default logging verbosity is set to INFO
+[INFO] [gazebo-1]: process started with pid [700]
+[INFO] [create-2]: process started with pid [701]
+[INFO] [parameter_bridge-3]: process started with pid [703]
+[INFO] [image_bridge-4]: process started with pid [704]
+[INFO] [robot_state_publisher-5]: process started with pid [705]
+[robot_state_publisher-5] [INFO] [1792838934.833128625] [robot_state_publisher]: Robot initialized
+[create-2] [INFO] [1792838934.930276260] [ros_gz_sim]: Requesting list of world names.
+[create-2] [INFO] [1792838935.578878676] [ros_gz_sim]: Waiting messages on topic [robot_description].
+[create-2] [INFO] [1792838935.584692855] [ros_gz_sim]: Entity creation successful.
+[INFO] [create-2]: process has finished cleanly [pid 701]
+[INFO] [ros2-6]: process started with pid [776]
+[parameter_bridge-3] [INFO] [1792838935.983684024] [ros_gz_bridge]: Creating GZ->ROS Bridge: [/clock (gz.msgs.Clock) -> /clock (rosgraph_msgs/msg/Clock)] (Lazy 0)
+[parameter_bridge-3] [INFO] [1792838935.986767609] [ros_gz_bridge]: Creating GZ->ROS Bridge: [/scan (gz.msgs.LaserScan) -> /diff_drive/scan (sensor_msgs/msg/LaserScan)] (Lazy 0)
+[parameter_bridge-3] [INFO] [1792838935.989264191] [ros_gz_bridge]: Creating GZ->ROS Bridge: [camera/camera_info (gz.msgs.CameraInfo) -> camera/depth/camera_info (sensor_msgs/msg/CameraInfo)] (Lazy 0)
+[parameter_bridge-3] [INFO] [1792838935.990193217] [ros_gz_bridge]: Creating GZ->ROS Bridge: [camera/points (gz.msgs.PointCloudPacked) -> camera/depth/color/points (sensor_msgs/msg/PointCloud2)] (Lazy 0)
+[ros2-6] [INFO] [1792838936.547983790] [spawner_joint_state_broadcaster]: waiting for service /controller_manager/list_controllers to become available...
+[gazebo-1] [1;33mWarning [parser_urdf.cc:1220][0m Attribute value string not set
+[gazebo-1] [1;33mWarning [parser_urdf.cc:1220][0m Attribute value string not set
+[gazebo-1] [1;33mWarning [Utils.cc:132][0m [/sdf/model[@name="rrbot"]/link[@name="link2"]/sensor[@name="gpu_lidar"]/gz_frame_id:<urdf-string>:L0]: XML Element[gz_frame_id], child of element[sensor], not defined in SDF. Copying[gz_frame_id] as children of [sensor].
+[gazebo-1] [1;33mWarning [Utils.cc:132][0m [/sdf/model[@name="rrbot"]/link[@name="link2"]/sensor[@name="camera"]/gz_frame_id:<urdf-string>:L0]: XML Element[gz_frame_id], child of element[sensor], not defined in SDF. Copying[gz_frame_id] as children of [sensor].
+[gazebo-1] [INFO] [1792838937.326815236] [gz_ros_control]: [gz_ros2_control] Fixed joint ['base_joint'] (Entity='36') is skipped.
+[gazebo-1] [INFO] [1792838937.329960692] [gz_ros_control]: Loading controller_manager
+[gazebo-1] [INFO] [1792838937.353174167] [controller_manager]: Using ROS clock for triggering controller manager cycles.
+[gazebo-1] [WARN] [1792838937.353228812] [controller_manager]: The resource manager is not yet initialized, will wait for the robot description to initialize it..
+[gazebo-1] [INFO] [1792838937.359730332] [controller_manager]: Subscribing to '/robot_description' topic for robot description.
+[gazebo-1] [WARN] [1792838937.359832089] [gz_ros_control]: Waiting RM to load and initialize hardware...
+[gazebo-1] [INFO] [1792838937.361543739] [controller_manager]: Received robot description from topic.
+[gazebo-1] [INFO] [1792838937.361600948] [controller_manager]: Enforcing command limits is disabled. Command limits from URDF will be ignored.
+[gazebo-1] [INFO] [1792838937.365458643] [gz_ros_control]: The position_proportional_gain has been set to: 0.1
+[gazebo-1] [INFO] [1792838937.365543459] [gz_ros_control]: Loading joint: joint1
+[gazebo-1] [INFO] [1792838937.365552040] [gz_ros_control]: 	State:
+[gazebo-1] [INFO] [1792838937.365557647] [gz_ros_control]: 		 position
+[gazebo-1] [INFO] [1792838937.365561754] [gz_ros_control]: 	Command:
+[gazebo-1] [INFO] [1792838937.365564767] [gz_ros_control]: 		 position
+[gazebo-1] [INFO] [1792838937.365574113] [gz_ros_control]: Loading joint: joint2
+[gazebo-1] [INFO] [1792838937.365577220] [gz_ros_control]: 	State:
+[gazebo-1] [INFO] [1792838937.365579951] [gz_ros_control]: 		 position
+[gazebo-1] [INFO] [1792838937.365586319] [gz_ros_control]: 	Command:
+[gazebo-1] [INFO] [1792838937.365588989] [gz_ros_control]: 		 position
+[gazebo-1] [INFO] [1792838937.365693256] [controller_manager]: Initialize hardware 'RobotSystem' 
+[gazebo-1] [WARN] [1792838937.365708967] [controller_manager.hardware_component.system.RobotSystem]: Executor is not available during hardware component initialization for 'RobotSystem'. Skipping node creation!
+[gazebo-1] [INFO] [1792838937.365758260] [controller_manager]: Successful initialization of hardware 'RobotSystem'
+[gazebo-1] [INFO] [1792838937.365840755] [controller_manager]: Activating component 'RobotSystem'.
+[gazebo-1] [INFO] [1792838937.365850740] [resource_manager]: 'configure' hardware 'RobotSystem' 
+[gazebo-1] [INFO] [1792838937.365854734] [gz_ros_control]: System Successfully configured!
+[gazebo-1] [INFO] [1792838937.365858826] [resource_manager]: Successful 'configure' of hardware 'RobotSystem'
+[gazebo-1] [INFO] [1792838937.365864176] [resource_manager]: 'activate' hardware 'RobotSystem' 
+[gazebo-1] [INFO] [1792838937.365876166] [resource_manager]: Successful 'activate' of hardware 'RobotSystem'
+[gazebo-1] [WARN] [1792838937.365904831] [controller_manager]: Component 'RobotSystem' does not have read or write statistics initialized, skipping registration.
+[gazebo-1] [INFO] [1792838937.365910020] [controller_manager]: Resource Manager has been successfully initialized. Starting Controller Manager services...
+[gazebo-1] [INFO] [1792838937.551951827] [controller_manager]: Loading controller : 'joint_state_broadcaster' of type 'joint_state_broadcaster/JointStateBroadcaster'
+[gazebo-1] [INFO] [1792838937.552033117] [controller_manager]: Loading controller 'joint_state_broadcaster'
+[gazebo-1] [INFO] [1792838937.559308612] [controller_manager]: Controller 'joint_state_broadcaster' node arguments: --ros-args --params-file /home/user/k136_ws/ch05/install/rrbot_gazebo/share/rrbot_gazebo/config/rrbot_controllers.yaml --ros-args -p use_sim_time:=true --param use_sim_time:=true 
+[ros2-6] [INFO] [1792838937.567270166] [spawner_joint_state_broadcaster]: Loaded joint_state_broadcaster
+[gazebo-1] [INFO] [1792838937.568249215] [controller_manager]: Configuring controller: 'joint_state_broadcaster'
+[gazebo-1] [INFO] [1792838937.568399125] [joint_state_broadcaster]: 'joints' or 'interfaces' parameter is empty. All available state interfaces will be published
+[gazebo-1] [INFO] [1792838937.577125696] [controller_manager]: Activating controllers: [ joint_state_broadcaster ]
+[gazebo-1] [WARN] [1792838939.370282336] [gz_ros_control]:  Desired controller update period (0.01 s) is slower than the gazebo simulation period (0.001 s).
+[gazebo-1] [INFO] [1792838940.121728565] [controller_manager]: Successfully switched controllers!
+[ros2-6] [INFO] [1792838940.132686557] [spawner_joint_state_broadcaster]: Configured and activated joint_state_broadcaster
+[INFO] [ros2-6]: process has finished cleanly [pid 776]
+[INFO] [ros2-7]: process started with pid [863]
+[gazebo-1] [INFO] [1792838941.249669618] [controller_manager]: Loading controller : 'arm_controller' of type 'joint_trajectory_controller/JointTrajectoryController'
+[gazebo-1] [INFO] [1792838941.249817936] [controller_manager]: Loading controller 'arm_controller'
+[gazebo-1] [INFO] [1792838941.267412791] [controller_manager]: Controller 'arm_controller' node arguments: --ros-args --params-file /home/user/k136_ws/ch05/install/rrbot_gazebo/share/rrbot_gazebo/config/rrbot_controllers.yaml --ros-args -p use_sim_time:=true --param use_sim_time:=true 
+[ros2-7] [INFO] [1792838941.305148092] [spawner_arm_controller]: Loaded arm_controller
+[gazebo-1] [INFO] [1792838941.306816325] [controller_manager]: Configuring controller: 'arm_controller'
+[gazebo-1] [INFO] [1792838941.307081019] [arm_controller]: No specific joint names are used for command interfaces. Using 'joints' parameter.
+[gazebo-1] [INFO] [1792838941.307120387] [arm_controller]: Command interfaces are [position] and state interfaces are [position].
+[gazebo-1] [INFO] [1792838941.307151895] [arm_controller]: Using 'splines' interpolation method.
+[gazebo-1] [INFO] [1792838941.309799566] [arm_controller]: Action status changes will be monitored at 20.00 Hz.
+[gazebo-1] [INFO] [1792838941.315968428] [arm_controller]: Setting initial scaling factor to 1.000000
+[gazebo-1] [INFO] [1792838941.316013020] [arm_controller]: No scaling interface set. This controller will not read speed scaling from the hardware.
+[gazebo-1] [INFO] [1792838941.318856332] [controller_manager]: Activating controllers: [ arm_controller ]
+[gazebo-1] [INFO] [1792838941.327272450] [controller_manager]: Successfully switched controllers!
+[ros2-7] [INFO] [1792838941.339955038] [spawner_arm_controller]: Configured and activated arm_controller
+[INFO] [ros2-7]: process has finished cleanly [pid 863]
+[gazebo-1] [INFO] [1792838956.982392610] [arm_controller]: Received new action goal
+[gazebo-1] [INFO] [1792838956.982567151] [arm_controller]: Accepted new action goal
+[gazebo-1] [INFO] [1792838959.128959879] [arm_controller]: Goal reached, success!
+[WARNING] [launch]: user interrupted with ctrl-c (SIGINT)
+[WARNING] [launch]: user interrupted with ctrl-c (SIGINT) again, ignoring...
+[INFO] [robot_state_publisher-5]: sending signal 'SIGINT' to process[robot_state_publisher-5]
+[INFO] [parameter_bridge-3]: process has finished cleanly [pid 703]
+[INFO] [image_bridge-4]: sending signal 'SIGINT' to process[image_bridge-4]
+[INFO] [gazebo-1]: sending signal 'SIGINT' to process[gazebo-1]
+[robot_state_publisher-5] [INFO] [1792838962.177015721] [rclcpp]: signal_handler(SIGINT/SIGTERM)
+[image_bridge-4] [INFO] [1792838962.177021962] [rclcpp]: signal_handler(SIGINT/SIGTERM)
+[parameter_bridge-3] [INFO] [1792838962.177235680] [rclcpp]: signal_handler(SIGINT/SIGTERM)
+[robot_state_publisher-5] [INFO] [1792838962.190160710] [rclcpp]: signal_handler(SIGINT/SIGTERM)
+[image_bridge-4] [INFO] [1792838962.194341266] [rclcpp]: signal_handler(SIGINT/SIGTERM)
+[gazebo-1] [INFO] [1792838962.240373455] [controller_manager.pal_statistics]: Async messages lost 0
+[gazebo-1] [INFO] [1792838962.240461003] [controller_manager.pal_statistics]: publish_async_failures_ 0
+[gazebo-1] [INFO] [1792838962.243659302] [controller_manager.pal_statistics]: Async messages lost 0
+[gazebo-1] [INFO] [1792838962.243724617] [controller_manager.pal_statistics]: publish_async_failures_ 0
+[INFO] [robot_state_publisher-5]: process has finished cleanly [pid 705]
+[INFO] [image_bridge-4]: process has finished cleanly [pid 704]
+[ERROR] [gazebo-1]: process has died [pid 700, exit code -2, cmd 'ruby /opt/ros/jazzy/opt/gz_tools_vendor/bin/gz sim /home/user/k136_ws/ch05/install/rrbot_gazebo/share/rrbot_gazebo/worlds/empty.world -s -r --force-version 8'].

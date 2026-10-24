@@ -1,0 +1,43 @@
+63:            'gz_args': f'-s -r -v 2 empty.sdf'  # 本演練改：server 模式，不開 GUI
+launch PID=1992 PGID=1992
+=== gz 端 topic（應含 /cmd_vel、/model/diff_drive/odometry）===
+/cmd_vel
+/model/diff_drive/odometry
+=== ROS 節點（外掛內的 rclcpp 節點 cmd_vel_plugin 應出現）===
+/cmd_vel_plugin
+/robot_state_publisher
+/ros_gz_bridge
+=== /cmd_vel_from_ros 訂閱者 ===
+Type: geometry_msgs/msg/Twist
+Publisher count: 0
+Subscription count: 1
+=== 移動前 odometry ===
+x: 2.3789518853173101e-07
+y: -2.0759374040969298e-32
+z: 0.0
+---
+=== 從 ROS 發 /cmd_vel_from_ros（x=0.5 → 外掛應限到 0.2；z=0.3）===
+=== gz /cmd_vel（外掛發出，應看到 linear.x=0.2）===
+linear {
+  x: 0.2
+}
+angular {
+  z: 0.3
+}
+
+=== 移動後 odometry ===
+x: -0.6089731214108116
+y: 0.9379522952685544
+z: 0.0
+---
+=== 移動後速度 ===
+linear:
+  x: 0.1999999999991564
+  y: 0.0
+  z: 0.0
+angular:
+  x: 0.0
+  y: 0.0
+  z: 0.2999999999514873
+---
+STEP3_DONE

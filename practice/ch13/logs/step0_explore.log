@@ -1,0 +1,286 @@
+total 16
+drwxr-xr-x  4 user user 4096 Oct 24 11:35 .
+drwxr-xr-x 18 user user 4096 Oct 24 11:35 ..
+drwxr-xr-x  3 user user 4096 Oct 24 11:35 first_gtest
+drwxr-xr-x  4 user user 4096 Oct 24 11:35 to_lowercase
+/home/user/ros2_books/Mastering-ROS-2-for-Robotics-Programming/Chapter13/to_lowercase/src/to_lowercase.h
+/home/user/ros2_books/Mastering-ROS-2-for-Robotics-Programming/Chapter13/to_lowercase/src/main.cpp
+/home/user/ros2_books/Mastering-ROS-2-for-Robotics-Programming/Chapter13/to_lowercase/src/to_lowercase.cpp
+/home/user/ros2_books/Mastering-ROS-2-for-Robotics-Programming/Chapter13/to_lowercase/package.xml
+/home/user/ros2_books/Mastering-ROS-2-for-Robotics-Programming/Chapter13/to_lowercase/test/to_lowercase_test.cpp
+/home/user/ros2_books/Mastering-ROS-2-for-Robotics-Programming/Chapter13/to_lowercase/CMakeLists.txt
+/home/user/ros2_books/Mastering-ROS-2-for-Robotics-Programming/Chapter13/first_gtest/package.xml
+/home/user/ros2_books/Mastering-ROS-2-for-Robotics-Programming/Chapter13/first_gtest/test/first_test.cpp
+/home/user/ros2_books/Mastering-ROS-2-for-Robotics-Programming/Chapter13/first_gtest/CMakeLists.txt
+===== /home/user/ros2_books/Mastering-ROS-2-for-Robotics-Programming/Chapter13/to_lowercase/src/to_lowercase.h
+#include <rclcpp/rclcpp.hpp>
+#include <std_msgs/msg/string.hpp>
+#include <algorithm>
+
+class ToLowercase : public rclcpp::Node {
+public:
+    ToLowercase()
+    : Node("lowercase_string_node") {        
+        _input_sub = this->create_subscription<std_msgs::msg::String>("input", 10, std::bind(&ToLowercase::input_str_cb, this, std::placeholders::_1));        
+        _output_pub = this->create_publisher<std_msgs::msg::String>("output", 10);
+    }
+    void input_str_cb(const std_msgs::msg::String::SharedPtr msg);
+
+private:
+
+    rclcpp::Subscription<std_msgs::msg::String>::SharedPtr _input_sub;
+    rclcpp::Publisher<std_msgs::msg::String>::SharedPtr _output_pub;
+};
+===== /home/user/ros2_books/Mastering-ROS-2-for-Robotics-Programming/Chapter13/to_lowercase/src/main.cpp
+#include "to_lowercase.h"
+
+int main(int argc, char **argv) {
+    rclcpp::init(argc, argv);
+    auto node = std::make_shared<ToLowercase>();
+    rclcpp::spin(node);
+    rclcpp::shutdown();
+    return 0;
+}
+===== /home/user/ros2_books/Mastering-ROS-2-for-Robotics-Programming/Chapter13/to_lowercase/src/to_lowercase.cpp
+#include "to_lowercase.h"
+
+
+void ToLowercase::input_str_cb(const std_msgs::msg::String::SharedPtr msg) {
+    std::string lowercase_str = msg->data;
+    std::transform(lowercase_str.begin(), lowercase_str.end(), lowercase_str.begin(), ::tolower);        
+    auto message = std_msgs::msg::String();
+    message.data = lowercase_str;        
+    _output_pub->publish(message);
+}
+
+
+
+===== /home/user/ros2_books/Mastering-ROS-2-for-Robotics-Programming/Chapter13/to_lowercase/package.xml
+<?xml version="1.0"?>
+<?xml-model href="http://download.ros.org/schema/package_format3.xsd" schematypens="http://www.w3.org/2001/XMLSchema"?>
+<package format="3">
+  <name>to_lowercase</name>
+  <version>0.0.0</version>
+  <description>TODO: Package description</description>
+  <maintainer email="jcacace@todo.todo">jcacace</maintainer>
+  <license>TODO: License declaration</license>
+
+  <buildtool_depend>ament_cmake</buildtool_depend>
+
+  <depend>rclcpp</depend>
+  <depend>std_msgs</depend>
+
+  <test_depend>ament_lint_auto</test_depend>
+  <test_depend>ament_lint_common</test_depend>
+
+  <export>
+    <build_type>ament_cmake</build_type>
+  </export>
+</package>
+===== /home/user/ros2_books/Mastering-ROS-2-for-Robotics-Programming/Chapter13/to_lowercase/test/to_lowercase_test.cpp
+#include <algorithm>  
+#include <gtest/gtest.h>  
+#include <rclcpp/rclcpp.hpp>  
+#include <std_msgs/msg/string.hpp>  
+#include "../src/to_lowercase.h"  
+
+TEST(package_name, UpperToLower) {
+
+  auto to_lowercase_node = std::make_shared<ToLowercase>();
+  rclcpp::executors::SingleThreadedExecutor executor;
+  executor.add_node(to_lowercase_node);
+
+  bool ready = false;
+  std::string value;
+
+  auto output_callback = [this, &ready, &value](const std_msgs::msg::String::SharedPtr msg) {
+    value = msg->data;
+    ready = true;
+  };
+
+  rclcpp::Subscription<std_msgs::msg::String>::SharedPtr output_sub;
+  output_sub = to_lowercase_node->create_subscription<std_msgs::msg::String>("/output", 10, output_callback);
+  
+  rclcpp::Publisher<std_msgs::msg::String>::SharedPtr string_pub;
+  string_pub = to_lowercase_node->create_publisher<std_msgs::msg::String>("/input", 10);
+
+  std_msgs::msg::String s;
+  s.data = "TOLOWER";
+  string_pub->publish( s );
+
+  rclcpp::Rate rate(5);  // Set rate to 1 Hz (once per second)
+  while( !ready ) {
+    executor.spin_once(std::chrono::milliseconds(100)); // Process callbacks with a timeout of 100 ms
+    rate.sleep();
+  }  
+  ASSERT_EQ(value, "tolower");
+  
+  ready = false;
+  s.data = "TO-LOWER-2";
+  string_pub->publish( s );  
+  while( !ready ) {
+    executor.spin_once(std::chrono::milliseconds(100)); // Process callbacks with a timeout of 100 ms
+    rate.sleep();
+  }  
+  
+  ASSERT_EQ(value, "to-lower-2");
+}
+
+int main(int argc, char** argv) {
+  testing::InitGoogleTest(&argc, argv);
+
+
+  rclcpp::init(argc, argv);
+
+  
+  return RUN_ALL_TESTS();
+}
+===== /home/user/ros2_books/Mastering-ROS-2-for-Robotics-Programming/Chapter13/to_lowercase/CMakeLists.txt
+cmake_minimum_required(VERSION 3.8)
+project(to_lowercase)
+
+if(CMAKE_COMPILER_IS_GNUCXX OR CMAKE_CXX_COMPILER_ID MATCHES "Clang")
+  add_compile_options(-Wall -Wextra -Wpedantic)
+endif()
+
+# find dependencies
+find_package(ament_cmake REQUIRED)
+find_package(rclcpp REQUIRED)
+find_package(std_msgs REQUIRED)
+
+add_executable(to_lowercase src/to_lowercase.cpp src/main.cpp)
+ament_target_dependencies(to_lowercase rclcpp std_msgs)
+
+install(TARGETS
+  to_lowercase
+  DESTINATION lib/${PROJECT_NAME}
+)
+
+
+
+if(BUILD_TESTING)
+  #find_package(ament_lint_auto REQUIRED)
+  ## the following line skips the linter which checks for copyrights
+  ## comment the line when a copyright and license is added to all source files
+  #set(ament_cmake_copyright_FOUND TRUE)
+  ## the following line skips cpplint (only works in a git repo)
+  ## comment the line when this package is in a git repo and when
+  ## a copyright and license is added to all source files
+  #set(ament_cmake_cpplint_FOUND TRUE)
+  #ament_lint_auto_find_test_dependencies()
+
+
+  find_package(ament_cmake_gtest REQUIRED)
+  ament_add_gtest(to_lowercase_test test/to_lowercase_test.cpp src/to_lowercase.cpp)
+  target_include_directories(to_lowercase_test PUBLIC
+    $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
+    $<INSTALL_INTERFACE:include>
+  )
+  ament_target_dependencies(to_lowercase_test
+    std_msgs
+  )
+  ament_target_dependencies(to_lowercase_test rclcpp std_msgs)
+
+
+endif()
+
+ament_package()
+===== /home/user/ros2_books/Mastering-ROS-2-for-Robotics-Programming/Chapter13/first_gtest/package.xml
+<?xml version="1.0"?>
+<?xml-model href="http://download.ros.org/schema/package_format3.xsd" schematypens="http://www.w3.org/2001/XMLSchema"?>
+<package format="3">
+  <name>first_gtest</name>
+  <version>0.0.0</version>
+  <description>TODO: Package description</description>
+  <maintainer email="user@todo.todo">user</maintainer>
+  <license>TODO: License declaration</license>
+
+  <buildtool_depend>ament_cmake</buildtool_depend>
+
+  <depend>rclcpp</depend>
+
+  <test_depend>ament_lint_auto</test_depend>
+  <test_depend>ament_lint_common</test_depend>	
+  <test_depend>ament_cmake_gtest</test_depend>
+  <export>
+    <build_type>ament_cmake</build_type>
+  </export>
+</package>
+===== /home/user/ros2_books/Mastering-ROS-2-for-Robotics-Programming/Chapter13/first_gtest/test/first_test.cpp
+#include <gtest/gtest.h>
+#include <cmath>
+
+// The function to be tested
+
+constexpr double DEG_TO_RAD = M_PI / 180.0;
+
+double degreesToRadians(double degrees) {
+    double radians = degrees * DEG_TO_RAD;
+    
+    while (radians >= M_PI) {
+        radians -= 2.0 * M_PI;
+    }
+    while (radians < -M_PI) {
+        radians += 2.0 * M_PI;
+    }
+    
+    return radians;
+}
+
+
+TEST(AngleConversionTest, HandlesPositiveAngles) {
+    EXPECT_NEAR(degreesToRadians(0), 0.0, 1e-9);
+    EXPECT_NEAR(degreesToRadians(180), -M_PI, 1e-9);
+    EXPECT_NEAR(degreesToRadians(90), M_PI / 2.0, 1e-9);
+    EXPECT_NEAR(degreesToRadians(360), 0.0, 1e-9);
+}
+
+TEST(AngleConversionTest, HandlesNegativeAngles) {
+    EXPECT_NEAR(degreesToRadians(-180), -M_PI, 1e-9);
+    EXPECT_NEAR(degreesToRadians(-90), -M_PI / 2.0, 1e-9);
+    EXPECT_NEAR(degreesToRadians(-360), 0.0, 1e-9);
+}
+
+TEST(AngleConversionTest, HandlesOverflowAngles) {
+    EXPECT_NEAR(degreesToRadians(720), 0.0, 1e-9);
+    EXPECT_NEAR(degreesToRadians(540), M_PI, 1e-9);
+    EXPECT_NEAR(degreesToRadians(-540), -M_PI, 1e-9);
+}
+
+TEST(AngleConversionTest, HandlesSmallAngles) {
+    EXPECT_NEAR(degreesToRadians(1), DEG_TO_RAD, 1e-9);
+    EXPECT_NEAR(degreesToRadians(-1), -DEG_TO_RAD, 1e-9);
+}
+
+
+int main(int argc, char** argv)
+{
+  testing::InitGoogleTest(&argc, argv);
+  return RUN_ALL_TESTS();
+}
+===== /home/user/ros2_books/Mastering-ROS-2-for-Robotics-Programming/Chapter13/first_gtest/CMakeLists.txt
+cmake_minimum_required(VERSION 3.8)
+project(first_gtest)
+
+if(CMAKE_COMPILER_IS_GNUCXX OR CMAKE_CXX_COMPILER_ID MATCHES "Clang")
+  add_compile_options(-Wall -Wextra -Wpedantic)
+endif()
+
+# find dependencies
+find_package(ament_cmake REQUIRED)
+find_package(rclcpp REQUIRED)
+find_package(std_msgs REQUIRED)
+
+if(BUILD_TESTING)
+  find_package(ament_cmake_gtest REQUIRED)
+  ament_add_gtest(first_test test/first_test.cpp)
+  target_include_directories(first_test PUBLIC
+    $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
+    $<INSTALL_INTERFACE:include>
+  )
+  ament_target_dependencies(first_test
+    std_msgs
+  )
+endif()
+
+ament_package()

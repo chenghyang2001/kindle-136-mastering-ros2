@@ -1,0 +1,9 @@
+RMW_IMPLEMENTATION=rmw_fastrtps_cpp
+=== domain 36 看到的節點 ===
+/talker
+=== domain 37 看到的節點（只會有自己的 listener，看不到 talker）===
+=== domain 37 的 /chatter 發布者數 ===
+Unknown topic '/chatter'
+domain 36 listener 收到：16 則
+domain 37 listener 收到：0 則
+結果：PASS（不同 domain 互相看不到）

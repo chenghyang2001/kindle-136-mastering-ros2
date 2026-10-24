@@ -1,0 +1,13 @@
+Sat Oct 24 06:39:28 PM CST 2026
+Starting >>> rosbot_description
+Starting >>> rrbot_description
+Starting >>> urdf_tutorial
+Finished <<< rosbot_description [2.74s]
+Finished <<< rrbot_description [4.16s]
+Finished <<< urdf_tutorial [4.29s]
+
+Summary: 3 packages finished [4.52s]
+Sat Oct 24 06:39:33 PM CST 2026
+urdf_tutorial -> /home/user/k136_ws/ch04/install/urdf_tutorial
+rrbot_description -> /home/user/k136_ws/ch04/install/rrbot_description
+rosbot_description -> /home/user/k136_ws/ch04/install/rosbot_description

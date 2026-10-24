@@ -1,0 +1,36 @@
+=== node list ===
+/px4_ctrl
+=== topic list（/fmu 開頭）===
+/fmu/in/offboard_control_mode
+/fmu/in/trajectory_setpoint
+=== echo --once /fmu/in/offboard_control_mode（最多等 4 秒）===
+（4 秒內沒有收到任何訊息）
+px4_ctrl 被 timeout 10 結束（exit=124）
+=== px4_ctrl 自己的輸出 ===
+[INFO] [1792843500.263357752] [px4_ctrl]: service not available, waiting again...
+[INFO] [1792843501.264667468] [px4_ctrl]: service not available, waiting again...
+[INFO] [1792843502.266803064] [px4_ctrl]: service not available, waiting again...
+[INFO] [1792843503.267809240] [px4_ctrl]: service not available, waiting again...
+[INFO] [1792843504.269125593] [px4_ctrl]: service not available, waiting again...
+[INFO] [1792843505.270753102] [px4_ctrl]: service not available, waiting again...
+[INFO] [1792843506.272224155] [px4_ctrl]: service not available, waiting again...
+[INFO] [1792843507.273801731] [px4_ctrl]: service not available, waiting again...
+[INFO] [1792843508.283761704] [px4_ctrl]: service not available, waiting again...
+[INFO] [1792843509.219486318] [rclcpp]: signal_handler(SIGINT/SIGTERM)
+[ERROR] [1792843509.221418832] [px4_ctrl]: Interrupted while waiting for the service. Exiting.
+
+>>> [rcutils|error_handling.c:108] rcutils_set_error_state()
+This error state is being overwritten:
+
+  'rcl node's context is invalid, at ./src/rcl/node.c:404'
+
+with this new error message:
+
+  'publisher's context is invalid, at ./src/rcl/publisher.c:423'
+
+rcutils_reset_error() should be called after error handling to avoid this.
+<<<
+Failed to publish log message to rosout: publisher's context is invalid, at ./src/rcl/publisher.c:423
+terminate called after throwing an instance of 'rclcpp::exceptions::RCLError'
+terminate called recursively
+  what():  timeout: the monitored command dumped core

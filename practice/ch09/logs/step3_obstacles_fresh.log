@@ -1,0 +1,58 @@
+=== /joint_states（起點）===
+array('d', [0.0, -0.78, 0.0, -2.35, 0.0, 1.57, 0.78])
+---
+=== planning scene：世界物件與附著物件（components=4+2+8?→用 1023 全取，只 grep id）===
+      3 id=''
+      1 id='grasp'
+      1 id='hand'
+      1 id='table'
+      6 id='world'
+      2 link_name='camera_link'
+      3 link_name='hand'
+      2 link_name='leftfinger'
+      2 link_name='link0'
+      2 link_name='link1'
+      2 link_name='link2'
+      2 link_name='link3'
+      2 link_name='link4'
+      2 link_name='link5'
+      2 link_name='link6'
+      2 link_name='link7'
+      2 link_name='rightfinger'
+planning_with_obstacles 從啟動到 move() 結束：15.2 秒
+[INFO] [planning_with_obstacles-1]: process started with pid [601]
+[planning_with_obstacles-1] [INFO] [1792842306.660027594] [moveit_4152471803.moveit.ros.rdf_loader]: Loaded robot model in 0.00329581 seconds
+[planning_with_obstacles-1] [INFO] [1792842306.660137519] [moveit_4152471803.moveit.core.robot_model]: Loading robot model 'panda'...
+[planning_with_obstacles-1] [INFO] [1792842306.668583743] [moveit_4152471803.moveit.kinematics.kdl_kinematics_plugin]: Joint weights for group 'arm': 1 1 1 1 1 1 1
+[planning_with_obstacles-1] [INFO] [1792842306.684148370] [moveit_4152471803.moveit.ros.move_group_interface]: Ready to take commands for planning group arm.
+[planning_with_obstacles-1] [INFO] [1792842309.890840019] [moveit_4152471803.moveit.ros.move_group_interface]: MoveGroup action client/server ready
+[planning_with_obstacles-1] [INFO] [1792842309.891608598] [moveit_4152471803.moveit.ros.move_group_interface]: Planning request accepted
+[planning_with_obstacles-1] [INFO] [1792842309.926285435] [moveit_4152471803.moveit.ros.move_group_interface]: Planning request complete!
+[planning_with_obstacles-1] [INFO] [1792842309.926835005] [moveit_4152471803.moveit.ros.move_group_interface]: time taken to generate plan: 0.0247489 seconds
+[planning_with_obstacles-1] [INFO] [1792842309.927423549] [moveit_4152471803.moveit.ros.move_group_interface]: Plan and Execute request accepted
+[planning_with_obstacles-1] [INFO] [1792842320.117006987] [moveit_4152471803.moveit.ros.move_group_interface]: Plan and Execute request complete!
+=== /joint_states（之後）===
+array('d', [-0.0001104251956462582, 0.16533705533278373, 7.519549910958015e-05, -1.4449117974146592, -0.00026951002981391977, 1.6099839622448455, 0.7800733670274331])
+---
+=== move_group 端 ===
+[move_group-3] [INFO] [1792842297.710854794] [move_group.moveit.moveit.ros.planning_scene_monitor]: Listening to '/attached_collision_object' for attached collision objects
+[move_group-3] [INFO] [1792842297.712425096] [move_group.moveit.moveit.ros.planning_scene_monitor]: Starting world geometry update monitor for collision objects, attached objects, octomap updates.
+[move_group-3] [INFO] [1792842297.712740479] [move_group.moveit.moveit.ros.planning_scene_monitor]: Listening to 'collision_object'
+[move_group-3] [INFO] [1792842297.743026121] [move_group.moveit.moveit.ros.planning_pipeline]: Successfully loaded planner 'Pilz Industrial Motion Planner'
+[move_group-3] [INFO] [1792842297.749283797] [move_group]: Try loading adapter 'default_planning_request_adapters/CheckStartStateCollision'
+[move_group-3] [INFO] [1792842297.749302421] [move_group]: Loaded adapter 'default_planning_request_adapters/CheckStartStateCollision'
+[move_group-3] [INFO] [1792842297.767390787] [move_group]: Try loading adapter 'default_planning_request_adapters/CheckStartStateCollision'
+[move_group-3] [INFO] [1792842297.767403419] [move_group]: Loaded adapter 'default_planning_request_adapters/CheckStartStateCollision'
+[move_group-3] [INFO] [1792842297.778353514] [move_group]: Try loading adapter 'default_planning_request_adapters/CheckStartStateCollision'
+[move_group-3] [INFO] [1792842297.778367397] [move_group]: Loaded adapter 'default_planning_request_adapters/CheckStartStateCollision'
+[move_group-3] [INFO] [1792842297.803396641] [move_group]: Try loading adapter 'default_planning_request_adapters/CheckStartStateCollision'
+[move_group-3] [INFO] [1792842297.803409832] [move_group]: Loaded adapter 'default_planning_request_adapters/CheckStartStateCollision'
+[move_group-3] [INFO] [1792842306.696235328] [move_group.moveit.moveit.ros.planning_scene_monitor]: Published update attached
+[move_group-3] [INFO] [1792842309.896417684] [move_group]: Calling PlanningRequestAdapter 'CheckStartStateCollision'
+[move_group-3] [INFO] [1792842309.897211759] [move_group.moveit.moveit.planners.ompl.model_based_planning_context]: Planner configuration 'arm' will use planner 'geometric::RRTConnect'. Additional configuration parameters will be 
+[move_group-3] [INFO] [1792842309.925916620] [move_group.moveit.moveit.ros.move_group.move_action]: Motion plan was computed successfully.
+[move_group-3] [INFO] [1792842309.936506145] [move_group]: Calling PlanningRequestAdapter 'CheckStartStateCollision'
+[move_group-3] [INFO] [1792842309.936798476] [move_group.moveit.moveit.planners.ompl.model_based_planning_context]: Planner configuration 'arm' will use planner 'geometric::RRTConnect'. Additional configuration parameters will be 
+[ros2_control_node-4] [INFO] [1792842320.075866152] [arm_controller]: Goal reached, success!
+[move_group-3] [INFO] [1792842320.106107566] [move_group.moveit.moveit.ros.trajectory_execution_manager]: Completed trajectory execution with status SUCCEEDED ...
+STEP3_DONE

@@ -1,0 +1,53 @@
+===== colcon list
+k136_hello_cpp	src/k136_hello_cpp	(ros.ament_cmake)
+k136_hello_py	src/k136_hello_py	(ros.ament_python)
+===== ros2 pkg executables k136_hello_cpp / k136_hello_py
+k136_hello_cpp hello_timer_cpp
+k136_hello_py hello_timer_py
+===== ros2 pkg prefix
+/home/user/k136_ws/ch02/install/k136_hello_cpp
+/home/user/k136_ws/ch02/install/k136_hello_py
+===== ros2 run k136_hello_cpp hello_timer_cpp（timeout 5）
+[INFO] [1792837224.959492081] [hello_timer_cpp]: C++ 節點 tick 1
+[INFO] [1792837225.959836188] [hello_timer_cpp]: C++ 節點 tick 2
+[INFO] [1792837226.959489293] [hello_timer_cpp]: C++ 節點 tick 3
+[INFO] [1792837227.959759871] [hello_timer_cpp]: C++ 節點 tick 4
+[INFO] [1792837228.701350852] [rclcpp]: signal_handler(SIGINT/SIGTERM)
+[exit 124：timeout 結束屬預期]
+===== ros2 run k136_hello_py hello_timer_py（timeout 5）
+[INFO] [1792837230.347557020] [hello_timer_py]: Python 節點 tick 1
+[INFO] [1792837231.339103593] [hello_timer_py]: Python 節點 tick 2
+[INFO] [1792837232.339028349] [hello_timer_py]: Python 節點 tick 3
+[INFO] [1792837233.339181976] [hello_timer_py]: Python 節點 tick 4
+[exit 124：timeout 結束屬預期]
+===== 兩節點同時背景執行，查 node list
+/hello_timer_py
+/hello_timer_cpp
+  Subscribers:
+    /parameter_events: rcl_interfaces/msg/ParameterEvent
+  Publishers:
+    /parameter_events: rcl_interfaces/msg/ParameterEvent
+    /rosout: rcl_interfaces/msg/Log
+  Service Servers:
+    /hello_timer_cpp/describe_parameters: rcl_interfaces/srv/DescribeParameters
+    /hello_timer_cpp/get_parameter_types: rcl_interfaces/srv/GetParameterTypes
+    /hello_timer_cpp/get_parameters: rcl_interfaces/srv/GetParameters
+    /hello_timer_cpp/get_type_description: type_description_interfaces/srv/GetTypeDescription
+    /hello_timer_cpp/list_parameters: rcl_interfaces/srv/ListParameters
+    /hello_timer_cpp/set_parameters: rcl_interfaces/srv/SetParameters
+    /hello_timer_cpp/set_parameters_atomically: rcl_interfaces/srv/SetParametersAtomically
+  Service Clients:
+
+  Action Servers:
+
+  Action Clients:
+
+--- 背景 C++ 節點 log（前 3 行）
+[INFO] [1792837234.961435887] [hello_timer_cpp]: C++ 節點 tick 1
+[INFO] [1792837235.961168667] [hello_timer_cpp]: C++ 節點 tick 2
+[INFO] [1792837236.961138872] [hello_timer_cpp]: C++ 節點 tick 3
+--- 背景 Python 節點 log（前 3 行）
+[INFO] [1792837235.259727406] [hello_timer_py]: Python 節點 tick 1
+[INFO] [1792837236.247961831] [hello_timer_py]: Python 節點 tick 2
+[INFO] [1792837237.248220594] [hello_timer_py]: Python 節點 tick 3
+VERIFY_DONE

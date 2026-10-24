@@ -1,0 +1,67 @@
+ros2 pkg prefix circle_msgs -> /home/user/k136_ws/ch16/install/circle_msgs
+ros2 pkg prefix circle_display_plugin -> /home/user/k136_ws/ch16/install/circle_display_plugin
+ros2 pkg prefix cmd_vel -> /home/user/k136_ws/ch16/install/cmd_vel
+ros2 pkg prefix cmd_vel_plugin -> /home/user/k136_ws/ch16/install/cmd_vel_plugin
+
+=== circle_msgs 介面 ===
+std_msgs/Header header
+	builtin_interfaces/Time stamp
+		int32 sec
+		uint32 nanosec
+	string frame_id
+float32 x
+float32 y
+float32 radius
+
+=== RViz display plugin：rviz_common 的 pluginlib 索引 ===
+索引檔: install/circle_display_plugin/share/ament_index/resource_index/rviz_common__pluginlib__plugin/circle_display_plugin
+share/circle_display_plugin/rviz_common_plugins.xml
+
+--- /home/user/k136_ws/ch16/install/circle_display_plugin/share/circle_display_plugin/rviz_common_plugins.xml ---
+<library path="circle_display">
+  <class type="rviz_circle_plugin::CircleDisplay" base_class_type="rviz_common::Display">
+    <description></description>
+  </class>
+</library>
+--- .so 內的類別符號 ---
+000000000027a862 T rviz_circle_plugin::CircleDisplay::onInitialize()
+000000000027ab12 T rviz_circle_plugin::CircleDisplay::processMessage(std::shared_ptr<circle_msgs::msg::Circle_<std::allocator<void> > const>)
+247
+(含 class_loader 註冊符號)
+
+=== rqt panel plugin（cmd_vel）：rqt_gui 的 pluginlib 索引 ===
+索引檔: install/cmd_vel/share/ament_index/resource_index/rqt_gui__pluginlib__plugin/cmd_vel
+share/cmd_vel/plugin.xml
+
+<library path="cmd_vel">
+  <class name="cmd_vel/CmdVel" type="cmd_vel::CmdVel" base_class_type="rqt_gui_cpp::Plugin">
+    <description>
+      A GUI plugin to control commands.
+    </description>
+    <qtgui>
+      <group>
+        <label>Control</label>
+        <icon type="theme">folder</icon>
+        <statustip>Plugins related to visualization.</statustip>
+      </group>
+      <label>Vel control</label>
+      <!--
+      <icon type="theme">image-x-generic</icon>
+      <statustip>A GUI plugin for viewing sensor_msgs/Image topics.</statustip>
+      -->
+    </qtgui>
+  </class>
+</library>
+
+000000000008d6c4 T cmd_vel::CmdVel::initPlugin(qt_gui_cpp::PluginContext&)
+000000000008de60 T cmd_vel::CmdVel::shutdownPlugin()
+
+=== 用 ament_index_python 列出所有 rviz_common / rqt_gui 外掛，確認本章類別在清單內 ===
+[rviz_common] 共 6 個套件匯出外掛
+[rviz_common] circle_display_plugin 已註冊，prefix=/home/user/k136_ws/ch16/install/circle_display_plugin
+[rqt_gui] 共 2 個套件匯出外掛
+[rqt_gui] cmd_vel 已註冊，prefix=/home/user/k136_ws/ch16/install/cmd_vel
+
+=== Gazebo 系統外掛 .so（不走 pluginlib，走 GZ_SIM_SYSTEM_PLUGIN_PATH）===
+-rwxr-xr-x 1 user user 5113136 Oct 25 04:54 build/cmd_vel_plugin/libCmdVelPlugin.so
+000000000023fd33 T GzPluginHook

@@ -1,0 +1,51 @@
+--- 修改後 launch 關鍵行 ---
+49:                                        launch_arguments=[('gz_args', [' -s -r -v 4 empty.sdf'])])
+52:        cmd=['ros2', 'run', 'controller_manager', 'spawner',
+53:                'joint_state_broadcaster'],
+59:        cmd=['ros2', 'run', 'controller_manager', 'spawner',
+60:             'position_control'],
+66:        cmd=['ros2', 'run', 'controller_manager', 'spawner', '--inactive',
+67:             'velocity_control'],
+72:        cmd=['ros2', 'run', 'controller_manager', 'spawner', '--inactive',
+73:             'velocity_control'],
+77:        cmd=['ros2', 'run', 'controller_manager', 'spawner', '--inactive',
+78:             'sine_controller'],
+110:      RCLCPP_INFO(get_node()->get_logger(), "Activation successful"); RCLCPP_INFO(get_node()->get_logger(), "[k136] init0=%f init1=%f n0=%zu n1=%zu", initial_joint_position_[0], initial_joint_position_[1], joint_state_interfaces_[0].size(), joint_state_interfaces_[1].size());  /* 本演練改 */
+132:        (void)command_interfaces_[i].set_value(static_cast<double>(desired_joint_positions_[i]));  // 本演練改 // Apply position command
+--- 依賴檢查 ---
+ros-jazzy-controller-manager
+ros-jazzy-forward-command-controller
+ros-jazzy-gz-ros2-control
+ros-jazzy-joint-state-broadcaster
+ros-jazzy-ros-gz-sim
+ros-jazzy-ros2-controllers
+ros-jazzy-xacro
+Starting >>> sine_ctrl
+--- stderr: sine_ctrl
+/home/user/k136_ws/ch06/src/sine_ctrl/src/sine_controller.cpp: In member function ‘virtual controller_interface::CallbackReturn sine_controller::SineController::on_activate(const rclcpp_lifecycle::State&)’:
+/home/user/k136_ws/ch06/src/sine_ctrl/src/sine_controller.cpp:108:81: warning: ‘double hardware_interface::LoanedStateInterface::get_value() const’ is deprecated: Use std::optional<T> get_optional() instead to retrieve the value. This method will be removed by the ROS 2 Kilted Kaiju release. [-Wdeprecated-declarations]
+  108 |       initial_joint_position_[0] = joint_state_interfaces_[0][0].get().get_value();
+      |                                    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~
+In file included from /opt/ros/jazzy/include/controller_interface/controller_interface/controller_interface_base.hpp:30,
+                 from /opt/ros/jazzy/include/controller_interface/controller_interface/controller_interface.hpp:21,
+                 from /home/user/k136_ws/ch06/src/sine_ctrl/src/sine_controller.cpp:2:
+/opt/ros/jazzy/include/hardware_interface/hardware_interface/loaned_state_interface.hpp:98:10: note: declared here
+   98 |   double get_value() const
+      |          ^~~~~~~~~
+/home/user/k136_ws/ch06/src/sine_ctrl/src/sine_controller.cpp:109:81: warning: ‘double hardware_interface::LoanedStateInterface::get_value() const’ is deprecated: Use std::optional<T> get_optional() instead to retrieve the value. This method will be removed by the ROS 2 Kilted Kaiju release. [-Wdeprecated-declarations]
+  109 |       initial_joint_position_[1] = joint_state_interfaces_[1][0].get().get_value();
+      |                                    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~
+/opt/ros/jazzy/include/hardware_interface/hardware_interface/loaned_state_interface.hpp:98:10: note: declared here
+   98 |   double get_value() const
+      |          ^~~~~~~~~
+---
+Finished <<< sine_ctrl [9.97s]
+Starting >>> two_joints_robot
+Finished <<< two_joints_robot [1.03s]
+
+Summary: 2 packages finished [11.2s]
+  1 package had stderr output: sine_ctrl
+--- plugin 註冊檢查 ---
+/home/user/k136_ws/ch06/install/sine_ctrl
+share/sine_ctrl/sine_controller.xml
+libsine_controller.so

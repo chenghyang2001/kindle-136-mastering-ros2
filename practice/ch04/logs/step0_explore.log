@@ -1,0 +1,85 @@
+docker_compose_urdf
+docker_urdf
+rosbot_description
+rrbot_description
+rrbot.gv
+rrbot.pdf
+simple_rrbot.urdf
+urdf_tutorial
+=== urdf_tutorial ===
+/home/user/ros2_books/Mastering-ROS-2-for-Robotics-Programming/Chapter04/urdf_tutorial/CHANGELOG.rst
+/home/user/ros2_books/Mastering-ROS-2-for-Robotics-Programming/Chapter04/urdf_tutorial/LICENSE
+/home/user/ros2_books/Mastering-ROS-2-for-Robotics-Programming/Chapter04/urdf_tutorial/setup.cfg
+/home/user/ros2_books/Mastering-ROS-2-for-Robotics-Programming/Chapter04/urdf_tutorial/package.xml
+/home/user/ros2_books/Mastering-ROS-2-for-Robotics-Programming/Chapter04/urdf_tutorial/rviz/urdf.rviz
+/home/user/ros2_books/Mastering-ROS-2-for-Robotics-Programming/Chapter04/urdf_tutorial/launch/display.launch.py
+/home/user/ros2_books/Mastering-ROS-2-for-Robotics-Programming/Chapter04/urdf_tutorial/README.md
+/home/user/ros2_books/Mastering-ROS-2-for-Robotics-Programming/Chapter04/urdf_tutorial/urdf/02-multipleshapes.urdf
+/home/user/ros2_books/Mastering-ROS-2-for-Robotics-Programming/Chapter04/urdf_tutorial/urdf/07-physics.urdf
+/home/user/ros2_books/Mastering-ROS-2-for-Robotics-Programming/Chapter04/urdf_tutorial/urdf/03-origins.urdf
+/home/user/ros2_books/Mastering-ROS-2-for-Robotics-Programming/Chapter04/urdf_tutorial/urdf/05-visual.urdf
+/home/user/ros2_books/Mastering-ROS-2-for-Robotics-Programming/Chapter04/urdf_tutorial/urdf/01-myfirst.urdf
+/home/user/ros2_books/Mastering-ROS-2-for-Robotics-Programming/Chapter04/urdf_tutorial/urdf/04-materials.urdf
+/home/user/ros2_books/Mastering-ROS-2-for-Robotics-Programming/Chapter04/urdf_tutorial/urdf/08-macroed.urdf.xacro
+/home/user/ros2_books/Mastering-ROS-2-for-Robotics-Programming/Chapter04/urdf_tutorial/urdf/06-flexible.urdf
+/home/user/ros2_books/Mastering-ROS-2-for-Robotics-Programming/Chapter04/urdf_tutorial/CMakeLists.txt
+=== rrbot_description ===
+/home/user/ros2_books/Mastering-ROS-2-for-Robotics-Programming/Chapter04/rrbot_description/package.xml
+/home/user/ros2_books/Mastering-ROS-2-for-Robotics-Programming/Chapter04/rrbot_description/rviz/view_robot.rviz
+/home/user/ros2_books/Mastering-ROS-2-for-Robotics-Programming/Chapter04/rrbot_description/launch/rrbot.launch.py
+/home/user/ros2_books/Mastering-ROS-2-for-Robotics-Programming/Chapter04/rrbot_description/urdf/rrbot.urdf.xacro
+/home/user/ros2_books/Mastering-ROS-2-for-Robotics-Programming/Chapter04/rrbot_description/urdf/rrbot.urdf
+/home/user/ros2_books/Mastering-ROS-2-for-Robotics-Programming/Chapter04/rrbot_description/urdf/rrbot_description.urdf.xacro
+/home/user/ros2_books/Mastering-ROS-2-for-Robotics-Programming/Chapter04/rrbot_description/urdf/rrbot.materials.xacro
+/home/user/ros2_books/Mastering-ROS-2-for-Robotics-Programming/Chapter04/rrbot_description/CMakeLists.txt
+=== rosbot_description ===
+/home/user/ros2_books/Mastering-ROS-2-for-Robotics-Programming/Chapter04/rosbot_description/setup.cfg
+/home/user/ros2_books/Mastering-ROS-2-for-Robotics-Programming/Chapter04/rosbot_description/package.xml
+/home/user/ros2_books/Mastering-ROS-2-for-Robotics-Programming/Chapter04/rosbot_description/launch/gazebo.launch.py
+/home/user/ros2_books/Mastering-ROS-2-for-Robotics-Programming/Chapter04/rosbot_description/launch/display.launch.py
+/home/user/ros2_books/Mastering-ROS-2-for-Robotics-Programming/Chapter04/rosbot_description/test/test_copyright.py
+/home/user/ros2_books/Mastering-ROS-2-for-Robotics-Programming/Chapter04/rosbot_description/test/test_pep257.py
+/home/user/ros2_books/Mastering-ROS-2-for-Robotics-Programming/Chapter04/rosbot_description/test/test_flake8.py
+/home/user/ros2_books/Mastering-ROS-2-for-Robotics-Programming/Chapter04/rosbot_description/setup.py
+/home/user/ros2_books/Mastering-ROS-2-for-Robotics-Programming/Chapter04/rosbot_description/config/display.rviz
+/home/user/ros2_books/Mastering-ROS-2-for-Robotics-Programming/Chapter04/rosbot_description/config/ros_gz_bridge_gazebo.yaml
+/home/user/ros2_books/Mastering-ROS-2-for-Robotics-Programming/Chapter04/rosbot_description/config/gazebo.rviz
+/home/user/ros2_books/Mastering-ROS-2-for-Robotics-Programming/Chapter04/rosbot_description/resource/rosbot_description
+/home/user/ros2_books/Mastering-ROS-2-for-Robotics-Programming/Chapter04/rosbot_description/urdf/rosbot.gazebo
+/home/user/ros2_books/Mastering-ROS-2-for-Robotics-Programming/Chapter04/rosbot_description/urdf/rosbot.xacro
+/home/user/ros2_books/Mastering-ROS-2-for-Robotics-Programming/Chapter04/rosbot_description/urdf/rosbot.ros2control
+/home/user/ros2_books/Mastering-ROS-2-for-Robotics-Programming/Chapter04/rosbot_description/urdf/materials.xacro
+/home/user/ros2_books/Mastering-ROS-2-for-Robotics-Programming/Chapter04/rosbot_description/rosbot_description/__init__.py
+=== package.xml 依賴 ===
+  <depend>joint_state_publisher</depend>
+  <depend>joint_state_publisher_gui</depend>
+  <depend>robot_state_publisher</depend>
+  <depend>rviz2</depend>
+  <depend>xacro</depend>
+  <exec_depend>joint_state_publisher_gui</exec_depend>
+  <exec_depend>launch</exec_depend>
+  <exec_depend>launch_ros</exec_depend>
+  <exec_depend>robot_state_publisher</exec_depend>
+  <exec_depend>rviz2</exec_depend>
+  <exec_depend>urdf</exec_depend>
+  <exec_depend>urdf_launch</exec_depend>
+  <exec_depend>xacro</exec_depend>
+=== 工具 ===
+/opt/ros/jazzy/bin/check_urdf
+/opt/ros/jazzy/bin/urdf_to_graphviz
+/opt/ros/jazzy/bin/xacro
+/usr/bin/dot
+/usr/bin/pdftoppm
+ros-jazzy-gz-ros2-control
+ros-jazzy-joint-state-broadcaster
+ros-jazzy-joint-state-publisher
+ros-jazzy-joint-state-publisher-gui
+ros-jazzy-robot-state-publisher
+ros-jazzy-ros2-control
+ros-jazzy-ros2-control-cmake
+ros-jazzy-ros2-control-test-assets
+ros-jazzy-ros2-controllers
+ros-jazzy-urdfdom
+ros-jazzy-urdfdom-headers
+ros-jazzy-urdfdom-py
+ros-jazzy-xacro

@@ -1,0 +1,40 @@
+/home/user/k136_ws/ch12/src/rf2o_laser_odometry/src/CLaserOdometry2D.cpp:32:  laser_pose_on_robot_(Pose3d::Identity()),
+/home/user/k136_ws/ch12/src/rf2o_laser_odometry/src/CLaserOdometry2D.cpp:33:  laser_pose_on_robot_inv_(Pose3d::Identity()),
+/home/user/k136_ws/ch12/src/rf2o_laser_odometry/src/CLaserOdometry2D.cpp:46:  laser_pose_on_robot_     = laser_pose;
+/home/user/k136_ws/ch12/src/rf2o_laser_odometry/src/CLaserOdometry2D.cpp:47:  laser_pose_on_robot_inv_ = laser_pose_on_robot_.inverse();
+/home/user/k136_ws/ch12/src/rf2o_laser_odometry/src/CLaserOdometry2D.cpp:64:  fovh = std::abs(scan.angle_max - scan.angle_min); // Horizontal Laser's FOV
+/home/user/k136_ws/ch12/src/rf2o_laser_odometry/src/CLaserOdometry2D.cpp:81:  laser_pose_    = robot_initial_pose * laser_pose_on_robot_;
+/home/user/k136_ws/ch12/src/rf2o_laser_odometry/src/CLaserOdometry2D.cpp:136:  dtita.resize(1, cols);
+/home/user/k136_ws/ch12/src/rf2o_laser_odometry/src/CLaserOdometry2D.cpp:418:        const float tita = -0.5*fovh + float(u)*fovh/float(cols_i-1);
+/home/user/k136_ws/ch12/src/rf2o_laser_odometry/src/CLaserOdometry2D.cpp:419:        xx[i](u) = range[i](u)*std::cos(tita);
+/home/user/k136_ws/ch12/src/rf2o_laser_odometry/src/CLaserOdometry2D.cpp:420:        yy[i](u) = range[i](u)*std::sin(tita);
+/home/user/k136_ws/ch12/src/rf2o_laser_odometry/src/CLaserOdometry2D.cpp:457:  rtita = Eigen::MatrixXf::Constant(1, cols_i, 1.f);
+/home/user/k136_ws/ch12/src/rf2o_laser_odometry/src/CLaserOdometry2D.cpp:468:      rtita(u) = std::sqrt(dist);
+/home/user/k136_ws/ch12/src/rf2o_laser_odometry/src/CLaserOdometry2D.cpp:473:    dtita(u) = (rtita(u-1)*(range_inter[image_level](u+1)-
+/home/user/k136_ws/ch12/src/rf2o_laser_odometry/src/CLaserOdometry2D.cpp:474:                range_inter[image_level](u)) + rtita(u)*(range_inter[image_level](u) -
+/home/user/k136_ws/ch12/src/rf2o_laser_odometry/src/CLaserOdometry2D.cpp:475:        range_inter[image_level](u-1)))/(rtita(u)+rtita(u-1));
+/home/user/k136_ws/ch12/src/rf2o_laser_odometry/src/CLaserOdometry2D.cpp:477:  dtita(0) = dtita(1);
+/home/user/k136_ws/ch12/src/rf2o_laser_odometry/src/CLaserOdometry2D.cpp:478:  dtita(cols_i-1) = dtita(cols_i-2);
+/home/user/k136_ws/ch12/src/rf2o_laser_odometry/src/CLaserOdometry2D.cpp:486:  //MatrixXf dtitamed = dtita, dtmed = dt;
+/home/user/k136_ws/ch12/src/rf2o_laser_odometry/src/CLaserOdometry2D.cpp:490:  //	svector.at(0) = dtita(u-1); svector.at(1) = dtita(u); svector.at(2) = dtita(u+1);
+/home/user/k136_ws/ch12/src/rf2o_laser_odometry/src/CLaserOdometry2D.cpp:492:  //	dtitamed(u) = svector.at(1);
+/home/user/k136_ws/ch12/src/rf2o_laser_odometry/src/CLaserOdometry2D.cpp:499:  //dtitamed(0) = dtitamed(1);
+/home/user/k136_ws/ch12/src/rf2o_laser_odometry/src/CLaserOdometry2D.cpp:500:  //dtitamed(cols_i-1) = dtitamed(cols_i-2);
+/home/user/k136_ws/ch12/src/rf2o_laser_odometry/src/CLaserOdometry2D.cpp:504:  //dtitamed.swap(dtita);
+/home/user/k136_ws/ch12/src/rf2o_laser_odometry/src/CLaserOdometry2D.cpp:514:  const float incr_tita = fovh/float(cols_i-1);
+/home/user/k136_ws/ch12/src/rf2o_laser_odometry/src/CLaserOdometry2D.cpp:519:      const float tita = -0.5f*fovh + float(u)*incr_tita;
+/home/user/k136_ws/ch12/src/rf2o_laser_odometry/src/CLaserOdometry2D.cpp:520:      const float alfa = -std::atan2(2.f*dtita(u), 2.f*range[image_level](u)*incr_tita);
+/home/user/k136_ws/ch12/src/rf2o_laser_odometry/src/CLaserOdometry2D.cpp:521:      norm_ang(u) = tita + alfa;
+/home/user/k136_ws/ch12/src/rf2o_laser_odometry/src/CLaserOdometry2D.cpp:529:      normx(u) = std::cos(tita + alfa);
+/home/user/k136_ws/ch12/src/rf2o_laser_odometry/src/CLaserOdometry2D.cpp:530:      normy(u) = std::sin(tita + alfa);
+/home/user/k136_ws/ch12/src/rf2o_laser_odometry/src/CLaserOdometry2D.cpp:541:  const float kdtita = 1.f;
+/home/user/k136_ws/ch12/src/rf2o_laser_odometry/src/CLaserOdometry2D.cpp:542:  const float kdt = kdtita / (fps*fps);
+/home/user/k136_ws/ch12/src/rf2o_laser_odometry/src/CLaserOdometry2D.cpp:550:      const float ini_dtita = range_old[image_level](u+1) - range_old[image_level](u-1);
+/home/user/k136_ws/ch12/src/rf2o_laser_odometry/src/CLaserOdometry2D.cpp:551:      const float final_dtita = range_warped[image_level](u+1) - range_warped[image_level](u-1);
+/home/user/k136_ws/ch12/src/rf2o_laser_odometry/src/CLaserOdometry2D.cpp:553:      const float dtitat = ini_dtita - final_dtita;
+/home/user/k136_ws/ch12/src/rf2o_laser_odometry/src/CLaserOdometry2D.cpp:554:      const float dtita2 = dtita(u+1) - dtita(u-1);
+/home/user/k136_ws/ch12/src/rf2o_laser_odometry/src/CLaserOdometry2D.cpp:557:          kdtita*(dtita(u)*dtita(u)) +
+/home/user/k136_ws/ch12/src/rf2o_laser_odometry/src/CLaserOdometry2D.cpp:558:          k2d*(std::abs(dtitat) + std::abs(dtita2));
+/home/user/k136_ws/ch12/src/rf2o_laser_odometry/src/CLaserOdometry2D.cpp:591:  const float kdtita = (cols_i-1)/fovh;
+/home/user/k136_ws/ch12/src/rf2o_laser_odometry/src/CLaserOdometry2D.cpp:601:      const float tita = -0.5*fovh + u/kdtita;
+/home/user/k136_ws/ch12/src/rf2o_laser_odometry/src/CLaserOdometry2D.cpp:604:      A(cont, 0) = tw*(std::cos(tita) + dtita(u)*kdtita*std::sin(tita)/range_inter[image_level](u));

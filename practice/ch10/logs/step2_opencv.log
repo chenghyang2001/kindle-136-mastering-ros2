@@ -1,0 +1,60 @@
+=== 節點清單 ===
+/cam2image
+/image_processor
+=== 影像相關 topic ===
+/blur/image_raw
+/contours/image_raw
+/corner/image_raw
+/flip_image
+/gray/image_raw
+/image_raw
+/keypoints/image_raw
+/prespective/image_raw
+/thresholded/image_raw
+=== topic hz /image_raw ===
+average rate: 9.986
+	min: 0.099s max: 0.102s std dev: 0.00091s window: 11
+average rate: 9.991
+	min: 0.098s max: 0.102s std dev: 0.00105s window: 22
+=== topic hz /gray/image_raw ===
+average rate: 9.971
+	min: 0.097s max: 0.103s std dev: 0.00169s window: 11
+average rate: 9.986
+	min: 0.096s max: 0.106s std dev: 0.00242s window: 22
+=== topic hz /blur/image_raw ===
+average rate: 10.000
+	min: 0.095s max: 0.105s std dev: 0.00258s window: 12
+average rate: 9.996
+	min: 0.093s max: 0.107s std dev: 0.00295s window: 22
+=== topic hz /thresholded/image_raw ===
+average rate: 10.022
+	min: 0.095s max: 0.108s std dev: 0.00395s window: 12
+average rate: 9.988
+	min: 0.095s max: 0.108s std dev: 0.00327s window: 22
+=== topic hz /contours/image_raw ===
+average rate: 10.029
+	min: 0.096s max: 0.104s std dev: 0.00203s window: 12
+average rate: 10.005
+	min: 0.095s max: 0.107s std dev: 0.00273s window: 22
+=== topic hz /corner/image_raw ===
+average rate: 9.982
+	min: 0.095s max: 0.105s std dev: 0.00267s window: 12
+average rate: 9.976
+	min: 0.095s max: 0.106s std dev: 0.00289s window: 22
+=== topic hz /keypoints/image_raw ===
+average rate: 10.001
+	min: 0.093s max: 0.107s std dev: 0.00414s window: 12
+average rate: 9.993
+	min: 0.093s max: 0.107s std dev: 0.00345s window: 22
+=== /gray/image_raw 單張影像中繼資料 ===
+mono8
+---
+320
+---
+240
+---
+=== /prespective/image_raw（書上未實作透視轉換，發布空影像）===
+0
+---
+=== image_processing 節點 log（尾段）===
+step2 完成

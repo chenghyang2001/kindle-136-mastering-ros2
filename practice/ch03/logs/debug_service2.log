@@ -1,0 +1,26 @@
+######## 模式：預設（SHM+UDP）
+(service list 沒看到)
+18:27:47
+waiting for service to become available...
+failed to check service availability: rcl node's context is invalid, at ./src/rcl/node.c:404
+18:28:13
+[INFO] [1792837660.900683183] [string_concat_service]: Started ROS 2 Service Server
+######## 模式：UDPv4 only
+/concat_strings
+/string_concat_service/describe_parameters
+/string_concat_service/get_parameter_types
+/string_concat_service/get_parameters
+/string_concat_service/get_type_description
+/string_concat_service/list_parameters
+/string_concat_service/set_parameters
+/string_concat_service/set_parameters_atomically
+18:28:20
+waiting for service to become available...
+requester: making request: master_ros2_interface.srv.ConcatStrings_Request(str1='K136 ', str2='Chapter03')
+
+response:
+master_ros2_interface.srv.ConcatStrings_Response(concatenated_str='K136 Chapter03')
+
+18:28:21
+[INFO] [1792837693.322418868] [string_concat_service]: Started ROS 2 Service Server
+[INFO] [1792837701.092710639] [string_concat_service]: Received: str1='K136 ', str2='Chapter03'; Responding with: 'K136 Chapter03'

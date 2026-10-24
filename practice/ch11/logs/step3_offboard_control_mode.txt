@@ -1,0 +1,9 @@
+timestamp: 1792843535888897
+position: true
+velocity: false
+acceleration: false
+attitude: false
+body_rate: false
+thrust_and_torque: false
+direct_actuator: false
+---

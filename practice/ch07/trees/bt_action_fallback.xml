@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 本演練改：Sequence 底下加一個 Fallback。
+     第一個 CallAction 目標 (30,30)、timeout 5 秒 → 速度上限 2/秒，5 秒內最多到 10，必定 FAILURE（server abort）
+     Fallback 接著改試第二個 CallAction 目標 (3,3)、timeout 10 秒 → 幾乎必定 SUCCESS -->
+<root BTCPP_format="4">
+  <BehaviorTree ID="bt_action_fallback">
+    <Sequence>
+      <WaitForServer server_name="reach_location"/>
+      <Fallback>
+        <CallAction server_name="reach_location" x="30" y="30" timeout="5"/>
+        <CallAction server_name="reach_location" x="3" y="3" timeout="10"/>
+      </Fallback>
+    </Sequence>
+  </BehaviorTree>
+</root>

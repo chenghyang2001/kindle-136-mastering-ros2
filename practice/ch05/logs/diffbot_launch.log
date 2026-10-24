@@ -1,0 +1,39 @@
+[INFO] [launch]: All log files can be found below /home/user/.ros/log/2026-10-24-18-44-22-007412-DESKTOP-6LST1BR-442
+[INFO] [launch]: Default logging verbosity is set to INFO
+[INFO] [gazebo-1]: process started with pid [448]
+[INFO] [create-2]: process started with pid [449]
+[INFO] [parameter_bridge-3]: process started with pid [450]
+[INFO] [image_bridge-4]: process started with pid [452]
+[INFO] [robot_state_publisher-5]: process started with pid [453]
+[robot_state_publisher-5] [INFO] [1792838662.820761263] [robot_state_publisher]: Robot initialized
+[create-2] [INFO] [1792838662.920509698] [ros_gz_sim]: Requesting list of world names.
+[create-2] [INFO] [1792838663.668698976] [ros_gz_sim]: Waiting messages on topic [/robot_description].
+[create-2] [INFO] [1792838663.673732275] [ros_gz_sim]: Entity creation successful.
+[INFO] [create-2]: process has finished cleanly [pid 449]
+[parameter_bridge-3] [INFO] [1792838663.965118527] [ros_gz_bridge]: Creating GZ->ROS Bridge: [/clock (gz.msgs.Clock) -> /clock (rosgraph_msgs/msg/Clock)] (Lazy 0)
+[parameter_bridge-3] [INFO] [1792838663.968599219] [ros_gz_bridge]: Creating GZ->ROS Bridge: [/scan (gz.msgs.LaserScan) -> /diff_drive/scan (sensor_msgs/msg/LaserScan)] (Lazy 0)
+[parameter_bridge-3] [INFO] [1792838663.970347218] [ros_gz_bridge]: Creating GZ->ROS Bridge: [/imu (gz.msgs.IMU) -> /imu (sensor_msgs/msg/Imu)] (Lazy 0)
+[parameter_bridge-3] [INFO] [1792838663.971029887] [ros_gz_bridge]: Creating GZ->ROS Bridge: [/tf (gz.msgs.Pose_V) -> /tf (tf2_msgs/msg/TFMessage)] (Lazy 0)
+[parameter_bridge-3] [INFO] [1792838663.972190665] [ros_gz_bridge]: Creating GZ->ROS Bridge: [/joint_states (gz.msgs.Model) -> /joint_states (sensor_msgs/msg/JointState)] (Lazy 0)
+[parameter_bridge-3] [INFO] [1792838663.972989927] [ros_gz_bridge]: Creating ROS->GZ Bridge: [/cmd_vel (geometry_msgs/msg/Twist) -> /cmd_vel (gz.msgs.Twist)] (Lazy 0)
+[parameter_bridge-3] [INFO] [1792838663.973780189] [ros_gz_bridge]: Creating GZ->ROS Bridge: [camera/camera_info (gz.msgs.CameraInfo) -> camera/depth/camera_info (sensor_msgs/msg/CameraInfo)] (Lazy 0)
+[parameter_bridge-3] [INFO] [1792838663.974684538] [ros_gz_bridge]: Creating GZ->ROS Bridge: [camera/points (gz.msgs.PointCloudPacked) -> camera/depth/color/points (sensor_msgs/msg/PointCloud2)] (Lazy 0)
+[parameter_bridge-3] [INFO] [1792838663.975332390] [ros_gz_bridge]: Creating GZ->ROS Bridge: [/odom (gz.msgs.Odometry) -> /odom (nav_msgs/msg/Odometry)] (Lazy 0)
+[gazebo-1] [1;33mWarning [Utils.cc:132][0m [/sdf/model[@name="diffbot"]/link[@name="base_footprint"]/sensor[@name="camera"]/gz_frame_id:<urdf-string>:L0]: XML Element[gz_frame_id], child of element[sensor], not defined in SDF. Copying[gz_frame_id] as children of [sensor].
+[gazebo-1] [1;33mWarning [Utils.cc:132][0m [/sdf/model[@name="diffbot"]/link[@name="base_footprint"]/sensor[@name="imu_sensor"]/gz_frame_id:<urdf-string>:L0]: XML Element[gz_frame_id], child of element[sensor], not defined in SDF. Copying[gz_frame_id] as children of [sensor].
+[gazebo-1] [1;33mWarning [Utils.cc:132][0m [/sdf/model[@name="diffbot"]/link[@name="base_footprint"]/sensor[@name="gpu_lidar"]/gz_frame_id:<urdf-string>:L0]: XML Element[gz_frame_id], child of element[sensor], not defined in SDF. Copying[gz_frame_id] as children of [sensor].
+[parameter_bridge-3] [INFO] [1792838680.360029688] [ros_gz_bridge]: Passing message from ROS geometry_msgs/msg/Twist to Gazebo gz.msgs.Twist (showing msg only once per type)
+[WARNING] [launch]: user interrupted with ctrl-c (SIGINT)
+[WARNING] [launch]: user interrupted with ctrl-c (SIGINT) again, ignoring...
+[INFO] [robot_state_publisher-5]: sending signal 'SIGINT' to process[robot_state_publisher-5]
+[INFO] [image_bridge-4]: sending signal 'SIGINT' to process[image_bridge-4]
+[INFO] [parameter_bridge-3]: process has finished cleanly [pid 450]
+[INFO] [gazebo-1]: sending signal 'SIGINT' to process[gazebo-1]
+[robot_state_publisher-5] [INFO] [1792838703.801226319] [rclcpp]: signal_handler(SIGINT/SIGTERM)
+[parameter_bridge-3] [INFO] [1792838703.801415703] [rclcpp]: signal_handler(SIGINT/SIGTERM)
+[image_bridge-4] [INFO] [1792838703.801424904] [rclcpp]: signal_handler(SIGINT/SIGTERM)
+[robot_state_publisher-5] [INFO] [1792838703.810185219] [rclcpp]: signal_handler(SIGINT/SIGTERM)
+[image_bridge-4] [INFO] [1792838703.812327552] [rclcpp]: signal_handler(SIGINT/SIGTERM)
+[ERROR] [gazebo-1]: process has died [pid 448, exit code -2, cmd 'ruby /opt/ros/jazzy/opt/gz_tools_vendor/bin/gz sim /home/user/k136_ws/ch05/install/diffbot_gazebo/share/diffbot_gazebo/worlds/empty.world -s -r --force-version 8'].
+[INFO] [robot_state_publisher-5]: process has finished cleanly [pid 453]
+[INFO] [image_bridge-4]: process has finished cleanly [pid 452]

@@ -1,0 +1,60 @@
+PATCHED
+124:        # 本演練改：沒有金鑰時改用規則式假 LLM（見 fake_llm.py），工具呼叫流程不變
+125-        backend = os.environ.get("LLM_BACKEND", "auto")
+126-        has_key = bool(os.environ.get("OPENAI_API_KEY"))
+127-        if backend == "openai" or (backend == "auto" and has_key):
+128-            self.llm = ChatOpenAI(model="gpt-4o-mini", temperature=0)
+129-        else:
+130-            from ros2_basic_agent.fake_llm import RuleBasedFakeToolLLM
+131-            self.llm = RuleBasedFakeToolLLM()
+132-        self.get_logger().info(f"LLM backend: {type(self.llm).__name__}")
+=== 假 LLM 冒煙測試（venv python）===
+Traceback (most recent call last):
+  File "/home/user/k136_ws/ch14/src/ros2_basic_agent/ros2_basic_agent/fake_llm.py", line 13, in <module>
+    from langchain_core.language_models.chat_models import BaseChatModel
+ModuleNotFoundError: No module named 'langchain_core'
+（langchain 尚未裝好，自測略過）
+Starting >>> ros2_basic_agent
+running develop
+running egg_info
+creating ros2_basic_agent.egg-info
+writing ros2_basic_agent.egg-info/PKG-INFO
+writing dependency_links to ros2_basic_agent.egg-info/dependency_links.txt
+writing entry points to ros2_basic_agent.egg-info/entry_points.txt
+writing requirements to ros2_basic_agent.egg-info/requires.txt
+writing top-level names to ros2_basic_agent.egg-info/top_level.txt
+writing manifest file 'ros2_basic_agent.egg-info/SOURCES.txt'
+reading manifest file 'ros2_basic_agent.egg-info/SOURCES.txt'
+writing manifest file 'ros2_basic_agent.egg-info/SOURCES.txt'
+running build_ext
+Creating /home/user/k136_ws/ch14/install/ros2_basic_agent/lib/python3.12/site-packages/ros2-basic-agent.egg-link (link to .)
+Installing ros2_ai_agent_basic script to /home/user/k136_ws/ch14/install/ros2_basic_agent/lib/ros2_basic_agent
+Installing ros2_ai_agent_basic_tools script to /home/user/k136_ws/ch14/install/ros2_basic_agent/lib/ros2_basic_agent
+Installing ros2_ai_agent_moveit2 script to /home/user/k136_ws/ch14/install/ros2_basic_agent/lib/ros2_basic_agent
+Installing ros2_ai_agent_nav2 script to /home/user/k136_ws/ch14/install/ros2_basic_agent/lib/ros2_basic_agent
+Installing ros2_ai_agent_turtlesim script to /home/user/k136_ws/ch14/install/ros2_basic_agent/lib/ros2_basic_agent
+
+Installed /home/user/k136_ws/ch14/build/ros2_basic_agent
+running symlink_data
+creating /home/user/k136_ws/ch14/install/ros2_basic_agent/share/ament_index
+creating /home/user/k136_ws/ch14/install/ros2_basic_agent/share/ament_index/resource_index
+creating /home/user/k136_ws/ch14/install/ros2_basic_agent/share/ament_index/resource_index/packages
+symbolically linking /home/user/k136_ws/ch14/build/ros2_basic_agent/resource/ros2_basic_agent -> /home/user/k136_ws/ch14/install/ros2_basic_agent/share/ament_index/resource_index/packages
+symbolically linking /home/user/k136_ws/ch14/build/ros2_basic_agent/package.xml -> /home/user/k136_ws/ch14/install/ros2_basic_agent/share/ros2_basic_agent
+creating /home/user/k136_ws/ch14/install/ros2_basic_agent/share/ros2_basic_agent/launch
+symbolically linking /home/user/k136_ws/ch14/build/ros2_basic_agent/launch/start_turtlebot3_nav2_agent.py -> /home/user/k136_ws/ch14/install/ros2_basic_agent/share/ros2_basic_agent/launch
+symbolically linking /home/user/k136_ws/ch14/build/ros2_basic_agent/launch/start_ros2_tools_agent.py -> /home/user/k136_ws/ch14/install/ros2_basic_agent/share/ros2_basic_agent/launch
+symbolically linking /home/user/k136_ws/ch14/build/ros2_basic_agent/launch/start_ur_moveit2_agent.py -> /home/user/k136_ws/ch14/install/ros2_basic_agent/share/ros2_basic_agent/launch
+symbolically linking /home/user/k136_ws/ch14/build/ros2_basic_agent/launch/start_turtlesim_agent.py -> /home/user/k136_ws/ch14/install/ros2_basic_agent/share/ros2_basic_agent/launch
+symbolically linking /home/user/k136_ws/ch14/build/ros2_basic_agent/launch/start_ros2_basic_agent.py -> /home/user/k136_ws/ch14/install/ros2_basic_agent/share/ros2_basic_agent/launch
+creating /home/user/k136_ws/ch14/install/ros2_basic_agent/share/ros2_basic_agent/config
+symbolically linking /home/user/k136_ws/ch14/build/ros2_basic_agent/config/openai.env -> /home/user/k136_ws/ch14/install/ros2_basic_agent/share/ros2_basic_agent/config
+Finished <<< ros2_basic_agent [1.73s]
+
+Summary: 1 package finished [1.96s]
+BUILD_DONE
+ros2_ai_agent_basic
+ros2_ai_agent_basic_tools
+ros2_ai_agent_moveit2
+ros2_ai_agent_nav2
+ros2_ai_agent_turtlesim

@@ -1,0 +1,19 @@
+    237       04:08 /usr/bin/python3 /usr/share/unattended-upgrades/unattended-upgrade-shutdown --wait-for-signal
+--- /dev/shm
+fastrtps_035d48077cac9052
+fastrtps_035d48077cac9052_el
+fastrtps_4ebcd0a326a5640d
+fastrtps_4ebcd0a326a5640d_el
+fastrtps_port16411
+fastrtps_port16411_el
+fastrtps_port16413
+fastrtps_port7000
+fastrtps_port7000_el
+fastrtps_port7001
+lttng-ust-wait-8
+lttng-ust-wait-8-1000
+sem.fastrtps_port16411_mutex
+sem.fastrtps_port16413_mutex
+sem.fastrtps_port7000_mutex
+sem.fastrtps_port7001_mutex
+16

@@ -1,0 +1,149 @@
+Collecting langchain~=0.3.27
+  Using cached langchain-0.3.30-py3-none-any.whl.metadata (6.4 kB)
+Collecting langchain-openai~=0.3.30
+  Using cached langchain_openai-0.3.35-py3-none-any.whl.metadata (2.4 kB)
+Collecting langchain-core~=0.3.70
+  Using cached langchain_core-0.3.86-py3-none-any.whl.metadata (3.2 kB)
+Collecting python-dotenv
+  WARNING: Cache entry deserialization failed, entry ignored
+  WARNING: Cache entry deserialization failed, entry ignored
+  Downloading python_dotenv-1.2.4-py3-none-any.whl.metadata (29 kB)
+Collecting langchain-text-splitters<1.0.0,>=0.3.9 (from langchain~=0.3.27)
+  Using cached langchain_text_splitters-0.3.11-py3-none-any.whl.metadata (1.8 kB)
+Collecting langsmith<1.0.0,>=0.1.17 (from langchain~=0.3.27)
+  Using cached langsmith-0.14.12-py3-none-any.whl.metadata (38 kB)
+Collecting pydantic<3.0.0,>=2.7.4 (from langchain~=0.3.27)
+  Using cached pydantic-2.14.1-py3-none-any.whl.metadata (133 kB)
+Collecting SQLAlchemy<3.0.0,>=1.4.0 (from langchain~=0.3.27)
+  Using cached sqlalchemy-2.1.6-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl.metadata (9.7 kB)
+Requirement already satisfied: requests<3.0.0,>=2.0.0 in /usr/lib/python3/dist-packages (from langchain~=0.3.27) (2.31.0)
+Requirement already satisfied: PyYAML<7.0.0,>=5.3.0 in /usr/lib/python3/dist-packages (from langchain~=0.3.27) (6.0.1)
+Collecting openai<3.0.0,>=1.104.2 (from langchain-openai~=0.3.30)
+  Using cached openai-2.54.0-py3-none-any.whl.metadata (40 kB)
+Collecting tiktoken<1.0.0,>=0.7.0 (from langchain-openai~=0.3.30)
+  Using cached tiktoken-0.14.0-cp312-cp312-manylinux_2_28_x86_64.whl.metadata (6.7 kB)
+Collecting tenacity!=8.4.0,<10.0.0,>=8.1.0 (from langchain-core~=0.3.70)
+  Using cached tenacity-9.2.1-py3-none-any.whl.metadata (1.4 kB)
+Collecting jsonpatch<2.0.0,>=1.33.0 (from langchain-core~=0.3.70)
+  Using cached jsonpatch-1.36-py3-none-any.whl.metadata (3.7 kB)
+Requirement already satisfied: typing-extensions<5.0.0,>=4.7.0 in /usr/lib/python3/dist-packages (from langchain-core~=0.3.70) (4.10.0)
+Requirement already satisfied: packaging<26.0.0,>=23.2.0 in /usr/lib/python3/dist-packages (from langchain-core~=0.3.70) (24.0)
+Collecting uuid-utils<1.0,>=0.12.0 (from langchain-core~=0.3.70)
+  Using cached uuid_utils-0.18.0-cp312-cp312-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (6.4 kB)
+Collecting jsonpointer>=3.2 (from jsonpatch<2.0.0,>=1.33.0->langchain-core~=0.3.70)
+  Using cached jsonpointer-3.4-py3-none-any.whl.metadata (2.6 kB)
+Collecting anyio<5,>=3.5.0 (from langsmith<1.0.0,>=0.1.17->langchain~=0.3.27)
+  Using cached anyio-4.15.1-py3-none-any.whl.metadata (4.7 kB)
+Requirement already satisfied: distro<2,>=1.7.0 in /usr/lib/python3/dist-packages (from langsmith<1.0.0,>=0.1.17->langchain~=0.3.27) (1.9.0)
+Collecting httpx2<3,>=2 (from langsmith<1.0.0,>=0.1.17->langchain~=0.3.27)
+  Using cached httpx2-2.16.0-py3-none-any.whl.metadata (10 kB)
+Collecting orjson>=3.9.14 (from langsmith<1.0.0,>=0.1.17->langchain~=0.3.27)
+  Using cached orjson-3.13.0-cp312-cp312-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (42 kB)
+Collecting requests-toolbelt>=1.0.0 (from langsmith<1.0.0,>=0.1.17->langchain~=0.3.27)
+  Using cached requests_toolbelt-1.0.0-py2.py3-none-any.whl.metadata (14 kB)
+Collecting sniffio (from langsmith<1.0.0,>=0.1.17->langchain~=0.3.27)
+  Using cached sniffio-1.3.1-py3-none-any.whl.metadata (3.9 kB)
+Collecting typing-extensions<5.0.0,>=4.7.0 (from langchain-core~=0.3.70)
+  Using cached typing_extensions-4.16.0-py3-none-any.whl.metadata (3.3 kB)
+Collecting websockets>=15.0 (from langsmith<1.0.0,>=0.1.17->langchain~=0.3.27)
+  Using cached websockets-17.3-cp312-cp312-manylinux1_x86_64.manylinux_2_28_x86_64.manylinux_2_5_x86_64.whl.metadata (6.3 kB)
+Collecting xxhash>=3.0.0 (from langsmith<1.0.0,>=0.1.17->langchain~=0.3.27)
+  Using cached xxhash-4.0.2-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl.metadata (17 kB)
+Collecting zstandard>=0.23.0 (from langsmith<1.0.0,>=0.1.17->langchain~=0.3.27)
+  Using cached zstandard-0.25.0-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.whl.metadata (3.3 kB)
+Requirement already satisfied: idna>=2.8 in /usr/lib/python3/dist-packages (from anyio<5,>=3.5.0->langsmith<1.0.0,>=0.1.17->langchain~=0.3.27) (3.6)
+Collecting httpcore2==2.16.0 (from httpx2<3,>=2->langsmith<1.0.0,>=0.1.17->langchain~=0.3.27)
+  Using cached httpcore2-2.16.0-py3-none-any.whl.metadata (27 kB)
+Collecting idna>=2.8 (from anyio<5,>=3.5.0->langsmith<1.0.0,>=0.1.17->langchain~=0.3.27)
+  Using cached idna-3.20-py3-none-any.whl.metadata (7.2 kB)
+Collecting truststore>=0.10 (from httpx2<3,>=2->langsmith<1.0.0,>=0.1.17->langchain~=0.3.27)
+  Using cached truststore-0.10.5-py3-none-any.whl.metadata (4.5 kB)
+Collecting h11>=0.16 (from httpcore2==2.16.0->httpx2<3,>=2->langsmith<1.0.0,>=0.1.17->langchain~=0.3.27)
+  Using cached h11-0.16.0-py3-none-any.whl.metadata (8.3 kB)
+Collecting httpx<1,>=0.23.0 (from openai<3.0.0,>=1.104.2->langchain-openai~=0.3.30)
+  Using cached httpx-0.28.1-py3-none-any.whl.metadata (7.1 kB)
+Collecting jiter<1,>=0.10.0 (from openai<3.0.0,>=1.104.2->langchain-openai~=0.3.30)
+  Using cached jiter-0.18.0-cp312-cp312-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (5.2 kB)
+Collecting tqdm>4 (from openai<3.0.0,>=1.104.2->langchain-openai~=0.3.30)
+  Using cached tqdm-4.70.1-py3-none-any.whl.metadata (57 kB)
+Requirement already satisfied: certifi in /usr/lib/python3/dist-packages (from httpx<1,>=0.23.0->openai<3.0.0,>=1.104.2->langchain-openai~=0.3.30) (2023.11.17)
+Collecting httpcore==1.* (from httpx<1,>=0.23.0->openai<3.0.0,>=1.104.2->langchain-openai~=0.3.30)
+  Using cached httpcore-1.0.9-py3-none-any.whl.metadata (21 kB)
+Collecting annotated-types>=0.6.0 (from pydantic<3.0.0,>=2.7.4->langchain~=0.3.27)
+  Using cached annotated_types-0.8.0-py3-none-any.whl.metadata (15 kB)
+Collecting pydantic-core==2.50.1 (from pydantic<3.0.0,>=2.7.4->langchain~=0.3.27)
+  Using cached pydantic_core-2.50.1-cp312-cp312-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (6.5 kB)
+Collecting typing-inspection>=0.4.4 (from pydantic<3.0.0,>=2.7.4->langchain~=0.3.27)
+  Using cached typing_inspection-0.4.4-py3-none-any.whl.metadata (2.6 kB)
+Collecting regex (from tiktoken<1.0.0,>=0.7.0->langchain-openai~=0.3.30)
+  Using cached regex-2026.9.29-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl.metadata (40 kB)
+Using cached langchain-0.3.30-py3-none-any.whl (1.0 MB)
+Using cached langchain_openai-0.3.35-py3-none-any.whl (75 kB)
+Using cached langchain_core-0.3.86-py3-none-any.whl (461 kB)
+Using cached jsonpatch-1.36-py3-none-any.whl (17 kB)
+Using cached langchain_text_splitters-0.3.11-py3-none-any.whl (33 kB)
+Using cached langsmith-0.14.12-py3-none-any.whl (883 kB)
+Using cached anyio-4.15.1-py3-none-any.whl (132 kB)
+Using cached httpx2-2.16.0-py3-none-any.whl (97 kB)
+Using cached httpcore2-2.16.0-py3-none-any.whl (85 kB)
+Downloading openai-2.54.0-py3-none-any.whl (1.7 MB)
+WARNING: Connection interrupted while downloading.
+WARNING: Attempting to resume incomplete download (375 kB/1.7 MB, attempt 1)
+Resuming download openai-2.54.0-py3-none-any.whl (375 kB/1.7 MB)
+Downloading httpx-0.28.1-py3-none-any.whl (73 kB)
+Downloading httpcore-1.0.9-py3-none-any.whl (78 kB)
+Downloading jiter-0.18.0-cp312-cp312-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (336 kB)
+Downloading pydantic-2.14.1-py3-none-any.whl (488 kB)
+Downloading pydantic_core-2.50.1-cp312-cp312-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (2.2 MB)
+WARNING: Connection interrupted while downloading.
+WARNING: Attempting to resume incomplete download (1.7 MB/2.2 MB, attempt 1)
+Resuming download pydantic_core-2.50.1-cp312-cp312-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (1.7 MB/2.2 MB)
+Downloading sqlalchemy-2.1.6-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl (4.7 MB)
+Downloading tenacity-9.2.1-py3-none-any.whl (32 kB)
+Downloading tiktoken-0.14.0-cp312-cp312-manylinux_2_28_x86_64.whl (1.2 MB)
+Downloading typing_extensions-4.16.0-py3-none-any.whl (45 kB)
+Downloading uuid_utils-0.18.0-cp312-cp312-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (322 kB)
+Downloading python_dotenv-1.2.4-py3-none-any.whl (23 kB)
+Downloading annotated_types-0.8.0-py3-none-any.whl (13 kB)
+Downloading h11-0.16.0-py3-none-any.whl (37 kB)
+Downloading idna-3.20-py3-none-any.whl (69 kB)
+Downloading jsonpointer-3.4-py3-none-any.whl (9.0 kB)
+Downloading orjson-3.13.0-cp312-cp312-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (130 kB)
+Downloading requests_toolbelt-1.0.0-py2.py3-none-any.whl (54 kB)
+Downloading tqdm-4.70.1-py3-none-any.whl (80 kB)
+Downloading truststore-0.10.5-py3-none-any.whl (19 kB)
+Downloading typing_inspection-0.4.4-py3-none-any.whl (14 kB)
+Downloading websockets-17.3-cp312-cp312-manylinux1_x86_64.manylinux_2_28_x86_64.manylinux_2_5_x86_64.whl (225 kB)
+Downloading xxhash-4.0.2-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl (261 kB)
+Downloading zstandard-0.25.0-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.whl (5.5 MB)
+WARNING: Connection interrupted while downloading.
+WARNING: Attempting to resume incomplete download (5.2 MB/5.5 MB, attempt 1)
+Resuming download zstandard-0.25.0-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.whl (5.2 MB/5.5 MB)
+Downloading regex-2026.9.29-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl (807 kB)
+Downloading sniffio-1.3.1-py3-none-any.whl (10 kB)
+Installing collected packages: zstandard, xxhash, websockets, uuid-utils, typing-extensions, truststore, tqdm, tenacity, sniffio, requests-toolbelt, regex, python-dotenv, orjson, jsonpointer, jiter, idna, h11, annotated-types, typing-inspection, tiktoken, SQLAlchemy, pydantic-core, jsonpatch, httpcore2, httpcore, anyio, pydantic, httpx2, httpx, openai, langsmith, langchain-core, langchain-text-splitters, langchain-openai, langchain
+  Attempting uninstall: typing-extensions
+    Found existing installation: typing_extensions 4.10.0
+    Not uninstalling typing-extensions at /usr/lib/python3/dist-packages, outside environment /home/user/k136_venv
+    Can't uninstall 'typing_extensions'. No files were found to uninstall.
+  Attempting uninstall: jsonpointer
+    Found existing installation: jsonpointer 2.0
+    Not uninstalling jsonpointer at /usr/lib/python3/dist-packages, outside environment /home/user/k136_venv
+    Can't uninstall 'jsonpointer'. No files were found to uninstall.
+  Attempting uninstall: idna
+    Found existing installation: idna 3.6
+    Not uninstalling idna at /usr/lib/python3/dist-packages, outside environment /home/user/k136_venv
+    Can't uninstall 'idna'. No files were found to uninstall.
+  Attempting uninstall: jsonpatch
+    Found existing installation: jsonpatch 1.32
+    Not uninstalling jsonpatch at /usr/lib/python3/dist-packages, outside environment /home/user/k136_venv
+    Can't uninstall 'jsonpatch'. No files were found to uninstall.
+Successfully installed SQLAlchemy-2.1.6 annotated-types-0.8.0 anyio-4.15.1 h11-0.16.0 httpcore-1.0.9 httpcore2-2.16.0 httpx-0.28.1 httpx2-2.16.0 idna-3.20 jiter-0.18.0 jsonpatch-1.36 jsonpointer-3.4 langchain-0.3.30 langchain-core-0.3.86 langchain-openai-0.3.35 langchain-text-splitters-0.3.11 langsmith-0.14.12 openai-2.54.0 orjson-3.13.0 pydantic-2.14.1 pydantic-core-2.50.1 python-dotenv-1.2.4 regex-2026.9.29 requests-toolbelt-1.0.0 sniffio-1.3.1 tenacity-9.2.1 tiktoken-0.14.0 tqdm-4.70.1 truststore-0.10.5 typing-extensions-4.16.0 typing-inspection-0.4.4 uuid-utils-0.18.0 websockets-17.3 xxhash-4.0.2 zstandard-0.25.0
+langchain                            0.3.30
+langchain-core                       0.3.86
+langchain-openai                     0.3.35
+langchain-text-splitters             0.3.11
+openai                               2.54.0
+python-dotenv                        1.2.4
+IMPORT_OK
+STEP1_DONE

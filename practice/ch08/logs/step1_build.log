@@ -1,0 +1,53 @@
+56:    # ld.add_action(rviz_launch_cmd)
+56:            "gz_args" : PythonExpression(["'", world_file, " -s -r'"])
+57-        }.items()
+Starting >>> nav2_bt_client
+Starting >>> nav2_client
+Starting >>> rosbot_description
+Starting >>> rosbot_nav2_bringup
+Finished <<< rosbot_description [2.94s]
+Finished <<< rosbot_nav2_bringup [12.2s]
+Finished <<< nav2_client [18.1s]
+Finished <<< nav2_bt_client [21.5s]
+
+Summary: 4 packages finished [21.7s]
+=== 建置結果 ===
+install/nav2_bt_client/lib/nav2_bt_client:
+nav2_bt_node
+
+install/nav2_client/lib/nav2_client:
+navigation_client
+install/rosbot_description/share/rosbot_description:
+config
+hook
+launch
+meshes
+models
+package.bash
+package.dsv
+package.ps1
+package.sh
+package.xml
+package.zsh
+urdf
+worlds
+
+install/rosbot_nav2_bringup/share/rosbot_nav2_bringup:
+cmake
+environment
+hook
+launch
+local_setup.bash
+local_setup.dsv
+local_setup.sh
+local_setup.zsh
+maps
+package.bash
+package.dsv
+package.ps1
+package.sh
+package.xml
+package.zsh
+params
+rviz
+BUILD_DONE

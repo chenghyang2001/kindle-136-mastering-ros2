@@ -1,0 +1,34 @@
+[INFO] [1792843527.888717546] [px4_ctrl]: Insert the desired command
+[INFO] [1792843527.889520110] [px4_ctrl]: arm - to arm the drone
+[INFO] [1792843527.889980148] [px4_ctrl]: disarm - to disarm the drone
+[INFO] [1792843527.890465238] [px4_ctrl]: takeoff - to take the drone
+[INFO] [1792843527.890990556] [px4_ctrl]: move - specify a target point to reach
+[INFO] [1792843527.891400058] [px4_ctrl]: exit - to exit
+[INFO] [1792843541.152590029] [px4_ctrl]: Arming
+[INFO] [1792843541.253582227] [px4_ctrl]: Insert the desired command
+[INFO] [1792843541.254641729] [px4_ctrl]: arm - to arm the drone
+[INFO] [1792843541.255242484] [px4_ctrl]: disarm - to disarm the drone
+[INFO] [1792843541.255559970] [px4_ctrl]: takeoff - to take the drone
+[INFO] [1792843541.255903255] [px4_ctrl]: move - specify a target point to reach
+[INFO] [1792843541.256342274] [px4_ctrl]: exit - to exit
+[INFO] [1792843544.156015413] [px4_ctrl]: Insert the desired command
+[INFO] [1792843544.157479712] [px4_ctrl]: arm - to arm the drone
+[INFO] [1792843544.158742661] [px4_ctrl]: disarm - to disarm the drone
+[INFO] [1792843544.159693623] [px4_ctrl]: takeoff - to take the drone
+[INFO] [1792843544.160748134] [px4_ctrl]: move - specify a target point to reach
+[INFO] [1792843544.161438664] [px4_ctrl]: exit - to exit
+[INFO] [1792843549.459401070] [px4_ctrl]: Insert the destination point as x y z:
+[INFO] [1792843557.932556055] [px4_ctrl]: Insert the desired command
+[INFO] [1792843557.934066883] [px4_ctrl]: arm - to arm the drone
+[INFO] [1792843557.935211799] [px4_ctrl]: disarm - to disarm the drone
+[INFO] [1792843557.936196115] [px4_ctrl]: takeoff - to take the drone
+[INFO] [1792843557.937181910] [px4_ctrl]: move - specify a target point to reach
+[INFO] [1792843557.938021234] [px4_ctrl]: exit - to exit
+[INFO] [1792843561.227958747] [px4_ctrl]: Disarming
+[INFO] [1792843561.329741952] [px4_ctrl]: Insert the desired command
+[INFO] [1792843561.331561075] [px4_ctrl]: arm - to arm the drone
+[INFO] [1792843561.332888712] [px4_ctrl]: disarm - to disarm the drone
+[INFO] [1792843561.334020999] [px4_ctrl]: takeoff - to take the drone
+[INFO] [1792843561.334961934] [px4_ctrl]: move - specify a target point to reach
+[INFO] [1792843561.335815495] [px4_ctrl]: exit - to exit
+terminate called without an active exception

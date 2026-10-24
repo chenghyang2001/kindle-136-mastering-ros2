@@ -1,0 +1,9 @@
+RMW=預設(rmw_fastrtps_cpp)
+--- service list 第 1 次
+--- service list 第 2 次
+--- service call（timeout 45）
+18:26:30
+waiting for service to become available...
+failed to check service availability: rcl node's context is invalid, at ./src/rcl/node.c:404
+18:27:15
+[INFO] [1792837580.179867436] [string_concat_service]: Started ROS 2 Service Server

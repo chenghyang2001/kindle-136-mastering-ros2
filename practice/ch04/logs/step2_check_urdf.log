@@ -1,0 +1,55 @@
+===== 1. check_urdf simple_rrbot.urdf =====
+robot name is: rrbot
+---------- Successfully Parsed XML ---------------
+root Link: world has 1 child(ren)
+    child(1):  single_rrbot_link1
+        child(1):  single_rrbot_link2
+            child(1):  single_rrbot_link3
+===== 2. xacro → URDF：rrbot =====
+robot name is: simple_rrbot
+---------- Successfully Parsed XML ---------------
+root Link: world has 1 child(ren)
+    child(1):  base_link
+        child(1):  link1
+            child(1):  link2
+                child(1):  tool_link
+===== 2b. xacro 參數 prefix:=left_ 測試 macro 重用 =====
+robot name is: simple_rrbot
+---------- Successfully Parsed XML ---------------
+root Link: world has 1 child(ren)
+    child(1):  left_base_link
+        child(1):  left_link1
+            child(1):  left_link2
+                child(1):  left_tool_link
+===== 3. xacro → URDF：rosbot =====
+robot name is: rosbot
+---------- Successfully Parsed XML ---------------
+root Link: base_link has 3 child(ren)
+    child(1):  left_wheel_1
+    child(2):  lidar_1
+    child(3):  right_wheel_1
+===== 4. urdf_to_graphviz =====
+Created file simple_rrbot.gv
+Created file simple_rrbot.pdf
+-rw-r--r-- 1 user user   635 Oct 24 18:39 simple_rrbot.gv
+-rw-r--r-- 1 user user 12973 Oct 24 18:39 simple_rrbot.pdf
+Created file rrbot.gv
+Created file rrbot.pdf
+-rw-r--r-- 1 user user  560 Oct 24 18:39 rrbot.gv
+-rw-r--r-- 1 user user 9983 Oct 24 18:39 rrbot.pdf
+Created file rosbot.gv
+Created file rosbot.pdf
+-rw-r--r-- 1 user user   547 Oct 24 18:39 rosbot.gv
+-rw-r--r-- 1 user user 10205 Oct 24 18:39 rosbot.pdf
+total 104
+drwxrwxrwx 1 user user  4096 Oct 24 18:39 .
+drwxrwxrwx 1 user user  4096 Oct 24 18:39 ..
+-rwxrwxrwx 1 user user   547 Oct 24 18:39 rosbot.gv
+-rwxrwxrwx 1 user user 22091 Oct 24 18:39 rosbot_tree.png
+-rwxrwxrwx 1 user user  5261 Oct 24 18:39 rosbot.urdf
+-rwxrwxrwx 1 user user   560 Oct 24 18:39 rrbot.gv
+-rwxrwxrwx 1 user user 25693 Oct 24 18:39 rrbot_tree.png
+-rwxrwxrwx 1 user user  4164 Oct 24 18:39 rrbot.urdf
+-rwxrwxrwx 1 user user   635 Oct 24 18:39 simple_rrbot.gv
+-rwxrwxrwx 1 user user 27162 Oct 24 18:39 simple_rrbot_tree.png
+-rwxrwxrwx 1 user user  2719 Oct 24 18:39 simple_rrbot.urdf

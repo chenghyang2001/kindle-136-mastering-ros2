@@ -1,0 +1,14 @@
+--- ros2 daemon status ---
+exit=124
+--- ros2 node list --no-daemon ---
+/listener
+/talker
+exit=0
+--- ros2 topic list --no-daemon ---
+/chatter
+/parameter_events
+/rosout
+exit=0
+lo               UNKNOWN        127.0.0.1/8 10.255.255.254/32 ::1/128 
+eth0             UP             192.168.1.103/24 2001:b400:e7a4:9754:3227:6fe7:4761:e25e/64 2001:b400:e7a4:9754:dc48:6354:ac02:522a/128 2001:b400:e7a4:9754::2/128 fe80::72aa:92e3:1dd:c3c7/64 
+loopback0        UP             

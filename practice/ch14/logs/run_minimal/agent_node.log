@@ -1,0 +1,25 @@
+[INFO] [1792846020.391949254] [ros2_ai_agent]: Minimal (no-langchain) agent started
+[INFO] [1792846038.596789938] [ros2_ai_agent]: Invoking: `move_forward` with `{'distance': 2.0}`
+[INFO] [1792846038.601073963] [ros2_ai_agent]: Result: Moved forward 2.0 units
+[INFO] [1792846045.011159522] [ros2_ai_agent]: Invoking: `move_forward` with `{'distance': 5.0}`
+[INFO] [1792846045.015492475] [ros2_ai_agent]: Result: Moved forward 5.0 units
+[INFO] [1792846051.418041793] [ros2_ai_agent]: Invoking: `get_pose` with `{}`
+[INFO] [1792846051.421285052] [ros2_ai_agent]: Result: x: 6.25, y: 5.54, theta: 0.00 degrees
+Traceback (most recent call last):
+  File "/mnt/c/Users/<user>/workspace/k136-ch14-practice/src_patch/minimal_agent.py", line 112, in <module>
+    main()
+  File "/mnt/c/Users/<user>/workspace/k136-ch14-practice/src_patch/minimal_agent.py", line 102, in main
+    rclpy.spin(node)
+  File "/opt/ros/jazzy/lib/python3.12/site-packages/rclpy/__init__.py", line 247, in spin
+    executor.spin_once()
+  File "/opt/ros/jazzy/lib/python3.12/site-packages/rclpy/executors.py", line 926, in spin_once
+    self._spin_once_impl(timeout_sec)
+  File "/opt/ros/jazzy/lib/python3.12/site-packages/rclpy/executors.py", line 907, in _spin_once_impl
+    handler, entity, node = self.wait_for_ready_callbacks(
+                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/ros/jazzy/lib/python3.12/site-packages/rclpy/executors.py", line 877, in wait_for_ready_callbacks
+    return next(self._cb_iter)
+           ^^^^^^^^^^^^^^^^^^^
+  File "/opt/ros/jazzy/lib/python3.12/site-packages/rclpy/executors.py", line 785, in _wait_for_ready_callbacks
+    raise ExternalShutdownException()
+rclpy.executors.ExternalShutdownException

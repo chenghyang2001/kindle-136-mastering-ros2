@@ -1,0 +1,82 @@
+===== ros2 pkg create（C++ / ament_cmake）
+going to create a new package
+package name: k136_hello_cpp
+destination directory: /home/user/k136_ws/ch02/src
+package format: 3
+version: 0.0.0
+description: TODO: Package description
+maintainer: ['user <user@todo.todo>']
+licenses: ['Apache-2.0']
+build type: ament_cmake
+dependencies: ['rclcpp']
+node_name: hello_timer_cpp
+creating folder ./k136_hello_cpp
+creating ./k136_hello_cpp/package.xml
+creating source and include folder
+creating folder ./k136_hello_cpp/src
+creating folder ./k136_hello_cpp/include/k136_hello_cpp
+creating ./k136_hello_cpp/CMakeLists.txt
+creating ./k136_hello_cpp/src/hello_timer_cpp.cpp
+===== ros2 pkg create（Python / ament_python）
+going to create a new package
+package name: k136_hello_py
+destination directory: /home/user/k136_ws/ch02/src
+package format: 3
+version: 0.0.0
+description: TODO: Package description
+maintainer: ['user <user@todo.todo>']
+licenses: ['Apache-2.0']
+build type: ament_python
+dependencies: ['rclpy']
+node_name: hello_timer_py
+creating folder ./k136_hello_py
+creating ./k136_hello_py/package.xml
+creating source folder
+creating folder ./k136_hello_py/k136_hello_py
+creating ./k136_hello_py/setup.py
+creating ./k136_hello_py/setup.cfg
+creating folder ./k136_hello_py/resource
+creating ./k136_hello_py/resource/k136_hello_py
+creating ./k136_hello_py/k136_hello_py/__init__.py
+creating folder ./k136_hello_py/test
+creating ./k136_hello_py/test/test_copyright.py
+creating ./k136_hello_py/test/test_flake8.py
+creating ./k136_hello_py/test/test_pep257.py
+creating ./k136_hello_py/k136_hello_py/hello_timer_py.py
+===== 產生的檔案結構
+./k136_hello_cpp/CMakeLists.txt
+./k136_hello_cpp/LICENSE
+./k136_hello_cpp/package.xml
+./k136_hello_cpp/src/hello_timer_cpp.cpp
+./k136_hello_py/k136_hello_py/hello_timer_py.py
+./k136_hello_py/k136_hello_py/__init__.py
+./k136_hello_py/LICENSE
+./k136_hello_py/package.xml
+./k136_hello_py/resource/k136_hello_py
+./k136_hello_py/setup.cfg
+./k136_hello_py/setup.py
+./k136_hello_py/test/test_copyright.py
+./k136_hello_py/test/test_flake8.py
+./k136_hello_py/test/test_pep257.py
+===== CMakeLists.txt 中 pkg create 自動加的 executable
+12:add_executable(hello_timer_cpp src/hello_timer_cpp.cpp)
+13-target_include_directories(hello_timer_cpp PUBLIC
+--
+17:ament_target_dependencies(
+18-  hello_timer_cpp
+--
+22:install(TARGETS hello_timer_cpp
+23-  DESTINATION lib/${PROJECT_NAME})
+===== setup.py 中的 entry_points
+26:        'console_scripts': [
+27-            'hello_timer_py = k136_hello_py.hello_timer_py:main'
+28-        ],
+29-    },
+===== colcon build --symlink-install
+Starting >>> k136_hello_cpp
+Starting >>> k136_hello_py
+Finished <<< k136_hello_py [2.35s]
+Finished <<< k136_hello_cpp [9.84s]
+
+Summary: 2 packages finished [10.1s]
+BUILD_OK

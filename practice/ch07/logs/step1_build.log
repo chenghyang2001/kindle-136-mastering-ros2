@@ -1,0 +1,15 @@
+Starting >>> bt_action_server
+Starting >>> first_bts
+Finished <<< first_bts [18.3s]
+Finished <<< bt_action_server [23.5s]
+
+Summary: 2 packages finished [23.7s]
+=== 建置結果 ===
+install/bt_action_server/lib/bt_action_server:
+bt_action
+reach_location_client
+reach_location_server
+
+install/first_bts/lib/first_bts:
+number_checker
+sequence_tree

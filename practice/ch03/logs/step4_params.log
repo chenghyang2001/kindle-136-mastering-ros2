@@ -1,0 +1,84 @@
+===== param list /publisher_node
+  custom_number
+  custom_string
+  qos_overrides./parameter_events.publisher.depth
+  qos_overrides./parameter_events.publisher.durability
+  qos_overrides./parameter_events.publisher.history
+  qos_overrides./parameter_events.publisher.reliability
+  start_type_description_service
+  use_sim_time
+===== param get（設定前）
+String value is: Hello String
+===== param set custom_string / custom_number
+Set parameter successful
+Set parameter successful
+===== param list（節點已被探索到後再查）
+  custom_number
+  custom_string
+  qos_overrides./parameter_events.publisher.depth
+  qos_overrides./parameter_events.publisher.durability
+  qos_overrides./parameter_events.publisher.history
+  qos_overrides./parameter_events.publisher.reliability
+  start_type_description_service
+  use_sim_time
+===== launch 輸出（看 CLI 設定的值是否出現在 Publishing custom message）
+[INFO] [launch]: All log files can be found below /home/user/.ros/log/2026-10-24-18-34-25-047541-DESKTOP-6LST1BR-1011
+[INFO] [launch]: Default logging verbosity is set to INFO
+[INFO] [publisher_node_params-1]: process started with pid [1014]
+[INFO] [subscriber_node-2]: process started with pid [1015]
+[publisher_node_params-1] [INFO] [1792838066.154390326] [publisher_node]: Publishing: 'Hello, world!'
+[publisher_node_params-1] [INFO] [1792838066.154670812] [publisher_node]: Publishing custom message: data='Hello World', number=42
+[subscriber_node-2] [INFO] [1792838066.154876287] [subscriber_node]: Received: 'Hello, world!'
+[subscriber_node-2] [INFO] [1792838066.155002935] [subscriber_node]: Received custom message: data='Hello World', number=42
+[publisher_node_params-1] [INFO] [1792838067.154507979] [publisher_node]: Publishing: 'Hello, world!'
+[publisher_node_params-1] [INFO] [1792838067.154767143] [publisher_node]: Publishing custom message: data='Hello String', number=42
+[subscriber_node-2] [INFO] [1792838067.155028012] [subscriber_node]: Received: 'Hello, world!'
+[subscriber_node-2] [INFO] [1792838067.155089954] [subscriber_node]: Received custom message: data='Hello String', number=42
+[publisher_node_params-1] [INFO] [1792838068.154522618] [publisher_node]: Publishing: 'Hello, world!'
+[publisher_node_params-1] [INFO] [1792838068.154798906] [publisher_node]: Publishing custom message: data='Hello String', number=42
+[subscriber_node-2] [INFO] [1792838068.155056187] [subscriber_node]: Received custom message: data='Hello String', number=42
+[subscriber_node-2] [INFO] [1792838068.155133393] [subscriber_node]: Received: 'Hello, world!'
+[publisher_node_params-1] [INFO] [1792838069.158420442] [publisher_node]: Publishing: 'Hello, world!'
+[publisher_node_params-1] [INFO] [1792838069.158817747] [publisher_node]: Publishing custom message: data='Hello String', number=42
+[subscriber_node-2] [INFO] [1792838069.159250768] [subscriber_node]: Received custom message: data='Hello String', number=42
+[subscriber_node-2] [INFO] [1792838069.159330624] [subscriber_node]: Received: 'Hello, world!'
+[publisher_node_params-1] [INFO] [1792838070.154504213] [publisher_node]: Publishing: 'Hello, world!'
+[publisher_node_params-1] [INFO] [1792838070.154649431] [publisher_node]: Publishing custom message: data='Hello String', number=42
+[subscriber_node-2] [INFO] [1792838070.155004187] [subscriber_node]: Received custom message: data='Hello String', number=42
+[subscriber_node-2] [INFO] [1792838070.155050738] [subscriber_node]: Received: 'Hello, world!'
+[publisher_node_params-1] [INFO] [1792838071.155841655] [publisher_node]: Publishing: 'Hello, world!'
+[publisher_node_params-1] [INFO] [1792838071.156139682] [publisher_node]: Publishing custom message: data='Hello String', number=42
+[subscriber_node-2] [INFO] [1792838071.156440576] [subscriber_node]: Received: 'Hello, world!'
+[subscriber_node-2] [INFO] [1792838071.156538023] [subscriber_node]: Received custom message: data='Hello String', number=42
+[publisher_node_params-1] [INFO] [1792838072.154865546] [publisher_node]: Publishing: 'Hello, world!'
+[publisher_node_params-1] [INFO] [1792838072.155284057] [publisher_node]: Publishing custom message: data='Hello String', number=42
+[subscriber_node-2] [INFO] [1792838072.155657510] [subscriber_node]: Received: 'Hello, world!'
+[subscriber_node-2] [INFO] [1792838072.155743399] [subscriber_node]: Received custom message: data='Hello String', number=42
+[publisher_node_params-1] [INFO] [1792838073.154608579] [publisher_node]: Publishing: 'Hello, world!'
+[publisher_node_params-1] [INFO] [1792838073.154936765] [publisher_node]: Publishing custom message: data='Hello String', number=42
+[subscriber_node-2] [INFO] [1792838073.155323586] [subscriber_node]: Received custom message: data='Hello String', number=42
+[subscriber_node-2] [INFO] [1792838073.155425648] [subscriber_node]: Received: 'Hello, world!'
+[publisher_node_params-1] [INFO] [1792838074.154514294] [publisher_node]: Publishing: 'Hello, world!'
+[publisher_node_params-1] [INFO] [1792838074.155017173] [publisher_node]: Publishing custom message: data='Hello String', number=42
+[subscriber_node-2] [INFO] [1792838074.155410055] [subscriber_node]: Received: 'Hello, world!'
+[subscriber_node-2] [INFO] [1792838074.155525152] [subscriber_node]: Received custom message: data='Hello String', number=42
+[publisher_node_params-1] [INFO] [1792838075.154791987] [publisher_node]: Publishing: 'Hello, world!'
+[publisher_node_params-1] [INFO] [1792838075.155128046] [publisher_node]: Publishing custom message: data='Set from CLI', number=42
+[subscriber_node-2] [INFO] [1792838075.155539868] [subscriber_node]: Received: 'Hello, world!'
+[subscriber_node-2] [INFO] [1792838075.155640236] [subscriber_node]: Received custom message: data='Set from CLI', number=42
+[publisher_node_params-1] [INFO] [1792838076.154454927] [publisher_node]: Publishing: 'Hello, world!'
+[publisher_node_params-1] [INFO] [1792838076.154814411] [publisher_node]: Publishing custom message: data='Hello String', number=42
+[subscriber_node-2] [INFO] [1792838076.155229786] [subscriber_node]: Received custom message: data='Hello String', number=42
+[subscriber_node-2] [INFO] [1792838076.155324505] [subscriber_node]: Received: 'Hello, world!'
+[publisher_node_params-1] [INFO] [1792838077.154391546] [publisher_node]: Publishing: 'Hello, world!'
+[publisher_node_params-1] [INFO] [1792838077.154640480] [publisher_node]: Publishing custom message: data='Hello String', number=99
+[subscriber_node-2] [INFO] [1792838077.154826556] [subscriber_node]: Received custom message: data='Hello String', number=99
+[subscriber_node-2] [INFO] [1792838077.154905101] [subscriber_node]: Received: 'Hello, world!'
+[publisher_node_params-1] [INFO] [1792838078.154601071] [publisher_node]: Publishing: 'Hello, world!'
+[publisher_node_params-1] [INFO] [1792838078.154898400] [publisher_node]: Publishing custom message: data='Hello String', number=42
+[subscriber_node-2] [INFO] [1792838078.155138897] [subscriber_node]: Received: 'Hello, world!'
+[subscriber_node-2] [INFO] [1792838078.155377556] [subscriber_node]: Received custom message: data='Hello String', number=42
+[publisher_node_params-1] [INFO] [1792838079.154580774] [publisher_node]: Publishing: 'Hello, world!'
+[publisher_node_params-1] [INFO] [1792838079.155106487] [publisher_node]: Publishing custom message: data='Hello String', number=42
+[subscriber_node-2] [INFO] [1792838079.155553064] [subscriber_node]: Received custom message: data='Hello String', number=42
+[subscriber_node-2] [INFO] [1792838079.155675307] [subscriber_node]: Received: 'Hello, world!'

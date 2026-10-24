@@ -1,0 +1,214 @@
+[INFO] [launch]: All log files can be found below /home/user/.ros/log/2026-10-24-19-01-42-280700-DESKTOP-6LST1BR-438
+[INFO] [launch]: Default logging verbosity is set to INFO
+[INFO] [ros2-1]: process started with pid [443]
+[INFO] [ros2-2]: process started with pid [444]
+[INFO] [ros2-3]: process started with pid [445]
+[INFO] [ros2-4]: process started with pid [446]
+[INFO] [robot_state_publisher-5]: process started with pid [447]
+[INFO] [create-6]: process started with pid [448]
+[INFO] [gazebo-7]: process started with pid [449]
+[robot_state_publisher-5] [INFO] [1792839703.045543883] [robot_state_publisher]: Robot initialized
+[create-6] [INFO] [1792839703.089011665] [ros_gz_sim]: Requesting list of world names.
+[gazebo-7] [1;32m[Msg] [0m[1;32mGazebo Sim Server v[0m[1;32m8.15.0[0m[1;32m[0m
+[gazebo-7] [1;32m[Msg] [0m[1;32mLoading SDF world file[[0m[1;32m/opt/ros/jazzy/opt/gz_sim_vendor/share/gz/gz-sim8/worlds/empty.sdf[0m[1;32m].[0m
+[gazebo-7] [1;32m[Msg] [0m[1;32mServing entity system service on [[0m[1;32m/[0m[1;32mentity/system/add[0m[1;32m][0m[1;32m[0m
+[gazebo-7] [1;36m[Dbg] [Physics.cc:1004] [0m[1;36mLoaded [[0m[1;36mgz::physics::dartsim::Plugin[0m[1;36m] from library [[0m[1;36m/opt/ros/jazzy/opt/gz_physics_vendor/lib/gz-physics-7/engine-plugins/libgz-physics-dartsim-plugin.so[0m[1;36m][0m[1;36m[0m
+[gazebo-7] [1;36m[Dbg] [SystemManager.cc:80] [0m[1;36mLoaded system [[0m[1;36mgz::sim::systems::Physics[0m[1;36m] for entity [[0m[1;36m1[0m[1;36m][0m[1;36m[0m
+[gazebo-7] [1;32m[Msg] [0m[1;32mCreate[0m[1;32m service on [[0m[1;32m/world/empty/create_multiple[0m[1;32m] (async)[0m[1;32m[0m
+[gazebo-7] [1;32m[Msg] [0m[1;32mCreate[0m[1;32m service on [[0m[1;32m/world/empty/create_multiple/blocking[0m[1;32m] (blocking)[0m[1;32m[0m
+[gazebo-7] [1;32m[Msg] [0m[1;32mRemove[0m[1;32m service on [[0m[1;32m/world/empty/remove[0m[1;32m] (async)[0m[1;32m[0m
+[gazebo-7] [1;32m[Msg] [0m[1;32mRemove[0m[1;32m service on [[0m[1;32m/world/empty/remove/blocking[0m[1;32m] (blocking)[0m[1;32m[0m
+[gazebo-7] [1;32m[Msg] [0m[1;32mPose[0m[1;32m service on [[0m[1;32m/world/empty/set_pose[0m[1;32m] (async)[0m[1;32m[0m
+[gazebo-7] [1;32m[Msg] [0m[1;32mPose[0m[1;32m service on [[0m[1;32m/world/empty/set_pose/blocking[0m[1;32m] (blocking)[0m[1;32m[0m
+[gazebo-7] [1;32m[Msg] [0m[1;32mPose[0m[1;32m service on [[0m[1;32m/world/empty/set_pose_vector[0m[1;32m] (async)[0m[1;32m[0m
+[gazebo-7] [1;32m[Msg] [0m[1;32mPose[0m[1;32m service on [[0m[1;32m/world/empty/set_pose_vector/blocking[0m[1;32m] (blocking)[0m[1;32m[0m
+[gazebo-7] [1;32m[Msg] [0m[1;32mLight configuration[0m[1;32m service on [[0m[1;32m/world/empty/light_config[0m[1;32m] (async)[0m[1;32m[0m
+[gazebo-7] [1;32m[Msg] [0m[1;32mLight configuration[0m[1;32m service on [[0m[1;32m/world/empty/light_config/blocking[0m[1;32m] (blocking)[0m[1;32m[0m
+[gazebo-7] [1;32m[Msg] [0m[1;32mPhysics[0m[1;32m service on [[0m[1;32m/world/empty/set_physics[0m[1;32m] (async)[0m[1;32m[0m
+[gazebo-7] [1;32m[Msg] [0m[1;32mPhysics[0m[1;32m service on [[0m[1;32m/world/empty/set_physics/blocking[0m[1;32m] (blocking)[0m[1;32m[0m
+[gazebo-7] [1;32m[Msg] [0m[1;32mSphericalCoordinates[0m[1;32m service on [[0m[1;32m/world/empty/set_spherical_coordinates[0m[1;32m] (async)[0m[1;32m[0m
+[gazebo-7] [1;32m[Msg] [0m[1;32mSphericalCoordinates[0m[1;32m service on [[0m[1;32m/world/empty/set_spherical_coordinates/blocking[0m[1;32m] (blocking)[0m[1;32m[0m
+[gazebo-7] [1;32m[Msg] [0m[1;32mEnable collision[0m[1;32m service on [[0m[1;32m/world/empty/enable_collision[0m[1;32m] (async)[0m[1;32m[0m
+[gazebo-7] [1;32m[Msg] [0m[1;32mEnable collision[0m[1;32m service on [[0m[1;32m/world/empty/enable_collision/blocking[0m[1;32m] (blocking)[0m[1;32m[0m
+[gazebo-7] [1;32m[Msg] [0m[1;32mDisable collision[0m[1;32m service on [[0m[1;32m/world/empty/disable_collision[0m[1;32m] (async)[0m[1;32m[0m
+[gazebo-7] [1;32m[Msg] [0m[1;32mDisable collision[0m[1;32m service on [[0m[1;32m/world/empty/disable_collision/blocking[0m[1;32m] (blocking)[0m[1;32m[0m
+[gazebo-7] [1;32m[Msg] [0m[1;32mMaterial[0m[1;32m service on [[0m[1;32m/world/empty/visual_config[0m[1;32m] (async)[0m[1;32m[0m
+[gazebo-7] [1;32m[Msg] [0m[1;32mMaterial[0m[1;32m service on [[0m[1;32m/world/empty/visual_config/blocking[0m[1;32m] (blocking)[0m[1;32m[0m
+[gazebo-7] [1;32m[Msg] [0m[1;32mMaterial[0m[1;32m service on [[0m[1;32m/world/empty/wheel_slip[0m[1;32m] (async)[0m[1;32m[0m
+[gazebo-7] [1;32m[Msg] [0m[1;32mMaterial[0m[1;32m service on [[0m[1;32m/world/empty/wheel_slip/blocking[0m[1;32m] (blocking)[0m[1;32m[0m
+[gazebo-7] [1;36m[Dbg] [SystemManager.cc:80] [0m[1;36mLoaded system [[0m[1;36mgz::sim::systems::UserCommands[0m[1;36m] for entity [[0m[1;36m1[0m[1;36m][0m[1;36m[0m
+[ros2-3] [INFO] [1792839703.831168433] [spawner_joint_state_broadcaster]: waiting for service /controller_manager/list_controllers to become available...
+[create-6] [INFO] [1792839703.874774628] [ros_gz_sim]: Waiting messages on topic [/robot_description].
+[create-6] [INFO] [1792839703.880204442] [ros_gz_sim]: Entity creation successful.
+[INFO] [create-6]: process has finished cleanly [pid 448]
+[gazebo-7] [INFO] [1792839705.512128989] [gz_ros_control]: [gz_ros2_control] Fixed joint ['world_to_base'] (Entity='20') is skipped.
+[gazebo-7] [INFO] [1792839705.514815973] [gz_ros_control]: Loading controller_manager
+[gazebo-7] [INFO] [1792839705.537013645] [controller_manager]: Using ROS clock for triggering controller manager cycles.
+[gazebo-7] [WARN] [1792839705.537081167] [controller_manager]: The resource manager is not yet initialized, will wait for the robot description to initialize it..
+[gazebo-7] [INFO] [1792839705.543590820] [controller_manager]: Subscribing to '/robot_description' topic for robot description.
+[gazebo-7] [WARN] [1792839705.543702519] [gz_ros_control]: Waiting RM to load and initialize hardware...
+[gazebo-7] [INFO] [1792839705.545246588] [controller_manager]: Received robot description from topic.
+[gazebo-7] [INFO] [1792839705.545300252] [controller_manager]: Enforcing command limits is disabled. Command limits from URDF will be ignored.
+[gazebo-7] [INFO] [1792839705.549451569] [gz_ros_control]: The position_proportional_gain has been set to: 0.1
+[gazebo-7] [INFO] [1792839705.549584209] [gz_ros_control]: Loading joint: base_joint
+[gazebo-7] [INFO] [1792839705.549596228] [gz_ros_control]: 	State:
+[gazebo-7] [INFO] [1792839705.549602227] [gz_ros_control]: 		 position
+[gazebo-7] [INFO] [1792839705.549618849] [gz_ros_control]: 			 found initial value: 1.300000
+[gazebo-7] [INFO] [1792839705.549679636] [gz_ros_control]: 		 velocity
+[gazebo-7] [INFO] [1792839705.549690907] [gz_ros_control]: 		 effort
+[gazebo-7] [INFO] [1792839705.549695270] [gz_ros_control]: 	Command:
+[gazebo-7] [INFO] [1792839705.549698283] [gz_ros_control]: 		 position
+[gazebo-7] [INFO] [1792839705.549709623] [gz_ros_control]: 		 velocity
+[gazebo-7] [INFO] [1792839705.549717832] [gz_ros_control]: Loading joint: link1_link2
+[gazebo-7] [INFO] [1792839705.549721515] [gz_ros_control]: 	State:
+[gazebo-7] [INFO] [1792839705.549724533] [gz_ros_control]: 		 position
+[gazebo-7] [INFO] [1792839705.549727558] [gz_ros_control]: 			 found initial value: 0.000000
+[gazebo-7] [INFO] [1792839705.549731219] [gz_ros_control]: 		 velocity
+[gazebo-7] [INFO] [1792839705.549734506] [gz_ros_control]: 		 effort
+[gazebo-7] [INFO] [1792839705.549737354] [gz_ros_control]: 	Command:
+[gazebo-7] [INFO] [1792839705.549740160] [gz_ros_control]: 		 position
+[gazebo-7] [INFO] [1792839705.549744569] [gz_ros_control]: 		 velocity
+[gazebo-7] [INFO] [1792839705.549846381] [controller_manager]: Initialize hardware '2DofPosition' 
+[gazebo-7] [WARN] [1792839705.549869723] [controller_manager.hardware_component.system.2DofPosition]: Executor is not available during hardware component initialization for '2DofPosition'. Skipping node creation!
+[gazebo-7] [INFO] [1792839705.549936491] [controller_manager]: Successful initialization of hardware '2DofPosition'
+[gazebo-7] [INFO] [1792839705.550071260] [controller_manager]: Activating component '2DofPosition'.
+[gazebo-7] [INFO] [1792839705.550082190] [resource_manager]: 'configure' hardware '2DofPosition' 
+[gazebo-7] [INFO] [1792839705.550087445] [gz_ros_control]: System Successfully configured!
+[gazebo-7] [INFO] [1792839705.550092277] [resource_manager]: Successful 'configure' of hardware '2DofPosition'
+[gazebo-7] [INFO] [1792839705.550098971] [resource_manager]: 'activate' hardware '2DofPosition' 
+[gazebo-7] [INFO] [1792839705.550112811] [resource_manager]: Successful 'activate' of hardware '2DofPosition'
+[gazebo-7] [WARN] [1792839705.550147546] [controller_manager]: Component '2DofPosition' does not have read or write statistics initialized, skipping registration.
+[gazebo-7] [INFO] [1792839705.550152677] [controller_manager]: Resource Manager has been successfully initialized. Starting Controller Manager services...
+[gazebo-7] [INFO] [1792839705.585315094] [controller_manager]: Loading controller : 'joint_state_broadcaster' of type 'joint_state_broadcaster/JointStateBroadcaster'
+[gazebo-7] [INFO] [1792839705.585406616] [controller_manager]: Loading controller 'joint_state_broadcaster'
+[gazebo-7] [INFO] [1792839705.595830293] [controller_manager]: Controller 'joint_state_broadcaster' node arguments: --ros-args --params-file /home/user/k136_ws/ch06/install/two_joints_robot/share/two_joints_robot/config/controller.yaml -p use_sim_time:=true --param use_sim_time:=true 
+[ros2-3] [INFO] [1792839705.603627695] [spawner_joint_state_broadcaster]: Loaded joint_state_broadcaster
+[gazebo-7] [INFO] [1792839705.605696035] [controller_manager]: Configuring controller: 'joint_state_broadcaster'
+[gazebo-7] [INFO] [1792839705.606230617] [joint_state_broadcaster]: 'joints' or 'interfaces' parameter is empty. All available state interfaces will be published
+[gazebo-7] [INFO] [1792839705.616654127] [controller_manager]: Activating controllers: [ joint_state_broadcaster ]
+[gazebo-7] [1;36m[Dbg] [SystemManager.cc:80] [0m[1;36mLoaded system [[0m[1;36mgz::sim::systems::SceneBroadcaster[0m[1;36m] for entity [[0m[1;36m1[0m[1;36m][0m[1;36m[0m
+[gazebo-7] [1;36m[Dbg] [SystemManager.cc:80] [0m[1;36mLoaded system [[0m[1;36mgz::sim::systems::Contact[0m[1;36m] for entity [[0m[1;36m1[0m[1;36m][0m[1;36m[0m
+[gazebo-7] [1;32m[Msg] [0m[1;32mLoaded level [[0m[1;32mdefault[0m[1;32m][0m[1;32m[0m
+[gazebo-7] [1;32m[Msg] [0m[1;32mServing world controls on [[0m[1;32m/world/empty[0m[1;32m/control], [[0m[1;32m/world/empty[0m[1;32m/control/state] and [[0m[1;32m/world/empty[0m[1;32m/playback/control][0m[1;32m[0m
+[gazebo-7] [1;32m[Msg] [0m[1;32mServing GUI information on [[0m[1;32m/world/empty[0m[1;32m/[0m[1;32mgui/info[0m[1;32m][0m[1;32m[0m
+[gazebo-7] [1;32m[Msg] [0m[1;32mWorld [[0m[1;32mempty[0m[1;32m] initialized with [[0m[1;32m1ms[0m[1;32m] physics profile.[0m[1;32m[0m
+[gazebo-7] [1;32m[Msg] [0m[1;32mServing world SDF generation service on [[0m[1;32m/world/empty[0m[1;32m/[0m[1;32mgenerate_world_sdf[0m[1;32m][0m[1;32m[0m
+[gazebo-7] [1;32m[Msg] [0m[1;32mServing world names on [[0m[1;32m/gazebo/worlds[0m[1;32m][0m[1;32m[0m
+[gazebo-7] [1;32m[Msg] [0m[1;32mResource path add service on [[0m[1;32m/gazebo/resource_paths/add[0m[1;32m].[0m[1;32m[0m
+[gazebo-7] [1;32m[Msg] [0m[1;32mResource path get service on [[0m[1;32m/gazebo/resource_paths/get[0m[1;32m].[0m[1;32m[0m
+[gazebo-7] [1;32m[Msg] [0m[1;32mResource path resolve service on [[0m[1;32m/gazebo/resource_paths/resolve[0m[1;32m].[0m[1;32m[0m
+[gazebo-7] [1;32m[Msg] [0m[1;32mResource paths published on [[0m[1;32m/gazebo/resource_paths[0m[1;32m].[0m[1;32m[0m
+[gazebo-7] [1;32m[Msg] [0m[1;32mServer control service on [[0m[1;32m/server_control[0m[1;32m].[0m[1;32m[0m
+[gazebo-7] [1;32m[Msg] [0m[1;32mFound no publishers on /stats, adding root stats topic[0m[1;32m[0m
+[gazebo-7] [1;32m[Msg] [0m[1;32mFound no publishers on /clock, adding root clock topic[0m[1;32m[0m
+[gazebo-7] [1;36m[Dbg] [SimulationRunner.cc:627] [0m[1;36mCreating PostUpdate worker threads: [0m[1;36m3[0m[1;36m[0m
+[gazebo-7] [1;36m[Dbg] [SimulationRunner.cc:638] [0m[1;36mCreating postupdate worker thread ([0m[1;36m0[0m[1;36m)[0m[1;36m[0m
+[gazebo-7] [1;36m[Dbg] [SimulationRunner.cc:638] [0m[1;36mCreating postupdate worker thread ([0m[1;36m1[0m[1;36m)[0m[1;36m[0m
+[gazebo-7] [1;36m[Dbg] [SystemManager.cc:80] [0m[1;36mLoaded system [[0m[1;36mgz_ros2_control::GazeboSimROS2ControlPlugin[0m[1;36m] for entity [[0m[1;36m10[0m[1;36m][0m[1;36m[0m
+[gazebo-7] [1;36m[Dbg] [UserCommands.cc:1093] [0m[1;36mCreated entity [[0m[1;36m10[0m[1;36m] named [[0m[1;36mtwo_joints_robot[0m[1;36m][0m[1;36m[0m
+[gazebo-7] [1;32m[Msg] [0m[1;32mServing scene information on [[0m[1;32m/world/empty[0m[1;32m/[0m[1;32mscene/info[0m[1;32m][0m[1;32m[0m
+[gazebo-7] [1;32m[Msg] [0m[1;32mServing graph information on [[0m[1;32m/world/empty[0m[1;32m/[0m[1;32mscene/graph[0m[1;32m][0m[1;32m[0m
+[gazebo-7] [1;32m[Msg] [0m[1;32mServing full state on [[0m[1;32m/world/empty[0m[1;32m/[0m[1;32mstate[0m[1;32m][0m[1;32m[0m
+[gazebo-7] [1;32m[Msg] [0m[1;32mServing full state (async) on [[0m[1;32m/world/empty[0m[1;32m/[0m[1;32mstate_async[0m[1;32m][0m[1;32m[0m
+[gazebo-7] [1;32m[Msg] [0m[1;32mPublishing scene information on [[0m[1;32m/world/empty/scene/info[0m[1;32m][0m[1;32m[0m
+[gazebo-7] [1;32m[Msg] [0m[1;32mPublishing entity deletions on [[0m[1;32m/world/empty/scene/deletion[0m[1;32m][0m[1;32m[0m
+[gazebo-7] [1;32m[Msg] [0m[1;32mPublishing state changes on [[0m[1;32m/world/empty/state[0m[1;32m][0m[1;32m[0m
+[gazebo-7] [1;32m[Msg] [0m[1;32mPublishing pose messages on [[0m[1;32m/world/empty[0m[1;32m/[0m[1;32mpose/info[0m[1;32m][0m[1;32m[0m
+[gazebo-7] [1;32m[Msg] [0m[1;32mPublishing dynamic pose messages on [[0m[1;32m/world/empty[0m[1;32m/[0m[1;32mdynamic_pose/info[0m[1;32m][0m[1;32m[0m
+[gazebo-7] [1;36m[Dbg] [SimulationRunner.cc:654] [0m[1;36mExiting postupdate worker thread ([0m[1;36m0[0m[1;36m)[0m[1;36m[0m
+[gazebo-7] [1;36m[Dbg] [SimulationRunner.cc:654] [0m[1;36mExiting postupdate worker thread ([0m[1;36m1[0m[1;36m)[0m[1;36m[0m
+[gazebo-7] [1;36m[Dbg] [SimulationRunner.cc:627] [0m[1;36mCreating PostUpdate worker threads: [0m[1;36m4[0m[1;36m[0m
+[gazebo-7] [WARN] [1792839707.560779124] [gz_ros_control]:  Desired controller update period (0.01 s) is slower than the gazebo simulation period (0.001 s).
+[gazebo-7] [WARN] [1792839707.568488316] [controller_manager]: No clock received, using time argument instead! Check your node's clock configuration (use_sim_time parameter) and if a valid clock source is available
+[gazebo-7] [INFO] [1792839707.568774495] [controller_manager]: Successfully switched controllers!
+[ros2-3] [INFO] [1792839707.579496349] [spawner_joint_state_broadcaster]: Configured and activated joint_state_broadcaster
+[INFO] [ros2-3]: process has finished cleanly [pid 445]
+[gazebo-7] [INFO] [1792839707.902068767] [controller_manager]: Loading controller : 'position_control' of type 'forward_command_controller/ForwardCommandController'
+[gazebo-7] [INFO] [1792839707.902118602] [controller_manager]: Loading controller 'position_control'
+[gazebo-7] [INFO] [1792839707.906665545] [controller_manager]: Controller 'position_control' node arguments: --ros-args --params-file /home/user/k136_ws/ch06/install/two_joints_robot/share/two_joints_robot/config/controller.yaml -p use_sim_time:=true --param use_sim_time:=true 
+[ros2-1] [INFO] [1792839707.934848397] [spawner_position_control]: Loaded position_control
+[gazebo-7] [INFO] [1792839707.936026823] [controller_manager]: Configuring controller: 'position_control'
+[gazebo-7] [INFO] [1792839707.936720843] [position_control]: configure successful
+[gazebo-7] [INFO] [1792839707.939587058] [controller_manager]: Activating controllers: [ position_control ]
+[gazebo-7] [INFO] [1792839707.948381631] [position_control]: activate successful
+[gazebo-7] [INFO] [1792839707.948476590] [controller_manager]: Successfully switched controllers!
+[ros2-1] [INFO] [1792839707.959718677] [spawner_position_control]: Configured and activated position_control
+[INFO] [ros2-1]: process has finished cleanly [pid 443]
+[gazebo-7] [INFO] [1792839708.265276967] [controller_manager]: Loading controller : 'sine_controller' of type 'sine_controller/SineController'
+[gazebo-7] [INFO] [1792839708.265340258] [controller_manager]: Loading controller 'sine_controller'
+[gazebo-7] [INFO] [1792839708.275657002] [controller_manager]: Controller 'sine_controller' node arguments: --ros-args --params-file /home/user/k136_ws/ch06/install/two_joints_robot/share/two_joints_robot/config/controller.yaml -p use_sim_time:=true --param use_sim_time:=true 
+[ros2-4] [INFO] [1792839708.301933238] [spawner_sine_controller]: Loaded sine_controller
+[gazebo-7] [INFO] [1792839708.303305685] [controller_manager]: Configuring controller: 'sine_controller'
+[gazebo-7] [INFO] [1792839708.306238365] [sine_controller]: Configuration successful
+[gazebo-7] [WARN] [1792839708.578302564] [controller_manager]: No clock received, using time argument instead! Check your node's clock configuration (use_sim_time parameter) and if a valid clock source is available
+[INFO] [ros2-4]: process has finished cleanly [pid 446]
+[gazebo-7] [INFO] [1792839708.706826814] [controller_manager]: Loading controller : 'velocity_control' of type 'forward_command_controller/ForwardCommandController'
+[gazebo-7] [INFO] [1792839708.706872607] [controller_manager]: Loading controller 'velocity_control'
+[gazebo-7] [INFO] [1792839708.707061597] [controller_manager]: Controller 'velocity_control' node arguments: --ros-args --params-file /home/user/k136_ws/ch06/install/two_joints_robot/share/two_joints_robot/config/controller.yaml -p use_sim_time:=true --param use_sim_time:=true 
+[ros2-2] [INFO] [1792839708.729498949] [spawner_velocity_control]: Loaded velocity_control
+[gazebo-7] [INFO] [1792839708.730792162] [controller_manager]: Configuring controller: 'velocity_control'
+[gazebo-7] [INFO] [1792839708.731170888] [velocity_control]: configure successful
+[gazebo-7] [WARN] [1792839710.776693865] [controller_manager]: No clock received, using time argument instead! Check your node's clock configuration (use_sim_time parameter) and if a valid clock source is available
+[INFO] [ros2-2]: process has finished cleanly [pid 444]
+[gazebo-7] [WARN] [1792839711.786624625] [controller_manager]: No clock received, using time argument instead! Check your node's clock configuration (use_sim_time parameter) and if a valid clock source is available
+[gazebo-7] [1;36m[Dbg] [SimulationRunner.cc:638] [0m[1;36mCreating postupdate worker thread ([0m[1;36m0[0m[1;36m)[0m[1;36m[0m
+[gazebo-7] [1;36m[Dbg] [SimulationRunner.cc:638] [0m[1;36mCreating postupdate worker thread ([0m[1;36m1[0m[1;36m)[0m[1;36m[0m
+[gazebo-7] [1;36m[Dbg] [SimulationRunner.cc:638] [0m[1;36mCreating postupdate worker thread ([0m[1;36m2[0m[1;36m)[0m[1;36m[0m
+[gazebo-7] [WARN] [1792839712.786801233] [controller_manager]: No clock received, using time argument instead! Check your node's clock configuration (use_sim_time parameter) and if a valid clock source is available
+[gazebo-7] [WARN] [1792839713.786821859] [controller_manager]: No clock received, using time argument instead! Check your node's clock configuration (use_sim_time parameter) and if a valid clock source is available
+[gazebo-7] [WARN] [1792839714.796611241] [controller_manager]: No clock received, using time argument instead! Check your node's clock configuration (use_sim_time parameter) and if a valid clock source is available
+[gazebo-7] [WARN] [1792839715.806589560] [controller_manager]: No clock received, using time argument instead! Check your node's clock configuration (use_sim_time parameter) and if a valid clock source is available
+[gazebo-7] [WARN] [1792839716.806604651] [controller_manager]: No clock received, using time argument instead! Check your node's clock configuration (use_sim_time parameter) and if a valid clock source is available
+[gazebo-7] [WARN] [1792839717.817099983] [controller_manager]: No clock received, using time argument instead! Check your node's clock configuration (use_sim_time parameter) and if a valid clock source is available
+[gazebo-7] [WARN] [1792839718.826619044] [controller_manager]: No clock received, using time argument instead! Check your node's clock configuration (use_sim_time parameter) and if a valid clock source is available
+[gazebo-7] [WARN] [1792839719.826619935] [controller_manager]: No clock received, using time argument instead! Check your node's clock configuration (use_sim_time parameter) and if a valid clock source is available
+[gazebo-7] [WARN] [1792839720.836621147] [controller_manager]: No clock received, using time argument instead! Check your node's clock configuration (use_sim_time parameter) and if a valid clock source is available
+[gazebo-7] [WARN] [1792839721.846876058] [controller_manager]: No clock received, using time argument instead! Check your node's clock configuration (use_sim_time parameter) and if a valid clock source is available
+[gazebo-7] [WARN] [1792839722.856600754] [controller_manager]: No clock received, using time argument instead! Check your node's clock configuration (use_sim_time parameter) and if a valid clock source is available
+[gazebo-7] [WARN] [1792839723.866978062] [controller_manager]: No clock received, using time argument instead! Check your node's clock configuration (use_sim_time parameter) and if a valid clock source is available
+[gazebo-7] [WARN] [1792839724.876669463] [controller_manager]: No clock received, using time argument instead! Check your node's clock configuration (use_sim_time parameter) and if a valid clock source is available
+[gazebo-7] [WARN] [1792839725.880241475] [controller_manager]: No clock received, using time argument instead! Check your node's clock configuration (use_sim_time parameter) and if a valid clock source is available
+[gazebo-7] [WARN] [1792839726.890244554] [controller_manager]: No clock received, using time argument instead! Check your node's clock configuration (use_sim_time parameter) and if a valid clock source is available
+[gazebo-7] [WARN] [1792839727.900224681] [controller_manager]: No clock received, using time argument instead! Check your node's clock configuration (use_sim_time parameter) and if a valid clock source is available
+[gazebo-7] [WARN] [1792839728.910253259] [controller_manager]: No clock received, using time argument instead! Check your node's clock configuration (use_sim_time parameter) and if a valid clock source is available
+[gazebo-7] [WARN] [1792839729.910270832] [controller_manager]: No clock received, using time argument instead! Check your node's clock configuration (use_sim_time parameter) and if a valid clock source is available
+[gazebo-7] [WARN] [1792839730.920305926] [controller_manager]: No clock received, using time argument instead! Check your node's clock configuration (use_sim_time parameter) and if a valid clock source is available
+[gazebo-7] [WARN] [1792839731.930286036] [controller_manager]: No clock received, using time argument instead! Check your node's clock configuration (use_sim_time parameter) and if a valid clock source is available
+[gazebo-7] [WARN] [1792839732.940221307] [controller_manager]: No clock received, using time argument instead! Check your node's clock configuration (use_sim_time parameter) and if a valid clock source is available
+[gazebo-7] [WARN] [1792839733.940240264] [controller_manager]: No clock received, using time argument instead! Check your node's clock configuration (use_sim_time parameter) and if a valid clock source is available
+[gazebo-7] [WARN] [1792839734.940278136] [controller_manager]: No clock received, using time argument instead! Check your node's clock configuration (use_sim_time parameter) and if a valid clock source is available
+[gazebo-7] [INFO] [1792839735.845607850] [controller_manager]: Activating controllers: [ sine_controller ]
+[gazebo-7] [INFO] [1792839735.845659815] [controller_manager]: Deactivating controllers: [ position_control ]
+[gazebo-7] [INFO] [1792839735.850590573] [sine_controller]: Activation successful
+[gazebo-7] [INFO] [1792839735.850636744] [sine_controller]: [k136] init0=1.300000 init1=0.000000 n0=2 n1=2
+[gazebo-7] [INFO] [1792839735.850700322] [controller_manager]: Successfully switched controllers!
+[gazebo-7] [WARN] [1792839735.950260328] [controller_manager]: No clock received, using time argument instead! Check your node's clock configuration (use_sim_time parameter) and if a valid clock source is available
+[gazebo-7] [WARN] [1792839736.950275018] [controller_manager]: No clock received, using time argument instead! Check your node's clock configuration (use_sim_time parameter) and if a valid clock source is available
+[gazebo-7] [WARN] [1792839737.960227347] [controller_manager]: No clock received, using time argument instead! Check your node's clock configuration (use_sim_time parameter) and if a valid clock source is available
+[gazebo-7] [WARN] [1792839738.970265353] [controller_manager]: No clock received, using time argument instead! Check your node's clock configuration (use_sim_time parameter) and if a valid clock source is available
+[gazebo-7] [WARN] [1792839739.980418203] [controller_manager]: No clock received, using time argument instead! Check your node's clock configuration (use_sim_time parameter) and if a valid clock source is available
+[gazebo-7] [WARN] [1792839740.990242021] [controller_manager]: No clock received, using time argument instead! Check your node's clock configuration (use_sim_time parameter) and if a valid clock source is available
+[gazebo-7] [WARN] [1792839742.000297006] [controller_manager]: No clock received, using time argument instead! Check your node's clock configuration (use_sim_time parameter) and if a valid clock source is available
+[gazebo-7] [WARN] [1792839743.010248466] [controller_manager]: No clock received, using time argument instead! Check your node's clock configuration (use_sim_time parameter) and if a valid clock source is available
+[gazebo-7] [WARN] [1792839744.020206590] [controller_manager]: No clock received, using time argument instead! Check your node's clock configuration (use_sim_time parameter) and if a valid clock source is available
+[gazebo-7] [WARN] [1792839745.020606036] [controller_manager]: No clock received, using time argument instead! Check your node's clock configuration (use_sim_time parameter) and if a valid clock source is available
+[gazebo-7] [WARN] [1792839746.030247109] [controller_manager]: No clock received, using time argument instead! Check your node's clock configuration (use_sim_time parameter) and if a valid clock source is available
+[gazebo-7] [WARN] [1792839747.040285663] [controller_manager]: No clock received, using time argument instead! Check your node's clock configuration (use_sim_time parameter) and if a valid clock source is available
+[gazebo-7] [WARN] [1792839750.511709128] [controller_manager]: No clock received, using time argument instead! Check your node's clock configuration (use_sim_time parameter) and if a valid clock source is available
+[WARNING] [launch]: user interrupted with ctrl-c (SIGINT)
+[INFO] [gazebo-7]: sending signal 'SIGINT' to process[gazebo-7]
+[INFO] [robot_state_publisher-5]: sending signal 'SIGINT' to process[robot_state_publisher-5]
+[robot_state_publisher-5] [INFO] [1792839750.771133348] [rclcpp]: signal_handler(SIGINT/SIGTERM)
+[robot_state_publisher-5] [INFO] [1792839750.779356613] [rclcpp]: signal_handler(SIGINT/SIGTERM)
+[gazebo-7] [INFO] [1792839750.793406498] [controller_manager.pal_statistics]: Async messages lost 0
+[gazebo-7] [INFO] [1792839750.793468674] [controller_manager.pal_statistics]: publish_async_failures_ 0
+[gazebo-7] [INFO] [1792839750.795657349] [controller_manager.pal_statistics]: Async messages lost 0
+[gazebo-7] [INFO] [1792839750.795698662] [controller_manager.pal_statistics]: publish_async_failures_ 0
+[INFO] [robot_state_publisher-5]: process has finished cleanly [pid 447]
+[gazebo-7] [1;36m[Dbg] [SignalHandler.cc:142] [0m[1;36mReceived signal[[0m[1;36m2[0m[1;36m].[0m
+[gazebo-7] [1;36m[Dbg] [ServerPrivate.cc:122] [0m[1;36mServer received signal[[0m[1;36m2[0m[1;36m][0m
+[gazebo-7] [1;36m[Dbg] [gz.cc:434] [0m[1;36mShutting down gz-sim-server[0m[1;36m[0m
+[gazebo-7] [1;36m[Dbg] [SimulationRunner.cc:654] [0m[1;36mExiting postupdate worker thread ([0m[1;36m1[0m[1;36m)[0m[1;36m[0m
+[gazebo-7] [1;36m[Dbg] [SimulationRunner.cc:654] [0m[1;36mExiting postupdate worker thread ([0m[1;36m2[0m[1;36m)[0m[1;36m[0m
+[gazebo-7] [1;36m[Dbg] [SimulationRunner.cc:654] [0m[1;36mExiting postupdate worker thread ([0m[1;36m0[0m[1;36m)[0m[1;36m[0m
+[ERROR] [gazebo-7]: process has died [pid 449, exit code -2, cmd 'ruby /opt/ros/jazzy/opt/gz_tools_vendor/bin/gz sim  -s -r -v 4 empty.sdf --force-version 8'].

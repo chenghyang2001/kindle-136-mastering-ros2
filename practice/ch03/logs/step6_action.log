@@ -1,0 +1,47 @@
+===== A. launch action_server_client（goal_value=10，每 0.5s 一次 feedback）
+[INFO] [launch]: All log files can be found below /home/user/.ros/log/2026-10-24-18-35-09-215057-DESKTOP-6LST1BR-1272
+[INFO] [launch]: Default logging verbosity is set to INFO
+[INFO] [action_server-1]: process started with pid [1275]
+[INFO] [action_client-2]: process started with pid [1276]
+[action_server-1] [INFO] [1792838109.289688290] [action_server]: Started Action Server Node
+[action_client-2] [INFO] [1792838109.306771378] [action_client]: Started Action Client Node
+[action_server-1] [INFO] [1792838109.308883467] [action_server]: Received goal request with value 10
+[action_client-2] [INFO] [1792838109.309707196] [action_client]: Feedback: 1.00
+[action_client-2] [INFO] [1792838109.810401229] [action_client]: Feedback: 2.00
+[action_client-2] [INFO] [1792838110.310614871] [action_client]: Feedback: 3.00
+[action_client-2] [INFO] [1792838110.810932185] [action_client]: Feedback: 4.00
+[action_client-2] [INFO] [1792838111.311337595] [action_client]: Feedback: 5.00
+[action_client-2] [INFO] [1792838111.811783449] [action_client]: Feedback: 6.00
+[action_client-2] [INFO] [1792838112.312294325] [action_client]: Feedback: 7.00
+[action_client-2] [INFO] [1792838112.812972224] [action_client]: Feedback: 8.00
+[action_client-2] [INFO] [1792838113.313650821] [action_client]: Feedback: 9.00
+[action_client-2] [INFO] [1792838113.814247361] [action_client]: Feedback: 10.00
+[action_server-1] [INFO] [1792838114.314697437] [action_server]: Goal succeeded
+[action_client-2] [INFO] [1792838114.314985691] [action_client]: Result: 10
+===== B. 單獨啟 action_server，手動 send_goal --feedback
+Waiting for an action server to become available...
+Sending goal:
+     goal_value: 4
+
+Goal accepted with ID: 54ae67a7e0ca4e4c8e2b0215228e013f
+
+Feedback:
+    progress: 1.0
+
+Feedback:
+    progress: 2.0
+
+Feedback:
+    progress: 3.0
+
+Feedback:
+    progress: 4.0
+
+Result:
+    result_value: 4
+
+Goal finished with status: SUCCEEDED
+===== server 端輸出
+[INFO] [1792838124.172750770] [action_server]: Started Action Server Node
+[INFO] [1792838149.354368042] [action_server]: Received goal request with value 4
+[INFO] [1792838151.356775716] [action_server]: Goal succeeded

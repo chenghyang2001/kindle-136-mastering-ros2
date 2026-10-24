@@ -1,0 +1,144 @@
+=== 0. 目標點在地圖上是否為空地（讀 hospital.pgm）
+robot(0,0): map=(0.0,0.0) pixel=(35,119) value=254 (254=free, 0=occupied, 205=unknown) size=662x294
+goal: map=(1.5,0.0) pixel=(65,119) value=254 (254=free, 0=occupied, 205=unknown) size=662x294
+=== 1. 啟動 Gazebo（server 模式）+ bridge + robot_state_publisher + spawn
+Gazebo 就緒（第 1 次檢查）
+[create-2] [INFO] [1792840856.303413287] [ros_gz_sim]: Entity creation successful.
+clock:
+  sec: 0
+  nanosec: 922000000
+---
+position:
+  x: -1.3143796922840157e-11
+  y: 1.030562069788096e-22
+  z: 0.0
+orientation:
+  x: 0.0
+  y: 0.0
+  z: 1.6124869459312887e-11
+  w: 1.0
+---
+10.0
+---
+=== 2. 啟動 nav2.launch.py（hospital 地圖、本演練已拿掉 RViz）
+第 1 次檢查：已有 1 個 lifecycle_manager 回報 active
+第 2 次檢查：已有 2 個 lifecycle_manager 回報 active
+nav2 啟動耗時 10 秒，ACTIVE=1
+[component_container_isolated-1] [INFO] [1792840865.477435754] [lifecycle_manager_localization]: [34m[1mActivating map_server[0m[0m
+[component_container_isolated-1] [INFO] [1792840865.477740483] [map_server]: Activating
+[component_container_isolated-1] [INFO] [1792840865.582945113] [lifecycle_manager_localization]: [34m[1mActivating amcl[0m[0m
+[component_container_isolated-1] [INFO] [1792840865.583159684] [amcl]: Activating
+[component_container_isolated-1] [INFO] [1792840865.685650420] [lifecycle_manager_localization]: [34m[1mManaged nodes are active[0m[0m
+[component_container_isolated-1] [INFO] [1792840866.277159854] [lifecycle_manager_navigation]: [34m[1mActivating controller_server[0m[0m
+[component_container_isolated-1] [INFO] [1792840866.277444778] [controller_server]: Activating
+[component_container_isolated-1] [INFO] [1792840866.277487498] [local_costmap.local_costmap]: Activating
+[component_container_isolated-1] [INFO] [1792840866.433369167] [lifecycle_manager_navigation]: [34m[1mActivating smoother_server[0m[0m
+[component_container_isolated-1] [INFO] [1792840866.433943770] [smoother_server]: Activating
+[component_container_isolated-1] [INFO] [1792840866.537304583] [lifecycle_manager_navigation]: [34m[1mActivating planner_server[0m[0m
+[component_container_isolated-1] [INFO] [1792840866.537551004] [planner_server]: Activating
+[component_container_isolated-1] [INFO] [1792840866.537608379] [global_costmap.global_costmap]: Activating
+[component_container_isolated-1] [INFO] [1792840867.589159965] [planner_server]: Activating plugin GridBased of type NavfnPlanner
+[component_container_isolated-1] [INFO] [1792840867.692728364] [lifecycle_manager_navigation]: [34m[1mActivating route_server[0m[0m
+[component_container_isolated-1] [INFO] [1792840867.693132243] [route_server]: Activating
+[component_container_isolated-1] [INFO] [1792840867.796016716] [lifecycle_manager_navigation]: [34m[1mActivating behavior_server[0m[0m
+[component_container_isolated-1] [INFO] [1792840867.796353802] [behavior_server]: Activating
+[component_container_isolated-1] [INFO] [1792840867.796390130] [behavior_server]: Activating spin
+[component_container_isolated-1] [INFO] [1792840867.796428067] [behavior_server]: Activating backup
+[component_container_isolated-1] [INFO] [1792840867.796441638] [behavior_server]: Activating drive_on_heading
+[component_container_isolated-1] [INFO] [1792840867.796462592] [behavior_server]: Activating wait
+[component_container_isolated-1] [INFO] [1792840867.796550203] [behavior_server]: Activating assisted_teleop
+[component_container_isolated-1] [INFO] [1792840867.900807136] [lifecycle_manager_navigation]: [34m[1mActivating velocity_smoother[0m[0m
+[component_container_isolated-1] [INFO] [1792840867.901399779] [velocity_smoother]: Activating
+[component_container_isolated-1] [INFO] [1792840868.004107972] [lifecycle_manager_navigation]: [34m[1mActivating collision_monitor[0m[0m
+[component_container_isolated-1] [INFO] [1792840868.004541898] [collision_monitor]: Activating
+[component_container_isolated-1] [INFO] [1792840868.109831108] [lifecycle_manager_navigation]: [34m[1mActivating bt_navigator[0m[0m
+[component_container_isolated-1] [INFO] [1792840868.110144852] [bt_navigator]: Activating
+[component_container_isolated-1] [INFO] [1792840868.253041358] [lifecycle_manager_navigation]: [34m[1mActivating waypoint_follower[0m[0m
+[component_container_isolated-1] [INFO] [1792840868.253449984] [waypoint_follower]: Activating
+[component_container_isolated-1] [INFO] [1792840868.356654048] [lifecycle_manager_navigation]: [34m[1mActivating docking_server[0m[0m
+[component_container_isolated-1] [INFO] [1792840868.357027283] [docking_server]: Activating docking_server
+[component_container_isolated-1] [INFO] [1792840868.466981381] [lifecycle_manager_navigation]: [34m[1mManaged nodes are active[0m[0m
+=== 3. 逐一查 lifecycle 狀態
+map_server: label='active'
+amcl: label='active'
+controller_server: label='active'
+smoother_server: label='active'
+planner_server: label='active'
+behavior_server: label='active'
+velocity_smoother: label='active'
+collision_monitor: label='active'
+bt_navigator: label='active'
+waypoint_follower: label='active'
+docking_server: label='active'
+=== 4. TF map→base_link（static map→odom + DiffDrive odom→base_footprint）
+[INFO] [1792840891.070850502] [tf2_echo]: Waiting for transform map ->  base_link: Invalid frame ID "map" passed to canTransform argument target_frame - frame does not exist
+At time 29.512000000
+- Translation: [0.000, 0.000, 0.000]
+- Rotation: in Quaternion (xyzw) [0.000, 0.000, 0.000, 1.000]
+- Rotation: in RPY (radian) [0.000, -0.000, 0.000]
+- Rotation: in RPY (degree) [0.000, -0.000, 0.000]
+- Matrix:
+  1.000 -0.000  0.000  0.000
+=== 5. ros2 action send_goal /navigate_to_pose → (1.5, 0.0)
+send_goal 結束碼 0
+Goal accepted with ID: e7247542a4f14eb69630bf62ba06e489
+navigation_time:
+distance_remaining: 1.4947212934494019
+navigation_time:
+distance_remaining: 1.4947212934494019
+navigation_time:
+distance_remaining: 1.419721245765686
+navigation_time:
+distance_remaining: 1.394721269607544
+navigation_time:
+distance_remaining: 1.3447213172912598
+navigation_time:
+distance_remaining: 1.294721245765686
+navigation_time:
+distance_remaining: 1.269721269607544
+navigation_time:
+distance_remaining: 1.2197213172912598
+navigation_time:
+distance_remaining: 1.1947212219238281
+navigation_time:
+distance_remaining: 1.144721269607544
+navigation_time:
+distance_remaining: 1.0947213172912598
+navigation_time:
+distance_remaining: 1.0697212219238281
+navigation_time:
+distance_remaining: 1.044721245765686
+navigation_time:
+distance_remaining: 0.9947212934494019
+navigation_time:
+  nanosec: 722000000
+estimated_time_remaining:
+  sec: 1
+  nanosec: 516207814
+number_of_recoveries: 0
+distance_remaining: 0.24472126364707947
+
+Result:
+    error_code: 0
+error_msg: ''
+
+Goal finished with status: SUCCEEDED
+=== 6. 到點後 /odom 位置
+x: 1.276417354436803
+y: -0.02008539869260095
+z: 0.0
+---
+=== 7. 書附 nav2_client（互動式，輸入 1 → 先去 medical_shop 26m 外）只跑 40 秒看 feedback
+[INFO] [1792840908.992488424] [navigation_client]: Navigation client initialized
+Enter order number (1 for Room1, 2 for Room2, q to quit): [INFO] [1792840908.994749129] [navigation_client]: Moving to medical shop to collect medicine...
+[INFO] [1792840908.998834426] [navigation_client]: Navigating to position: x=26.36, y=-6.18, z=0.00
+[INFO] [1792840909.003238924] [navigation_client]: Goal accepted by server
+[INFO] [1792840909.104529880] [navigation_client]: Distance remaining: 0.00
+...
+[INFO] [1792840948.828622490] [navigation_client]: Distance remaining: 19.01
+[INFO] [1792840948.923641266] [rclcpp]: signal_handler(SIGINT/SIGTERM)
+[ERROR] [1792840948.931833150] [navigation_client]: Navigation failed
+[ERROR] [1792840948.932597104] [navigation_client]: Failed to reach medical shop
+[ERROR] [1792840948.933341093] [navigation_client]: Error during navigation: failed to create guard condition: the given context is not valid, either rcl_init() was not called or rcl_shutdown() was called., at ./src/rcl/guard_condition.c:67
+NAV_DONE
+=== 清理背景行程群組: 851 1023

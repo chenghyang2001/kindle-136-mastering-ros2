@@ -1,0 +1,214 @@
+===== docker_basics/Dockerfile
+#Base Image
+FROM osrf/ros:jazzy-desktop-full
+
+#Update and upgrade Ubuntu package and install pip
+RUN apt update && apt upgrade -y
+RUN apt install -y python3-pip
+
+#Execute command, bash when it create the container
+CMD ["/bin/bash"]
+
+
+===== docker_basics/Dockerfile.basic
+#Base Image
+FROM osrf/ros:jazzy-desktop-full
+
+#User name to be created
+ARG USERNAME=robot
+
+ARG USER_UID=1000
+ARG USER_GID=1000
+
+# Delete user if it exists in container (Ubuntu Noble: ubuntu)
+RUN if id -u $USER_UID ; then userdel `id -un $USER_UID` ; fi
+
+# Create the user
+RUN groupadd --gid $USER_GID $USERNAME \
+    && useradd --uid $USER_UID --gid $USER_GID -m $USERNAME \
+    #
+    # [Optional] Add sudo support. Omit if you don't need to install software after connecting.
+    && apt update \
+    && apt install -y sudo \
+    && echo $USERNAME ALL=\(root\) NOPASSWD:ALL > /etc/sudoers.d/$USERNAME \
+    && chmod 0440 /etc/sudoers.d/$USERNAME
+
+
+#Update and upgrade Ubuntu package and install pip
+RUN apt update && apt upgrade -y
+RUN apt install -y python3-pip
+
+#Set defaul shell as bash
+ENV SHELL=/bin/bash
+
+
+# Set to default user.
+USER $USERNAME
+
+#Execute bash shell when start the container
+CMD ["/bin/bash"]
+
+
+===== docker_gui/Dockerfile.master_ros2
+# Use the official ROS Jazzy desktop full base image
+FROM osrf/ros:jazzy-desktop-full
+
+
+#Name of docker user as argument 
+ARG docker_user_name
+# Name of the ros workspace to mount
+ARG ros_ws
+
+# The group identifier and User identifier for user creation
+ARG GID=1000
+ARG UID=1000
+
+# Set up environment variables
+ENV DEBIAN_FRONTEND=noninteractive
+ENV HOME="/home/$docker_user_name"
+ENV ROS_DISTRO=jazzy
+ENV ROS_WS=${HOME}/$ros_ws
+
+# Delete user if it exists in container (Ubuntu Noble: ubuntu)
+RUN if id -u $UID ; then userdel `id -un $UID` ; fi
+
+# Add user and install sudo
+RUN groupadd --gid $GID $docker_user_name && useradd --uid $UID --gid $docker_user_name --shell /bin/bash --create-home $docker_user_name \
+    && apt-get update && apt-get install -y sudo \
+    && echo "$docker_user_name ALL=(ALL) NOPASSWD:ALL" >> /etc/sudoers
+
+# Install necessary dependencies
+RUN apt-get update && apt-get install -y \
+    git \
+    python3-pip \
+    python3-colcon-common-extensions \
+    python3-vcstool \
+    && rm -rf /var/lib/apt/lists/*
+
+# Set ownership to user
+RUN chown -R $docker_user_name:$docker_user_name ${HOME}
+
+# Switch to user
+USER $docker_user_name
+
+# Copy ros ws entry point
+COPY ros_ws_entrypoint.sh /ros_ws_entrypoint.sh
+
+
+WORKDIR $ROS_WS
+
+# Entrypoint
+ENTRYPOINT ["/ros_entrypoint.sh"]
+
+===== docker_gui/build_image.sh
+#!/bin/bash
+# This script is to create a docker image from the Dockerfile.
+
+# Set the image name as a variable here
+IMAGE_NAME="$1"  #Setting the name of the image as argument
+ROS_WS="$2"  #Setting name of the host PC ROS workspace folder
+USER_NAME="$3"  #Assigning the host user name to the docker  
+
+
+# Build the Docker image with the specified image name
+docker build -f Dockerfile.master_ros2 -t "$IMAGE_NAME" . --build-arg docker_user_name="$USER_NAME" --build-arg ros_ws="$ROS_WS"
+
+
+===== docker_gui/create_container.sh
+#!/bin/sh
+
+
+DOCKER_IMAGE="$1"  # Name of the Docker image.
+ROS2_WS_NAME="$2"    #ROS2 ws name
+CONTAINER_NAME="$3"  # Name of the container you want to create.
+
+
+HOST_WS_PATH="/home/$USER/$ROS2_WS_NAME/src"  # Path to your workspace on the host.
+
+# Get Docker image user
+DOCKER_USER=$(docker inspect "$DOCKER_IMAGE" --format '{{.Config.User}}')
+if [ -z "$DOCKER_USER" ]; then
+    DOCKER_USER="ubuntu"  # fallback to host user if not set
+fi
+
+xhost +local:docker
+
+XSOCK=/tmp/.X11-unix
+XAUTH=/tmp/.docker.xauth
+XAUTH_DOCKER=/tmp/.docker.xauth
+
+# Create Xauth if not present
+if [ ! -f "$XAUTH" ]; then
+    xauth_list=$(xauth nlist :0 | sed -e 's/^..../ffff/')
+    if [ ! -z "$xauth_list" ]; then
+        echo "$xauth_list" | xauth -f "$XAUTH" nmerge -
+    else
+        touch "$XAUTH"
+    fi
+    chmod a+r "$XAUTH"
+fi
+
+# Check for NVIDIA GPU
+if nvidia-smi | grep -q NVIDIA; then
+    echo "NVIDIA GPU detected, initializing container with GPU support"
+    docker run -it --network host \
+        --privileged \
+        --name "$CONTAINER_NAME" \
+        --gpus all \
+        --runtime nvidia \
+        --env="DISPLAY=$DISPLAY" \
+        --env="QT_X11_NO_MITSHM=1" \
+        --env="NVIDIA_DRIVER_CAPABILITIES=all" \
+        --volume="/etc/timezone:/etc/timezone:ro" \
+        --volume="/etc/localtime:/etc/localtime:ro" \
+        --volume="$XSOCK:$XSOCK:rw" \
+        --volume="$XAUTH:$XAUTH_DOCKER:rw" \
+        --volume="$HOST_WS_PATH:/home/$DOCKER_USER/$ROS2_WS_NAME/src" \
+        "$DOCKER_IMAGE" \
+        bash
+else
+    echo "NVIDIA GPU NOT detected, initializing container without GPU support"
+    docker run -it --network host \
+        --privileged \
+        --name "$CONTAINER_NAME" \
+        --env="DISPLAY=$DISPLAY" \
+        --volume="$XSOCK:$XSOCK:rw" \
+        --volume="$XAUTH:$XAUTH_DOCKER:rw" \
+        --volume="/dev:/dev" \
+        --volume="/etc/timezone:/etc/timezone:ro" \
+        --volume="/etc/localtime:/etc/localtime:ro" \
+        --volume="$HOST_WS_PATH:/home/$DOCKER_USER/$ROS2_WS_NAME/src" \
+        "$DOCKER_IMAGE" \
+        bash
+fi
+
+===== docker_gui/ros_entrypoint.sh
+#!/usr/bin/env bash
+set -e
+
+# setup ros environment
+source "/opt/ros/$ROS_DISTRO/setup.bash"
+
+exec "$@"
+
+===== docker_compose/docker-compose.yml
+version: '3.8'
+
+services:
+  talker:
+    image: osrf/ros:jazzy-desktop-full
+    command: ros2 run demo_nodes_cpp talker
+
+  listener:
+    image: osrf/ros:jazzy-desktop-full
+    command: ros2 run demo_nodes_cpp listener
+    depends_on:
+      - talker
+
+===== 本機安裝狀態
+ii  ros-dev-tools                                    1.0.3                                            all          Developer Tools for ROS
+ii  ros-jazzy-desktop                                0.11.0-1noble.20261006.040109                    amd64        A package which extends 'ros_base' and includes high level packages like vizualization tools and demos.
+ii  ros-jazzy-ros-base                               0.11.0-1noble.20261006.035407                    amd64        A package which extends 'ros_core' and includes other basic functionalities like tf2 and urdf.
+ii  ros2-apt-source                                  1.3.0~noble                                      all          Source and key configuration for the ROS 2 apt repository.
+ros2.sources
+docker 指令位置：/mnt/c/Program Files/Docker/Docker/resources/bin/docker

@@ -1,0 +1,16 @@
+[INFO] [launch]: All log files can be found below /home/user/.ros/log/2026-10-24-19-36-37-125691-DESKTOP-6LST1BR-620
+[INFO] [launch]: Default logging verbosity is set to INFO
+[INFO] [joint_space_planning-1]: process started with pid [623]
+[joint_space_planning-1] [INFO] [1792841797.500778858] [moveit_717677954.moveit.ros.rdf_loader]: Loaded robot model in 0.00366863 seconds
+[joint_space_planning-1] [INFO] [1792841797.500927341] [moveit_717677954.moveit.core.robot_model]: Loading robot model 'panda'...
+[joint_space_planning-1] [INFO] [1792841797.513259114] [moveit_717677954.moveit.kinematics.kdl_kinematics_plugin]: Joint weights for group 'arm': 1 1 1 1 1 1 1
+[joint_space_planning-1] [INFO] [1792841797.533548028] [moveit_717677954.moveit.ros.move_group_interface]: Ready to take commands for planning group arm.
+[joint_space_planning-1] [INFO] [1792841797.533733317] [moveit_717677954.moveit.ros.move_group_interface]: MoveGroup action client/server ready
+[joint_space_planning-1] [INFO] [1792841797.534643636] [moveit_717677954.moveit.ros.move_group_interface]: Planning request accepted
+[joint_space_planning-1] [INFO] [1792841797.545558733] [moveit_717677954.moveit.ros.move_group_interface]: Planning request aborted
+[joint_space_planning-1] [ERROR] [1792841797.546076531] [moveit_717677954.moveit.ros.move_group_interface]: MoveGroupInterface::plan() failed or timeout reached
+[joint_space_planning-1] [INFO] [1792841800.546500021] [moveit_717677954.moveit.ros.move_group_interface]: MoveGroup action client/server ready
+[joint_space_planning-1] [INFO] [1792841800.547260098] [moveit_717677954.moveit.ros.move_group_interface]: Planning request accepted
+[joint_space_planning-1] [INFO] [1792841800.555521926] [moveit_717677954.moveit.ros.move_group_interface]: Planning request aborted
+[joint_space_planning-1] [ERROR] [1792841800.555735730] [moveit_717677954.moveit.ros.move_group_interface]: MoveGroupInterface::plan() failed or timeout reached
+[INFO] [joint_space_planning-1]: process has finished cleanly [pid 623]

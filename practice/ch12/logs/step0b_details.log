@@ -1,0 +1,154 @@
+2:  <!--<link name="base_footprint"></link>
+3:  <joint name="base_joint" type="fixed">
+4:    <parent link="base_footprint" />
+5:    <child link="base_link" />
+6:    <origin xyz="-0.05656728130107069 0.20694419100877182 0.5" rpy="0 0 0" />
+8:  <link name="base_footprint">
+10:      <origin xyz="0 0 0" rpy="0 0 0" />
+19:      <origin xyz="0 0 0" rpy="0 0 0" />
+25:      <origin xyz="0 0 0" rpy="0 0 0" />
+30:  <joint name="base_link_to_lidar" type="fixed">
+31:    <parent link="base_footprint" />
+32:    <child link="base_laser" />
+33:    <origin xyz="0.06986067162727368 0.00408591397784569 0.01272105737519193" rpy="0 0 0" />
+35:  <link name="base_laser">
+37:      <origin xyz="0 0 0" rpy="0 0 0" />
+47:      <origin xyz="0 0 0" rpy="0 0 0" />
+53:      <origin xyz="0 0 0" rpy="0 0 0" />
+58:  <joint name="base_link_to_wheel_right" type="fixed">
+59:    <parent link="base_footprint" />
+60:    <child link="wheel_right" />
+61:    <origin xyz="0.0426152091725569 -0.06332031957510047 0" rpy="1.5707963267948963 0 0" />
+64:  <link name="wheel_right">
+66:      <origin xyz="0 0 0" rpy="0 0 0" />
+76:      <origin xyz="0 0 0" rpy="0 0 0" />
+82:      <origin xyz="0 0 0" rpy="0 0 0" />
+87:  <joint name="base_link_to_wheel_left" type="fixed">
+88:    <parent link="base_footprint" />
+89:    <child link="wheel_left" />
+90:    <origin xyz="0.040044432499384504 0.0625430709639706 -0.0028519977579222755" rpy="1.5707963267948963 0 0" />
+93:  <link name="wheel_left">
+95:      <origin xyz="0 0 0" rpy="0 0 0" />
+105:      <origin xyz="0 0 0" rpy="0 0 0" />
+111:      <origin xyz="0 0 0" rpy="0 0 0" />
+116:  <joint name="base_link_to_omniwheel" type="fixed">
+117:    <parent link="base_footprint" />
+118:    <child link="omniwheel" />
+119:    <origin xyz="-0.08151645436678397 0 -0.019833524261632485" rpy="0 0 0" />
+121:  <link name="omniwheel">
+123:      <origin xyz="0 0 0" rpy="0 0 0" />
+133:      <origin xyz="0 0 0" rpy="0 0 0" />
+139:      <origin xyz="0 0 0" rpy="0 0 0" />
+144:  <joint name="base_link_to_Raspberry" type="fixed">
+145:    <parent link="base_footprint" />
+146:    <child link="Raspberry" />
+147:    <origin xyz="-0.0684529754364332 0.00007999849359541233 0.007494221284821023" rpy="0 0 0" />
+149:  <link name="Raspberry">
+151:      <origin xyz="0 0 0" rpy="0 0 0" />
+161:      <origin xyz="0 0 0" rpy="0 0 0" />
+167:      <origin xyz="0 0 0" rpy="0 0 0" />
+#!/usr/bin/env python3
+from launch import LaunchDescription
+from launch_ros.actions import Node
+
+'''
+Parameter Description:
+---
+- Set laser scan directon: 
+  1. Set counterclockwise, example: {'laser_scan_dir': True}
+  2. Set clockwise,        example: {'laser_scan_dir': False}
+- Angle crop setting, Mask data within the set angle range:
+  1. Enable angle crop fuction:
+    1.1. enable angle crop,  example: {'enable_angle_crop_func': True}
+    1.2. disable angle crop, example: {'enable_angle_crop_func': False}
+  2. Angle cropping interval setting:
+  - The distance and intensity data within the set angle range will be set to 0.
+  - angle >= 'angle_crop_min' and angle <= 'angle_crop_max' which is [angle_crop_min, angle_crop_max], unit is degress.
+    example:
+      {'angle_crop_min': 135.0}
+      {'angle_crop_max': 225.0}
+      which is [135.0, 225.0], angle unit is degress.
+'''
+
+def generate_launch_description():
+  # LDROBOT LiDAR publisher node
+  ldlidar_node = Node(
+      package='ldlidar_sl_ros2',
+      executable='ldlidar_sl_ros2_node',
+      name='ldlidar_publisher_ld14',
+      output='screen',
+      parameters=[
+        {'product_name': 'LDLiDAR_LD14P'},
+        {'laser_scan_topic_name': 'scan'},
+        {'point_cloud_2d_topic_name': 'pointcloud2d'},
+        {'frame_id': 'base_laser'},
+        {'port_name': '/dev/ttyUSB0'},
+        {'serial_baudrate' : 230400},
+        {'laser_scan_dir': True},
+        {'enable_angle_crop_func': False},
+        {'angle_crop_min': 135.0},
+        {'angle_crop_max': 225.0}
+      ]
+  )
+  '''
+  base_link_to_laser_tf_node = Node(
+    package='tf2_ros',
+    executable='static_transform_publisher',
+    name='base_link_to_base_laser_ld14p',
+    arguments=['0','0','0.0','0','0','0','base_footprint','base_laser']
+  )
+  '''
+  
+  base_link_to_footprint_tf_node = Node(
+    package='tf2_ros',
+    executable='static_transform_publisher',
+    name='base_link_to_base_footprint',
+    arguments=['0','0','0.0','0','0','0','base_footprint','base_link']
+  )
+  
+  # Define LaunchDescription variable
+  ld = LaunchDescription()
+
+  ld.add_action(ldlidar_node)
+  ld.add_action(base_link_to_footprint_tf_node)
+
+  return ld
+31:    tf_laser = buffer_->lookupTransform(base_frame_id, last_scan.header.frame_id, tf2::TimePointZero);
+36:    RCLCPP_ERROR(get_logger(), "%s",ex.what());
+79:    RCLCPP_WARN(get_logger(), "Waiting for laser_scans....") ;
+130:  RCLCPP_DEBUG(get_logger(), "[rf2o] Publishing Odom Topic");
+137:  odom.header.frame_id = odom_frame_id;
+144:  odom.child_frame_id = base_frame_id;
+153:    RCLCPP_DEBUG(get_logger(), "[rf2o] Publishing TF: [base_link] to [odom]");
+156:    odom_trans.header.frame_id = odom_frame_id;
+157:    odom_trans.child_frame_id = base_frame_id;
+cmake_minimum_required(VERSION 3.8)
+project(mobile_robot_model)
+
+if(CMAKE_COMPILER_IS_GNUCXX OR CMAKE_CXX_COMPILER_ID MATCHES "Clang")
+  add_compile_options(-Wall -Wextra -Wpedantic)
+endif()
+
+# find dependencies
+find_package(ament_cmake REQUIRED)
+find_package(xacro REQUIRED)
+
+
+install(
+  DIRECTORY launch urdf
+  DESTINATION share/${PROJECT_NAME}
+)
+
+if(BUILD_TESTING)
+  find_package(ament_lint_auto REQUIRED)
+  # the following line skips the linter which checks for copyrights
+  # comment the line when a copyright and license is added to all source files
+  set(ament_cmake_copyright_FOUND TRUE)
+  # the following line skips cpplint (only works in a git repo)
+  # comment the line when this package is in a git repo and when
+  # a copyright and license is added to all source files
+  set(ament_cmake_cpplint_FOUND TRUE)
+  ament_lint_auto_find_test_dependencies()
+endif()
+
+ament_package()
