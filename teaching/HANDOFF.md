@@ -20,3 +20,4 @@
 | 10 | 2026-10-24 | 約 7 分鐘（19:48–19:55） | 無 webcam／RealSense：cam2image burger 假相機＋自寫合成點雲；不開 rqt/RViz 改用 topic hz；書上 pcl_processing 無分割，於驗證節點補 RANSAC；透視轉換原碼未實作 |
 | 11 | 2026-10-24 | 約 12 分鐘（19:56–20:08） | 無 PX4 SITL：px4_msgs release/1.15＋px4_ctrl 只建置；無飛控時節點卡在等 vehicle_command 服務；自寫 fake_fcu.py 冒充飛控驗證 offboard 流程；SITL 安裝只寫步驟 |
 | 12 | 2026-10-24 | 約 9 分鐘（20:08–20:17） | 無樹莓派／LiDAR，micro-ROS 略過；不開 RViz 改 view_frames 產 TF 樹；自寫假 /scan 餵 rf2o，移動量接近真值但 x 方向相反（試 3 次未解，記在 NOTES） |
+| 13 | 2026-10-24 | 約 6 分鐘（20:18–20:25） | 書本 HandlesOverflowAngles 期望值與函式範圍 [-π,π) 不一致，工作區副本改 -M_PI；CI yml 只寫不 push；發現 colcon test 失敗仍回 0，需靠 colcon test-result |
