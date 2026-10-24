@@ -36,3 +36,4 @@
 | 03 | 約 5 分鐘（07:31–07:36） | 沿用 hp2 step0–6＋cleanup 未改；建置 42.9 s（hp2 54.1 s）；topic／param（只生效一拍）／service／action 結果與 hp2 相同；ros2 action list 一樣卡到 timeout |
 | 04 | 約 5 分鐘（07:37–07:42） | 關鍵數字與 hp2 完全相同（check_urdf、link 樹、tf2_echo 值）；這台缺 pdftoppm，腳本加自動裝 poppler-utils；step3_tf.sh 收尾 kill 已結束行程被 set -e 判失敗，改為忽略（hp2 log 停在同處，可能也是 exit 1） |
 | 05 | 約 5 分鐘（07:43–07:48） | 沿用 hp2 六個腳本未改；diffbot 10 秒前進 5.04 m（hp2 4.92 m）、/odom 24.5 Hz（hp2 26.2 Hz）；rrbot 4 條橋接、手臂軌跡 SUCCEEDED 與 hp2 相同；建置 10.4 s（hp2 約 5 s） |
+| 06 | 約 7 分鐘（07:48–07:55） | 關鍵數字與 hp2 一致：sine_controller 啟用 ok、base_joint 0.82–1.78 rad 0.5 Hz、滑動關節因離心力卡上限 0.3；背景建置會被 wsl.exe 收掉，改前景（23 s）；多加 step2b 只動滑動關節的測試 |
