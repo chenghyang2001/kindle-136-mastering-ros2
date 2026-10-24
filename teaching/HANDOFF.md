@@ -12,3 +12,4 @@
 | 02 | 2026-10-24 | 約 4 分鐘（18:18–18:22） | 沒有 Docker，Dockerfile 只讀不建；本機是 ros2-apt-source＋desktop（書上腳本讓你選 desktop-full／ros-base）；查詢加 --no-daemon |
 | 03 | 2026-10-24 | 約 15 分鐘（18:22–18:37） | Fast DDS 在 WSL 跨行程探索極慢，改 rmw_cyclonedds_cpp＋lo 開 multicast；書上程式 timer 每次重設參數，param set 只生效一拍 |
 | 04 | 2026-10-24 | 約 4 分鐘（18:38–18:42） | 不開 RViz／joint_state_publisher_gui，改用 tf2_echo 與 topic echo /robot_description 驗證；graphviz PDF 轉 PNG |
+| 05 | 2026-10-24 | 約 10 分鐘（18:42–18:52） | Gazebo 改 server 模式、關 RViz／rqt；補 /odom 橋接；多複製 ch04 rrbot_description；load_controller 經 daemon 卡住改用 spawner；以 topic pub 取代 rqt_robot_steering |
