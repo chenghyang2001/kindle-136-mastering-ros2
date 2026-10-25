@@ -47,3 +47,4 @@
 | 10 | 約 6 分鐘（08:29–08:35） | 點雲數字與 hp2 完全相同（42401→4897 點、RANSAC 平面 z=0.6）；7 個影像 topic 約 10 Hz、透視轉換寬度 0 同 hp2；建置 2 分 22 秒（hp2 1 分 54 秒）；兩個 .py 改 LF |
 | 11 | 約 13 分鐘（08:37–08:50） | px4_msgs 改從本機 ~/ros2_books/px4_msgs 複製（同 release/1.15，213 msg）；建置 8 分 25 秒（hp2 6 分 18 秒）；無飛控同樣卡在等服務；fake_fcu 流程 ARM→OFFBOARD→DISARM 與 hp2 相同，心跳 35 筆（hp2 36）；topic hz 10.00 Hz（hp2 量測含空檔 7.75–8.06） |
 | 12 | 約 8 分鐘（08:50–08:58） | TF 樹（base_footprint 下 5 個子 frame、雷射位置）與 hp2 相同；rf2o 360° 估 −2.188 m（hp2 −2.178）、270° 估 −2.144 m，同樣 x 方向相反未解；建置 49.1 s（hp2 36.3 s） |
+| 13 | 約 4 分鐘（08:59–09:03） | 關鍵數字與 hp2 相同：原樣 7 tests 2 failures（540° 期望值 +π 與 [-π,π) 不符）、修正後 7 tests 0 failures、故意改壞看得到 Which is 訊息；CI yml 語法通過未 push；新資料夾缺 src/，複製腳本加 mkdir -p src |
