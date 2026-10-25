@@ -1,0 +1,11 @@
+## 測試 5：docker compose -f docker-compose1.yml（host 網路＋容器內安裝 cyclonedds）
+Sun Oct 25 08:11:58 AM CST 2026
+ros2_talker    | [INFO] [1792887210.449759768] [talker]: Publishing: 'Hello World: 1'
+ros2_listener  | [INFO] [1792887210.450761422] [listener]: I heard: [Hello World: 1]
+ros2_talker    | [INFO] [1792887211.449521698] [talker]: Publishing: 'Hello World: 2'
+ros2_listener  | [INFO] [1792887211.450196027] [listener]: I heard: [Hello World: 2]
+ros2_talker    | [INFO] [1792887212.449528613] [talker]: Publishing: 'Hello World: 3'
+ros2_listener  | [INFO] [1792887212.450225712] [listener]: I heard: [Hello World: 3]
+ros2_talker    | [INFO] [1792887213.449499910] [talker]: Publishing: 'Hello World: 4'
+ros2_listener  | [INFO] [1792887213.450089828] [listener]: I heard: [Hello World: 4]
+ Container ros2_talker Removed 

@@ -25,6 +25,10 @@
 | 15 | 2026-10-25 | 實際約 10 分鐘（20:55 開始，筆電睡眠到 04:49，04:52 完成） | 無 NVIDIA GPU：Isaac Lab＋PPO 改 gymnasium CartPole 表格式 Q-learning（末 100 回合平均 466 步）；docker 腳本只讀不執行；第一次 pip 裝出壞的 gymnasium，重裝後正常 |
 | 16 | 2026-10-25 | 約 5 分鐘（04:53–04:58） | 不開 RViz／rqt：用 pluginlib 清單、plugin XML 與 .so 符號確認外掛已註冊；Gazebo server 模式驗證外掛限速 0.5→0.2 並轉發 cmd_vel，模型移動約 1.1 m；書上 cmd_vel 是 rqt 面板外掛 |
 
+## 補做：第 2 章 Docker（2026-10-25）
+
+第一次演練時誤判沒有 Docker（其實是 Docker Desktop 沒啟動）。補做書上 `docker_compose` 兩個範例：容器之間 talker／listener 互通 ✅；Docker Desktop 下容器 ↔ WSL 本機的 ROS 2 不通（Docker 虛擬機和 WSL 不同網段）。詳見 `practice/ch02-docker/NOTES.md`。
+
 ## 第二台電腦結果（hp1，2026-10-25）
 
 在 hp1 重跑，直接重用 hp2 的 practice/chNN 腳本與 ws_src；這台的腳本、NOTES、log 留在本機 k136-chNN-practice。

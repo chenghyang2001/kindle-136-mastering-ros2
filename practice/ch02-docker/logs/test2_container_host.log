@@ -1,0 +1,9 @@
+## 測試 2a：容器 talker（--net=host, Fast DDS）→ WSL 本機 listener
+Sun Oct 25 08:07:36 AM CST 2026
+(容器端)
+[INFO] [1792886874.876385752] [talker]: Publishing: 'Hello World: 16'
+[INFO] [1792886875.876618155] [talker]: Publishing: 'Hello World: 17'
+[INFO] [1792886876.876516461] [talker]: Publishing: 'Hello World: 18'
+
+## 測試 2b：WSL 本機 talker → 容器 listener（--net=host）
+Sun Oct 25 08:08:00 AM CST 2026

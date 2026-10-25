@@ -1,0 +1,34 @@
+## docker compose -f docker-compose.yml up（20 秒）
+Sun Oct 25 08:06:56 AM CST 2026
+ Container k136ch02-talker-1 Creating 
+ Container k136ch02-talker-1 Created 
+ Container k136ch02-listener-1 Creating 
+ Container k136ch02-listener-1 Created 
+Attaching to listener-1, talker-1
+ Container k136ch02-talker-1 Starting 
+ Container k136ch02-talker-1 Started 
+ Container k136ch02-listener-1 Starting 
+ Container k136ch02-listener-1 Started 
+talker-1  | [INFO] [1792886819.229504971] [talker]: Publishing: 'Hello World: 1'
+listener-1  | [INFO] [1792886819.230695102] [listener]: I heard: [Hello World: 1]
+talker-1    | [INFO] [1792886820.229354434] [talker]: Publishing: 'Hello World: 2'
+listener-1  | [INFO] [1792886820.229825675] [listener]: I heard: [Hello World: 2]
+talker-1    | [INFO] [1792886821.229538837] [talker]: Publishing: 'Hello World: 3'
+listener-1  | [INFO] [1792886821.230595639] [listener]: I heard: [Hello World: 3]
+talker-1    | [INFO] [1792886822.229238655] [talker]: Publishing: 'Hello World: 4'
+listener-1  | [INFO] [1792886822.229639765] [listener]: I heard: [Hello World: 4]
+talker-1    | [INFO] [1792886823.229250406] [talker]: Publishing: 'Hello World: 5'
+listener-1  | [INFO] [1792886823.229682087] [listener]: I heard: [Hello World: 5]
+talker-1    | [INFO] [1792886824.229435050] [talker]: Publishing: 'Hello World: 6'
+listener-1  | [INFO] [1792886824.230370298] [listener]: I heard: [Hello World: 6]
+talker-1    | [INFO] [1792886825.229522789] [talker]: Publishing: 'Hello World: 7'
+listener-1  | [INFO] [1792886825.230433439] [listener]: I heard: [Hello World: 7]
+talker-1    | [INFO] [1792886826.229455561] [talker]: Publishing: 'Hello World: 8'
+listener-1  | [INFO] [1792886826.230508123] [listener]: I heard: [Hello World: 8]
+talker-1    | [INFO] [1792886827.229448356] [talker]: Publishing: 'Hello World: 9'
+listener-1  | [INFO] [1792886827.230381035] [listener]: I heard: [Hello World: 9]
+talker-1    | [INFO] [1792886828.229539074] [talker]: Publishing: 'Hello World: 10'
+listener-1  | [INFO] [1792886828.230629336] [listener]: I heard: [Hello World: 10]
+talker-1    | [INFO] [1792886829.229463405] [talker]: Publishing: 'Hello World: 11'
+ Network k136ch02_default Removing 
+ Network k136ch02_default Removed 

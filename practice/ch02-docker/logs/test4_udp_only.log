@@ -1,0 +1,5 @@
+## 測試 4：兩邊 FASTDDS_BUILTIN_TRANSPORTS=UDPv4（關掉共享記憶體）
+Sun Oct 25 08:11:18 AM CST 2026
+WSL listener：15 秒內沒收到
+## 容器看到的網路介面
+127.0.0.1 172.17.0.1 192.168.65.3 192.168.65.6 
