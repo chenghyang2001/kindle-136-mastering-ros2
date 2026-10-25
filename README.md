@@ -19,3 +19,7 @@
 
 看 [NEW-PC-DRILL.md](NEW-PC-DRILL.md)：程式碼位置（官方範例已 fork 到 [chenghyang2001/Mastering-ROS-2-for-Robotics-Programming](https://github.com/chenghyang2001/Mastering-ROS-2-for-Robotics-Programming)）、新電腦需求、WSL＋ROS 2 安裝、給 Claude Code CLI 的快速演練提示詞。
 各章改過的 ROS 套件副本在 `practice/chNN/ws_src/`。
+
+## 總結與結論
+
+看 [CONCLUSIONS.md](CONCLUSIONS.md)：成果連結、Docker 與 WSL 的比較、決定與教訓。
