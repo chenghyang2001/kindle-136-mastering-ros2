@@ -45,3 +45,4 @@
 | 08 | 約 5 分鐘（08:10–08:15） | 沿用 hp2 五個腳本未改；11 個 lifecycle 節點 active，目標 (1.5,0) 4.6 秒 SUCCEEDED，與 hp2 相同；nav2_client 40 秒剩餘距離 29.58→20.03 m（hp2 降到 19.01 m，模擬稍慢） |
 | 09 | 約 11 分鐘（08:17–08:28） | mock 版結果與 hp2 一致：joint_space 2/2、cartesian 79 點 100%（hp2 78 點）、planning_with_obstacles 接續跑同樣 GOAL_STATE_INVALID、重開後成功；step2 超過 120 秒改背景重跑；補 step4 查控制器（list_controllers 不支援 --no-daemon） |
 | 10 | 約 6 分鐘（08:29–08:35） | 點雲數字與 hp2 完全相同（42401→4897 點、RANSAC 平面 z=0.6）；7 個影像 topic 約 10 Hz、透視轉換寬度 0 同 hp2；建置 2 分 22 秒（hp2 1 分 54 秒）；兩個 .py 改 LF |
+| 11 | 約 13 分鐘（08:37–08:50） | px4_msgs 改從本機 ~/ros2_books/px4_msgs 複製（同 release/1.15，213 msg）；建置 8 分 25 秒（hp2 6 分 18 秒）；無飛控同樣卡在等服務；fake_fcu 流程 ARM→OFFBOARD→DISARM 與 hp2 相同，心跳 35 筆（hp2 36）；topic hz 10.00 Hz（hp2 量測含空檔 7.75–8.06） |
