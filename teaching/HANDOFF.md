@@ -43,3 +43,4 @@
 | 06 | 約 7 分鐘（07:48–07:55） | 關鍵數字與 hp2 一致：sine_controller 啟用 ok、base_joint 0.82–1.78 rad 0.5 Hz、滑動關節因離心力卡上限 0.3；背景建置會被 wsl.exe 收掉，改前景（23 s）；多加 step2b 只動滑動關節的測試 |
 | 07 | 約 13 分鐘（07:56–08:09） | 各樹行為與 hp2 一致；改樹 B 成功 5 次（hp2 6 次，70 秒截止時第 6 輪未完）；number_checker 筆數隨機波動；同樣重現 ros2 run 殘留節點污染，以 step5 直接執行二進位檔為準；WSL /tmp 在兩次 wsl.exe 間被清空，改把輸出另存 logs/ |
 | 08 | 約 5 分鐘（08:10–08:15） | 沿用 hp2 五個腳本未改；11 個 lifecycle 節點 active，目標 (1.5,0) 4.6 秒 SUCCEEDED，與 hp2 相同；nav2_client 40 秒剩餘距離 29.58→20.03 m（hp2 降到 19.01 m，模擬稍慢） |
+| 09 | 約 11 分鐘（08:17–08:28） | mock 版結果與 hp2 一致：joint_space 2/2、cartesian 79 點 100%（hp2 78 點）、planning_with_obstacles 接續跑同樣 GOAL_STATE_INVALID、重開後成功；step2 超過 120 秒改背景重跑；補 step4 查控制器（list_controllers 不支援 --no-daemon） |
