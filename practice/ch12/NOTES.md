@@ -100,3 +100,48 @@ node list: /fake_scan /rf2o_laser_odometry /robot_state_publisher ...
 - rf2o 節點在 node list 會出現兩次 `/rf2o_laser_odometry`（節點內部又建了一個同名節點），會有 `share an exact name` 警告，不影響 `/odom`。
 - `ros2 topic hz` 不支援 `--no-daemon`（第一輪 360° 實驗的 hz 因此沒量到，270° 那輪已修正）。
 - 這次清理時沒有殘留行程（`logs/cleanup.log`：乾淨：無殘留）。
+
+## 2026-10-26 已解決：方向相反的原因與修法
+
+在 Gazebo 模擬（`ws_src/mobile_robot_sim`：gpu_lidar 代替 LD20、DiffDrive 代替 L298N＋TT 馬達）重跑，確認上面「x 方向相反」不是假 scan 的問題，而是**書上附的 rf2o 是舊版**。
+
+### 症狀（照書原樣跑）
+
+| 動作 | `/ground_truth` | `/wheel_odom` | rf2o `/odom` |
+| --- | --- | --- | --- |
+| 直走 1 m | x +1.000 | x +0.999 | x **−1.083** |
+| 原地左轉 | yaw +66.1° | +61.2° | +2.7° → +71.6°（增加 69°，方向對） |
+
+旋轉對、平移反 → 掃描比對沒問題，問題在「把比對結果累加成位置」的 `PoseUpdate()`。
+
+### 原因
+
+和官方 [MAPIRlab/rf2o_laser_odometry](https://github.com/MAPIRlab/rf2o_laser_odometry) `ros2` 分支比對 `PoseUpdate()`，邏輯上只差三行的負號（其餘只有註解和 log 文字）：
+
+```cpp
+pose_aux_2D.translation()(0) = -acu_trans(0,2);   // 官方：acu_trans(0,2)
+pose_aux_2D.translation()(1) = -acu_trans(1,2);   // 官方：acu_trans(1,2)
+lin_speed = -acu_trans(0,2) / time_inc_sec;       // 官方：acu_trans(0,2)
+```
+
+`kai_loc_sub` 那兩行的 `-fps*acu_trans` 官方也有，不用改。
+
+### 修法
+
+- 原檔備份：WSL `~/k136_ws/ch12/rf2o_book_original.cpp`
+- 拿掉三個負號：`rf2o_sign_fix.patch`（本目錄，`diff -u`）
+- `colcon build --packages-select rf2o_laser_odometry`（51 秒）
+
+### 修後（後退 1 m → 左轉約 90° → 前進 1 m）
+
+| 檢查點 | `/ground_truth` | `/wheel_odom` | rf2o `/odom` |
+| --- | --- | --- | --- |
+| 後退 1 m | (−1.012, −0.000) 0.0° | (−1.012, −0.000) 0.0° | (−1.077, −0.064) 3.2° |
+| 左轉 | (−0.969, −0.041) 92.8° | (−1.012, −0.000) 85.8° | (−1.014, −0.107) 101.0° |
+| 前進 1 m（終點） | (−1.018, +0.952) 92.8° | (−0.940, +0.991) 85.8° | (−1.243, +1.042) 100.7° |
+
+方向正確。終點誤差約 0.24 m，主要來自轉彎多估 8°；輪式里程計則因側滑少算 7°。
+
+### 另一個發現：光達要高過輪子
+
+書上 URDF 的光達高度 0.0127 m，比輪子頂端 0.032 m 低，左右 ±90° 會掃到自己的輪子（約 0.05 m），rf2o 只估出一半距離。模擬版架高到 0.045 m 才正常。真車的光達也要裝在輪子上方，或用 `range_min`／角度裁切濾掉車體。

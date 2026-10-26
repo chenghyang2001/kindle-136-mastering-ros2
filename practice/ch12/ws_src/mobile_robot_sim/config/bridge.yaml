@@ -1,0 +1,36 @@
+# 模擬硬體 ↔ ROS 2 的橋（書上是實體驅動程式，這裡由 ros_gz_bridge 代替）
+- ros_topic_name: "/clock"
+  gz_topic_name: "/clock"
+  ros_type_name: "rosgraph_msgs/msg/Clock"
+  gz_type_name: "gz.msgs.Clock"
+  direction: GZ_TO_ROS
+# 代替 LD20 光達驅動 ldlidar_sl_ros2 發布的 /scan
+- ros_topic_name: "/scan"
+  gz_topic_name: "/scan"
+  ros_type_name: "sensor_msgs/msg/LaserScan"
+  gz_type_name: "gz.msgs.LaserScan"
+  direction: GZ_TO_ROS
+# 代替 L298N 馬達驅動：ROS 的 /cmd_vel 送進 gz DiffDrive
+- ros_topic_name: "/cmd_vel"
+  gz_topic_name: "/cmd_vel"
+  ros_type_name: "geometry_msgs/msg/Twist"
+  gz_type_name: "gz.msgs.Twist"
+  direction: ROS_TO_GZ
+# 兩個輪子的轉角（給 robot_state_publisher 算輪子 TF）
+- ros_topic_name: "/joint_states"
+  gz_topic_name: "/joint_states"
+  ros_type_name: "sensor_msgs/msg/JointState"
+  gz_type_name: "gz.msgs.Model"
+  direction: GZ_TO_ROS
+# 「如果有編碼器」會得到的輪式里程計（TT 馬達其實沒有編碼器，只拿來比較）
+- ros_topic_name: "/wheel_odom"
+  gz_topic_name: "/wheel_odom"
+  ros_type_name: "nav_msgs/msg/Odometry"
+  gz_type_name: "gz.msgs.Odometry"
+  direction: GZ_TO_ROS
+# 模擬器知道的真實位置（真實世界沒有這個，用來檢查 rf2o 準不準）
+- ros_topic_name: "/ground_truth"
+  gz_topic_name: "/ground_truth"
+  ros_type_name: "nav_msgs/msg/Odometry"
+  gz_type_name: "gz.msgs.Odometry"
+  direction: GZ_TO_ROS

@@ -1,0 +1,137 @@
+<?xml version="1.0"?>
+<!-- 第 12 章 mobile_robot.urdf 的模擬版。和書上原檔的差異：
+     1. 兩個驅動輪由 fixed 改成 continuous（才轉得動），兩輪對齊在 y=±0.063、輪軸朝 +y
+     2. 萬向輪改成無摩擦、底部和驅動輪同高（車身才不會歪）
+     3. 質量與慣量改成接近實物的數值（原檔每個零件都是 1 kg、慣量 0.17～0.5，模擬會很怪）
+     4. 光達架高到 z=0.045（原檔 0.0127 比輪子頂端 0.032 低，會掃到自己的輪子）
+     5. 加上顏色（用原檔註解掉的顏色）、gpu_lidar、DiffDrive、JointStatePublisher、OdometryPublisher -->
+<robot name="mobile_robot">
+  <material name="base-green"><color rgba="0.03 0.47 0.12 1"/></material>
+  <material name="wheel-red"><color rgba="0.64 0.04 0.01 1"/></material>
+  <material name="lidar-black"><color rgba="0.05 0.05 0.05 1"/></material>
+  <material name="pi-cyan"><color rgba="0.29 0.96 0.91 1"/></material>
+  <material name="omni-blue"><color rgba="0.15 0.10 0.50 1"/></material>
+
+  <link name="base_footprint">
+    <visual><geometry><box size="0.22 0.11 0.01"/></geometry><material name="base-green"/></visual>
+    <collision><geometry><box size="0.22 0.11 0.01"/></geometry></collision>
+    <inertial><mass value="0.6"/>
+      <inertia ixx="0.00061" ixy="0" ixz="0" iyy="0.00243" iyz="0" izz="0.00302"/></inertial>
+  </link>
+
+  <joint name="base_link_to_lidar" type="fixed">
+    <parent link="base_footprint"/><child link="base_laser"/>
+    <origin xyz="0.0699 0.0041 0.045" rpy="0 0 0"/>
+  </joint>
+  <link name="base_laser">
+    <visual><geometry><cylinder radius="0.02" length="0.03"/></geometry><material name="lidar-black"/></visual>
+    <collision><geometry><cylinder radius="0.02" length="0.03"/></geometry></collision>
+    <inertial><mass value="0.05"/>
+      <inertia ixx="0.0000088" ixy="0" ixz="0" iyy="0.0000088" iyz="0" izz="0.00001"/></inertial>
+  </link>
+
+  <joint name="base_link_to_wheel_right" type="continuous">
+    <parent link="base_footprint"/><child link="wheel_right"/>
+    <origin xyz="0.041 -0.063 0" rpy="-1.5707963 0 0"/>
+    <axis xyz="0 0 1"/>
+  </joint>
+  <link name="wheel_right">
+    <visual><geometry><cylinder radius="0.032" length="0.01"/></geometry><material name="wheel-red"/></visual>
+    <collision><geometry><cylinder radius="0.032" length="0.01"/></geometry></collision>
+    <inertial><mass value="0.05"/>
+      <inertia ixx="0.0000132" ixy="0" ixz="0" iyy="0.0000132" iyz="0" izz="0.0000256"/></inertial>
+  </link>
+
+  <joint name="base_link_to_wheel_left" type="continuous">
+    <parent link="base_footprint"/><child link="wheel_left"/>
+    <origin xyz="0.041 0.063 0" rpy="-1.5707963 0 0"/>
+    <axis xyz="0 0 1"/>
+  </joint>
+  <link name="wheel_left">
+    <visual><geometry><cylinder radius="0.032" length="0.01"/></geometry><material name="wheel-red"/></visual>
+    <collision><geometry><cylinder radius="0.032" length="0.01"/></geometry></collision>
+    <inertial><mass value="0.05"/>
+      <inertia ixx="0.0000132" ixy="0" ixz="0" iyy="0.0000132" iyz="0" izz="0.0000256"/></inertial>
+  </link>
+
+  <joint name="base_link_to_omniwheel" type="fixed">
+    <parent link="base_footprint"/><child link="omniwheel"/>
+    <origin xyz="-0.0815 0 -0.017" rpy="0 0 0"/>
+  </joint>
+  <link name="omniwheel">
+    <visual><geometry><sphere radius="0.015"/></geometry><material name="omni-blue"/></visual>
+    <collision><geometry><sphere radius="0.015"/></geometry></collision>
+    <inertial><mass value="0.02"/>
+      <inertia ixx="0.0000018" ixy="0" ixz="0" iyy="0.0000018" iyz="0" izz="0.0000018"/></inertial>
+  </link>
+
+  <joint name="base_link_to_Raspberry" type="fixed">
+    <parent link="base_footprint"/><child link="Raspberry"/>
+    <origin xyz="-0.0685 0.0001 0.0075" rpy="0 0 0"/>
+  </joint>
+  <link name="Raspberry">
+    <visual><geometry><box size="0.08 0.08 0.01"/></geometry><material name="pi-cyan"/></visual>
+    <collision><geometry><box size="0.08 0.08 0.01"/></geometry></collision>
+    <inertial><mass value="0.05"/>
+      <inertia ixx="0.000027" ixy="0" ixz="0" iyy="0.000027" iyz="0" izz="0.000053"/></inertial>
+  </link>
+
+  <!-- 萬向輪：無摩擦，只撐住車尾 -->
+  <gazebo reference="omniwheel">
+    <collision><surface><friction><ode><mu>0</mu><mu2>0</mu2></ode></friction></surface></collision>
+  </gazebo>
+  <gazebo reference="wheel_left">
+    <collision><surface><friction><ode><mu>1</mu><mu2>1</mu2></ode></friction></surface></collision>
+  </gazebo>
+  <gazebo reference="wheel_right">
+    <collision><surface><friction><ode><mu>1</mu><mu2>1</mu2></ode></friction></surface></collision>
+  </gazebo>
+
+  <!-- 代替 LD20 光達：360 度、每度一點、10 Hz、0.12～12 m（0.12 以內是自己的輪子，要濾掉） -->
+  <gazebo reference="base_laser">
+    <sensor name="ld20_lidar" type="gpu_lidar">
+      <topic>scan</topic>
+      <gz_frame_id>base_laser</gz_frame_id>
+      <update_rate>10</update_rate>
+      <always_on>1</always_on>
+      <visualize>true</visualize>
+      <lidar>
+        <scan><horizontal>
+          <samples>360</samples><resolution>1</resolution>
+          <min_angle>-3.14159265</min_angle><max_angle>3.12413936</max_angle>
+        </horizontal></scan>
+        <range><min>0.12</min><max>12.0</max><resolution>0.01</resolution></range>
+        <noise><type>gaussian</type><mean>0</mean><stddev>0.005</stddev></noise>
+      </lidar>
+    </sensor>
+  </gazebo>
+
+  <gazebo>
+    <!-- 代替 L298N 馬達驅動＋兩顆 TT 馬達：收 /cmd_vel，轉兩個輪子 -->
+    <plugin filename="gz-sim-diff-drive-system" name="gz::sim::systems::DiffDrive">
+      <left_joint>base_link_to_wheel_left</left_joint>
+      <right_joint>base_link_to_wheel_right</right_joint>
+      <wheel_separation>0.126</wheel_separation>
+      <wheel_radius>0.032</wheel_radius>
+      <topic>/cmd_vel</topic>
+      <odom_topic>/wheel_odom</odom_topic>
+      <tf_topic>/wheel_odom_tf</tf_topic>
+      <frame_id>odom</frame_id>
+      <child_frame_id>base_footprint</child_frame_id>
+      <odom_publish_frequency>20</odom_publish_frequency>
+      <max_linear_acceleration>1.0</max_linear_acceleration>
+      <max_angular_acceleration>4.0</max_angular_acceleration>
+    </plugin>
+    <plugin filename="gz-sim-joint-state-publisher-system" name="gz::sim::systems::JointStatePublisher">
+      <topic>/joint_states</topic>
+    </plugin>
+    <!-- 模擬器的真實位置（真實車子沒有這個） -->
+    <plugin filename="gz-sim-odometry-publisher-system" name="gz::sim::systems::OdometryPublisher">
+      <odom_frame>world</odom_frame>
+      <robot_base_frame>base_footprint</robot_base_frame>
+      <odom_topic>/ground_truth</odom_topic>
+      <tf_topic>/ground_truth_tf</tf_topic>
+      <odom_publish_frequency>20</odom_publish_frequency>
+    </plugin>
+  </gazebo>
+</robot>
