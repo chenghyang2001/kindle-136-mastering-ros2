@@ -1,11 +1,11 @@
 ===== ros2 pkg create（C++ / ament_cmake）
 going to create a new package
 package name: k136_hello_cpp
-destination directory: /home/user/k136_ws/ch02/src
+destination directory: /home/peter/k136_ws/ch02/src
 package format: 3
 version: 0.0.0
 description: TODO: Package description
-maintainer: ['user <user@todo.todo>']
+maintainer: ['peter <peter@todo.todo>']
 licenses: ['Apache-2.0']
 build type: ament_cmake
 dependencies: ['rclcpp']
@@ -20,11 +20,11 @@ creating ./k136_hello_cpp/src/hello_timer_cpp.cpp
 ===== ros2 pkg create（Python / ament_python）
 going to create a new package
 package name: k136_hello_py
-destination directory: /home/user/k136_ws/ch02/src
+destination directory: /home/peter/k136_ws/ch02/src
 package format: 3
 version: 0.0.0
 description: TODO: Package description
-maintainer: ['user <user@todo.todo>']
+maintainer: ['peter <peter@todo.todo>']
 licenses: ['Apache-2.0']
 build type: ament_python
 dependencies: ['rclpy']
@@ -75,8 +75,8 @@ creating ./k136_hello_py/k136_hello_py/hello_timer_py.py
 ===== colcon build --symlink-install
 Starting >>> k136_hello_cpp
 Starting >>> k136_hello_py
-Finished <<< k136_hello_py [2.35s]
-Finished <<< k136_hello_cpp [9.84s]
+Finished <<< k136_hello_py [2.08s]
+Finished <<< k136_hello_cpp [4.44s]
 
-Summary: 2 packages finished [10.1s]
+Summary: 2 packages finished [4.67s]
 BUILD_OK
